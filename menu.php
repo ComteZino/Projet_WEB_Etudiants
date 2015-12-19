@@ -1,5 +1,5 @@
 <?php 
-   if(!empty($_SESSION)) {
+  /* if(!empty($_SESSION)) {
         if($_SESSION['statut']=="0")
 	{
 		header('Location: authentification.php');
@@ -13,7 +13,7 @@
 		header('Location: authentification.php');
             
 	}
-    }
+    }*/
    
 ?>
 <nav><!-- Nav. principale de la page -> site -->
