@@ -28,7 +28,7 @@
     <body>
         <div id='cssmenu'>
             <ul>
-                <li class='active'><a href='#'><span>Accueil</span></a></li>
+                <li class='active'><a href='accueil.php'><span>Accueil</span></a></li>
                 <li><a href='#'><span>News</span></a></li>
                 <li><a href='#'><span>Profil</span></a></li>
                 <li><a href='#'><span>Forum</span></a></li>
