@@ -1,3 +1,12 @@
+<?php 
+    session_start(); 
+    if($_SESSION['statut']=="0")
+    {
+        header('Location: authentification.php');
+
+    }
+?>
+
 <html>
     <head>
         <meta charset="UTF-8">
