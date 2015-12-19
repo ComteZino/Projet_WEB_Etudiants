@@ -32,7 +32,7 @@
                 <li><a href='#'><span>News</span></a></li>
                 <li><a href='#'><span>Profil</span></a></li>
                 <li><a href='#'><span>Forum</span></a></li>
-                <li><a href='#'><span>Contact</span></a></li>
+                <li><a href='contact.php'><span>Contact</span></a></li>
                 <li class='last'><a href='authentification.php'><span>Deconnexion</span></a></li>
             </ul>
         </div>

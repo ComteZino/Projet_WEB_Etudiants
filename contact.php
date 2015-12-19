@@ -1,3 +1,10 @@
+<?php 
+    session_start(); 
+    if($_SESSION['statut']=="0")
+    {
+        header('Location: authentification.php');
+    }
+?>
 <html>
     <head>
       <meta charset="utf-8">
@@ -7,12 +14,8 @@
       <link rel="stylesheet" href="css/styleContact.css">
     </head>
     <body>
-        <header>
-            <!-- Entête de la zone considérée -->
-            <a>
-                <img src="images/logostpaul.png" alt="logo" title="logo" id="logo" /> 
-            </a>
-        </header>
+        <?php include 'header.php'; ?>
+        <?php include 'menu.php'; ?>    
         <div id="form-main">
           <div id="form-div">
               <p class="name">
