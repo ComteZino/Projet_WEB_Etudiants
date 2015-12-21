@@ -19,13 +19,13 @@
 	<div class="form-style-5">
             <form>
 		<fieldset>
-                    <legend><span class="number">1</span>Qui êtes-vous ?</legend>
+                    <legend><span class="number" id="number1">1</span>Qui êtes-vous ?</legend>
                     <input type="nom" placeholder="Nom *">
                     <input type="prenom" placeholder="Prénom*">
                     <input type="dtn" placeholder="Date de naissance(A/M/J)*">
 		</fieldset>
 		<fieldset>
-                    <legend><span class="number">2</span>Votre passage dans l'établissement</legend>
+                    <legend><span class="number" id="number2">2</span>Votre passage dans l'établissement</legend>
                     <label for="anEntre">En quelle année êtes-vous entré(e)?</label>
                     <select id="anEntre" name="field4">
                         <option value=""></option>
@@ -40,7 +40,7 @@
                     </select>  					
 		</fieldset>
 		<fieldset>
-                    <legend><span class="number">3</span>Comment vous contacter?</legend>
+                    <legend><span class="number" id="number3">3</span>Comment vous contacter?</legend>
                     <input type="adresse" placeholder="Adresse *">
                     <input type="cp" placeholder="Code postal*">
                     <input type="ville" placeholder="Ville">
@@ -49,11 +49,11 @@
                     <input type="email" placeholder="email">
                 </fieldset>
 		<fieldset>
-                    <legend><span class="number">4</span>Poursuite d'études</legend>
+                    <legend><span class="number" id="number4">4</span>Poursuite d'études</legend>
 					
 		</fieldset>
 		<fieldset>
-                    <legend><span class="number">5</span>Votre parcours professionnel</legend>
+                    <legend><span class="number" id="number5">5</span>Votre parcours professionnel</legend>
                     <input type="nom" placeholder="Poste occupé *">
                     <label for="anSortie">Type de contrat de travail</label>
                     <select id="anSortie">
@@ -63,7 +63,7 @@
                     <input type="dtn" placeholder="Adresse">
                     <input type="dtn" placeholder="Secteur d'activité">
 		</fieldset>
-		<input type="submit" value="Apply" />
+		<input type="submit" value="Valider" />
             </form>
 	</div>
     </body>
