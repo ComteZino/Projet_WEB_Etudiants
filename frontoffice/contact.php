@@ -10,8 +10,8 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title></title>
-      <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/styleContact.css">
+      <link rel="stylesheet" href="../css/style.css">
+      <link rel="stylesheet" href="../css/styleContact.css">
     </head>
     <body>
         <?php include 'header.php'; ?>
