@@ -18,6 +18,7 @@
         <?php include 'menu.php'; ?>    
         <div id="form-main">
             <div id="form-div">
+                <form action="../traitement_contact.php" id="contact" method="POST">
                 <p class="name">
                   <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nom" id="name" />
                 </p>
@@ -33,6 +34,7 @@
 
                 <div class="submit">
                   <input type="submit" value="Envoyer" id="button-blue"/>
+                  </form>
                   <div class="ease"></div>
                 </div>
             </div>
