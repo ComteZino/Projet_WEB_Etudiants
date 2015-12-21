@@ -3,7 +3,6 @@
     {
         header('Location: authentification.php');
     }
-
 ?>
 <header>
     <!-- Entête de la zone considérée -->
