@@ -18,7 +18,7 @@
         </header>
         <form method="post" action="authentificationBD.php" class="login">
             <p>
-                <label for="login">Identifiant :</label>
+                <label for="login">Identifiant:</label>
                 <input type="text" name="Identifiant" id="login" value="">
             </p>
 
