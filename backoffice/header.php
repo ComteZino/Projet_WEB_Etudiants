@@ -1,7 +1,7 @@
 <?php 
-    if(empty($_SESSION['statut'])) 
+    if(empty($_SESSION['statut'])or $_SESSION['statut']!="Admin") 
     {
-        header('Location: authentification.php');
+        header('Location:  ../frontoffice/authentification.php');
     }
 ?>
 <header>
