@@ -9,15 +9,13 @@
     <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <script type="text/javascript" src="verification_contact.js"></script>
       <title></title>
-      <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/styleContact.css">
+      <link rel="stylesheet" href="../css/style.css">
+      <link rel="stylesheet" href="../css/styleContact.css">
     </head>
     <body>
         <?php include 'header.php'; ?>
-        <?php include 'menu.php'; ?>   
-        
+        <?php include 'menu.php'; ?>    
         <div id="form-main">
             <div id="form-div">
                 <p class="name">
@@ -29,7 +27,7 @@
                 </p>
 
                 <p class="text">
-                  <textarea name="message" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Commentaire"></textarea>
+                  <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Commentaire"></textarea>
                 </p>
 
 
@@ -38,7 +36,6 @@
                   <div class="ease"></div>
                 </div>
             </div>
-
         </div>
     </body>
 </html>
