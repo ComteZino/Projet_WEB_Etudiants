@@ -1,9 +1,14 @@
 <?php 
-    session_start(); 
-    if($_SESSION['statut']=="0")
+    session_start();
+    if(empty($_SESSION['statut'])) 
     {
         header('Location: authentification.php');
     }
+   /*session_start(); 
+    if($_SESSION['statut']=="0")
+    {
+        header('Location: authentification.php');
+    }*/
 ?>
 <html>
     <head>
