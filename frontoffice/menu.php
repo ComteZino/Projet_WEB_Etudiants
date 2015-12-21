@@ -19,7 +19,7 @@
             <ul>
                 <li class='active'><a href='accueil.php'><span>Accueil</span></a></li>
                 <li><a href='#'><span>News</span></a></li>
-                <li><a href='#'><span>Profil</span></a></li>
+                <li><a href='profil.php'><span>Profil</span></a></li>
                 <li><a href='#'><span>Forum</span></a></li>
                 <li><a href='contact.php'><span>Contact</span></a></li>
                 <?php
