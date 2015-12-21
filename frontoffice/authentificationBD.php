@@ -20,14 +20,7 @@
        
 	if($pseudo==$ligne['login'] and $mdp==$ligne['password'])
 	{	
-            if($statut=='Admin')
-            {
-                header('Location: accueil.php');    
-            }
-            else
-            {
-                header('Location: accueil.html');  
-            }
+            header('Location: accueil.php');  
 	}
 	else
 	{
