@@ -1,11 +1,21 @@
+<?php 
+    session_start();
+    if(empty($_SESSION['statut'])) 
+    {
+        header('Location: authentification.php');
+    }
+?>
 <html>
     <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title></title>
+      <link rel="stylesheet" href="../css/style.css" />
       <link rel="stylesheet" href="../css/styleFormulaire.css">
     </head>
-    <body>  
+    <body> 
+        <?php include 'header.php'; ?>
+        <?php include 'menu.php'; ?>  
 	<div class="form-style-5">
             <form>
 		<fieldset>
