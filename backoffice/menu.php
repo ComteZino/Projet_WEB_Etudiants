@@ -21,12 +21,8 @@
                 <li><a href='#'><span>Stats</span></a></li>
                 <li><a href='#'><span>Propositions de stages</span></a></li>
                 <li><a href='#'><span>Contacter un étudiant</span></a></li>
-                <?php
-                    if($_SESSION["statut"] == "Admin")
-                    {
-                        echo "<li><a href='../frontoffice/accueil.php'><span>FrontOffice</span></a></li>";
-                    }
-                ?>
+                <li><a href='choix_gestion.php'><span>Gestion des comptes</span></a></li>
+                <li><a href='../frontoffice/accueil.php'><span>FrontOffice</span></a></li>
                 <li class='last'><a href='../frontoffice/authentification.php'><span>Deconnexion</span></a></li>
             </ul>
         </div>
