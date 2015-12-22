@@ -4,53 +4,87 @@
  * and open the template in the editor.
  */
 
-//nous appliquons simplement une couleur d'arrière plan aux objets traités, 
-function couleur(obj) {
-     obj.style.backgroundColor = "#FFFFFF";
+//Fonction colorant les champs ou non suivant l'état des tests
+function surligne(champ, test)
+{
+   if(test)
+   {
+      champ.style.backgroundColor = "";// si champ à true alors aucune couleur   
+   }
+   else
+   {
+      champ.style.backgroundColor = "#D46A6A";// si erreur on met la couleur du fond à rouge      
+   }
 }
 
- function check() {
-	var msg = "";
- 
-//Vérification du mail s'il n'est pas vide on vérifie le . et @
- 
-		if (document.formulaire.mail.value != "")	{
-		indexAroba = document.formulaire.mail.value.indexOf('@');
-		indexPoint = document.formulaire.mail.value.indexOf('.');
-		if ((indexAroba < 0) || (indexPoint < 0))		{
- 
-//dans le cas ou il manque soit le . soit l'@ on modifie la couleur d'arrière plan du champ mail et définissons un message d'alerte
- 
-			document.formulaire.mail.style.backgroundColor = "#F3C200";
-			msg += "Le mail est incorrect\n";
-		}
-	}
- 
-//Notre champs mail est vide donc on change la couleur et on défini un autre message d'alerte
- 
-	else	{
-		document.formulaire.mail.style.backgroundColor = "#F3C200";
-		msg += "Veuillez saisir votre mail.\n";
-	}
- 
-//ici nous vérifions si le champs nom et vide, changeons la couleur du champs et définissons un message d'alerte
-if (document.formulaire.nom.value == "")	{
-		msg += "Veuillez saisir votre nom\n";
-		document.formulaire.nom.style.backgroundColor = "#F3C200";
-	}
- 
-//meme manipulation pour le champ prénom
-if (document.formulaire.prenom.value == "")	{
-		msg += "Veuillez saisir votre prenom\n";
-		document.formulaire.prenom.style.backgroundColor = "#F3C200";
-	}
- 
-//Si aucun message d'alerte a été initialisé on retourne TRUE
-	if (msg == "") return(true);
- 
-//Si un message d'alerte a été initialisé on lance l'alerte
-	else	{
-		alert(msg);
-		return(false);
-	}
+//Fonction pour la vérification du nom 
+function verifNom(champ)
+{   
+   if(champ.value.length > 2 && champ.value.length < 25)//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
+   {
+      surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+      champ.value=champ.value.toUpperCase();//On force la saisie du nom en majuscule
+      document.getElementById("erreur").innerHTML = " ";
+      return true;
+   }
+   else//Si la condition n'est pas respecté alors
+   {
+      surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+      document.getElementById("erreurnom").innerHTML = "Vous devez saisair votre nom";
+      return false;
+   }
 }
+
+//Fonction pour la vérification de l'email
+function verifEmail(champ)
+{
+   if(champ.value.length > 2 && champ.value.length < 25)
+   {
+      surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+      document.getElementById("erreuremail").innerHTML = " ";
+      return true;
+   }
+   else
+   {
+      surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+      document.getElementById("erreuremail").innerHTML = "Vous devez saisir votre email";
+      return false;
+   }
+}
+
+//Fonction pour la vérification du message
+function verifMessage(champ)
+{
+   if(champ.value.length > 2 && champ.value.length < 200)
+   {
+      surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+      document.getElementById("erreurmessage").innerHTML = " ";
+      return true;
+   }
+   else
+   {
+      surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+      document.getElementById("erreurmessage").innerHTML = "Vous devez saisir un messsage";
+      return false;
+   }
+}
+
+//Fonction permettant la validation ou non du formulaire si tout les tests sont ok
+function verifForm(contact)
+{
+   var nomOk = verifNom(contact.nom);
+   var emailOk = verifEmail(contact.email);
+   var messageOk = verifMessage(contact.message);
+
+   if(nomOk && emailOk && messageOk)
+   {
+        document.getElementById("contact").submit();
+   }
+   else
+   {
+        alert("Veuillez remplir correctement tous les champs");
+        return false;
+   }
+}
+
+
