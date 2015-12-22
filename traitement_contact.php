@@ -2,8 +2,8 @@
 <?php   
     //====================================
     // TRAITEMENT DE L'ENVOIE DE L'EMAIL
-    //====================================  
-               
+    //==================================== 
+            
     //-----------------------------------
     // Verification des champs
     //-----------------------------------
@@ -41,14 +41,18 @@
       $erreur4 = '<p>Veuillez renseigner un message.</p>';
     }
   
+   
+    // A coder : captcha anti-spam.
     
-
-// (3) Ici, il sera possible d'ajouter plus tard un code pour vérifier un captcha anti-spam.
- 
+    //-----------------------------------
+    // Mise en forme du message 
+    //-----------------------------------
+    
+    // S'il n'y a pas d'erreur
     if ($nombreErreur==0)
-    { // S'il n'y a pas d'erreur
-      // Ici il faut ajouter tout le code pour envoyer l'email.
-      // Dans le code présenté au chapitre précédent, cela signifie au code entre les commentaires (1) et (2).
+    { 
+      // Ici il faudra ajouter tout le code pour envoyer l'email.
+      
     } 
     else
     { // S'il y a un moins une erreur
@@ -58,7 +62,7 @@
       if (isset($erreur2)) echo '<p>'.$erreur2.'</p>';
       if (isset($erreur3)) echo '<p>'.$erreur3.'</p>';
       if (isset($erreur4)) echo '<p>'.$erreur4.'</p>';
-      // (4) Ici, il sera possible d'ajouter un code d'erreur supplémentaire si un captcha anti-spam est erroné.
+      // A coder : si un captcha anti-spam est erroné.
       echo '</div>';
     }
 ?>
