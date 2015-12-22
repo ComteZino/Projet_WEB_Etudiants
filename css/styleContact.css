@@ -111,6 +111,22 @@ h2, p{
     border-radius: 10px;
 }
 
+#sujet{
+    background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+    background-size: 30px 30px;
+    background-position: 11px 8px;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+#sujet:focus{
+    background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+    background-size: 30px 30px;
+    background-position: 11px 8px;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
 #message{
     background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
     background-size: 30px 30px;

@@ -32,6 +32,11 @@
                         <p id="erreuremail"></p>
                         <input name="email" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Email" id="email" onblur="verifEmail(this);" />                  
                     </p>
+                    
+                    <p class="sujet">
+                        <p id="erreursujet"></p>
+                        <input name="sujet" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Sujet" id="sujet" onblur="verifSujet(this);" />                  
+                    </p>
 
                     <p class="message">
                         <p id="erreurmessage"></p>
