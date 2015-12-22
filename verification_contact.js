@@ -10,12 +10,12 @@ function surligne(champ, test)
    if(test)
    {
       champ.style.backgroundColor = "";// si champ à true alors aucune couleur   
-  }
+   }
    else
-      champ.style.backgroundColor = "#D46A6A";// si erreur on met la couleur du fond à rouge
-      
+   {
+      champ.style.backgroundColor = "#D46A6A";// si erreur on met la couleur du fond à rouge      
+   }
 }
-
 
 //Fonction pour la vérification du nom 
 function verifNom(champ)
