@@ -17,7 +17,8 @@
 	$ligne = $table->fetch();
         $statut=$ligne['statut'];
         $_SESSION['statut'] = $statut;
-       
+        $idEtud=$ligne['idEtud'];
+        $_SESSION['idEtud'] = $idEtud;
 	if($pseudo==$ligne['login'] and $mdp==$ligne['password'])
 	{	
             header('Location: accueil.php');  
