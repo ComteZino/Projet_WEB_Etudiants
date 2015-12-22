@@ -66,9 +66,9 @@
 
 
         $destinataire = 'yohan.gounou@gmail.com'; // Adresse email de l'administrateur
-        $sujet = 'Titre du message'; // Titre de l'email
+        $sujet_bis = $sujet; // Titre de l'email
         $contenu = '<html><head><title>Titre du message</title></head><body>';
-        $contenu .= '<p>Bonjour, vous avez reçu un message à partir de votre site web.</p>';
+        $contenu .= '<p>Bonjour, vous avez reçu un nouveau message :</p>';
         $contenu .= '<p><strong>Nom</strong>: '.$nom.'</p>';
         $contenu .= '<p><strong>Email</strong>: '.$email.'</p>';
         $contenu .= '<p><strong>Message</strong>: '.$message.'</p>';
@@ -79,8 +79,8 @@
         $headers .= 'Content-type: text/html; charset=iso-8859-1'."\r\n";
         
         // Envoyer l'email
-        mail($destinataire, $sujet, $contenu, $headers); // Fonction principale qui envoi l'email
-        echo '<h2>Message envoyé!</h2>'; // Afficher un message pour indiquer que le message a été envoyé
+        mail($destinataire, $sujet_bis, $contenu, $headers); // Fonction principale qui envoi l'email
+        header('Location: frontoffice/message_envoye.php'); // Afficher un message pour indiquer que le message a été envoyé
         
     } 
     else
