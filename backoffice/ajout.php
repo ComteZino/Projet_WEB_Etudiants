@@ -1,0 +1,36 @@
+<?php 
+    require_once('../frontoffice/connexionBD.php');
+    if(empty($_SESSION['statut'])or $_SESSION['statut']!="Admin") 
+    {
+        header('Location: ../frontoffice/authentification.php');
+    }
+?>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/styleGestionCompte.css">
+        <title></title>
+    </head>
+    <body>
+        <?php include 'header.php'; ?>
+        <?php include 'menu.php'; ?>      
+        <div class="form-style-5">
+            <form method="post" action="ajout.php">
+		<fieldset>
+                    <legend>Compte créé :</legend>
+                    <label for="statut">Quel type de compte va être créé ?</label>
+                    <select id="anEntre" name="field4">
+                        <option value="Util">Utilisateur</option>
+                        <option value="Admin">Administrateur</option>
+                    </select>   
+                    <input type="login" placeholder="Identifiant *">
+                    <input type="mdp" placeholder="Mot de passe *">
+                    <input type="nom" placeholder="Nom *">
+                    <input type="prenom" placeholder="Prénom *">
+		</fieldset>
+                <input id="voir" type="submit" value="Créer le compte"/>  
+            </form>
+	</div>
+    </body>
+</html>
