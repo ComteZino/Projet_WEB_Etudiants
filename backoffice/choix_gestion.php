@@ -9,13 +9,13 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../css/style.css" />
-        <link rel="stylesheet" href="../css/styleProfil.css">
-        <title></title>
+        <link rel="stylesheet" href="../css/styleGestionCompte.css">
+        <title>Gestion anciens étudiants</title>
     </head>
     <body>
         <?php include 'header.php'; ?>
         <?php include 'menu.php'; ?>      
-        <div class="form-style-6">
+        <div class="form-style-5">
             <form method="post" action="ajouter.php">
 		<input id="voir" type="submit" value="Créer un compte"  />           
             </form>
