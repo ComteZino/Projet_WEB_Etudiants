@@ -17,15 +17,24 @@
     <body>
         <div id='cssmenu'>
             <ul>
-                <li class='active'><a href='accueil.php'><span>Accueil</span></a></li>
-                <li><a href='#'><span>News</span></a></li>
-                <li><a href='profil.php'><span>Profil</span></a></li>
+                <li class='active'><a href='accueil.php'><span>Accueil</span></a></li>                            
                 <li><a href='#'><span>Forum</span></a></li>
-                <li><a href='contact.php'><span>Contact</span></a></li>
+                              
+                <?php
+                    if($_SESSION["statut"] == "Util")
+                    {
+                        echo "<li><a href='profil.php'><span>Profil</span></a></li>";
+                        echo "<li><a href='contact.php'><span>Contact</span></a></li>";
+                    }
+                    ?>
+                
                 <?php
                     if($_SESSION["statut"] == "Admin")
                     {
-                        echo "<li><a href='../backoffice/accueil.php'><span>Administration</span></a></li>";
+                        echo "<li><a href='#'><span>Stats</span></a></li>";
+                        echo "<li><a href='#'><span>Propositions de stages</span></a></li>";
+                        echo "<li><a href='#'><span>Contacter un étudiant</span></a></li>";
+                        echo "<li><a href='choix_gestion.php'><span>Gestion des comptes</span></a></li>";
                     }
                 ?>
                 <li class='last'><a href='authentification.php'><span>Deconnexion</span></a></li>
