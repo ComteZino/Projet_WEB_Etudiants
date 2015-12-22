@@ -14,20 +14,20 @@
     </head>
     <body>
         <?php include 'header.php'; ?>
-        <?php include 'menu.php'; ?>      
+        <?php include "menu.php" ?>   
         <div class="form-style-5">
-            <form method="post" action="ajout.php">
+            <form method="post" action="traitement/ajout.php">
 		<fieldset>
                     <legend>Création d'un compte</legend>
                     <label for="statut">Quel type de compte va être créé ?</label>
-                    <select id="anEntre" name="field4">
-                        <option value="Util">Utilisateur</option>
-                        <option value="Admin">Administrateur</option>
+                    <select id="statut" name="statut">
+                        <option value="Utilisateur">Utilisateur</option>
+                        <option value="Administrateur">Administrateur</option>
                     </select>   
-                    <input type="login" placeholder="Identifiant *">
-                    <input type="mdp" placeholder="Mot de passe *">
-                    <input type="nom" placeholder="Nom *">
-                    <input type="prenom" placeholder="Prénom *">
+                    <input name="login" type="login" placeholder="Identifiant *">
+                    <input name="mdp" type="mdp" placeholder="Mot de passe *">
+                    <input name="nom" type="nom" placeholder="Nom *">
+                    <input name="prenom" type="prenom" placeholder="Prénom *">
 		</fieldset>
                 <input id="voir" type="submit" value="Créer le compte"/>  
             </form>

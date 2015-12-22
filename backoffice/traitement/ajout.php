@@ -1,36 +1,35 @@
 <?php 
-    require_once('../frontoffice/connexionBD.php');
+    require_once('../../frontoffice/connexionBD.php');
     if(empty($_SESSION['statut'])or $_SESSION['statut']!="Admin") 
     {
         header('Location: ../frontoffice/authentification.php');
     }
+    $statut = htmlentities($_POST["statut"]);
+    $login = htmlentities($_POST["login"]);
+    $mdp = htmlentities($_POST["mdp"]);
+    $nom = htmlentities($_POST["nom"]);
+    $prenom = htmlentities($_POST["prenom"]);
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../css/style.css" />
-        <link rel="stylesheet" href="../css/styleGestionCompte.css">
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="../../css/styleGestionCompte.css">
         <title></title>
     </head>
     <body>
         <?php include 'header.php'; ?>
         <?php include 'menu.php'; ?>      
         <div class="form-style-5">
-            <form method="post" action="ajout.php">
-		<fieldset>
-                    <legend>Compte créé :</legend>
-                    <label for="statut">Quel type de compte va être créé ?</label>
-                    <select id="anEntre" name="field4">
-                        <option value="Util">Utilisateur</option>
-                        <option value="Admin">Administrateur</option>
-                    </select>   
-                    <input type="login" placeholder="Identifiant *">
-                    <input type="mdp" placeholder="Mot de passe *">
-                    <input type="nom" placeholder="Nom *">
-                    <input type="prenom" placeholder="Prénom *">
-		</fieldset>
-                <input id="voir" type="submit" value="Créer le compte"/>  
-            </form>
+            <fieldset>
+                <legend>Compte créé :</legend>
+                <label for="statut"><?php echo "Statut du compte : ".$statut; ?></label>
+                <label for="nom"><?php echo "Nom : ".$nom; ?></label>
+                <label for="prenom"><?php echo "Prénom : ".$prenom; ?></label>
+                <label for="login"><?php echo "Identifiant du compte : ".$login; ?></label>
+                <label for="mdp"><?php echo "Mot de passe du compte : ".$mdp; ?></label>
+            </fieldset>
+            <input type="button" name="nom" value="Ajouter un autre compte">
 	</div>
     </body>
 </html>
