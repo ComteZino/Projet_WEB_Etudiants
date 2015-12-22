@@ -30,7 +30,7 @@ function verifNom(champ)
    else//Si la condition n'est pas respecté alors
    {
       surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
-      document.getElementById("erreurnom").innerHTML = "Vous devez saisair votre nom";
+      document.getElementById("erreurnom").innerHTML = "Vous devez saisir votre nom";
       return false;
    }
 }
@@ -38,7 +38,7 @@ function verifNom(champ)
 //Fonction pour la vérification de l'email
 function verifEmail(champ)
 {
-   if(champ.value.length > 2 && champ.value.length < 25)
+   if(champ.value.length > 2 && champ.value.length < 50)
    {
       surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
       document.getElementById("erreuremail").innerHTML = " ";
@@ -48,6 +48,23 @@ function verifEmail(champ)
    {
       surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
       document.getElementById("erreuremail").innerHTML = "Vous devez saisir votre email";
+      return false;
+   }
+}
+
+//Fonction pour la vérification du sujet
+function verifSujet(champ)
+{
+   if(champ.value.length > 2 && champ.value.length < 50)
+   {
+      surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+      document.getElementById("erreursujet").innerHTML = " ";
+      return true;
+   }
+   else
+   {
+      surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+      document.getElementById("erreursujet").innerHTML = "Vous devez saisir un sujet";
       return false;
    }
 }
@@ -75,8 +92,9 @@ function verifForm(contact)
    var nomOk = verifNom(contact.nom);
    var emailOk = verifEmail(contact.email);
    var messageOk = verifMessage(contact.message);
+   var sujetOk = verifSujet(contact.sujet);
 
-   if(nomOk && emailOk && messageOk)
+   if(nomOk && emailOk && messageOk && sujetOk)
    {
         document.getElementById("contact").submit();
    }

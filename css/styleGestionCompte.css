@@ -22,6 +22,8 @@
 }
 .form-style-5 input[type="login"],
 .form-style-5 input[type="mdp"],
+.form-style-5 input[type="nom"],
+.form-style-5 input[type="prenom"],
 .form-style-5 textarea,
 .form-style-5 select {
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -115,7 +117,11 @@
     background: #109177;
 }
 
-#login
+label
 {
-    font-style: italic;
+    text-align: center;
+}
+a
+{
+    text-decoration: none;
 }
