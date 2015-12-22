@@ -15,6 +15,10 @@ html{
     height:100%;
 }
 
+h2, p{
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
 #feedback-page{
     text-align:center;
 }
@@ -75,7 +79,7 @@ html{
 }
 
 /* Icons ---------------------------------- */
-#name{
+#nom{
     background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
     background-size: 30px 30px;
     background-position: 11px 8px;
@@ -83,7 +87,7 @@ html{
     border-radius: 10px;
 }
 
-#name:focus{
+#nom:focus{
     background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
     background-size: 30px 30px;
     background-position: 8px 5px;
@@ -107,7 +111,7 @@ html{
     border-radius: 10px;
 }
 
-#comment{
+#message{
     background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
     background-size: 30px 30px;
     background-position: 11px 8px;

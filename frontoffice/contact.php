@@ -9,6 +9,7 @@
     <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <script type="text/javascript" src="../verification_contact.js"></script>
       <title></title>
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="../css/styleContact.css">
@@ -19,25 +20,29 @@
         
         <div id="form-main">
             <div id="form-div">
-                <form action="../traitement_contact.php" id="contact" method="POST">
-                <p class="name">
-                  <input name="nom" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nom" id="name"  />
-                </p>
+                <form action="../traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
+                    <h2>Formulaire de contact</h2>
+                    
+                    <p class="nom">
+                        <p id="erreurnom"></p>
+                        <input name="nom" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nom" id="nom" onblur="verifNom(this);" />
+                    </p>
 
-                <p class="email">
-                  <input name="email" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />
-                </p>
+                    <p class="email">
+                        <p id="erreuremail"></p>
+                        <input name="email" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Email" id="email" onblur="verifEmail(this);" />                  
+                    </p>
 
-                <p class="text">
-                  <textarea name="message" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Commentaire"></textarea>
-                </p>
-
-
-                <div class="submit">
-                  <input name='soumettre' type="submit" value="Envoyer" id="button-blue"/>
-                  </form>
-                  <div class="ease"></div>
-                </div>
+                    <p class="message">
+                        <p id="erreurmessage"></p>
+                        <textarea name="message" class="validate[required,length[6,300]] feedback-input" placeholder="Commentaire" id="message" onblur="verifMessage(this);" ></textarea>                  
+                    </p>
+                    
+                    <div class="submit">
+                        <input name='soumettre' type="submit" value="Envoyer" id="button-blue"/>
+                        <div class="ease"></div>
+                    </div>
+                </form>
             </div>
         </div>
     </body>
