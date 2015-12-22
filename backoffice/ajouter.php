@@ -28,6 +28,7 @@
                     <input name="mdp" type="mdp" placeholder="Mot de passe *">
                     <input name="nom" type="nom" placeholder="Nom *">
                     <input name="prenom" type="prenom" placeholder="Prénom *">
+                    <input name="dateN" type="prenom" placeholder="Date de naissance(A/M/J) *">
 		</fieldset>
                 <input id="voir" type="submit" value="Créer le compte"/>  
             </form>
