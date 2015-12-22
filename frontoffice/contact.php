@@ -15,12 +15,13 @@
     </head>
     <body>
         <?php include 'header.php'; ?>
-        <?php include 'menu.php'; ?>    
+        <?php include 'menu.php'; ?>   
+        
         <div id="form-main">
             <div id="form-div">
                 <form action="../traitement_contact.php" id="contact" method="POST">
                 <p class="name">
-                  <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nom" id="name" />
+                  <input name="nom" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nom" id="name"  />
                 </p>
 
                 <p class="email">
@@ -28,12 +29,12 @@
                 </p>
 
                 <p class="text">
-                  <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Commentaire"></textarea>
+                  <textarea name="message" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Commentaire"></textarea>
                 </p>
 
 
                 <div class="submit">
-                  <input type="submit" value="Envoyer" id="button-blue"/>
+                  <input name='soumettre' type="submit" value="Envoyer" id="button-blue"/>
                   </form>
                   <div class="ease"></div>
                 </div>
