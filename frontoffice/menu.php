@@ -25,7 +25,7 @@
                 <?php
                     if($_SESSION["statut"] == "Admin")
                     {
-                        echo "<li><a href='../backoffice/accueil.php'><span>BackOffice</span></a></li>";
+                        echo "<li><a href='../backoffice/accueil.php'><span>Administration</span></a></li>";
                     }
                 ?>
                 <li class='last'><a href='authentification.php'><span>Deconnexion</span></a></li>
