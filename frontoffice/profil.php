@@ -66,7 +66,7 @@
                 <?php 
                     if(empty($anEntre) and empty($anSortie) and empty($cursus) and empty($adresse) and empty($cp) and empty($ville) and empty($fixe) and empty($mobile) and empty($mail))
                     {
-                        echo "<p>Vous n'avez pas encore renseigné vos informations !</p>
+                        echo "<p id="."information_non_renseigne".">Vous n'avez pas encore renseigné vos informations !</p>
                             <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire();"." />";
                     }
                     else

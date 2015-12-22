@@ -8,6 +8,8 @@ and open the template in the editor.
     Author     : Maxime
 */
 
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 .form-style-5{
     max-width: 500px;
     padding: 10px 20px;
@@ -136,4 +138,9 @@ and open the template in the editor.
 .form-style-5 input[type="button"]:hover
 {
     background: #109177;
+}
+
+#information_non_renseigne{
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif; 
+    text-align: center;
 }
