@@ -25,7 +25,9 @@
                         <option value="Admin">Administrateur</option>
                     </select>   
                     <input type="login" placeholder="Identifiant *">
-                    <input type="mdp" placeholder="Mot de passe *">				
+                    <input type="mdp" placeholder="Mot de passe *">
+                    <input type="nom" placeholder="Nom *">
+                    <input type="prenom" placeholder="Prénom *">
 		</fieldset>
                 <input id="voir" type="submit" value="Créer le compte"/>  
             </form>
