@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+    require_once('../frontoffice/connexionBD.php');
     if(empty($_SESSION['statut'])or $_SESSION['statut']!="Admin") 
     {
         header('Location: ../frontoffice/authentification.php');
@@ -18,7 +18,7 @@
         <div class="form-style-5">
             <form method="post" action="ajout.php">
 		<fieldset>
-                    <legend>Création d'un compte</legend>
+                    <legend>Compte créé :</legend>
                     <label for="statut">Quel type de compte va être créé ?</label>
                     <select id="anEntre" name="field4">
                         <option value="Util">Utilisateur</option>
