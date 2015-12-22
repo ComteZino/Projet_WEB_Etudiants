@@ -5,10 +5,55 @@
         header('Location: ../frontoffice/authentification.php');
     }
     $statut = htmlentities($_POST["statut"]);
-    $login = htmlentities($_POST["login"]);
-    $mdp = htmlentities($_POST["mdp"]);
-    $nom = htmlentities($_POST["nom"]);
-    $prenom = htmlentities($_POST["prenom"]);
+    // $ok vaut 1 si tous les test sont ok 
+    // sinon il sera passé à 0 et l'ajout ne sera pas effectué
+    $ok = 1;
+    //test des variables
+    if((isset($_POST["login"])) && (strlen(trim($_POST["login"])) > 0))
+    {
+        $login = htmlentities($_POST["login"]);
+    }
+    else
+    {
+        $login = "Il faut renseigner un identifiant.";
+        $ok = 0;
+    }
+    if((isset($_POST["mdp"])) && (strlen(trim($_POST["mdp"])) > 0))
+    {
+        $mdp = htmlentities($_POST["mdp"]);
+    }
+    else
+    {
+        $mdp = "Il faut renseigner un mot de passe.";
+        $ok = 0;
+    }
+    if((isset($_POST["nom"])) && (strlen(trim($_POST["nom"])) > 0))
+    {
+        $nom = htmlentities($_POST["nom"]);
+    }
+    else
+    {
+        $nom = "Il faut renseigner un nom.";
+        $ok = 0;
+    }
+    if((isset($_POST["prenom"])) && (strlen(trim($_POST["prenom"])) > 0))
+    {
+        $prenom = htmlentities($_POST["prenom"]);
+    }
+    else
+    {
+        $prenom = "Il faut renseigner un prénom.";
+        $ok = 0;
+    }
+    if((isset($_POST["dateN"])) && (strlen(trim($_POST["dateN"])) > 0))
+    {
+        $dateN = htmlentities($_POST["dateN"]);
+    }
+    else
+    {
+        $dateN = "Il faut renseigner une date de naissance.";
+        $ok = 0;
+    }
 ?>
 <html>
     <head>
@@ -22,14 +67,52 @@
         <?php include 'menu.php'; ?>      
         <div class="form-style-5">
             <fieldset>
-                <legend>Compte créé :</legend>
+                <legend>
+                    <?php 
+                    if($ok == 0)
+                    {
+                        echo "Le compte n'a pas été créé :";
+                    }
+                    else
+                    {
+                        echo "Compte créé :";
+                    }
+                    ?>              
+                </legend>
                 <label for="statut"><?php echo "Statut du compte : ".$statut; ?></label>
                 <label for="nom"><?php echo "Nom : ".$nom; ?></label>
                 <label for="prenom"><?php echo "Prénom : ".$prenom; ?></label>
+                <label for="dateN"><?php echo "Date de naissance : ".$dateN; ?></label>
                 <label for="login"><?php echo "Identifiant du compte : ".$login; ?></label>
                 <label for="mdp"><?php echo "Mot de passe du compte : ".$mdp; ?></label>
             </fieldset>
-            <input type="button" name="nom" value="Ajouter un autre compte">
+            <a href="../ajouter.php"><input type="button" name="nom" value="Ajouter un autre compte"></a>
 	</div>
     </body>
 </html>
+
+<?php 
+    if($ok == 1)
+    {
+        $selectid = $connexion->query('Select * from compte');
+        while($lgnid = $selectid->fetch()) // créé un nouvel id pour l'utilisateur
+        {
+            $id = $lgnid["idEtud"];
+        }
+        $id = $id + 1;
+        // Affectation du statut correspondant à la base de données
+        if($statut == "Utilisateur")
+        {
+            $statut = "Util";
+        }
+        else
+        {
+           $statut = "Admin";
+        }
+        $ajout_compte = ('INSERT INTO compte VALUES ("'.$id.'","'.$login.'", "'.$mdp.'", "'.$statut.'")');
+        $exec_compte = $connexion->exec($ajout_compte);
+        
+        $ajout_etud = ('INSERT INTO etudiant VALUES ("'.$id.'","'.$nom.'", "'.$prenom.'", "'.$dateN.'", null, null ,null)');
+        $exec_etud = $connexion->exec($ajout_etud);
+    }
+?>
