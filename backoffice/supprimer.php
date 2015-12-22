@@ -30,6 +30,7 @@
                             }
                         ?>
                     </select>
+                    <input type='hidden' name='id' value='<?php echo $ligne["id"]?>'/>
                     <input id="voir" type="submit" value="Supprimer ce compte"/>
 		</fieldset>
             </form>
