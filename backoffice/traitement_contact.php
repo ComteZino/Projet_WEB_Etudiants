@@ -80,7 +80,7 @@
         
         // Envoyer l'email
         mail($destinataire, $sujet_bis, $contenu, $headers); // Fonction principale qui envoi l'email
-        header('Location: frontoffice/message_envoye.php'); // Afficher un message pour indiquer que le message a été envoyé
+        header('Location: ../frontoffice/message_envoye.php'); // Afficher un message pour indiquer que le message a été envoyé
         
     } 
     else

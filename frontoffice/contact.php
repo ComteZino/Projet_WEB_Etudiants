@@ -9,7 +9,7 @@
     <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <script type="text/javascript" src="../verification_contact.js"></script>
+      <script type="text/javascript" src="../js/verification_contact.js"></script>
       <title></title>
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="../css/styleContact.css">
@@ -20,7 +20,7 @@
         
         <div id="form-main">
             <div id="form-div">
-                <form action="../traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
+                <form action="../backoffice/traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
                     <h2>Formulaire de contact</h2>
                     
                     <p class="nom">
