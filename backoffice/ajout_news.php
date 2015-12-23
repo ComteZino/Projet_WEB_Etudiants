@@ -39,7 +39,7 @@
                     ?>
                 </textarea>
                 <script type="text/javascript">
-                    CKEDITOR.replace( 'contenu' );// Mise en place dzl'outil d'édition de texte précédement appelé 
+                    CKEDITOR.replace( 'contenu' );// Mise en place de l'outil d'édition de texte précédement appelé 
                 </script>
 
                 <!-- Champ catégorie --> 
