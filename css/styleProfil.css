@@ -62,10 +62,10 @@ and open the template in the editor.
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box; 
     background-color: white;
-    color:#8a97a0;
+    /*color:#8a97a0;*/
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     
 }
 .form-style-5 input[type="text"]:focus,

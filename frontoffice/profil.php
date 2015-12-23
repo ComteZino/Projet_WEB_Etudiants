@@ -6,7 +6,7 @@
     }
     require_once('connexionBD.php');
     $idEtud=$_SESSION['idEtud'];
-    $tableEtudiant="SELECT * FROM etudiant WHERE idEtud='".$idEtud."'";     
+    $tableEtudiant="SELECT * FROM etudiant WHERE id='".$idEtud."'";     
     $table1=$connexion->query($tableEtudiant);
     $ligne1 = $table1->fetch();
     $nom=$ligne1['nom'];
@@ -20,7 +20,7 @@
     $anSortie=$ligne2['anneeSortie'];
     $cursus=$ligne2['cursus'];
 
-    $tableInfoEtud="SELECT * FROM infoetudiant WHERE idEtud='".$idEtud."'";     
+    $tableInfoEtud="SELECT * FROM infoetudiant WHERE id='".$idEtud."'";     
     $table3 = $connexion->query($tableInfoEtud);
     $ligne3 = $table3->fetch();
     $adresse=$ligne3['adresse'];
@@ -44,9 +44,11 @@
     $table5 = $connexion->query($tablePoursuiteEtude);
     $ligne5 = $table5->fetch();
     $formation=$ligne5['formation'];
-    $anneeFormation	=$ligne5['anneeFormation'];
+    $anneeFormation=$ligne5['anneeFormation'];
     $discipline=$ligne5['discipline'];
 
+    $totalInfos=$nom."/".$prenom."/".$dateNaissance."/".$anEntre."/".$anSortie."/".$cursus."/".$adresse."/".$cp."/".$ville."/".$fixe."/"
+            .$mobile."/".$mail."/".$emploi."/".$typeContrat."/".$entreprise."/".$adresseEnt."/".$secteurActivite."/".$formation."/".$anneeFormation."/".$discipline;
 ?>
 <html>
     <head>
@@ -56,7 +58,7 @@
       <title></title>
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="../css/styleProfil.css">
-	  <script type="text/javascript" src="../profil_formulaire.js"> </script>
+	  <script type="text/javascript" src="../js/profil_formulaire.js"> </script>
     </head>
     <body id="ajout">
         <?php include 'header.php'; ?>
@@ -66,8 +68,14 @@
                 <?php 
                     if(empty($anEntre) and empty($anSortie) and empty($cursus) and empty($adresse) and empty($cp) and empty($ville) and empty($fixe) and empty($mobile) and empty($mail))
                     {
-                        echo "<p id="."information_non_renseigne".">Vous n'avez pas encore renseigné vos informations !</p>
-                            <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire();"." />";
+                         echo "<fieldset>
+                                <legend><span class="."number"." id="."number1".">1</span>Vous êtes :</legend>
+                                <p>".$nom."</p>
+                                <p>".$prenom."</p>
+                                <p>Né le : ".$dateNaissance."</p>
+                            </fieldset>";
+                        echo "<p id="."information_non_renseigne".">Vous n'avez pas encore renseigné toutes vos informations !</p>
+                            <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
                     }
                     else
                     {
@@ -94,9 +102,9 @@
                             </fieldset>";
                             if(empty($emploi) and empty($typeContrat) and empty($entreprise) and empty($adresseEnt) and empty($secteurActivite) and empty($formation) and empty($anneeFormation) and empty($discipline))
                             {
-                                echo "<p>Vous n'avez pas rien renseigné pour vos poursuite d'études et votre emploi
+                                echo "<p id="."information_non_renseigne".">Vous n'avez pas rien renseigné pour vos poursuite d'études et votre emploi
                                         si vous voulez modifier cela cliquer sur le boutton si dessous :</p>
-                                <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire();"." />";
+                                <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
                             }
                             else
                             {
@@ -115,7 +123,7 @@
                                         <p>Dans le secteur d'activité : ".$secteurActivite."</p>
                                     </fieldset>
                                     <p>Pour modifier vos informations, cliquez sur le boutton si dessous :</p>
-                                    <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire();"." />";
+                                    <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
                             }
                             //<input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$nom."'".","."'".$prenom."'".","."'".$dateNaissance."'".");"." />";
                     }
