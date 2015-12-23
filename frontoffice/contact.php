@@ -18,11 +18,13 @@
         <?php include 'header.php'; ?>
         <?php include 'menu.php'; ?>   
         
+        
         <div id="form-main">
+            
             <div id="form-div">
+                <h2 id="test">Formulaire de contact</h2>
                 <form action="../backoffice/traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
-                    <h2>Formulaire de contact</h2>
-                    
+                                    
                     <p class="nom">
                         <p id="erreurnom"></p>
                         <input name="nom" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nom" id="nom" onblur="verifNom(this);" />
