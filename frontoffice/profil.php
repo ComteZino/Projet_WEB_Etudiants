@@ -70,8 +70,8 @@
                     {
                          echo "<fieldset>
                                 <legend><span class="."number"." id="."number1".">1</span>Vous êtes :</legend>
-                                <p>".$nom."</p>
-                                <p>".$prenom."</p>
+                                <p>".str_replace("-"," ",$nom)."</p>
+                                <p>".str_replace("-"," ",$prenom)."</p>
                                 <p>Né le : ".$dateNaissance."</p>
                             </fieldset>";
                         echo "<p id="."information_non_renseigne".">Vous n'avez pas encore renseigné toutes vos informations !</p>
@@ -81,21 +81,21 @@
                     {
                         echo "<fieldset>
                                 <legend><span class="."number"." id="."number1".">1</span>Vous êtes :</legend>
-                                <p>".$nom."</p>
-                                <p>".$prenom."</p>
+                                <p>".str_replace("-"," ",$nom)."</p>
+                                <p>".str_replace("-"," ",$prenom)."</p>
                                 <p>Né le : ".$dateNaissance."</p>
                             </fieldset>
                             <fieldset>
                                 <legend><span class="."number"." id="."number2".">2</span>Votre passage dans l'établissement</legend>
                                 <p>Vous êtes entré dans l'établissement en : ".$anEntre."</p>
                                 <p>Et vous y êtes sortie en : ".$anSortie."</p>
-                                <p>Pour un : ".$cursus."</p>
+                                <p>Pour un : ".str_replace("-", " ", $cursus)."</p>
                             </fieldset>
                             <fieldset>
                                 <legend><span class="."number"." id="."number3".">3</span>Comment vous contacter?</legend>
-                                <p>Votre adresse : ".$adresse."</p>
+                                <p>Votre adresse : ".str_replace("-"," ",$adresse)."</p>
                                 <p>Votre code postal: ".$cp."</p>
-                                <p>Votre ville : ".$ville."</p>
+                                <p>Votre ville : ".str_replace("-"," ",$ville)."</p>
                                 <p>Votre numéro de téléphone fixe : ".$fixe."</p>
                                 <p>Votre numéro de portable : ".$mobile."</p>
                                 <p>Votre eMail : ".$mail."</p>
@@ -110,17 +110,17 @@
                             {
                                 echo "<fieldset>
                                         <legend><span class="."number"." id="."number4".">1</span>Poursuite d'études</legend>
-                                        <p>Vous avez fait : ".$formation."</p>
+                                        <p>Vous avez fait : ".str_replace("-"," ",$formation)."</p>
                                         <p>En : ".$anneeFormation."</p>
-                                        <p>Votre discipline : ".$discipline."</p>
+                                        <p>Votre discipline : ".str_replace("-"," ",$discipline)."</p>
                                     </fieldset>
                                     <fieldset>
                                         <legend><span class="."number"." id="."number5".">1</span>Votre parcours professionnel</legend>
-                                        <p>Vous emploi : ".$emploi."</p>
+                                        <p>Vous emploi : ".str_replace("-"," ",$emploi)."</p>
                                         <p>Le type de contract : ".$typeContrat."</p>
-                                        <p>Dans l'entreprise : ".$entreprise."</p>
-                                        <p>Adresse de l'entreprise : ".$adresseEnt."</p>
-                                        <p>Dans le secteur d'activité : ".$secteurActivite."</p>
+                                        <p>Dans l'entreprise : ".str_replace("-"," ",$entreprise)."</p>
+                                        <p>Adresse de l'entreprise : ".str_replace("-"," ",$adresseEnt)."</p>
+                                        <p>Dans le secteur d'activité : ".str_replace("-"," ",$secteurActivite)."</p>
                                     </fieldset>
                                     <p>Pour modifier vos informations, cliquez sur le boutton si dessous :</p>
                                     <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";

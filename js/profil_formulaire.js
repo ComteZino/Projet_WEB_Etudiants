@@ -40,7 +40,7 @@ function afficheFormulaire(text){
     inputNom.setAttribute("placeholder","nom : ");
     inputNom.setAttribute("onblur","verifNom(this);");
     if(totalInfo[0]!==null){
-        inputNom.setAttribute("value",totalInfo[0]);
+        inputNom.setAttribute("value",totalInfo[0].replace("-"," "));
     }
     partieFormulaire1.appendChild(inputNom);
     erreurnom=document.createElement("p");
@@ -53,7 +53,7 @@ function afficheFormulaire(text){
     inputPrenom.setAttribute("placeholder","Prénom : ");
     inputPrenom.setAttribute("onblur","verifPrenom(this);");
     if(totalInfo[1]!==null){
-        inputPrenom.setAttribute("value",totalInfo[1]);
+        inputPrenom.setAttribute("value",totalInfo[1].replace("-"," "));
     }
     partieFormulaire1.appendChild(inputPrenom);
     erreurprenom=document.createElement("p");
@@ -171,7 +171,7 @@ function afficheFormulaire(text){
     selectCursus.appendChild(optionCursus2);
     remplaceTexte(optionCursus2,"BTS Comptabilité et gestion des organisations");
     optionCursus3 = document.createElement("option");
-    optionCursus3.setAttribute("value","BTSSIO");
+    optionCursus3.setAttribute("value","BTS SIO");
     selectCursus.appendChild(optionCursus3);
     remplaceTexte(optionCursus3,"BTS Services Informatiques aux Organisations");
     optionCursus4 = document.createElement("option");
@@ -190,36 +190,36 @@ function afficheFormulaire(text){
     optionCursus7.setAttribute("value","BTS C");
     selectCursus.appendChild(optionCursus7);
     remplaceTexte(optionCursus7,"BTS Communication");
-    if(totalInfo[5]=="BTS AM"){
+    if(totalInfo[5].replace("-"," ")=="BTS AM"){
         $('#cursus>option[value="'+"BTS AM"+'"]').attr('selected', true);
     }
     else{
-        if(totalInfo[5]=="BTS AG"){
+        if(totalInfo[5].replace("-"," ")=="BTS AG"){
             $('#cursus>option[value="'+"BTS AG"+'"]').attr('selected', true);
         }
         else
         {
-             if(totalInfo[5]=="BTS CGO"){
+             if(totalInfo[5].replace("-"," ")=="BTS CGO"){
                 $('#cursus>option[value="'+"BTS CGO"+'"]').attr('selected', true);
             }
             else{
-                if(totalInfo[5]=="BTSSIO"){
-                    $('#cursus>option[value="'+"BTSSIO"+'"]').attr('selected', true);
+                if(totalInfo[5].replace("-"," ")=="BTS SIO"){
+                    $('#cursus>option[value="'+"BTS SIO"+'"]').attr('selected', true);
                 }
                 else{
-                    if(totalInfo[5]=="BTS MUC"){
+                    if(totalInfo[5].replace("-"," ")=="BTS-MUC"){
                         $('#cursus>option[value="'+"BTS MUC"+'"]').attr('selected', true);
                     }
                     else{
-                         if(totalInfo[5]=="BTS NRC"){
+                         if(totalInfo[5].replace("-"," ")=="BTS NRC"){
                              $('#cursus>option[value="'+"BTS NRC"+'"]').attr('selected', true);
                         }
                         else{
-                            if(totalInfo[5]=="BTS TPL"){
+                            if(totalInfo[5].replace("-"," ")=="BTS TPL"){
                                  $('#cursus>option[value="'+"BTS TPL"+'"]').attr('selected', true);
                             }
                             else{
-                                if(totalInfo[5]=="BTS C"){
+                                if(totalInfo[5].replace("-"," ")=="BTS C"){
                                     $('#cursus>option[value="'+"BTS C"+'"]').attr('selected', true);
                                  }
                             }
@@ -257,7 +257,7 @@ function afficheFormulaire(text){
     inputAdresse.setAttribute("placeholder","Adresse : ");
     inputAdresse.setAttribute("onblur","verifAdresse(this);"); 
     if(totalInfo[6]!==null){
-        inputAdresse.setAttribute("value",totalInfo[6]);
+        inputAdresse.setAttribute("value",totalInfo[6].replace(/-/gi," "));
     }
     partieFormulaire3.appendChild(inputAdresse);
     erreuradresse=document.createElement("p");
@@ -283,7 +283,7 @@ function afficheFormulaire(text){
     inputVille.setAttribute("placeholder","Ville : ");
     inputVille.setAttribute("onblur","verifVille(this);"); 
     if(totalInfo[8]!==null){
-        inputVille.setAttribute("value",totalInfo[8]);
+        inputVille.setAttribute("value",totalInfo[8].replace(/-/gi," "));
     }
     partieFormulaire3.appendChild(inputVille);
     erreurville=document.createElement("p");
@@ -353,7 +353,7 @@ function afficheFormulaire(text){
     inputFormation.setAttribute("placeholder","Formation : ");
     inputFormation.setAttribute("onblur","verifFormation(this);"); 
     if(totalInfo[12]!==null){
-        inputFormation.setAttribute("value",totalInfo[12]);
+        inputFormation.setAttribute("value",totalInfo[12].replace(/-/gi," "));
     }
     partieFormulaire4.appendChild(inputFormation);
     erreurformation=document.createElement("p");
@@ -393,7 +393,7 @@ function afficheFormulaire(text){
     inputDiscipline.setAttribute("placeholder","Discipline : ");
     inputDiscipline.setAttribute("onblur","verifDiscipline(this);"); 
     if(totalInfo[14]!==null){
-        inputDiscipline.setAttribute("value",totalInfo[14]);
+        inputDiscipline.setAttribute("value",totalInfo[14].replace(/-/gi," "));
     }
     partieFormulaire4.appendChild(inputDiscipline);
     erreurdiscipline=document.createElement("p");
@@ -425,7 +425,7 @@ function afficheFormulaire(text){
     inputPosteOccupe.setAttribute("placeholder","Poste occupé : ");
     inputPosteOccupe.setAttribute("onblur","verifPosteOccupe(this);"); 
     if(totalInfo[15]!==null){
-        inputPosteOccupe.setAttribute("value",totalInfo[15]);
+        inputPosteOccupe.setAttribute("value",totalInfo[15].replace(/-/gi," "));
     }
     partieFormulaire5.appendChild(inputPosteOccupe);
     erreurposteoccupe=document.createElement("p");
@@ -471,7 +471,7 @@ function afficheFormulaire(text){
     inputEntreprise.setAttribute("placeholder","Entreprise : ");
     inputEntreprise.setAttribute("onblur","verifEntreprise(this);"); 
     if(totalInfo[17]!==null){
-        inputEntreprise.setAttribute("value",totalInfo[17]);
+        inputEntreprise.setAttribute("value",totalInfo[17].replace(/-/gi," "));
     }
     partieFormulaire5.appendChild(inputEntreprise);
     erreurentreprise=document.createElement("p");
@@ -484,7 +484,7 @@ function afficheFormulaire(text){
     inputAdresseEntreprise.setAttribute("placeholder","Adresse : ");
     inputAdresseEntreprise.setAttribute("onblur","verifAdresseEntreprise(this);"); 
     if(totalInfo[18]!==null){
-        inputAdresseEntreprise.setAttribute("value",totalInfo[18]);
+        inputAdresseEntreprise.setAttribute("value",totalInfo[18].replace(/-/gi," "));
     }
     partieFormulaire5.appendChild(inputAdresseEntreprise);
     erreuradresseentreprise=document.createElement("p");
@@ -497,7 +497,7 @@ function afficheFormulaire(text){
     inputSecteurAct.setAttribute("placeholder","Secteur d'activité : ");
     inputSecteurAct.setAttribute("onblur","verifSecteurActivite(this);"); 
     if(totalInfo[19]!==null){
-        inputSecteurAct.setAttribute("value",totalInfo[19]);
+        inputSecteurAct.setAttribute("value",totalInfo[19].replace(/-/gi," "));
     }
     partieFormulaire5.appendChild(inputSecteurAct);
     erreursecteuractivite=document.createElement("p");
