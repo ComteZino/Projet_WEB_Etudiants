@@ -32,7 +32,7 @@
                         echo '</select>';
                     }
                     echo '<input name="login" type="login" placeholder="Login : '.$ligne["login"].'">';
-                    if($_SESSION["idEtud"] != $id)
+                    if($_SESSION["idEtud"] == $id or $ligne["statut"] == "Util")
                     {
                         echo '<input name="mdp" type="mdp" placeholder="Mot de passe">';
                     }
