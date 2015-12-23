@@ -60,7 +60,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../../css/style.css" />
         <link rel="stylesheet" href="../../css/styleGestionCompte.css">
-        <title></title>
+        <title>Gestion anciens étudiants</title>
     </head>
     <body>
         <?php include 'header.php'; ?>
