@@ -207,7 +207,7 @@ function afficheFormulaire(text){
                     $('#cursus>option[value="'+"BTS SIO"+'"]').attr('selected', true);
                 }
                 else{
-                    if(totalInfo[5].replace("-"," ")=="BTS-MUC"){
+                    if(totalInfo[5].replace("-"," ")=="BTS MUC"){
                         $('#cursus>option[value="'+"BTS MUC"+'"]').attr('selected', true);
                     }
                     else{
