@@ -43,10 +43,7 @@
                         <?php
                             while($ligne = $query_select->fetch())
                             {
-                                if($_SESSION["idEtud"] != $ligne["id"])
-                                {
-                                    echo '<option value="'.$ligne["id"].'">'.$ligne["nom"].' '.$ligne["prenom"].'</option>';
-                                }
+                                echo '<option value="'.$ligne["id"].'">'.$ligne["nom"].' '.$ligne["prenom"].'</option>';
                             }
                         ?>
                     </select>
@@ -61,6 +58,7 @@
                         <?php
                             while($lgn = $query_select2->fetch())
                             {
+                                // N'affiche pas le compte courant
                                 if($_SESSION["idEtud"] != $lgn["id"])
                                 {
                                     echo '<option value="'.$lgn["id"].'">'.$lgn["nom"].' '.$lgn["prenom"].'</option>';
@@ -68,7 +66,6 @@
                             }
                         ?>
                     </select>
-                    <input type='hidden' name='id' value='<?php echo $ligne["id"]?>'/>
                     <input id="voir" type="submit" value="Supprimer ce compte"/>
                 </fieldset>
             </form>

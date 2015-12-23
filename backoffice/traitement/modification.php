@@ -14,7 +14,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../../css/style.css" />
         <link rel="stylesheet" href="../../css/styleGestionCompte.css">
-        <title></title>
+        <title>Gestion anciens étudiants</title>
     </head>
     <body>
         <?php include 'header.php'; ?>
@@ -43,7 +43,8 @@
                 <input name="prenom" type="prenom" placeholder="<?php echo $ligne["prenom"]?>">
                 <input name="dateN" type="prenom" placeholder="<?php echo $ligne["dateNaissance"]?>">
             </fieldset>
-            <a href="../modifier.php"><input type="button" name="nom" value="Modifier un autre compte"></a>
+            <a href="modifier.php"><input type="button" name="nom" value="Modifier ce compte"></a>
+            <a href="../choix_gestion.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
 	</div>
     </body>
 </html>
