@@ -31,7 +31,7 @@
             <form method="post" action="supp.php">
                 <fieldset>
                     <legend>Le compte suivant sera supprimé :</legend>
-                    <input type="hidden" value="<?php echo $id ?>"/>
+                    <input type="hidden" name="id" value="<?php echo $id ?>"/>
                     <label for="statut"><?php echo "Statut : ".$statut; ?></label>
                     <label for="nom"><?php echo "Nom : ".$ligne["nom"]; ?></label>
                     <label for="prenom"><?php echo "Prénom : ".$ligne["prenom"]; ?></label>
