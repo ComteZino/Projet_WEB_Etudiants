@@ -27,22 +27,8 @@
                     <p id="erreurtitre"></p>
                     <input name="titre" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" id="titre" onblur="verifTitre(this);" />
                 </p>
-
-                <!-- Champ contenue -->  
-                <p>Contenu de la page</p>
-                <textarea name="contenu" rows="10" cols="50" >
-                    <?php
-                        if (!empty($_POST["contenu"]))
-                        {
-                            echo stripcslashes(htmlspecialchars($_POST["contenu"],ENT_QUOTES));
-                        }
-                    ?>
-                </textarea>
-                <script type="text/javascript">
-                    CKEDITOR.replace( 'contenu' );// Mise en place de l'outil d'édition de texte précédement appelé 
-                </script>
-
-                <!-- Champ catégorie --> 
+                
+                 <!-- Champ catégorie --> 
                 <p>
                     <p>Catégorie</p>
                     <select name="cat" id="cat">
@@ -59,11 +45,27 @@
                         ?>
                     </select>
                 </p>
-               
+
+                <!-- Champ contenue -->  
+                <p>Contenu de la page</p>
+                <textarea name="contenu" rows="10" cols="50" >
+                    <?php
+                        if (!empty($_POST["contenu"]))
+                        {
+                            echo stripcslashes(htmlspecialchars($_POST["contenu"],ENT_QUOTES));
+                        }
+                    ?>
+                </textarea>
+                <script type="text/javascript">
+                    CKEDITOR.replace( 'contenu' );// Mise en place de l'outil d'édition de texte précédement appelé 
+                </script>
+                
                 <!-- Boutons --> 
-                <div class="submit">
+                <section>
                    <input name="Valider" value="Valider" type="submit" id="button-valider"/>
-                   <div class="ease"></div>
+                </section>    
                </div>
             </form>
         </div>
+    </body>
+<html>

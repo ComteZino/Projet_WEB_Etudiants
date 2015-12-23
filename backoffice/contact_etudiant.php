@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if(empty($_SESSION['statut']) or $_SESSION['statut']!="Util") 
+    if(empty($_SESSION['statut']) or $_SESSION['statut']!="Admin") 
     {
         header('Location: authentification.php');
     }
@@ -22,7 +22,7 @@
         <div id="form-main">           
             <div id="form-div">
                 <h2 id="test">Formulaire de contact</h2>
-                <form action="../backoffice/traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
+                <!---<form action="../backoffice/traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
                                     
                     <p class="nom">
                         <p id="erreurnom"></p>
@@ -46,10 +46,8 @@
                     <section>
                         <input name='soumettre' type="submit" value="Envoyer"/>
                     </section>                  
-                </form>
+                </form>-->
             </div>
         </div>
     </body>
 </html>
-
-

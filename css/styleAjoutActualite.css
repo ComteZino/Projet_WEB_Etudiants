@@ -51,7 +51,7 @@ p{
     background-repeat: no-repeat;
 }
 
-#cat{
+.select{
     font-family: Georgia, "Times New Roman", Times, serif;
     background: #D4D4D4;
     border: none;
@@ -105,53 +105,29 @@ p{
     border:#30aed6 solid 3px;
 }
 
-input:hover, textarea:hover,
-input:focus, textarea:focus {
-    background-color:white;
+section input {
+  margin: 0 auto;
+  font-size: 2.0rem;
+  padding: 1.25rem 2.5rem;
+  display: block;
+  background-color: #109177;
+  border: 3px solid transparent;
+  color: #ffffff;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font: 400 1.4rem 'Lato', Verdana, Helvetica, sans-serif;
+  margin-top: 30px;
 }
 
-#button-valider{
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    float:left;
-    width: 25%;
-    border: #fbfbfb solid 4px;
-    cursor:pointer;
-    background-color: #109177;
-    color:white;
-    font-size:20px;
-    padding-top:22px;
-    padding-bottom:22px;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    margin-top:-4px;
-    font-weight:700;
-    border-radius: 10px;
-}
-
-#button-valider:hover{
-    background-color: rgba(0,0,0,0);
-    color: #109177;
-}
-	
-.submit:hover {
-    color: #3498db;
-}
-	
-.ease {
-    width: 0px;
-    height: 74px;
-    background-color: #fbfbfb;
-    -webkit-transition: .3s ease;
-    -moz-transition: .3s ease;
-    -o-transition: .3s ease;
-    -ms-transition: .3s ease;
-    transition: .3s ease;
-}
-
-.submit:hover .ease{
-    width:25%;
-    background-color:white;
+section input:hover {
+  background-color: #ffffff;
+  color: #109177;
+  border-color: #109177;
+  
 }
 
 @media only screen and (max-width: 580px) {
