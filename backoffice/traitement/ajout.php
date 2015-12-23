@@ -112,7 +112,7 @@
         $ajout_compte = ('INSERT INTO compte VALUES ("'.$id.'","'.$login.'", "'.MD5($mdp).'", "'.$statut.'")');
         $exec_compte = $connexion->exec($ajout_compte);
         
-        $ajout_etud = ('INSERT INTO etudiant VALUES ("'.$id.'","'.$nom.'", "'.$prenom.'", "'.$dateN.'", null, null ,null)');
+        $ajout_etud = ('INSERT INTO etudiant VALUES ("'.$id.'","'.$nom.'", "'.$prenom.'", "'.$dateN.'", null, null)');
         $exec_etud = $connexion->exec($ajout_etud);
     }
 ?>
