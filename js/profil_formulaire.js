@@ -111,7 +111,7 @@ function afficheFormulaire(text){
         selectAnEntre.appendChild(optionAnEntre);
         remplaceTexte(optionAnEntre,i);
          if(totalInfo[3]==i){
-            $('#anSortie>option[value="'+i+'"]').attr('selected', true);
+            $('#anEntre>option[value="'+i+'"]').attr('selected', true);
         }
         i++;
     }
@@ -171,7 +171,7 @@ function afficheFormulaire(text){
     selectCursus.appendChild(optionCursus2);
     remplaceTexte(optionCursus2,"BTS Comptabilité et gestion des organisations");
     optionCursus3 = document.createElement("option");
-    optionCursus3.setAttribute("value","BTS SIO");
+    optionCursus3.setAttribute("value","BTSSIO");
     selectCursus.appendChild(optionCursus3);
     remplaceTexte(optionCursus3,"BTS Services Informatiques aux Organisations");
     optionCursus4 = document.createElement("option");
@@ -203,8 +203,8 @@ function afficheFormulaire(text){
                 $('#cursus>option[value="'+"BTS CGO"+'"]').attr('selected', true);
             }
             else{
-                if(totalInfo[5]=="BTS SIO"){
-                    $('#cursus>option[value="'+"BTS SIO"+'"]').attr('selected', true);
+                if(totalInfo[5]=="BTSSIO"){
+                    $('#cursus>option[value="'+"BTSSIO"+'"]').attr('selected', true);
                 }
                 else{
                     if(totalInfo[5]=="BTS MUC"){
