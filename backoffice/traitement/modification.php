@@ -22,28 +22,26 @@
         <div class="form-style-5">
             <fieldset>
                 <legend>Informations du compte à modifier :</legend>
-                <label for="statut">Type du compte</label>
-                <select id="statut" name="statut">
-                    <?php
-                        if($ligne["statut"] == "Admin")
-                        {
-                           echo '<option value="Utilisateur">Utilisateur</option>';
-                           echo '<option value="Administrateur" selected>Administrateur</option>';
-                        }
-                        else
-                        {
-                           echo '<option value="Utilisateur">Utilisateur</option>'; 
-                           echo '<option value="Administrateur">Administrateur</option>';
-                        }
-                    ?>
-                </select>   
-                <input name="login" type="login" placeholder="<?php echo $ligne["login"]?>">
-                <input name="mdp" type="mdp" placeholder="<?php echo $ligne["password"]?>">
-                <input name="nom" type="nom" placeholder="<?php echo $ligne["nom"]?>">
-                <input name="prenom" type="prenom" placeholder="<?php echo $ligne["prenom"]?>">
-                <input name="dateN" type="prenom" placeholder="<?php echo $ligne["dateNaissance"]?>">
+                <?php
+                    if($ligne["statut"] != "Admin")
+                    {
+                        echo '<label for="statut">Type du compte</label>';
+                        echo '<select id="statut" name="statut">';
+                        echo '<option value="Utilisateur" selected>Utilisateur</option>';
+                        echo '<option value="Administrateur">Administrateur</option>';
+                        echo '</select>';
+                    }
+                    echo '<input name="login" type="login" placeholder="Login : '.$ligne["login"].'">';
+                    if($_SESSION["idEtud"] == $id or $ligne["statut"] == "Util")
+                    {
+                        echo '<input name="mdp" type="mdp" placeholder="Mot de passe">';
+                    }
+                    echo '<input name="nom" type="nom" placeholder="Nom : '.$ligne["nom"].'">';
+                    echo '<input name="prenom" type="prenom" placeholder="Prénom : '.$ligne["prenom"].'">';
+                    echo '<input name="dateN" type="prenom" placeholder="Date de naissance : '.$ligne["dateNaissance"].'">';
+                ?>
             </fieldset>
-            <a href="modifier.php"><input type="button" name="nom" value="Modifier ce compte"></a>
+            <a href="modifier.php"><input type="button" name="nom" value="Appliquer les modifications"></a>
             <a href="../choix_gestion.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
 	</div>
     </body>
