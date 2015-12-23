@@ -43,10 +43,7 @@
                         <?php
                             while($ligne = $query_select->fetch())
                             {
-                                if($_SESSION["idEtud"] != $ligne["id"])
-                                {
-                                    echo '<option value="'.$ligne["id"].'">'.$ligne["nom"].' '.$ligne["prenom"].'</option>';
-                                }
+                                echo '<option value="'.$ligne["id"].'">'.$ligne["nom"].' '.$ligne["prenom"].'</option>';
                             }
                         ?>
                     </select>
