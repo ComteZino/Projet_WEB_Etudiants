@@ -54,9 +54,8 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   `dateNaissance` date DEFAULT NULL,
   `listeDiffusion` tinyint(1) DEFAULT NULL,
   `demandeEmail` tinyint(1) DEFAULT NULL,
-  `idEtud` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_Etudiant_id` (`idEtud`)
+  KEY `FK_Etudiant_id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -73,8 +72,8 @@ CREATE TABLE IF NOT EXISTS `infoetudiant` (
   `fixe` varchar(25) COLLATE utf8_bin DEFAULT NULL,
   `mobile` varchar(25) COLLATE utf8_bin DEFAULT NULL,
   `mail` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  `idEtud` int(11) NOT NULL,
-  PRIMARY KEY (`idEtud`)
+  PRIMARY KEY (`id`),
+  KEY `FK_InfoEtudiant_id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -92,7 +91,8 @@ CREATE TABLE IF NOT EXISTS `parcourspro` (
   `adresse` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `secteurActivite` varchar(35) COLLATE utf8_bin DEFAULT NULL,
   `idEtud` int(11) NOT NULL,
-  PRIMARY KEY (`idEtud`)
+  PRIMARY KEY (`id`),
+  KEY `FK_ParcoursPro_id` (`idEtud`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -107,7 +107,8 @@ CREATE TABLE IF NOT EXISTS `passage` (
   `anneeSortie` year(4) DEFAULT NULL,
   `cursus` varchar(25) COLLATE utf8_bin DEFAULT NULL,
   `idEtud` int(11) NOT NULL,
-  PRIMARY KEY (`idEtud`)
+  PRIMARY KEY (`id`),
+  KEY `FK_Passage_id` (`idEtud`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -122,7 +123,8 @@ CREATE TABLE IF NOT EXISTS `poursuiteetudes` (
   `anneeFormation` year(4) DEFAULT NULL,
   `discipline` varchar(35) COLLATE utf8_bin DEFAULT NULL,
   `idEtud` int(11) NOT NULL,
-  PRIMARY KEY (`idEtud`)
+  PRIMARY KEY (`id`),
+  KEY `FK_PoursuiteEtudes_id` (`idEtud`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -133,13 +135,13 @@ CREATE TABLE IF NOT EXISTS `poursuiteetudes` (
 -- Contraintes pour la table `etudiant`
 --
 ALTER TABLE `etudiant`
-  ADD CONSTRAINT `FK_Etudiant_id` FOREIGN KEY (`idEtud`) REFERENCES `compte` (`idEtud`);
+  ADD CONSTRAINT `FK_Etudiant_id` FOREIGN KEY (`id`) REFERENCES `compte` (`idEtud`);
 
 --
 -- Contraintes pour la table `infoetudiant`
 --
 ALTER TABLE `infoetudiant`
-  ADD CONSTRAINT `FK_InfoEtudiant_id` FOREIGN KEY (`idEtud`) REFERENCES `etudiant` (`id`);
+  ADD CONSTRAINT `FK_InfoEtudiant_id` FOREIGN KEY (`id`) REFERENCES `etudiant` (`id`);
 
 --
 -- Contraintes pour la table `parcourspro`
@@ -151,7 +153,7 @@ ALTER TABLE `parcourspro`
 -- Contraintes pour la table `passage`
 --
 ALTER TABLE `passage`
-  ADD CONSTRAINT `FK_Passage_idEtud_Passage` FOREIGN KEY (`idEtud`) REFERENCES `etudiant` (`id`);
+  ADD CONSTRAINT `FK_Passage_id` FOREIGN KEY (`idEtud`) REFERENCES `etudiant` (`id`);
 
 --
 -- Contraintes pour la table `poursuiteetudes`
