@@ -61,6 +61,7 @@
                         <?php
                             while($lgn = $query_select2->fetch())
                             {
+                                // N'affiche pas le compte courant
                                 if($_SESSION["idEtud"] != $lgn["id"])
                                 {
                                     echo '<option value="'.$lgn["id"].'">'.$lgn["nom"].' '.$lgn["prenom"].'</option>';

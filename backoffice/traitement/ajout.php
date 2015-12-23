@@ -86,7 +86,7 @@
                 <label for="login"><?php echo "Identifiant du compte : ".$login; ?></label>
                 <label for="mdp"><?php echo "Mot de passe du compte : ".$mdp; ?></label>
             </fieldset>
-            <a href="../ajouter.php"><input type="button" name="nom" value="Ajouter un autre compte"></a>
+            <a href="../choix_gestion.php"><input type="button" name="nom" value="Ajouter un compte"></a>
 	</div>
     </body>
 </html>
