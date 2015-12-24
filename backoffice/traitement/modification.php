@@ -7,7 +7,7 @@
     $id = htmlentities($_POST["id"]);
     $select_informations = ("Select * from etudiant, compte where compte.idEtud=etudiant.id and etudiant.id = ".$id.";");
     $query_select = $connexion->query($select_informations);
-    $ligne = $query_select->fetch()
+    $ligne = $query_select->fetch();
 ?>
 <html>
     <head>
@@ -33,7 +33,11 @@
                             echo '</select>';
                         }
                         echo '<input name="login" type="login" placeholder="Login : '.$ligne["login"].'">';
-                        if($_SESSION["idEtud"] == $id or $ligne["statut"] == "Util")
+                        if($_SESSION["idEtud"] == $id)
+                        {
+                            echo '<input name="mdp" type="mdp" placeholder="Mot de passe">';
+                        }
+                        if($ligne["statut"] == "Util")
                         {
                             echo '<input name="mdp" type="mdp" placeholder="Mot de passe">';
                         }
