@@ -91,7 +91,7 @@
     {
         $update_compte = $connexion->exec("UPDATE compte 
             SET login = '".$login."',  
-            statut = '".$statut."'
+            statut = '".$statut_update."'
             WHERE idEtud = ".$id.";");
     }
     else
@@ -99,7 +99,7 @@
         $update_compte = $connexion->exec("UPDATE compte 
             SET login = '".$login."', 
             password = '".MD5($mdp)."',
-            statut = '".$statut."'
+            statut = '".$statut_update."'
             WHERE idEtud = ".$id.";");
     }
     $update_etudiant = $connexion->exec("UPDATE etudiant 
