@@ -37,10 +37,10 @@
                     <label for="prenom"><?php echo "Prénom : ".$ligne["prenom"]; ?></label>
                     <label for="dateN"><?php echo "Date de naissance : ".$ligne["dateNaissance"]; ?></label>
                     <label for="login"><?php echo "Identifiant : ".$ligne["login"]; ?></label>
+                    <input id="voir" type="submit" value="Supprimer ce compte"/>
+                    <a href="../choix_gestion_compte.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
                 </fieldset>
-                <input id="voir" type="submit" value="Supprimer ce compte"/>
             </form>
-            <a href="../choix_gestion_compte.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
 	</div>
     </body>
 </html>
