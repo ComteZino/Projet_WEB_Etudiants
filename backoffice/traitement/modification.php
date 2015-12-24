@@ -39,7 +39,8 @@
                         }
                         echo '<input name="nom" type="nom" placeholder="Nom : '.$ligne["nom"].'">';
                         echo '<input name="prenom" type="prenom" placeholder="Prénom : '.$ligne["prenom"].'">';
-                        echo '<input name="dateN" type="prenom" placeholder="Date de naissance : '.$ligne["dateNaissance"].'">';
+                        echo '<input name="dateN" type="dateN" placeholder="Date de naissance : '.$ligne["dateNaissance"].'">';
+                        echo '<input name="id" type="hidden" value="'.$id.'">';
                     ?>
                     <input id="voir" type="submit" value="Appliquer les modifications"/>
                     <a href="../choix_gestion_compte.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
