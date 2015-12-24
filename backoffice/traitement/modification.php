@@ -42,7 +42,7 @@
                 ?>
             </fieldset>
             <a href="modifier.php"><input type="button" name="nom" value="Appliquer les modifications"></a>
-            <a href="../choix_gestion.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
+            <a href="../choix_gestion_compte.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
 	</div>
     </body>
 </html>
