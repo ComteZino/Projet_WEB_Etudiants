@@ -20,29 +20,31 @@
         <?php include 'header.php'; ?>
         <?php include 'menu.php'; ?>      
         <div class="form-style-5">
-            <fieldset>
-                <legend>Informations du compte à modifier :</legend>
-                <?php
-                    if($ligne["statut"] != "Admin")
-                    {
-                        echo '<label for="statut">Type du compte</label>';
-                        echo '<select id="statut" name="statut">';
-                        echo '<option value="Utilisateur" selected>Utilisateur</option>';
-                        echo '<option value="Administrateur">Administrateur</option>';
-                        echo '</select>';
-                    }
-                    echo '<input name="login" type="login" placeholder="Login : '.$ligne["login"].'">';
-                    if($_SESSION["idEtud"] == $id or $ligne["statut"] == "Util")
-                    {
-                        echo '<input name="mdp" type="mdp" placeholder="Mot de passe">';
-                    }
-                    echo '<input name="nom" type="nom" placeholder="Nom : '.$ligne["nom"].'">';
-                    echo '<input name="prenom" type="prenom" placeholder="Prénom : '.$ligne["prenom"].'">';
-                    echo '<input name="dateN" type="prenom" placeholder="Date de naissance : '.$ligne["dateNaissance"].'">';
-                ?>
-            </fieldset>
-            <a href="modifier.php"><input type="button" name="nom" value="Appliquer les modifications"></a>
-            <a href="../choix_gestion_compte.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
+            <form method="post" action="modifier.php">
+                <fieldset>
+                    <legend>Informations du compte à modifier :</legend>
+                    <?php
+                        if($ligne["statut"] != "Admin")
+                        {
+                            echo '<label for="statut">Type du compte</label>';
+                            echo '<select id="statut" name="statut">';
+                            echo '<option value="Utilisateur" selected>Utilisateur</option>';
+                            echo '<option value="Administrateur">Administrateur</option>';
+                            echo '</select>';
+                        }
+                        echo '<input name="login" type="login" placeholder="Login : '.$ligne["login"].'">';
+                        if($_SESSION["idEtud"] == $id or $ligne["statut"] == "Util")
+                        {
+                            echo '<input name="mdp" type="mdp" placeholder="Mot de passe">';
+                        }
+                        echo '<input name="nom" type="nom" placeholder="Nom : '.$ligne["nom"].'">';
+                        echo '<input name="prenom" type="prenom" placeholder="Prénom : '.$ligne["prenom"].'">';
+                        echo '<input name="dateN" type="prenom" placeholder="Date de naissance : '.$ligne["dateNaissance"].'">';
+                    ?>
+                    <input id="voir" type="submit" value="Appliquer les modifications"/>
+                    <a href="../choix_gestion_compte.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
+                </fieldset>
+            </form>
 	</div>
     </body>
 </html>
