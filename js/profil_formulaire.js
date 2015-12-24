@@ -40,7 +40,7 @@ function afficheFormulaire(text){
     inputNom.setAttribute("placeholder","nom : ");
     inputNom.setAttribute("onblur","verifNom(this);");
     if(totalInfo[0]!==null){
-        inputNom.setAttribute("value",totalInfo[0].replace("-"," "));
+        inputNom.setAttribute("value",totalInfo[0].replace(/-/gi," "));
     }
     partieFormulaire1.appendChild(inputNom);
     erreurnom=document.createElement("p");
@@ -53,7 +53,7 @@ function afficheFormulaire(text){
     inputPrenom.setAttribute("placeholder","Prénom : ");
     inputPrenom.setAttribute("onblur","verifPrenom(this);");
     if(totalInfo[1]!==null){
-        inputPrenom.setAttribute("value",totalInfo[1].replace("-"," "));
+        inputPrenom.setAttribute("value",totalInfo[1].replace(/-/gi," "));
     }
     partieFormulaire1.appendChild(inputPrenom);
     erreurprenom=document.createElement("p");
@@ -371,6 +371,7 @@ function afficheFormulaire(text){
     optionAnnee0 = document.createElement("option");
     optionAnnee0.setAttribute("value"," ");
     selectAnnee.appendChild(optionAnnee0);
+    $('#annee>option[value="'+" "+'"]').attr('selected', true);
     var k=1980;
     while(k<=ladate.getFullYear()){
         optionAnnee = document.createElement("option");
@@ -443,6 +444,7 @@ function afficheFormulaire(text){
     optionTypeContrat0 = document.createElement("option");
     optionTypeContrat0.setAttribute("value"," ");
     selectTypeContrat.appendChild(optionTypeContrat0);
+    $('#typeContrat>option[value="'+" "+'"]').attr('selected', true);
     optionTypeContrat = document.createElement("option");
     optionTypeContrat.setAttribute("value","CDI");
     selectTypeContrat.appendChild(optionTypeContrat);
@@ -581,25 +583,25 @@ function verifDtn(champ)
        if((parseInt(dtn[0])<1940 || parseInt(dtn[0])>ladate.getFullYear())){
             surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à true
             document.getElementById("erreurdtn").innerHTML = "Votre année de naissance est incorrect ";
-            return true;
+            return false;
         }
        else//Si la condition n'est pas respecté alors
        {
            if(( parseInt(dtn[1])<0 || parseInt(dtn[1])>12)){
                surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à true
                 document.getElementById("erreurdtn").innerHTML = "Votre mois de naissance est incorrect ";
-                return true;
+                return false;
            }
            else{
                if(( parseInt(dtn[2])<0 || parseInt(dtn[2])>31)){
                    surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à true
                     document.getElementById("erreurdtn").innerHTML = "Votre jour de naissance est incorrect ";
-                    return true;
+                    return false;
                }
                else{
                     surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à false
                     document.getElementById("erreurdtn").innerHTML = " ";
-                    return false;
+                    return true;
                }
            }
             
@@ -779,126 +781,200 @@ function verifEmail(champ)
 }
 //Fonction pour la vérification de la formation
 function verifFormation(champ){
-    if(champ.value.length > 2 && champ.value.length < 50)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
-   {
-      surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
-      document.getElementById("erreurformation").innerHTML = " ";
-      return true;
-   }
-   else//Si la condition n'est pas respecté alors
-   {
-      surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
-      document.getElementById("erreurformation").innerHTML = "Vous devez saisir votre formation";
-      return false;
-   }
+    if(champ.value=="")
+    {
+        surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+        document.getElementById("erreurformation").innerHTML = " ";
+        return "empty";
+    }
+    else
+    {
+         if(champ.value.length > 2 && champ.value.length < 50)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
+        {
+           surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+           document.getElementById("erreurformation").innerHTML = " ";
+           return true;
+        }
+        else//Si la condition n'est pas respecté alors
+        {
+           surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+           document.getElementById("erreurformation").innerHTML = "Vous devez saisir votre formation";
+           return false;
+        }
+        
+    }
+   
 }
 
 //Fonction pour la vérification du cursus
 function verifAnnee(champ){
-    if(champ.value!=" ")//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
-   {
-      surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
-      document.getElementById("erreurannee").innerHTML = " ";
-      return true;
-   }
-   else//Si la condition n'est pas respecté alors
-   {
-      surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
-      document.getElementById("erreurannee").innerHTML = "Vous devez choisir une année de formation";
-      return false;
-   }
+    if(champ.value==" ")
+    {
+        surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+        document.getElementById("erreurannee").innerHTML = " ";
+        return "empty";
+    }
+    else
+    {
+        if(champ.value!=" ")//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
+       {
+          surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+          document.getElementById("erreurannee").innerHTML = " ";
+          return true;
+       }
+       else//Si la condition n'est pas respecté alors
+       {
+          surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+          document.getElementById("erreurannee").innerHTML = "Vous devez choisir une année de formation";
+          return false;
+       }
+    }
 }
 
 //Fonction pour la vérification de la discipline
 function verifDiscipline(champ){
-    if(champ.value.length > 2 && champ.value.length < 50)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
-   {
+    if(champ.value=="")
+    {
       surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
       document.getElementById("erreurdiscipline").innerHTML = " ";
-      return true;
-   }
-   else//Si la condition n'est pas respecté alors
-   {
-      surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
-      document.getElementById("erreurdiscipline").innerHTML = "Vous devez saisir votre discipline";
-      return false;
-   }
+      return "empty";
+    }
+    else
+    {
+        if(champ.value.length > 2 && champ.value.length < 50)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
+       {
+          surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+          document.getElementById("erreurdiscipline").innerHTML = " ";
+          return true;
+       }
+       else//Si la condition n'est pas respecté alors
+       {
+          surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+          document.getElementById("erreurdiscipline").innerHTML = "Vous devez saisir votre discipline";
+          return false;
+       }
+    }
 }
 
 //Fonction pour la vérification du poste occupé
 function verifPosteOccupe(champ){
-    if(champ.value.length > 2 && champ.value.length < 50)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
-   {
+    if(champ.value=="")
+    {
       surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
       document.getElementById("erreurposteoccupe").innerHTML = " ";
-      return true;
-   }
-   else//Si la condition n'est pas respecté alors
-   {
-      surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
-      document.getElementById("erreurposteoccupe").innerHTML = "Vous devez saisir votre poste occupé";
-      return false;
-   }
+      return "empty";
+    }
+    else
+    {
+        if(champ.value.length > 2 && champ.value.length < 50)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
+       {
+          surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+          document.getElementById("erreurposteoccupe").innerHTML = " ";
+          return true;
+       }
+       else//Si la condition n'est pas respecté alors
+       {
+          surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+          document.getElementById("erreurposteoccupe").innerHTML = "Vous devez saisir votre poste occupé";
+          return false;
+       }
+    }
 }
 //Fonction pour la vérification du type de contrat
 function verifTypeContrat(champ){
-    if(champ.value!=" ")//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
-   {
-      surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
-      document.getElementById("erreurtypecontrat").innerHTML = " ";
-      return true;
-   }
-   else//Si la condition n'est pas respecté alors
-   {
-      surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
-      document.getElementById("erreurtypecontrat").innerHTML = "Vous devez choisir votre type de contrat";
-      return false;
-   }
+    if(champ.value==" ")
+    {
+        surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+        document.getElementById("erreurtypecontrat").innerHTML = " ";
+        return "empty";
+    }
+    else
+    {
+        if(champ.value!=" ")//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
+       {
+          surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+          document.getElementById("erreurtypecontrat").innerHTML = " ";
+          return true;
+       }
+       else//Si la condition n'est pas respecté alors
+       {
+          surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+          document.getElementById("erreurtypecontrat").innerHTML = "Vous devez choisir votre type de contrat";
+          return false;
+       }
+    }
 }
 //Fonction pour la vérification de l'entreprise
 function verifEntreprise(champ){
-    if(champ.value.length > 2 && champ.value.length < 50)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
-   {
-      surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
-      document.getElementById("erreurentreprise").innerHTML = " ";
-      return true;
-   }
-   else//Si la condition n'est pas respecté alors
-   {
-      surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
-      document.getElementById("erreurentreprise").innerHTML = "Vous devez saisir le nom de votre entreprise";
-      return false;
-   }
+     if(champ.value=="")
+    {
+        surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+        document.getElementById("erreurentreprise").innerHTML = " ";
+        return "empty";
+    }
+    else
+    {
+        if(champ.value.length > 2 && champ.value.length < 50)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
+       {
+          surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+          document.getElementById("erreurentreprise").innerHTML = " ";
+          return true;
+       }
+       else//Si la condition n'est pas respecté alors
+       {
+          surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+          document.getElementById("erreurentreprise").innerHTML = "Vous devez saisir le nom de votre entreprise";
+          return false;
+       }
+    }
 }
 //Fonction pour la vérification de l'adresse de l'entreprise
 function verifAdresseEntreprise(champ){
-    if(champ.value.length > 2 && champ.value.length < 50)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
-   {
-      surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
-      document.getElementById("erreuradresseentreprise").innerHTML = " ";
-      return true;
-   }
-   else//Si la condition n'est pas respecté alors
-   {
-      surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
-      document.getElementById("erreuradresseentreprise").innerHTML = "Vous devez saisir l'adresse de votre entreprise";
-      return false;
-   }
+    if(champ.value=="")
+    {
+        surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+        document.getElementById("erreuradresseentreprise").innerHTML = " ";
+        return "empty";
+    }
+    else
+    {
+        if(champ.value.length > 2 && champ.value.length < 50)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
+       {
+          surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+          document.getElementById("erreuradresseentreprise").innerHTML = " ";
+          return true;
+       }
+       else//Si la condition n'est pas respecté alors
+       {
+          surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+          document.getElementById("erreuradresseentreprise").innerHTML = "Vous devez saisir l'adresse de votre entreprise";
+          return false;
+       }
+    }
 }
 //Fonction pour la vérification du secteur d'activité de l'entreprise
 function verifSecteurActivite(champ){
-    if(champ.value.length > 2 && champ.value.length < 50)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
-   {
-      surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
-      document.getElementById("erreursecteuractivite").innerHTML = " ";
-      return true;
-   }
-   else//Si la condition n'est pas respecté alors
-   {
-      surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
-      document.getElementById("erreursecteuractivite").innerHTML = "Vous devez saisir le secteur d'activité de votre entreprise";
-      return false;
-   }
+     if(champ.value=="")
+    {
+        surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+        document.getElementById("erreursecteuractivite").innerHTML = " ";
+        return "empty";
+    }
+    else
+    {
+        if(champ.value.length > 2 && champ.value.length < 50)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
+       {
+          surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+          document.getElementById("erreursecteuractivite").innerHTML = " ";
+          return true;
+       }
+       else//Si la condition n'est pas respecté alors
+       {
+          surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+          document.getElementById("erreursecteuractivite").innerHTML = "Vous devez saisir le secteur d'activité de votre entreprise";
+          return false;
+       }
+    }
 }
 
 
@@ -917,17 +993,47 @@ function verifForm(profil)
    var telFixeOK = verifTelFixe(profil.telfixe);
    var mobileOK = verifMobile(profil.mobile);
    var emailOk = verifEmail(profil.email);
-   var formationOk = verifFormation(profil.formation);
-   var anneeOk = verifAnnee(profil.annee);
-   var disciplineOk = verifDiscipline(profil.discipline);
-   var posteOccupeOk = verifPosteOccupe(profil.posteoccupe);
-   var typeContratOk = verifTypeContrat(profil.typecontrat);
-   var entrepriseOk = verifEntreprise(profil.entreprise);
-   var adresseEntrepriseOk = verifAdresseEntreprise(profil.adresseentreprise);
-   var secteurActiviteOk = verifSecteurActivite(profil.secteuractivite);
+   
    if(nomOk && prenomOk && dtnOk && anEntreOk && anSortieOk && cursusOK && adresseOK && cpOK && villeOK && telFixeOK && mobileOK && emailOk)
    {
-        document.getElementById("profil").submit();
+        var formationOk = verifFormation(profil.formation);
+        var anneeOk = verifAnnee(profil.annee);
+        var disciplineOk = verifDiscipline(profil.discipline);
+        var posteOccupeOk = verifPosteOccupe(profil.posteoccupe);
+        var typeContratOk = verifTypeContrat(profil.typecontrat);
+        var entrepriseOk = verifEntreprise(profil.entreprise);
+        var adresseEntrepriseOk = verifAdresseEntreprise(profil.adresseentreprise);
+        var secteurActiviteOk = verifSecteurActivite(profil.secteuractivite);
+        if(formationOk=="empty" && anneeOk=="empty" && disciplineOk=="empty" && posteOccupeOk=="empty" && typeContratOk=="empty" && entrepriseOk=="empty" && adresseEntrepriseOk=="empty" && secteurActiviteOk=="empty")
+        {
+            document.getElementById("profil").submit();
+        }
+        else
+        {
+            if(formationOk==true && anneeOk==true && disciplineOk==true && posteOccupeOk=="empty" && typeContratOk=="empty" && entrepriseOk=="empty" && adresseEntrepriseOk=="empty" && secteurActiviteOk=="empty")
+            {
+                document.getElementById("profil").submit();
+            }
+            else
+            {
+                if(formationOk=="empty" && anneeOk=="empty" && disciplineOk=="empty" && posteOccupeOk==true && typeContratOk==true && entrepriseOk==true && adresseEntrepriseOk==true && secteurActiviteOk==true)
+                {
+                     document.getElementById("profil").submit();
+                }
+                else
+                {
+                    if(formationOk==true && anneeOk==true && disciplineOk==true && posteOccupeOk==true && typeContratOk==true && entrepriseOk==true && adresseEntrepriseOk==true && secteurActiviteOk==true)
+                    {
+                        document.getElementById("profil").submit();
+                    }
+                    else
+                    {
+                        alert("Les trois première parties du formulaire sont obligatoire, mais si vous remplissez les parties 4 et 5 ou juste une des deux assurez vous de l'avoir fait correctement");
+                        return false; 
+                    }
+                }
+            }
+        }   
    }
    else
    {
