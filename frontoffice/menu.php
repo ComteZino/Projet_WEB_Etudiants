@@ -15,7 +15,7 @@
         <title>CSS MenuMaker</title>
     </head>
     <body>
-        <div id='cssmenu'>
+        <div class='cssmenu'>
             <ul>
                 <li class='active'><a href='accueil.php'><span>Accueil</span></a></li>                            
                 <li><a href='#'><span>Forum</span></a></li>
