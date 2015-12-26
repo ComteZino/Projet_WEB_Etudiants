@@ -8,8 +8,8 @@ function afficheFormulaire(text){
     divPrincipal = document.getElementById("divPrincipal");
     formEnfant = document.createElement("form");
     formEnfant.setAttribute("id","profil");
-    formEnfant.setAttribute("method","POST");
-    formEnfant.setAttribute("action","traitement_profil.php");
+    formEnfant.setAttribute("method","GET");
+    formEnfant.setAttribute("action","../backoffice/traitement_profil_formulaire.php");
     formEnfant.setAttribute("name","formulaire");
     formEnfant.setAttribute("onsubmit","return verifForm(this)");
     divPrincipal.appendChild(formEnfant);
@@ -369,16 +369,16 @@ function afficheFormulaire(text){
     selectAnnee.setAttribute("onclick","verifAnnee(this);");
     partieFormulaire4.appendChild(selectAnnee);
     optionAnnee0 = document.createElement("option");
-    optionAnnee0.setAttribute("value"," ");
+    optionAnnee0.setAttribute("value","");
     selectAnnee.appendChild(optionAnnee0);
-    $('#annee>option[value="'+" "+'"]').attr('selected', true);
+    $('#annee>option[value="'+""+'"]').attr('selected', true);
     var k=1980;
     while(k<=ladate.getFullYear()){
         optionAnnee = document.createElement("option");
         optionAnnee.setAttribute("value",k);
         selectAnnee.appendChild(optionAnnee);
         remplaceTexte(optionAnnee,k);
-        if(totalInfo[13]==j){
+        if(totalInfo[13]==k){
             $('#annee>option[value="'+k+'"]').attr('selected', true);
         }
         k++;
@@ -438,13 +438,13 @@ function afficheFormulaire(text){
     remplaceTexte(labelTypeContrat,"Type de contrat de travail");
     selectTypeContrat = document.createElement("select");
     selectTypeContrat.setAttribute("name","typecontrat");
-    selectTypeContrat.setAttribute("id","typeContrat");
+    selectTypeContrat.setAttribute("id","typecontrat");
     selectTypeContrat.setAttribute("onclick","verifTypeContrat(this);");
     partieFormulaire5.appendChild(selectTypeContrat);
     optionTypeContrat0 = document.createElement("option");
-    optionTypeContrat0.setAttribute("value"," ");
+    optionTypeContrat0.setAttribute("value","");
     selectTypeContrat.appendChild(optionTypeContrat0);
-    $('#typeContrat>option[value="'+" "+'"]').attr('selected', true);
+    $('#typeContrat>option[value="'+""+'"]').attr('selected', true);
     optionTypeContrat = document.createElement("option");
     optionTypeContrat.setAttribute("value","CDI");
     selectTypeContrat.appendChild(optionTypeContrat);
@@ -808,7 +808,7 @@ function verifFormation(champ){
 
 //Fonction pour la vérification du cursus
 function verifAnnee(champ){
-    if(champ.value==" ")
+    if(champ.value=="")
     {
         surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
         document.getElementById("erreurannee").innerHTML = " ";
@@ -816,7 +816,7 @@ function verifAnnee(champ){
     }
     else
     {
-        if(champ.value!=" ")//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
+        if(champ.value!="")//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
        {
           surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
           document.getElementById("erreurannee").innerHTML = " ";
@@ -882,7 +882,7 @@ function verifPosteOccupe(champ){
 }
 //Fonction pour la vérification du type de contrat
 function verifTypeContrat(champ){
-    if(champ.value==" ")
+    if(champ.value=="")
     {
         surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
         document.getElementById("erreurtypecontrat").innerHTML = " ";
@@ -890,7 +890,7 @@ function verifTypeContrat(champ){
     }
     else
     {
-        if(champ.value!=" ")//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
+        if(champ.value!="")//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
        {
           surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
           document.getElementById("erreurtypecontrat").innerHTML = " ";

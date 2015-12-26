@@ -48,7 +48,7 @@
     $discipline=$ligne5['discipline'];
 
     $totalInfos=$nom."/".$prenom."/".$dateNaissance."/".$anEntre."/".$anSortie."/".$cursus."/".$adresse."/".$cp."/".$ville."/".$fixe."/"
-            .$mobile."/".$mail."/".$emploi."/".$typeContrat."/".$entreprise."/".$adresseEnt."/".$secteurActivite."/".$formation."/".$anneeFormation."/".$discipline;
+            .$mobile."/".$mail."/".$formation."/".$anneeFormation."/".$discipline."/".$emploi."/".$typeContrat."/".$entreprise."/".$adresseEnt."/".$secteurActivite;
 ?>
 <html>
     <head>
@@ -100,30 +100,59 @@
                                 <p>Votre numéro de portable : ".$mobile."</p>
                                 <p>Votre eMail : ".$mail."</p>
                             </fieldset>";
-                            if(empty($emploi) and empty($typeContrat) and empty($entreprise) and empty($adresseEnt) and empty($secteurActivite) and empty($formation) and empty($anneeFormation) and empty($discipline))
+                            if( empty($formation) and empty($anneeFormation) and empty($discipline))
                             {
-                                echo "<p id="."information_non_renseigne".">Vous n'avez pas rien renseigné pour vos poursuite d'études et votre emploi
-                                        si vous voulez modifier cela cliquer sur le boutton si dessous :</p>
-                                <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
-                            }
-                            else
-                            {
-                                echo "<fieldset>
-                                        <legend><span class="."number"." id="."number4".">1</span>Poursuite d'études</legend>
-                                        <p>Vous avez fait : ".str_replace("-"," ",$formation)."</p>
-                                        <p>En : ".$anneeFormation."</p>
-                                        <p>Votre discipline : ".str_replace("-"," ",$discipline)."</p>
-                                    </fieldset>
-                                    <fieldset>
-                                        <legend><span class="."number"." id="."number5".">1</span>Votre parcours professionnel</legend>
+                                echo "<p id="."information_non_renseigne".">Vous n'avez pas rien renseigné pour la partie 4 qui est votre poursuite d'études
+                                        si vous voulez modifier cela cliquer sur le boutton si dessous :</p>";
+                                
+                                 if(empty($emploi) and empty($typeContrat) and empty($entreprise) and empty($adresseEnt) and empty($secteurActivite))
+                                {
+                                    echo "<p id="."information_non_renseigne".">Vous n'avez pas rien renseigné pour la partie 5 qui est votre emploi
+                                    si vous voulez modifier cela cliquer sur le boutton si dessous :</p>
+                                    <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
+                                }
+                                else
+                                {
+                                    echo "<fieldset>
+                                        <legend><span class="."number"." id="."number5".">5</span>Votre parcours professionnel</legend>
                                         <p>Vous emploi : ".str_replace("-"," ",$emploi)."</p>
                                         <p>Le type de contract : ".$typeContrat."</p>
                                         <p>Dans l'entreprise : ".str_replace("-"," ",$entreprise)."</p>
                                         <p>Adresse de l'entreprise : ".str_replace("-"," ",$adresseEnt)."</p>
                                         <p>Dans le secteur d'activité : ".str_replace("-"," ",$secteurActivite)."</p>
-                                    </fieldset>
-                                    <p>Pour modifier vos informations, cliquez sur le boutton si dessous :</p>
+                                        </fieldset>
+                                        <p>Pour modifier vos informations, cliquez sur le boutton si dessous :</p>
+                                        <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
+                                }
+                            }
+                            else
+                            {
+                                echo "<fieldset>
+                                        <legend><span class="."number"." id="."number4".">4</span>Poursuite d'études</legend>
+                                        <p>Vous avez fait : ".str_replace("-"," ",$formation)."</p>
+                                        <p>En : ".$anneeFormation."</p>
+                                        <p>Votre discipline : ".str_replace("-"," ",$discipline)."</p>
+                                    </fieldset>";
+                                    
+                                if(empty($emploi) and empty($typeContrat) and empty($entreprise) and empty($adresseEnt) and empty($secteurActivite))
+                                {
+                                    echo "<p id="."information_non_renseigne".">Vous n'avez pas rien renseigné pour la partie 5 qui est votre emploi
+                                    si vous voulez modifier cela cliquer sur le boutton si dessous :</p>
                                     <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
+                                }
+                                else
+                                {
+                                    echo "<fieldset>
+                                        <legend><span class="."number"." id="."number5".">5</span>Votre parcours professionnel</legend>
+                                        <p>Vous emploi : ".str_replace("-"," ",$emploi)."</p>
+                                        <p>Le type de contract : ".$typeContrat."</p>
+                                        <p>Dans l'entreprise : ".str_replace("-"," ",$entreprise)."</p>
+                                        <p>Adresse de l'entreprise : ".str_replace("-"," ",$adresseEnt)."</p>
+                                        <p>Dans le secteur d'activité : ".str_replace("-"," ",$secteurActivite)."</p>
+                                        </fieldset>
+                                        <p>Pour modifier vos informations, cliquez sur le boutton si dessous :</p>
+                                        <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
+                                }
                             }
                             //<input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$nom."'".","."'".$prenom."'".","."'".$dateNaissance."'".");"." />";
                     }
