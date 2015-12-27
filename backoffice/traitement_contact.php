@@ -1,5 +1,6 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <?php   
+    require_once('../frontoffice/connexionBD.php');
     //====================================
     // TRAITEMENT DE L'ENVOIE DE L'EMAIL
     //==================================== 
@@ -13,14 +14,14 @@
     /* Définit toutes les erreurs possibles */
    
     #Verification du champ nom
-    if (empty($_POST['nom']))
+    /*if (empty($_POST['nom']))
     {// Si la variable est vide
       $nombreErreur++;
       $erreur1 = '<p>Veuillez renseigner un nom.</p>';
-    }
+    }*/
 
     #Verification du champ email
-    if (empty($_POST['email']))
+   /* if (empty($_POST['email']))
     { // Si la variable est vide
         $nombreErreur++; // On incrémente la variable qui compte les erreurs
         $erreur2 = '<p>Veuillez renseigner un email.</p>';
@@ -32,8 +33,12 @@
             $nombreErreur++; // On incrémente la variable qui compte les erreurs
             $erreur3 = '<p>Veuillez renseigner un email valide.</p>';
         }
-    }
+    }*/
+    $id = htmlentities($_POST["id"]);
     
+    $select_mail = $connexion->query("Select mail from infoetudiant where id = ".$id.";");
+    $destinataire = $select_mail->fetch();
+    $mail = $destinataire["mail"];
     #Verification du champ sujet
     if (empty($_POST['sujet']))
     {// Si la variable est vide
@@ -59,18 +64,18 @@
     if ($nombreErreur==0)
     { 
       // Ici il faudra ajouter tout le code pour envoyer l'email.
-        $nom = htmlentities($_POST['nom']); // htmlentities() convertit des caractères "spéciaux" en équivalent HTML
-        $email = htmlentities($_POST['email']);
+        /*$nom = htmlentities($_POST['nom']); // htmlentities() convertit des caractères "spéciaux" en équivalent HTML
+        $email = htmlentities($_POST['email']);*/
         $message = htmlentities($_POST['message']);
         $sujet = htmlentities($_POST['sujet']);
 
 
-        $destinataire = 'yohan.gounou@gmail.com'; // Adresse email de l'administrateur
+        //$destinataire = $email; // Adresse email de la personne à contacter
         $sujet_bis = $sujet; // Titre de l'email
         $contenu = '<html><head><title>Titre du message</title></head><body>';
-        $contenu .= '<p>Bonjour, vous avez reçu un nouveau message :</p>';
+        /*$contenu .= '<p>Bonjour, vous avez reçu un nouveau message :</p>';
         $contenu .= '<p><strong>Nom</strong>: '.$nom.'</p>';
-        $contenu .= '<p><strong>Email</strong>: '.$email.'</p>';
+        $contenu .= '<p><strong>Email</strong>: '.$email.'</p>';*/
         $contenu .= '<p><strong>Message</strong>: '.$message.'</p>';
         $contenu .= '</body></html>'; // Contenu du message de l'email (en XHTML)
         
@@ -79,7 +84,7 @@
         $headers .= 'Content-type: text/html; charset=iso-8859-1'."\r\n";
         
         // Envoyer l'email
-        mail($destinataire, $sujet_bis, $contenu, $headers); // Fonction principale qui envoi l'email
+        mail($mail, $sujet_bis, $contenu, $headers); // Fonction principale qui envoi l'email
         header('Location: ../frontoffice/message_envoye.php'); // Afficher un message pour indiquer que le message a été envoyé
         
     } 
