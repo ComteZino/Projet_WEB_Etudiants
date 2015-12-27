@@ -5,10 +5,9 @@
     {
         header('Location: ../frontoffice/authentification.php');
     }
-    $select_actualites = ('Select idNews.0'
-            . ',titre from news');
+    $select_actualites = $connexion->query('Select idNews,titre from news');
     /*$query_select = $connexion->query($select_comptes);*/
-    $query_select2 = $connexion->query($select_actualites);
+    //$query_select2 = $connexion->query($select_actualites);
 ?>
 <html>
     <head>
@@ -74,13 +73,9 @@
                 <p>Quel article voulez vous supprimer ?</p>
                 <select name="article_suppr" class="select">
                     <?php
-                        while($lgn = $query_select2->fetch())
+                        while($lgn = $select_actualites->fetch())
                         {
-                            // N'affiche pas le compte courant
-                            if($_SESSION["idNews"] != $lgn["id"])
-                            {
-                                echo '<option value="'.$lgn["idNews"].'">'.$lgn["titre"].'</option>';
-                            }
+                            echo '<option value="'.$lgn["idNews"].'">'.$lgn["titre"].'</option>';
                         }
                     ?>
                 </select>
