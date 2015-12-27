@@ -1,16 +1,20 @@
 
 <?php 
-    session_start();
-    if(empty($_SESSION['statut'])) 
+    require_once('../frontoffice/connexionBD.php');
+    if(empty($_SESSION['statut'])or $_SESSION['statut']!="Admin") 
     {
-        header('Location: authentification.php');
+        header('Location: ../frontoffice/authentification.php');
     }
+    $select_actualites = ('Select idNews.0'
+            . ',titre from news');
+    /*$query_select = $connexion->query($select_comptes);*/
+    $query_select2 = $connexion->query($select_actualites);
 ?>
 <html>
     <head>
      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
      <link rel="stylesheet" href="../css/style.css">
-     <link rel="stylesheet" href="../css/styleAjoutActualite.css">
+     <link rel="stylesheet" href="../css/styleGestionActualite.css">
      <script type="text/javascript" src="../ckeditor/ckeditor.js"></script><!-- Script pour l'outil d'édition de texte --> 
      <title>Ajouter une actualité</title>
     </head>
@@ -21,8 +25,7 @@
         <!--- Zone d'ajout d'article --->
         <div id="divPrincipal" class="box-ajout-actu">
             <h2>Ajout d'une actualité</h2>
-            <form action="../backoffice/traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
-
+            <form action="traitement/ajout_actualite.php" id="ajout" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
                 <!-- Champ titre -->    
                 <p>Titre de l'actualité</p>   
                 <p class="titre">
@@ -33,18 +36,10 @@
                  <!-- Liste catégorie --> 
                 <p>
                     <p>Catégorie</p>
-                    <select name="cat" class="select">
-                        <option value="">Selectionnez une catégorie</option>
-                        <?php
-                            //On selectionne les données
-                            $categorie = mysql_query("SELECT id,nom_categorie FROM CATEGORIES ORDER BY id ASC");
-
-                            //On affiche les catégories dans la liste
-                            while($affiche = mysql_fetch_array($categorie))
-                            {
-                                echo '<option value="'.$affiche['id'].'">'.$affiche['nom_categorie'].'</option>';
-                            }	
-                        ?>
+                    <select name="categorie" class="select">
+                        <option value="Lycee">Lycée</option>
+                        <option value="Mariage">Mariage</option>
+                        <option value="Deces">Décés</option>
                     </select>
                 </p>
 
@@ -73,19 +68,18 @@
         <!--- Zone de suppression d'article --->
         <div id="divPrincipal" class="box-ajout-actu">
             <h2>Suppression d'une actualité</h2>     
-            <form method="post" action="traitement/suppression.php">     
+            <form method="post" action="traitement/suppression_actualite.php">     
                 
                 <!-- Liste supprimer article --> 
                 <p>Quel article voulez vous supprimer ?</p>
                 <select name="article_suppr" class="select">
-                    <option value="">Selectionnez un article</option>
                     <?php
                         /*while($lgn = $query_select2->fetch())
                         {
                             // N'affiche pas le compte courant
-                            if($_SESSION["idEtud"] != $lgn["id"])
+                            if($_SESSION["idNews"] != $lgn["id"])
                             {
-                                echo '<option value="'.$lgn["id"].'">'.$lgn["nom"].' '.$lgn["prenom"].'</option>';
+                                echo '<option value="'.$lgn["idNews"].'">'.$lgn["titre"].'</option>';
                             }
                         }*/
                     ?>

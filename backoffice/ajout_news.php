@@ -9,7 +9,7 @@
     <head>
      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
      <link rel="stylesheet" href="../css/style.css">
-     <link rel="stylesheet" href="../css/styleAjoutActualite.css">
+     <link rel="stylesheet" href="../css/styleGestionActualite.css">
      <script type="text/javascript" src="../ckeditor/ckeditor.js"></script><!-- Script pour l'outil d'édition de texte --> 
      <title>Ajouter une actualité</title>
     </head>
