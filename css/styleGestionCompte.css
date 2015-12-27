@@ -92,7 +92,7 @@
     background: #433E92;
 }  
 
-.form-style-5 input[type="submit"],
+/*.form-style-5 input[type="submit"],
 .form-style-5 input[type="button"]
 {
     position: relative;
@@ -114,7 +114,7 @@
 .form-style-5 input[type="button"]:hover
 {
     background: #109177;
-}
+}*/
 
 label
 {
@@ -128,4 +128,28 @@ a
 {
     text-align: center;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+input {
+  margin: 0 auto;
+  font-size: 2.0rem;
+  padding: 1.25rem 2.5rem;
+  display: block;
+  background-color: #109177;
+  border: 3px solid transparent;
+  color: #ffffff;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font: 400 1.4rem 'Lato', Verdana, Helvetica, sans-serif;
+}
+
+input:hover {
+  background-color: #ffffff;
+  color: #109177;
+  border-color: #109177;
+  
 }
