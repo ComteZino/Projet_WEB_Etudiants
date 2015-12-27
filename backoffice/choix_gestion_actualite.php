@@ -1,14 +1,11 @@
 <?php 
-   
-
-require_once('../frontoffice/connexionBD.php');
+    require_once('../frontoffice/connexionBD.php');
     if(empty($_SESSION['statut'])or $_SESSION['statut']!="Admin") 
     {
         header('Location: ../frontoffice/authentification.php');
     }
     $select_actualites = $connexion->query('Select idNews,titre from news');
-    /*$query_select = $connexion->query($select_comptes);*/
-    //$query_select2 = $connexion->query($select_actualites);
+    $select_actualites2 = $connexion->query('Select idNews,titre from news');
 ?>
 <html>
     <head>
@@ -23,7 +20,7 @@ require_once('../frontoffice/connexionBD.php');
         <?php include 'menu.php'; ?>   
         
         <!--- Zone d'ajout d'article --->
-        <div id="divPrincipal" class="box-ajout-actu">
+        <div id="divPrincipal" class="box-actu">
             <h2>Ajout d'une actualité</h2>
             <form action="traitement/ajout_actualite.php" id="ajout" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
                 <!-- Champ titre -->    
@@ -58,21 +55,19 @@ require_once('../frontoffice/connexionBD.php');
                 </script>
                 
                 <!-- Boutons --> 
-                <section>
-                   <input name="Valider" value="Valider" type="submit"/>
-                </section>    
-               
+                
+                   <input name="Valider" value="Valider" type="submit"/>           
             </form>
         </div>
-            
-        <!--- Zone de suppression d'article --->
-        <div id="divPrincipal" class="box-ajout-actu">
-            <h2>Suppression d'une actualité</h2>     
-            <form method="post" action="traitement/suppression_actualite.php">     
+        
+        <!--- Zone de modification d'article --->
+        <div id="divPrincipal" class="box-actu">
+            <h2>Modification d'une actualité</h2>     
+            <form method="post" action="traitement/modification_actualite.php">     
                 
-                <!-- Liste supprimer article --> 
-                <p>Quel article voulez vous supprimer ?</p>
-                <select name="article_suppr" class="select">
+                <!-- Liste modifier article --> 
+                <p>Quel article voulez vous modifier  ?</p>
+                <select name="article_modif" class="select">
                     <?php
                         while($lgn = $select_actualites->fetch())
                         {
@@ -82,9 +77,29 @@ require_once('../frontoffice/connexionBD.php');
                 </select>
                 
                 <!-- Boutons --> 
-                <section>
+                    <input name="Supprimer" value="Modifier l'article" type="submit"/>
+                
+            </form>
+        </div>   
+            
+        <!--- Zone de suppression d'article --->
+        <div id="divPrincipal" class="box-actu">
+            <h2>Suppression d'une actualité</h2>     
+            <form method="post" action="traitement/suppression_actualite.php">     
+                
+                <!-- Liste supprimer article --> 
+                <p>Quel article voulez vous supprimer ?</p>
+                <select name="article_suppr" class="select">
+                    <?php
+                        while($lgn = $select_actualites2->fetch())
+                        {
+                            echo '<option value="'.$lgn["idNews"].'">'.$lgn["titre"].'</option>';
+                        }
+                    ?>
+                </select>
+                
+                <!-- Boutons --> 
                     <input name="Supprimer" value="Supprimer l'article" type="submit"/>
-                </section>    
                 
             </form>
         </div>              
