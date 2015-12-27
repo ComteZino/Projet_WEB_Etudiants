@@ -24,7 +24,7 @@ function verifNom(champ)
    {
       surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
       champ.value=champ.value.toUpperCase();//On force la saisie du nom en majuscule
-      document.getElementById("erreur").innerHTML = " ";
+      document.getElementById("erreurnom").innerHTML = " ";
       return true;
    }
    else//Si la condition n'est pas respecté alors

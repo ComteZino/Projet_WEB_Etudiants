@@ -32,8 +32,8 @@
                     <input name="nom" type="nom" placeholder="Nom *">
                     <input name="prenom" type="prenom" placeholder="Prénom *">
                     <input name="dateN" type="prenom" placeholder="Date de naissance(A/M/J) *">
+                    <input id="voir" type="submit" value="Créer le compte"/> 
                 </fieldset>
-                <input id="voir" type="submit" value="Créer le compte"/>  
             </form>
             <form method="post" action="traitement/modification.php">
                 <fieldset>

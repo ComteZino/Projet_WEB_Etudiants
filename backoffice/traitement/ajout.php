@@ -83,10 +83,10 @@
                 <label for="nom"><?php echo "Nom : ".$nom; ?></label>
                 <label for="prenom"><?php echo "Prénom : ".$prenom; ?></label>
                 <label for="dateN"><?php echo "Date de naissance : ".$dateN; ?></label>
-                <label for="login"><?php echo "Identifiant du compte : ".$login; ?></label>
-                <label for="mdp"><?php echo "Mot de passe du compte : ".$mdp; ?></label>
+                <label for="login"><?php echo "Identifiant : ".$login; ?></label>
+                <label for="mdp"><?php echo "Mot de passe : ".$mdp; ?></label>
             </fieldset>
-            <a href="../choix_gestion.php"><input type="button" name="nom" value="Ajouter un compte"></a>
+            <a href="../choix_gestion_compte.php"><input type="button" name="nom" value="Ajouter un compte"></a>
 	</div>
     </body>
 </html>

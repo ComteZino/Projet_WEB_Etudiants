@@ -31,7 +31,7 @@
         <aside><!-- Les à-cotés de la page --></aside>
         <article>
             <!-- Contenu textuel de la page -->
-            <meta http-equiv="refresh" content="4;../choix_gestion.php" />
+            <meta http-equiv="refresh" content="4;../choix_gestion_compte.php" />
             <p id="rediriger">Le compte a été correctement supprimé, vous allez être redirigé vers la page de gestion des comptes.</p>
         </article>
         <footer><!-- Pied-de-page de la page -> site --></footer>

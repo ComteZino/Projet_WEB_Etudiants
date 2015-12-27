@@ -83,8 +83,10 @@
         header('Location: ../frontoffice/message_envoye.php'); // Afficher un message pour indiquer que le message a été envoyé
         
     } 
+    
+    // S'il y a au moins une erreur
     else
-    { // S'il y a un moins une erreur
+    { 
       echo '<div style="border:2px solid #109177; padding:5px;">';
       echo '<p style="color:#109177;">Désolé, il y a eu '.$nombreErreur.' erreur(s). Voici le détail des erreurs:</p>';
       if (isset($erreur1)) echo '<p>'.$erreur1.'</p>';
