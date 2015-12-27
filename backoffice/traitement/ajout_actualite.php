@@ -72,11 +72,10 @@
     {
         $selectid = $connexion->query('Select * from news');
         
-        $lgnid = $selectid->fetch();
         $nbr = $selectid ->rowCount();
         if ($nbr == 0)
         {
-            $id = 1;
+            $id = 0;
         }  
         else
         {
