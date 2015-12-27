@@ -38,6 +38,7 @@
                     <label for="dateN"><?php echo "Date de naissance : ".$ligne["dateNaissance"]; ?></label>
                     <label for="login"><?php echo "Identifiant : ".$ligne["login"]; ?></label>
                     <input id="voir" type="submit" value="Supprimer ce compte"/>
+                    <br>
                     <a href="../choix_gestion_compte.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
                 </fieldset>
             </form>

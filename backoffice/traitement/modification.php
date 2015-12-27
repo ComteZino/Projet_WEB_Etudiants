@@ -47,6 +47,7 @@
                         echo '<input name="id" type="hidden" value="'.$id.'">';
                     ?>
                     <input id="voir" type="submit" value="Appliquer les modifications"/>
+                    <br>
                     <a href="../choix_gestion_compte.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
                 </fieldset>
             </form>
