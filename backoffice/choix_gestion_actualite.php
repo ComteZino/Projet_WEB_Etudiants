@@ -80,17 +80,16 @@
                 <select name="article_suppr" class="select">
                     <option value="">Selectionnez un article</option>
                     <?php
-                        while($lgn = $query_select2->fetch())
+                        /*while($lgn = $query_select2->fetch())
                         {
                             // N'affiche pas le compte courant
                             if($_SESSION["idEtud"] != $lgn["id"])
                             {
                                 echo '<option value="'.$lgn["id"].'">'.$lgn["nom"].' '.$lgn["prenom"].'</option>';
                             }
-                        }
+                        }*/
                     ?>
                 </select>
-                
                 <!-- Boutons --> 
                 <section>
                     <input name="Supprimer" value="Supprimer l'article" type="submit"/>
