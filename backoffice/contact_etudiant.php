@@ -26,7 +26,7 @@
                 <h2 id="test">Formulaire de contact</h2>
                 <form action="../backoffice/traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
                                     
-                    <select id="etudiant" name="etudiant">
+                    <select id="id" name="id">
                         <?php
                             while($lgn = $query_select->fetch())
                             {
