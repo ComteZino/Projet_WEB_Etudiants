@@ -32,7 +32,7 @@
                         echo "<li><a href='../backoffice/choix_gestion_actualite.php'><span>Gestion des actualités</span></a></li>";
                         echo "<li><a href='#'><span>Stats</span></a></li>";
                         echo "<li><a href='#'><span>Propositions de stages</span></a></li>";
-                        echo "<li><a href='#'><span>Contacter un étudiant</span></a></li>";
+                        echo "<li><a href='../backoffice/contact_etudiant.php'><span>Contacter un étudiant</span></a></li>";
                         echo "<li><a href='../backoffice/choix_gestion_compte.php'><span>Gestion des comptes</span></a></li>";
                     }
                 ?>
