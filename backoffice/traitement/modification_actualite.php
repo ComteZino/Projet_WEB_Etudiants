@@ -36,9 +36,9 @@
                         echo '<input name="contenu" type="contenu" placeholder="Contenu : '.$ligne["contenu"].'">';
                         echo '<input name="idNews" type="hidden" value="'.$idNews.'">';
                     ?>
-                    <input id="voir" type="submit" value="Appliquer les modifications"/>
+                    <input id="voir" type="submit" class='bouton' value="Appliquer les modifications"/>
                     <br>
-                    <a href="../choix_gestion_actualite.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
+                    <a href="../choix_gestion_actualite.php"><input type="button" name="nom" class='bouton' value="Retourner à la gestion"></a>
                 </fieldset>
             </form>
 	</div>

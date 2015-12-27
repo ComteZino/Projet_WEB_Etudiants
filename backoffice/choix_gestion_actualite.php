@@ -56,7 +56,7 @@
                 
                 <!-- Boutons --> 
                 
-                   <input name="Valider" value="Valider" type="submit"/>           
+                   <input name="Valider" class='bouton' value="Valider" type="submit"/>           
             </form>
         </div>
         
@@ -77,7 +77,7 @@
                 </select>
                 
                 <!-- Boutons --> 
-                    <input name="Supprimer" value="Modifier l'article" type="submit"/>
+                    <input name="Supprimer" class='bouton' value="Modifier l'article" type="submit"/>
                 
             </form>
         </div>   
@@ -99,7 +99,7 @@
                 </select>
                 
                 <!-- Boutons --> 
-                    <input name="Supprimer" value="Supprimer l'article" type="submit"/>
+                    <input name="Supprimer" class='bouton' value="Supprimer l'article" type="submit"/>
                 
             </form>
         </div>              

@@ -4,8 +4,8 @@
     {
         header('Location: ../frontoffice/authentification.php');
     }
-    $idNews = htmlentities($_POST["article_modif"]);
-    $select_informations = ("Select * from etudiant, compte where compte.idEtud=etudiant.id and new.idNews = ".$id.";");
+    $id = htmlentities($_POST["id"]);
+    $select_informations = ("Select * from etudiant, compte where compte.idEtud=etudiant.id and etudiant.id = ".$id.";");
     $query_select = $connexion->query($select_informations);
     $ligne = $query_select->fetch();
 ?>

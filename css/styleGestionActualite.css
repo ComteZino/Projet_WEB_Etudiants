@@ -15,7 +15,14 @@ html{
     height:100%;
 }
 
-.box-ajout-actu{
+label
+{
+    text-align: center;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.box-actu{
     max-width: 800px;
     padding: 10px 20px;
     background: #D4D4D4;
@@ -31,7 +38,7 @@ h2{
     color: #2781B6;
 }
 
-p{
+p, label, h3{
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
 
@@ -73,7 +80,7 @@ p{
     height:45px;
 }
 
-.feedback-input {
+.feedback-bouton {
     color:#3c3c3c;
     font-family: Helvetica, Arial, sans-serif;
     font-weight:500;
@@ -91,7 +98,7 @@ p{
     border: 3px solid rgba(0,0,0,0);
 }
 
-.feedback-input:focus{
+.feedback-bouton:focus{
     background: #fff;
     box-shadow: 0;
     border: 3px solid #109177;
@@ -105,7 +112,7 @@ p{
     border:#30aed6 solid 3px;
 }
 
-section input {
+.bouton {
   margin: 0 auto;
   font-size: 2.0rem;
   padding: 1.25rem 2.5rem;
@@ -123,11 +130,16 @@ section input {
   margin-top: 30px;
 }
 
-section input:hover {
+.bouton:hover {
   background-color: #ffffff;
   color: #109177;
   border-color: #109177;
   
+}
+
+a
+{
+    text-decoration: none;
 }
 
 @media only screen and (max-width: 580px) {

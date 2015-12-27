@@ -62,7 +62,7 @@
                 <label for="cat"><?php echo "Catégorie de l'actualité : ".$categorie; ?></label>
                 <label for="contenu"><?php echo "Contenu : ".$contenu; ?></label>
             </fieldset>
-            <a href="../choix_gestion_actualite.php"><input type="button" name="nom" value="Ajouter l'actualité"></a>
+            <a href="../choix_gestion_actualite.php"><input type="button" name="nom" class='bouton' value="Ajouter l'actualité"></a>
 	</div>
     </body>
 </html>
