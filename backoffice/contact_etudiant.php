@@ -1,16 +1,18 @@
 <?php 
-    session_start();
+    require_once('../frontoffice/connexionBD.php');
     if(empty($_SESSION['statut']) or $_SESSION['statut']!="Admin") 
     {
         header('Location: authentification.php');
     }
+    $select_comptes = ('Select id,nom,prenom from etudiant');
+    $query_select = $connexion->query($select_comptes);
 ?>
 <html>
     <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <script type="text/javascript" src="../js/verification_contact.js"></script>
-      <title></title>
+      <title>Contacter un étudiant</title>
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="../css/styleContact.css">
     </head>
@@ -22,17 +24,21 @@
         <div id="form-main">           
             <div id="form-div">
                 <h2 id="test">Formulaire de contact</h2>
-                <!---<form action="../backoffice/traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
+                <form action="../backoffice/traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
                                     
-                    <p class="nom">
-                        <p id="erreurnom"></p>
-                        <input name="nom" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nom" id="nom" onblur="verifNom(this);" />
-                    </p>
+                    <select id="etudiant" name="etudiant">
+                        <?php
+                            while($lgn = $query_select->fetch())
+                            {
+                                echo '<option value="'.$lgn["id"].'">'.$lgn["nom"].' '.$lgn["prenom"].'</option>';
+                            }
+                        ?>
+                    </select>
 
-                    <p class="email">
+                    <!--<p class="email">
                         <p id="erreuremail"></p>
                         <input name="email" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Email" id="email" onblur="verifEmail(this);" />                  
-                    </p>
+                    </p>-->
                     
                     <p class="sujet">
                         <p id="erreursujet"></p>
@@ -46,7 +52,7 @@
                     <section>
                         <input name='soumettre' type="submit" value="Envoyer"/>
                     </section>                  
-                </form>-->
+                </form>
             </div>
         </div>
     </body>
