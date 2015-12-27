@@ -85,7 +85,6 @@
             }
             
         }
-        echo "nbr = ".$nbr."<br>id = ".$id;
         $id = $id + 1;
         
         // Affectation de la catégorie correspondant à la base de données
