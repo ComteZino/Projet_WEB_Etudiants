@@ -1,0 +1,154 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23 déc. 2015, 01:39:17
+    Author     : Yohan
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html{    
+    background-size: cover;
+    height:100%;
+}
+
+label
+{
+    text-align: center;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.box-actu{
+    max-width: 800px;
+    padding: 10px 20px;
+    background: #D4D4D4;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+	 box-shadow : 10px 10px 5px  #888888 ;
+}
+
+h2{
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    color: #2781B6;
+}
+
+p, label, h3{
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+
+#titre{
+    background-size: 30px 10px;
+    background-position: 11px 8px;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    height:40px;
+}
+
+#titre:focus{
+    background-size: 30px 30px;
+    background-position: 8px 5px;
+    background-position: 11px 8px;
+    background-repeat: no-repeat;
+}
+
+.select{
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: #D4D4D4;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    background-color: white;
+    color:#8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+    -webkit-appearance: menulist-button;
+    height:45px;
+}
+
+.feedback-bouton {
+    color:#3c3c3c;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight:500;
+    font-size: 18px;
+    border-radius: 0;
+    line-height: 22px;
+    background-color: #fbfbfb;
+    padding: 13px 13px 13px 54px;
+    margin-bottom: 10px;
+    width:100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 3px solid rgba(0,0,0,0);
+}
+
+.feedback-bouton:focus{
+    background: #fff;
+    box-shadow: 0;
+    border: 3px solid #109177;
+    color: #3498db;
+    outline: none;
+    padding: 13px 13px 13px 54px;
+}
+
+.focused{
+    color:#30aed6;
+    border:#30aed6 solid 3px;
+}
+
+.bouton {
+  margin: 0 auto;
+  font-size: 2.0rem;
+  padding: 1.25rem 2.5rem;
+  display: block;
+  background-color: #109177;
+  border: 3px solid transparent;
+  color: #ffffff;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font: 400 1.4rem 'Lato', Verdana, Helvetica, sans-serif;
+  margin-top: 30px;
+}
+
+.bouton:hover {
+  background-color: #ffffff;
+  color: #109177;
+  border-color: #109177;
+  
+}
+
+a
+{
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 580px) {
+    #form-div{
+        left: 3%;
+        margin-right: 3%;
+        width: 88%;
+        margin-left: 0;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+}
