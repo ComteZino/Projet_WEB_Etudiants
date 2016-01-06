@@ -12,28 +12,7 @@
     $nombreErreur = 0; // Variable qui compte le nombre d'erreur
     
     /* Définit toutes les erreurs possibles */
-   
-    #Verification du champ nom
-    /*if (empty($_POST['nom']))
-    {// Si la variable est vide
-      $nombreErreur++;
-      $erreur1 = '<p>Veuillez renseigner un nom.</p>';
-    }*/
 
-    #Verification du champ email
-   /* if (empty($_POST['email']))
-    { // Si la variable est vide
-        $nombreErreur++; // On incrémente la variable qui compte les erreurs
-        $erreur2 = '<p>Veuillez renseigner un email.</p>';
-    } 
-    else
-    { //Sinon la variable existe
-        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) // On vérifie 
-        {
-            $nombreErreur++; // On incrémente la variable qui compte les erreurs
-            $erreur3 = '<p>Veuillez renseigner un email valide.</p>';
-        }
-    }*/
     $id = htmlentities($_POST["id"]);
     
     $select_mail = $connexion->query("Select mail from infoetudiant where id = ".$id.";");
