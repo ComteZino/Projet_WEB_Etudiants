@@ -43,18 +43,12 @@
     if ($nombreErreur==0)
     { 
       // Ici il faudra ajouter tout le code pour envoyer l'email.
-        /*$nom = htmlentities($_POST['nom']); // htmlentities() convertit des caractères "spéciaux" en équivalent HTML
-        $email = htmlentities($_POST['email']);*/
         $message = htmlentities($_POST['message']);
         $sujet = htmlentities($_POST['sujet']);
 
 
-        //$destinataire = $email; // Adresse email de la personne à contacter
         $sujet_bis = $sujet; // Titre de l'email
         $contenu = '<html><head><title>Titre du message</title></head><body>';
-        /*$contenu .= '<p>Bonjour, vous avez reçu un nouveau message :</p>';
-        $contenu .= '<p><strong>Nom</strong>: '.$nom.'</p>';
-        $contenu .= '<p><strong>Email</strong>: '.$email.'</p>';*/
         $contenu .= '<p><strong>Message</strong>: '.$message.'</p>';
         $contenu .= '</body></html>'; // Contenu du message de l'email (en XHTML)
         
