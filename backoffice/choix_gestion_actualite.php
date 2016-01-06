@@ -27,7 +27,7 @@
                 <p>Titre de l'actualité</p>   
                 <p class="titre">
                     <p id="erreurtitre"></p>
-                    <input name="titre" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" id="titre" onblur="verifTitre(this);" />
+                    <input name="titre" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
                 </p>
                 
                  <!-- Liste catégorie --> 

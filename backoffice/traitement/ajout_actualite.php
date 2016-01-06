@@ -6,7 +6,10 @@
         header('Location: ../frontoffice/authentification.php');//On renvoie sur la page d'authentification
     }
     $categorie = htmlentities($_POST["categorie"]);
-    $auteur = 'test';
+    $idEtud = $_SESSION["idEtud"];
+    $select_auteur = $connexion->query('Select login from compte where idEtud='.$idEtud.';');
+    $auteur = $select_auteur->fetch();
+    $auteur = $auteur["login"];
     $date = date("Y-m-d");
     // $ok vaut 1 si tous les test sont ok 
     // sinon il sera passé à 0 et l'ajout ne sera pas effectué
