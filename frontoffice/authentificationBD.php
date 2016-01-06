@@ -46,9 +46,35 @@
             $_SESSION['statut'] = $statut;
             $idEtud=$ligne['idEtud'];
             $_SESSION['idEtud'] = $idEtud;
+            
+            //récupération des données pour voir si c'est la première connexion de l'utilisateur
+            $tablePassage="SELECT * FROM passage WHERE idEtud='".$idEtud."'";     
+            $table2 = $connexion->query($tablePassage);
+            $ligne2 = $table2->fetch();
+            $anEntreBD=$ligne2['anneeEntre'];
+            $anSortieBD=$ligne2['anneeSortie'];
+            $cursusBD=$ligne2['cursus'];
+
+            $tableInfoEtud="SELECT * FROM infoetudiant WHERE id='".$idEtud."'";     
+            $table3 = $connexion->query($tableInfoEtud);
+            $ligne3 = $table3->fetch();
+            $adresseBD=$ligne3['adresse'];
+            $cpBD=$ligne3['cp'];
+            $villeBD=$ligne3['ville'];
+            $fixeBD=$ligne3['fixe'];
+            $mobileBD=$ligne3['mobile'];
+            $mailBD=$ligne3['mail'];
             if($pseudo==$ligne['login'] and $mdp==$ligne['password'])
             {	
-                header('Location: accueil.php');  
+                 if($statut!="Admin" and empty($anEntreBD) and empty($anSortieBD) and empty($cursusBD) and empty($adresseBD) and empty($cpBD) and empty($villeBD) and empty($fixeBD) and empty($mobileBD) and empty($mailBD))
+                 {
+                     header('Location: profil.php');  
+                 }
+                 else
+                 {
+                    header('Location: accueil.php');   
+                 }
+                
             }
             else
             {
