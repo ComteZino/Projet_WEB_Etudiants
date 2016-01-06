@@ -30,6 +30,7 @@
     if((isset($_POST["nom"])) && (strlen(trim($_POST["nom"])) > 0))
     {
         $nom = htmlentities($_POST["nom"]);
+        $nom=str_replace(" ","-",$nom);
     }
     else
     {
@@ -39,6 +40,7 @@
     if((isset($_POST["prenom"])) && (strlen(trim($_POST["prenom"])) > 0))
     {
         $prenom = htmlentities($_POST["prenom"]);
+        $prenom=str_replace(" ","-",$prenom);
     }
     else
     {

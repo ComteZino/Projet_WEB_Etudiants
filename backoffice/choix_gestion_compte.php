@@ -43,7 +43,7 @@
                         <?php
                             while($ligne = $query_select->fetch())
                             {
-                                echo '<option value="'.$ligne["id"].'">'.$ligne["nom"].' '.$ligne["prenom"].'</option>';
+                                echo '<option value="'.$ligne["id"].'">'.str_replace("-"," ",$ligne["nom"]).' '.str_replace("-"," ",$ligne["prenom"]).'</option>';
                             }
                         ?>
                     </select>
@@ -61,7 +61,7 @@
                                 // N'affiche pas le compte courant
                                 if($_SESSION["idEtud"] != $lgn["id"])
                                 {
-                                    echo '<option value="'.$lgn["id"].'">'.$lgn["nom"].' '.$lgn["prenom"].'</option>';
+                                    echo '<option value="'.$lgn["id"].'">'.str_replace("-"," ",$lgn["nom"]).' '.str_replace("-"," ",$lgn["prenom"]).'</option>';
                                 }
                             }
                         ?>

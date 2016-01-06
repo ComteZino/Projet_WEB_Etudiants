@@ -41,8 +41,8 @@
                         {
                             echo '<input name="mdp" type="mdp" placeholder="Mot de passe">';
                         }
-                        echo '<input name="nom" type="nom" placeholder="Nom : '.$ligne["nom"].'">';
-                        echo '<input name="prenom" type="prenom" placeholder="Prénom : '.$ligne["prenom"].'">';
+                        echo '<input name="nom" type="nom" placeholder="Nom : '.str_replace("-"," ",$ligne["nom"]).'">';
+                        echo '<input name="prenom" type="prenom" placeholder="Prénom : '.str_replace("-"," ",$ligne["prenom"]).'">';
                         echo '<input name="dateN" type="dateN" placeholder="Date de naissance : '.$ligne["dateNaissance"].'">';
                         echo '<input name="id" type="hidden" value="'.$id.'">';
                     ?>
