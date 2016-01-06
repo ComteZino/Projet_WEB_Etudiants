@@ -22,7 +22,7 @@
         <div id="divPrincipal" class="box-actu">
             <form method="post" action="supp_actualite.php">
                     <h2>L'actualité suivante sera supprimée :</h2>
-                    <input type="hidden" name="id" value="<?php echo $idNews ?>"/>
+                    <input type="hidden" name="idNews" value="<?php echo $idNews ?>"/>
                     <label for="nom"><?php echo "Auteur : ".$ligne["auteur"]; ?></label><br>
                     <label for="prenom"><?php echo "Date : ".$ligne["date"]; ?></label><br>
                     <label for="dateN"><?php echo "Titre : ".$ligne["titre"]; ?></label><br>

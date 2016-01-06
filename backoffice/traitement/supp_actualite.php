@@ -5,7 +5,7 @@
     {
         header('Location: authentification.php');
     }
-    $idNews = htmlentities($_POST["article_suppr"]);
+    $idNews = htmlentities($_POST["idNews"]);
     // Select de toutes les infos de l'étudiant
     $del_news = $connexion->exec('DELETE from news where idNews = '.$idNews.';');
 ?>
