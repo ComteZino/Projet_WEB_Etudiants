@@ -132,6 +132,12 @@ and open the template in the editor.
 
 @media screen and (max-width: 1366px) {  
     #cssmenu ul li a {  
-    font-size: 13px;
+    font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 1280px) {  
+    #cssmenu ul li a {  
+    font-size: 11px;
     }
 }

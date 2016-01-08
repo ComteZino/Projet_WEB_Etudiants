@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 .form-style-5{
-    max-width: 500px;
+    width: 30%;
+    height: 550px;
     padding: 10px 20px;
     background: #D4D4D4;
     margin: 10px auto;
@@ -132,4 +133,69 @@
 #information_non_renseigne{
     font-family: 'Montserrat', Arial, Helvetica, sans-serif; 
     text-align: center;
+}
+
+#box_lycee{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    background: #FD8D4B;
+    
+}
+
+#box_mariage{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    margin-left: 3%;
+    background: #FABB4E;
+    
+}
+
+#box_deces{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    background: #6DD25E;
+    
+}
+
+#box_naissance{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    margin-left: 3%;
+    background: #5AABDB;        
+}
+
+#container{
+    width:100%;
+    height:550px;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 5%;
+}
+
+#container_two{
+    width:100%;
+    height:550px;
+    text-align: center;
+}
+
+.actu_deces{
+    width: 90%;
+    
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    border-color: #6DD25E;
+    border-width:  5px;
+    border-style: solid;
+    background: white;
+    
 }

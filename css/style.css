@@ -10,6 +10,10 @@ and open the template in the editor.
 
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
+body{
+    background-image: url(../images/background.png);
+}
+
 header{
     background: #e5e5e5;
     width: 100%;

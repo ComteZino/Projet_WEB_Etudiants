@@ -77,7 +77,7 @@
                 </select>
                 
                 <!-- Boutons --> 
-                    <input name="Supprimer" class='bouton' value="Modifier l'article" type="submit"/>
+                    <input name="Supprimer" class='bouton' value="Modifier l'actualité" type="submit"/>
                 
             </form>
         </div>   
@@ -99,7 +99,7 @@
                 </select>
                 
                 <!-- Boutons --> 
-                    <input name="Supprimer" class='bouton' value="Supprimer l'article" type="submit"/>
+                    <input name="Supprimer" class='bouton' value="Supprimer l'actualité" type="submit"/>
                 
             </form>
         </div>              
