@@ -21,7 +21,7 @@
             <p>
                 <label for="login">Identifiant:</label>
                 
-                <input type="text" name="Identifiant" id="login" value="" onblur="verifIdentifiant(this);">
+                <input type="text" name="Identifiant" id="loginId" value="" onblur="verifIdentifiant(this);">
             </p>
 
             <p>
@@ -34,7 +34,6 @@
                 <button type="submit" class="login-button">Authentification</button>
             </p>
         </form>
-        <p id="erreuridentifiant" ></p>
-        <p id="erreurmotdepasse"></p>
+        
     </body>
 </html>

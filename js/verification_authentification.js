@@ -29,7 +29,8 @@ function verifIdentifiant(champ)
    else//Si la condition n'est pas respecté alors
    {
       surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
-      document.getElementById("erreuridentifiant").innerHTML = "Vous devez saisir votre identifiant";
+      //document.getElementById("erreuridentifiant").innerHTML = "Vous devez saisir votre identifiant";
+      document.getElementById("loginId").setAttribute("value","Vous devez saisir votre identifiant");
       return false;
    }
 }
@@ -40,13 +41,15 @@ function verifMotDePasse(champ)
    if(champ.value.length > 2 && champ.value.length < 50)
    {
       surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
-      document.getElementById("erreurmotdepasse").innerHTML = " ";
+      document.getElementById("password").setAttribute("type","password");
       return true;
    }
    else
    {
       surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
-      document.getElementById("erreurmotdepasse").innerHTML = "Vous devez saisir votre mot de passe";
+      //document.getElementById("erreurmotdepasse").innerHTML = "Vous devez saisir votre mot de passe";
+      document.getElementById("password").setAttribute("value","Vous devez saisir votre mot de passe");
+      document.getElementById("password").setAttribute("type","text");
       return false;
    }
 }

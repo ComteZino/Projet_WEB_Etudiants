@@ -130,17 +130,6 @@ a:hover {
     color: #a8a7a8;
     height: 16px;
 }
-#erreuridentifiant
-{
-    text-align: center;
-    left: 42px;
-}
-#erreurmotdepasse
-{
-    text-align: center;
-    top: -71px;
-    left: 44px;
-}
 
 p {
     position: relative;
