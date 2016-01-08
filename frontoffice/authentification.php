@@ -20,19 +20,21 @@
         <form method="post" action="authentificationBD.php" id="login" class="login" onsubmit="return verifForm(this)">
             <p>
                 <label for="login">Identifiant:</label>
-                <p id="erreuridentifiant" ></p>
+                
                 <input type="text" name="Identifiant" id="login" value="" onblur="verifIdentifiant(this);">
             </p>
 
             <p>
                 <label for="password">Password:</label>
-                <p id="erreurmotdepasse"></p>
+                
                 <input type="password" name="Password" id="password" value="" onblur="verifMotDePasse(this);">
             </p>
-
+            
             <p class="login-submit">
                 <button type="submit" class="login-button">Authentification</button>
             </p>
         </form>
+        <p id="erreuridentifiant" ></p>
+        <p id="erreurmotdepasse"></p>
     </body>
 </html>
