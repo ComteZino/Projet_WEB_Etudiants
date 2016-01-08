@@ -59,7 +59,6 @@
         // Envoyer l'email
         mail($mail, $sujet_bis, $contenu, $headers); // Fonction principale qui envoi l'email
         header('Location: ../frontoffice/message_envoye.php'); // Afficher un message pour indiquer que le message a été envoyé
-        
     } 
     
     // S'il y a au moins une erreur

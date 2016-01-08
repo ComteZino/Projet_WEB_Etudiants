@@ -1,16 +1,34 @@
-<?php
-session_start();
-if (empty($_SESSION['statut'])) {
-    header('Location: authentification.php');
-}
-require_once('connexionBD.php');
-$tableNewsLycee = "SELECT * FROM news WHERE categorie='lycee' ORDER BY `date` desc";
-$table = $connexion->query($tableNewsLycee);
-$ligne = $table->fetch();
-$auteurLycee = $ligne['auteur'];
-$titreLycee = $ligne['titre'];
-$contenuLycee = $ligne['contenu'];
-$dateLycee = $ligne['date'];
+<?php 
+    session_start();
+    if(empty($_SESSION['statut'])) 
+    {
+        header('Location: authentification.php');
+    }
+    $_SESSION["page"] = "accueil";
+    require_once('connexionBD.php');
+    $tableNewsLycee="SELECT * FROM news WHERE categorie='lycee' ORDER BY `date` desc";     
+    $table = $connexion->query($tableNewsLycee);
+    $ligne = $table->fetch();
+    $auteurLycee=$ligne['auteur'];
+    $titreLycee=$ligne['titre'];
+    $contenuLycee=$ligne['contenu'];
+    $dateLycee=$ligne['date'];
+    
+    $tableNewsMariage="SELECT * FROM news WHERE categorie='mariage' ORDER BY `date` desc";     
+    $table1 = $connexion->query($tableNewsMariage);
+    $ligne1 = $table1->fetch();
+    $auteurMariage=$ligne1['auteur'];
+    $titreMariage=$ligne1['titre'];
+    $contenuMariage=$ligne1['contenu'];
+    $dateMariage=$ligne1['date'];
+    
+    $tableNewsDeces="SELECT * FROM news WHERE categorie='deces' ORDER BY `date` desc";     
+    $table2 = $connexion->query($tableNewsDeces);
+    $ligne2 = $table2->fetch();
+    $auteurDeces=$ligne2['auteur'];
+    $titreDeces=$ligne2['titre'];
+    $contenuDeces=$ligne2['contenu'];
+    $dateDeces=$ligne2['date'];
 
 $tableNewsMariage = "SELECT * FROM news WHERE categorie='mariage' ORDER BY `date` desc";
 $table1 = $connexion->query($tableNewsMariage);
