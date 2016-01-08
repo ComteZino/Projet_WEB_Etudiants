@@ -17,17 +17,56 @@
     <body>
         <div id='cssmenu'>
             <ul>
-                <li class='active'><a href='../frontoffice/accueil.php'><span>Accueil</span></a></li>                            
+                <li><a href='../frontoffice/accueil.php'><span>Accueil</span></a></li>                            
                 <li><a href='#'><span>Forum</span></a></li>
-                              
+                
                 <?php
                     if($_SESSION["statut"] == "Admin")
                     {
-                        echo "<li><a href='choix_gestion_actualite.php'><span>Gestion des actualités</span></a></li>";
-                        echo "<li><a href='#'><span>Stats</span></a></li>";
-                        echo "<li><a href='#'><span>Propositions de stages</span></a></li>";
-                        echo "<li><a href='contact_etudiant.php'><span>Contacter un étudiant</span></a></li>";
-                        echo "<li><a href='choix_gestion_compte.php'><span>Gestion des comptes</span></a></li>";
+                        if($_SESSION["page"] == "choix_gestion_actualite")
+                        {
+                            echo "<li class='active'><a href='choix_gestion_actualite.php'><span>Gestion des actualités</span></a></li>";
+                        }
+                        else
+                        {
+                            echo "<li><a href='choix_gestion_actualite.php'><span>Gestion des actualités</span></a></li>";
+                        }
+                        
+                        if($_SESSION["page"] == "stats")
+                        {
+                            echo "<li class='active'><a href='#'><span>Stats</span></a></li>";
+                        }
+                        else
+                        {
+                            echo "<li><a href='#'><span>Stats</span></a></li>";
+                        }
+                        
+                        if($_SESSION["page"] == "stages")
+                        {
+                            echo "<li class='active'><a href='#'><span>Propositions de stages</span></a></li>";
+                        }
+                        else
+                        {
+                            echo "<li><a href='#'><span>Propositions de stages</span></a></li>";
+                        }
+                        
+                        if($_SESSION["page"] == "contact_etudiant")
+                        {
+                            echo "<li class='active'><a href='contact_etudiant.php'><span>Contacter un étudiant</span></a></li>";
+                        }
+                        else
+                        {
+                            echo "<li><a href='contact_etudiant.php'><span>Contacter un étudiant</span></a></li>";
+                        }
+                        
+                        if($_SESSION["page"] == "choix_gestion_compte")
+                        {
+                            echo "<li class='active'><a href='choix_gestion_compte.php'><span>Gestion des comptes</span></a></li>";
+                        }
+                        else
+                        {
+                            echo "<li><a href='choix_gestion_compte.php'><span>Gestion des comptes</span></a></li>";
+                        }
                     }
                 ?>
                 <li class='last'><a href='../frontoffice/authentification.php'><span>Deconnexion</span></a></li>

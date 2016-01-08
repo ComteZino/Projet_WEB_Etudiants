@@ -4,6 +4,7 @@
     {
         header('Location: ../frontoffice/authentification.php');
     }
+    $_SESSION["page"] = "choix_gestion_actualite";
     $select_actualites = $connexion->query('Select idNews,titre from news');
     $select_actualites2 = $connexion->query('Select idNews,titre from news');
 ?>

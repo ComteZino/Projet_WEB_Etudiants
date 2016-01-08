@@ -4,6 +4,7 @@
     {
         header('Location: authentification.php');
     }
+    $_SESSION["page"] = "profil";
     require_once('connexionBD.php');
     $idEtud=$_SESSION['idEtud'];
     $tableEtudiant="SELECT * FROM etudiant WHERE id='".$idEtud."'";     

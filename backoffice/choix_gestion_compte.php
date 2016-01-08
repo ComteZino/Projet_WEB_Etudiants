@@ -4,6 +4,7 @@
     {
         header('Location: ../frontoffice/authentification.php');
     }
+    $_SESSION["page"] = "choix_gestion_compte";
     $select_comptes = ('Select id,nom,prenom from etudiant');
     $query_select = $connexion->query($select_comptes);
     $query_select2 = $connexion->query($select_comptes);

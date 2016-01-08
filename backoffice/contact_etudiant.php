@@ -4,6 +4,7 @@
     {
         header('Location: authentification.php');
     }
+    $_SESSION["page"] = "contact_etudiant";
     $select_comptes = ('Select id,nom,prenom from etudiant');
     $query_select = $connexion->query($select_comptes);
 ?>

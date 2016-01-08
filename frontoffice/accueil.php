@@ -4,6 +4,7 @@
     {
         header('Location: authentification.php');
     }
+    $_SESSION["page"] = "accueil";
     require_once('connexionBD.php');
     $tableNewsLycee="SELECT * FROM news WHERE categorie='lycee' ORDER BY `date` desc";     
     $table = $connexion->query($tableNewsLycee);

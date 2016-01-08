@@ -17,16 +17,44 @@
     <body>
         <div id='cssmenu'>
             <ul>
-                <li class='active'><a href='accueil.php'><span>Accueil</span></a></li>                            
-                <li><a href='#'><span>Forum</span></a></li>
-                              
                 <?php
+                    if($_SESSION["page"] == "accueil")
+                    {
+                        echo "<li class='active'><a href='accueil.php'><span>Accueil</span></a></li>";
+                    }
+                    else
+                    {
+                        echo "<li><a href='accueil.php'><span>Accueil</span></a></li>";
+                    }
+                    
+                    if($_SESSION["page"] == "forum")
+                    {
+                        echo "<li class='active'><a href='#'><span>Forum</span></a></li>";
+                    }
+                    else
+                    {
+                        echo "<li><a href='#'><span>Forum</span></a></li>";
+                    }
                     if($_SESSION["statut"] == "Util")
                     {
-                        echo "<li><a href='profil.php'><span>Profil</span></a></li>";
-                        echo "<li><a href='contact.php'><span>Contact</span></a></li>";
-                    }
+                        if($_SESSION["page"] == "profil")
+                        {
+                            echo "<li class='active'><a href='profil.php'><span>Profil</span></a></li>";
+                        }
+                        else
+                        {
+                            echo "<li><a href='profil.php'><span>Profil</span></a></li>";
+                        }
 
+                        if($_SESSION["page"] == "contact")
+                        {
+                            echo "<li class='active'><a href='contact.php'><span>Contact</span></a></li>";
+                        }
+                        else
+                        {
+                            echo "<li><a href='contact.php'><span>Contact</span></a></li>";
+                        } 
+                    }
                     if($_SESSION["statut"] == "Admin")
                     {
                         echo "<li><a href='../backoffice/choix_gestion_actualite.php'><span>Gestion des actualités</span></a></li>";

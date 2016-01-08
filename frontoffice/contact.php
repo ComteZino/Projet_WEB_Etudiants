@@ -4,6 +4,7 @@
     {
         header('Location: authentification.php');
     }
+    $_SESSION["page"] = "contact";
 ?>
 <html>
     <head>
