@@ -185,7 +185,31 @@
     height:550px;
     text-align: center;
 }
-
+.actu_lycee{
+    width: 90%;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    border-color: white;
+    border-width:  5px;
+    border-style: solid;
+    background: white;
+    
+}
+.actu_mariage{
+    width: 90%;
+    
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    border-color: white;
+    border-width:  5px;
+    border-style: solid;
+    background: white;
+    
+}
 .actu_deces{
     width: 90%;
     
@@ -193,7 +217,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2%;
-    border-color: #6DD25E;
+    border-color: white;
     border-width:  5px;
     border-style: solid;
     background: white;
