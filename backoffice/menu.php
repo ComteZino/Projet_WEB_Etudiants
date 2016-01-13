@@ -23,13 +23,13 @@
                 <?php
                     if($_SESSION["statut"] == "Admin")
                     {
-                        if($_SESSION["page"] == "choix_gestion_actualite")
+                        if($_SESSION["page"] == "gestion")
                         {
-                            echo "<li class='active'><a href='choix_gestion_actualite.php'><span>Gestion des actualités</span></a></li>";
+                            echo "<li class='active'><a href='gestion.php'><span>Gestion</span></a></li>";
                         }
                         else
                         {
-                            echo "<li><a href='choix_gestion_actualite.php'><span>Gestion des actualités</span></a></li>";
+                            echo "<li><a href='gestion.php'><span>Gestion</span></a></li>";
                         }
                         
                         if($_SESSION["page"] == "stats")
@@ -57,15 +57,6 @@
                         else
                         {
                             echo "<li><a href='contact_etudiant.php'><span>Contacter un étudiant</span></a></li>";
-                        }
-                        
-                        if($_SESSION["page"] == "choix_gestion_compte")
-                        {
-                            echo "<li class='active'><a href='choix_gestion_compte.php'><span>Gestion des comptes</span></a></li>";
-                        }
-                        else
-                        {
-                            echo "<li><a href='choix_gestion_compte.php'><span>Gestion des comptes</span></a></li>";
                         }
                     }
                 ?>

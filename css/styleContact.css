@@ -16,7 +16,12 @@ html{
     height:100%;
 }
 
-h2, p{
+h1{
+    font-family: '../font/Silica-Light.ttf', Arial, Helvetica, sans-serif;
+    color: #028fcc;
+}
+
+p, h3{
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
 
@@ -31,20 +36,13 @@ h2, p{
 }
 
 #form-div {
-    background : #D4D4D4;
-    padding-left:35px;
-    padding-right:35px;
-    padding-top:35px;
-    padding-bottom:50px;
-    width: 450px;
-    float: left;
-    left: 50%;
-    position: absolute;
-    margin-top:30px;
-    margin-left: -260px;
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
-    box-shadow : 10px 10px 5px  #888888 ;
+    max-width: 35%;
+    padding: 10px 20px;
+    background: #FFFFFF;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     
 }
 
@@ -53,7 +51,6 @@ h2, p{
     font-family: Helvetica, Arial, sans-serif;
     font-weight:500;
     font-size: 18px;
-    border-radius: 0;
     line-height: 22px;
     background-color: #fbfbfb;
     padding: 13px 13px 13px 54px;
@@ -63,13 +60,15 @@ h2, p{
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
-    border: 3px solid rgba(0,0,0,0);
+    border-color: #CF4D35;
+    border-style: solid;
+    border-width: 2px; 
 }
 
 .feedback-input:focus{
     background: #fff;
     box-shadow: 0;
-    border: 3px solid #109177;
+    border: 2px solid #E77A66;
     color: #3498db;
     outline: none;
     padding: 13px 13px 13px 54px;
@@ -86,7 +85,6 @@ h2, p{
     background-size: 30px 30px;
     background-position: 11px 8px;
     background-repeat: no-repeat;
-    border-radius: 10px;
 }
 
 #nom:focus{
@@ -102,7 +100,6 @@ h2, p{
     background-size: 30px 30px;
     background-position: 11px 8px;
     background-repeat: no-repeat;
-    border-radius: 10px;
 }
 
 #email:focus{
@@ -110,7 +107,6 @@ h2, p{
     background-size: 30px 30px;
     background-position: 11px 8px;
     background-repeat: no-repeat;
-    border-radius: 10px;
 }
 
 #sujet{
@@ -118,7 +114,6 @@ h2, p{
     background-size: 30px 30px;
     background-position: 11px 8px;
     background-repeat: no-repeat;
-    border-radius: 10px;
 }
 
 #sujet:focus{
@@ -126,7 +121,6 @@ h2, p{
     background-size: 30px 30px;
     background-position: 11px 8px;
     background-repeat: no-repeat;
-    border-radius: 10px;
 }
 
 #message{
@@ -134,7 +128,6 @@ h2, p{
     background-size: 30px 30px;
     background-position: 11px 8px;
     background-repeat: no-repeat;
-    border-radius: 10px;
 }
 
 textarea {
@@ -149,7 +142,7 @@ input {
   font-size: 2.0rem;
   padding: 1.25rem 2.5rem;
   display: block;
-  background-color: #109177;
+  background-color: #CF4D35;
   border: 3px solid transparent;
   color: #ffffff;
   font-weight: 300;
@@ -159,14 +152,15 @@ input {
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   font: 400 1.4rem 'Lato', Verdana, Helvetica, sans-serif;
+  margin-top: 30px;
 }
 
 input:hover {
   background-color: #ffffff;
-  color: #109177;
-  border-color: #109177;
-  
+  color: #CF4D35;
+  border-color: #CF4D35;
 }
+
 
 @media only screen and (max-width: 580px) {
     #form-div{

@@ -22,9 +22,9 @@
         <?php include 'menu.php'; ?>   
         
         
-        <div id="form-main">           
-            <div id="form-div">
-                <h2 id="test">Formulaire de contact</h2>
+               
+            <div id="divPrincipal" class="box-actu">
+                <h1 id="test">Formulaire de contact</h1>
                 <form action="../backoffice/traitement_contact_etudiant.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
                                     
                     <select id="id" name="id">
@@ -55,6 +55,5 @@
                     </section>                  
                 </form>
             </div>
-        </div>
     </body>
 </html>

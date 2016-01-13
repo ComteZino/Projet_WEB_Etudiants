@@ -41,16 +41,22 @@
     <body>
 <?php include 'header.php'; ?>
         <?php include 'menu.php'; ?>
-        <div id="container">
+        
+        <!--- Zone fil ariane --->
+        <div class="filAriane">
+            Accueil
+        </div>
+        
+        <div class="box-principal">
             <div id="box_lycee" class="form-style-5">   
-                <fieldset>
+                
                     <legend><span class="number" id="number1">1</span>Dernière actualité du lycée :</legend>
                      <div class="actu_lycee">
                         <p><?php echo 'Auteur : ' . $auteurLycee . ' Date de publication : ' . $dateLycee; ?></p>
                         <p><?php echo $titreLycee; ?></p>
                         <p><?php echo substr(htmlspecialchars_decode(strip_tags($contenuLycee)), 0, 140) ; ?></p>
                      </div>
-                </fieldset>  
+                
                 <?php 
                     while($ligne = $table->fetch())
                     {
@@ -65,14 +71,14 @@
                 ?>
             </div>
             <div id="box_mariage" class="form-style-5">
-                <fieldset>
+                
                     <legend><span class="number" id="number2">2</span>Dernière actualité de Mariage :</legend>
                      <div class="actu_mariage">
                         <p><?php echo 'Auteur : ' . $auteurMariage . ' Date de publication : ' . $dateMariage; ?></p>
                         <p><?php echo $titreMariage; ?></p>
                         <p><?php echo substr(htmlspecialchars_decode(strip_tags($contenuMariage)), 0, 140); ?></p>
                     </div>
-                </fieldset>
+                
                 <?php 
                     while($ligne1 = $table1->fetch())
                     {
@@ -89,14 +95,14 @@
         </div>    
         <div id="container_two">
             <div id="box_deces" class="form-style-5">
-                <fieldset >
+                
                     <legend><span class="number" id="number3">3</span>Dernière actualité de décès :</legend>
                     <div class="actu_deces">
                         <p><?php echo 'Auteur : ' . $auteurDeces . ' Date de publication : ' . $dateDeces; ?></p>
                         <p><?php echo $titreDeces; ?></p>
                         <p><?php echo substr(htmlspecialchars_decode(strip_tags($contenuDeces)), 0, 140) ; ?></p>
                     </div>
-                </fieldset>
+                
                 <?php 
                     while($ligne2 = $table2->fetch())
                     {
@@ -111,12 +117,12 @@
                 ?>
             </div>
             <div id="box_naissance" class="form-style-5">
-                <fieldset>
+                
                     <legend><span class="number" id="number4">4</span>Dernière actualité de décès :</legend>
                     <p><?php echo 'Auteur : ' . $auteurDeces . ' Date de publication : ' . $dateDeces; ?></p>
                     <p><?php echo $titreDeces; ?></p>
                     <p><?php echo substr(htmlspecialchars_decode(strip_tags($contenuDeces)), 0, 140); ?></p>
-                </fieldset>
+                
             </div>
         </div> 
     </body>

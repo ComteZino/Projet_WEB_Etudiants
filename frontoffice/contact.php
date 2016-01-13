@@ -22,7 +22,7 @@
         
         <div id="form-main">           
             <div id="form-div">
-                <h2 id="test">Formulaire de contact</h2>
+                <h1 id="test">Formulaire de contact</h1>
                 <form action="../backoffice/traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
                                     
                     <p class="nom">

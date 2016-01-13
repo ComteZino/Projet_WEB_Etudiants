@@ -18,11 +18,16 @@
     </head>
     <body>
         <?php include 'header.php'; ?>
-        <?php include 'menu.php'; ?>   
+        <?php include 'menu.php'; ?> 
+        
+        <!--- Zone fil ariane --->
+        <div class="filAriane">
+            <a href="../frontoffice/accueil.php">Accueil</a> » <a href="gestion.php">Gestion</a> » Gestion des actualités
+        </div>
         
         <!--- Zone d'ajout d'article --->
         <div id="divPrincipal" class="box-actu">
-            <h2>Ajout d'une actualité</h2>
+            <h1>Ajout d'une actualité</h1>
             <form action="traitement/ajout_actualite.php" id="ajout" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
                 <!-- Champ titre -->    
                 <p>Titre de l'actualité</p>   
@@ -43,14 +48,14 @@
 
                 <!-- Champ contenue -->  
                 <p>Contenu de la page</p>
-                <textarea name="contenu" rows="10" cols="50" >
-                    <?php
-                        if (!empty($_POST["contenu"]))
-                        {
-                            echo stripcslashes(htmlspecialchars($_POST["contenu"],ENT_QUOTES));
-                        }
-                    ?>
-                </textarea>
+                    <textarea name="contenu" rows="10" cols="50" >
+                        <?php
+                            if (!empty($_POST["contenu"]))
+                            {
+                                echo stripcslashes(htmlspecialchars($_POST["contenu"],ENT_QUOTES));
+                            }
+                        ?>
+                    </textarea>
                 <script type="text/javascript">
                     CKEDITOR.replace( 'contenu' );// Mise en place de l'outil d'édition de texte précédement appelé 
                 </script>
@@ -63,7 +68,7 @@
         
         <!--- Zone de modification d'article --->
         <div id="divPrincipal" class="box-actu">
-            <h2>Modification d'une actualité</h2>     
+            <h1>Modification d'une actualité</h1>     
             <form method="post" action="traitement/modification_actualite.php">     
                 
                 <!-- Liste modifier article --> 
@@ -85,7 +90,7 @@
             
         <!--- Zone de suppression d'article --->
         <div id="divPrincipal" class="box-actu">
-            <h2>Suppression d'une actualité</h2>     
+            <h1>Suppression d'une actualité</h1>     
             <form method="post" action="traitement/suppression_actualite.php">     
                 
                 <!-- Liste supprimer article --> 
@@ -104,6 +109,6 @@
                 
             </form>
         </div>              
-   
+        <?php include '../frontoffice/footer.php'; ?> 
     </body>
 </html>

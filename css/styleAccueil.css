@@ -1,15 +1,42 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
-.form-style-5{
-    width: 30%;
-    height: 550px;
+
+.box-principal{
+    max-width: 55%;
     padding: 10px 20px;
-    background: #D4D4D4;
-    margin: 10px auto;
+    background: #F9F9F9;
+    margin: 40px auto;
     padding: 20px;
-    border-radius: 8px;
     font-family: Georgia, "Times New Roman", Times, serif;
-	 box-shadow : 10px 10px 5px  #888888 ;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
 }
+
+#box_lycee{
+    max-width: 45%;
+    height: 55%;
+    background: #FFFFFF;
+    padding: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#box_mariage{
+    max-width: 45%;
+    height: 55%;
+    margin-left: 3%;
+    background: #FFFFFF;
+    padding: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*
 .form-style-5 fieldset{
     border: none;
 }
@@ -53,7 +80,7 @@
     -moz-box-sizing: border-box; 
     background-color: white;
     /*color:#8a97a0;*/
-    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+   /* -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     margin-bottom: 15px;
     
@@ -134,92 +161,4 @@
     font-family: 'Montserrat', Arial, Helvetica, sans-serif; 
     text-align: center;
 }
-
-#box_lycee{
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-    background: #FD8D4B;
-    
-}
-
-#box_mariage{
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-    margin-left: 3%;
-    background: #FABB4E;
-    
-}
-
-#box_deces{
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-    background: #6DD25E;
-    
-}
-
-#box_naissance{
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-    margin-left: 3%;
-    background: #5AABDB;        
-}
-
-#container{
-    width:100%;
-    height:550px;
-    text-align: center;
-    margin-top: 1%;
-    margin-bottom: 5%;
-}
-
-#container_two{
-    width:100%;
-    height:550px;
-    text-align: center;
-}
-.actu_lycee{
-    width: 90%;
-    border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2%;
-    border-color: white;
-    border-width:  5px;
-    border-style: solid;
-    background: white;
-    
-}
-.actu_mariage{
-    width: 90%;
-    
-    border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2%;
-    border-color: white;
-    border-width:  5px;
-    border-style: solid;
-    background: white;
-    
-}
-.actu_deces{
-    width: 90%;
-    
-    border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2%;
-    border-color: white;
-    border-width:  5px;
-    border-style: solid;
-    background: white;
-    
-}
+*/

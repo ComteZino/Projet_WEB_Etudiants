@@ -11,12 +11,13 @@ and open the template in the editor.
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 
 #cssmenu {
-    background: #A3A3A3;
+    background: #028fcc;
     width: auto;
+    
 }
-#cssmenu ul {
+#cssmenu ul {   
     list-style: none;
-    margin: 0;
+    margin: 0 0 0 20%;
     padding: 0;
     line-height: 1;
     display: block;
@@ -42,6 +43,7 @@ and open the template in the editor.
     text-align: center;
 }
 #cssmenu ul li a {
+    
     color: #ffffff;
     text-decoration: none;
     display: block;
@@ -58,7 +60,7 @@ and open the template in the editor.
     transition: color .25s;
 }
 #cssmenu ul li a:hover {
-    color: #333333;
+    color: #1F1F1F;
 }
 #cssmenu ul li a:hover:before {
     width: 100%;
@@ -82,7 +84,7 @@ and open the template in the editor.
     bottom: 0;
     height: 3px;
     width: 0;
-    background: #333333;
+    background: #1F1F1F;
     -webkit-transition: width .25s;
     -moz-transition: width .25s;
     -ms-transition: width .25s;
@@ -94,7 +96,7 @@ and open the template in the editor.
     display: none;
 }
 #cssmenu ul li.active a {
-    color: #333333;
+    color: #1F1F1F;
 }
 #cssmenu ul li.active a:before {
     width: 100%;
