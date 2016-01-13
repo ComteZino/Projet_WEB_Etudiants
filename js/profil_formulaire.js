@@ -505,14 +505,92 @@ function afficheFormulaire(text){
     erreursecteuractivite=document.createElement("p");
     erreursecteuractivite.setAttribute("id","erreursecteuractivite");
     partieFormulaire5.appendChild(erreursecteuractivite);
-
+	
+    
+    //création de la partie 6 du formulaire
+    fieldsetEnfant6 = document.createElement("fieldset");
+    fieldsetEnfant6.setAttribute("id","part6");
+    formForumlaire.appendChild(fieldsetEnfant6);
+    //creation la partie 4 du formulaire
+    partieFormulaire6= document.getElementById("part6");
+    numTitrePartie6 = document.createElement("legend");
+    numTitrePartie6.setAttribute("id","titre6");
+    partieFormulaire6.appendChild(numTitrePartie6);
+    legend6= document.getElementById("titre6");
+    span6=document.createElement("span");
+    span6.setAttribute("id","number6");
+    span6.setAttribute("class","number");
+    legend6.appendChild(span6);
+    remplaceTexte(span6,"6");
+    remplaceTexte(legend6,"Stage");
+    label1Stage = document.createElement("label");
+    label1Stage.setAttribute("for","stage1");
+    partieFormulaire6.appendChild(label1Stage);
+    remplaceTexte(label1Stage,"Stage de première année");
+    inputEntStage1=document.createElement("input");
+    inputEntStage1.setAttribute("name","entstage1");
+    inputEntStage1.setAttribute("id","entstage1");
+    inputEntStage1.setAttribute("type","entstage1");
+    inputEntStage1.setAttribute("placeholder","Nom de l'entreprise : ");
+    //inputEntStage1.setAttribute("onblur","verifFormation(this);"); 
+    if(totalInfo[20]!==null){
+        inputEntStage1.setAttribute("value",totalInfo[20].replace(/-/gi," "));
+    }
+    partieFormulaire6.appendChild(inputEntStage1);
+    /*erreurformation=document.createElement("p");
+    erreurformation.setAttribute("id","erreurformation");
+    partieFormulaire6.appendChild(erreurformation);*/
+    inputVilleStage1=document.createElement("input");
+    inputVilleStage1.setAttribute("name","villestage1");
+    inputVilleStage1.setAttribute("id","villestage1");
+    inputVilleStage1.setAttribute("type","villestage1");
+    inputVilleStage1.setAttribute("placeholder","Ville où est situé l'entreprise : ");
+    //inputEntStage1.setAttribute("onblur","verifFormation(this);"); 
+    if(totalInfo[21]!==null){
+        inputVilleStage1.setAttribute("value",totalInfo[21].replace(/-/gi," "));
+    }
+    partieFormulaire6.appendChild(inputVilleStage1);
+    /*erreurformation=document.createElement("p");
+    erreurformation.setAttribute("id","erreurformation");
+    partieFormulaire6.appendChild(erreurformation);*/
+    label2Stage = document.createElement("label");
+    label2Stage.setAttribute("for","stage2");
+    partieFormulaire6.appendChild(label2Stage);
+    remplaceTexte(label2Stage,"Stage de deuxième année");
+    inputEntStage2=document.createElement("input");
+    inputEntStage2.setAttribute("name","entstage2");
+    inputEntStage2.setAttribute("id","entstage2");
+    inputEntStage2.setAttribute("type","entstage2");
+    inputEntStage2.setAttribute("placeholder","Nom de l'entreprise : ");
+    //inputEntStage1.setAttribute("onblur","verifFormation(this);"); 
+    if(totalInfo[22]!==null){
+        inputEntStage2.setAttribute("value",totalInfo[22].replace(/-/gi," "));
+    }
+    partieFormulaire6.appendChild(inputEntStage2);
+    /*erreurformation=document.createElement("p");
+    erreurformation.setAttribute("id","erreurformation");
+    partieFormulaire6.appendChild(erreurformation);*/
+    inputVilleStage2=document.createElement("input");
+    inputVilleStage2.setAttribute("name","villestage2");
+    inputVilleStage2.setAttribute("id","villestage2");
+    inputVilleStage2.setAttribute("type","villestage2");
+    inputVilleStage2.setAttribute("placeholder","Ville où est situé l'entreprise : ");
+    //inputEntStage1.setAttribute("onblur","verifFormation(this);"); 
+    if(totalInfo[23]!==null){
+        inputVilleStage2.setAttribute("value",totalInfo[23].replace(/-/gi," "));
+    }
+    partieFormulaire6.appendChild(inputVilleStage2);
+    /*erreurformation=document.createElement("p");
+    erreurformation.setAttribute("id","erreurformation");
+    partieFormulaire6.appendChild(erreurformation);*/
+    
+    
     //créaction du boutton d'envoi du formulaire
     btnForm = document.createElement("input");
     btnForm.setAttribute("name","soumettre")
     btnForm.setAttribute("type","submit");
     btnForm.setAttribute("value","Modifier");
     formForumlaire.appendChild(btnForm);
-	
 }
 
 function remplaceTexte(el, texte) {

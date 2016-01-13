@@ -47,9 +47,24 @@
     $formation=$ligne5['formation'];
     $anneeFormation=$ligne5['anneeFormation'];
     $discipline=$ligne5['discipline'];
+    
+    $tableStage="SELECT * FROM stage WHERE idEtud='".$idEtud."'"; 
+    $table6 = $connexion->query($tableStage);
+    $ligne6 = $table6->fetch();
+    $idStage=$ligne6['id'];
+    $entNom=$ligne6['EntNom'];
+    $entVille=$ligne6['EntVille'];
+    $ligne6 = $table6->fetch();
+    $idStage2=$ligne6['id'];
+    $entNom2=$ligne6['EntNom'];
+    $entVille2=$ligne6['EntVille'];
+    
+    $_SESSION['idStage']=$idStage;
+    $_SESSION['idStage2']=$idStage2;
 
     $totalInfos=$nom."/".$prenom."/".$dateNaissance."/".$anEntre."/".$anSortie."/".$cursus."/".$adresse."/".$cp."/".$ville."/".$fixe."/"
-            .$mobile."/".$mail."/".$formation."/".$anneeFormation."/".$discipline."/".$emploi."/".$typeContrat."/".$entreprise."/".$adresseEnt."/".$secteurActivite;
+            .$mobile."/".$mail."/".$formation."/".$anneeFormation."/".$discipline."/".$emploi."/".$typeContrat."/".$entreprise."/".$adresseEnt."/"
+            .$secteurActivite."/".$entNom."/".$entVille."/".$entNom2."/".$entVille2;
 ?>
 <html>
     <head>
@@ -75,8 +90,7 @@
                                 <p>".str_replace("-"," ",$prenom)."</p>
                                 <p>Né le : ".$dateNaissance."</p>
                             </fieldset>";
-                        echo "<p id="."information_non_renseigne".">Vous n'avez pas encore renseigné toutes vos informations !</p>
-                            <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
+                        echo "<p id="."information_non_renseigne".">Vous n'avez pas encore renseigné toutes vos informations !</p>";
                     }
                     else
                     {
@@ -101,64 +115,57 @@
                                 <p>Votre numéro de portable : ".$mobile."</p>
                                 <p>Votre eMail : ".$mail."</p>
                             </fieldset>";
-                            if( empty($formation) and empty($anneeFormation) and empty($discipline))
-                            {
-                                echo "<p id="."information_non_renseigne".">Vous n'avez pas rien renseigné pour la partie 4 qui est votre poursuite d'études
-                                        si vous voulez modifier cela cliquer sur le boutton si dessous :</p>";
-                                
-                                 if(empty($emploi) and empty($typeContrat) and empty($entreprise) and empty($adresseEnt) and empty($secteurActivite))
-                                {
-                                    echo "<p id="."information_non_renseigne".">Vous n'avez pas rien renseigné pour la partie 5 qui est votre emploi
-                                    si vous voulez modifier cela cliquer sur le boutton si dessous :</p>
-                                    <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
-                                }
-                                else
-                                {
-                                    echo "<fieldset>
-                                        <legend><span class="."number"." id="."number5".">5</span>Votre parcours professionnel</legend>
-                                        <p>Vous emploi : ".str_replace("-"," ",$emploi)."</p>
-                                        <p>Le type de contract : ".$typeContrat."</p>
-                                        <p>Dans l'entreprise : ".str_replace("-"," ",$entreprise)."</p>
-                                        <p>Adresse de l'entreprise : ".str_replace("-"," ",$adresseEnt)."</p>
-                                        <p>Dans le secteur d'activité : ".str_replace("-"," ",$secteurActivite)."</p>
-                                        </fieldset>
-                                        <p>Pour modifier vos informations, cliquez sur le boutton si dessous :</p>
-                                        <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
-                                }
-                            }
-                            else
-                            {
-                                echo "<fieldset>
-                                        <legend><span class="."number"." id="."number4".">4</span>Poursuite d'études</legend>
-                                        <p>Vous avez fait : ".str_replace("-"," ",$formation)."</p>
-                                        <p>En : ".$anneeFormation."</p>
-                                        <p>Votre discipline : ".str_replace("-"," ",$discipline)."</p>
-                                    </fieldset>";
-                                    
-                                if(empty($emploi) and empty($typeContrat) and empty($entreprise) and empty($adresseEnt) and empty($secteurActivite))
-                                {
-                                    echo "<p id="."information_non_renseigne".">Vous n'avez pas rien renseigné pour la partie 5 qui est votre emploi
-                                    si vous voulez modifier cela cliquer sur le boutton si dessous :</p>
-                                    <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
-                                }
-                                else
-                                {
-                                    echo "<fieldset>
-                                        <legend><span class="."number"." id="."number5".">5</span>Votre parcours professionnel</legend>
-                                        <p>Vous emploi : ".str_replace("-"," ",$emploi)."</p>
-                                        <p>Le type de contract : ".$typeContrat."</p>
-                                        <p>Dans l'entreprise : ".str_replace("-"," ",$entreprise)."</p>
-                                        <p>Adresse de l'entreprise : ".str_replace("-"," ",$adresseEnt)."</p>
-                                        <p>Dans le secteur d'activité : ".str_replace("-"," ",$secteurActivite)."</p>
-                                        </fieldset>
-                                        <p>Pour modifier vos informations, cliquez sur le boutton si dessous :</p>
-                                        <input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
-                                }
-                            }
-                            //<input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$nom."'".","."'".$prenom."'".","."'".$dateNaissance."'".");"." />";
+                        if( empty($formation) and empty($anneeFormation) and empty($discipline))
+                        {
+                            echo "<p id="."information_non_renseigne".">Partie 4 qui est votre poursuite d'études
+                                    non renseigné</p>";
+                        }
+                        else
+                        {
+                            echo "<fieldset>
+                                    <legend><span class="."number"." id="."number4".">4</span>Poursuite d'études</legend>
+                                    <p>Vous avez fait : ".str_replace("-"," ",$formation)."</p>
+                                    <p>En : ".$anneeFormation."</p>
+                                    <p>Votre discipline : ".str_replace("-"," ",$discipline)."</p>
+                                </fieldset>";
+                        }
+                        if(empty($emploi) and empty($typeContrat) and empty($entreprise) and empty($adresseEnt) and empty($secteurActivite))
+                        {
+                            echo "<p id="."information_non_renseigne".">Partie 5 qui est votre emploi
+                            non renseigné</p>";
+                        }
+                        else
+                        {
+                            echo "<fieldset>
+                                <legend><span class="."number"." id="."number5".">5</span>Votre parcours professionnel</legend>
+                                <p>Vous emploi : ".str_replace("-"," ",$emploi)."</p>
+                                <p>Le type de contract : ".$typeContrat."</p>
+                                <p>Dans l'entreprise : ".str_replace("-"," ",$entreprise)."</p>
+                                <p>Adresse de l'entreprise : ".str_replace("-"," ",$adresseEnt)."</p>
+                                <p>Dans le secteur d'activité : ".str_replace("-"," ",$secteurActivite)."</p>
+                                </fieldset>";
+                        }
+                        if(empty($entNom) and empty($entVille))
+                        {
+                            echo "<p id="."information_non_renseigne".">Partie 6 qui concerne vos stages
+                                    non renseigné</p>";
+                        }
+                        else
+                        {
+                            echo "<fieldset>
+                                <legend><span class="."number"." id="."number6".">6</span>Vos stages</legend>
+                                <label>Stage de première année</label>
+                                <p>Nom de l'entreprise : ".str_replace("-"," ",$entNom)."</p>
+                                <p>Ville d'implentation : ".str_replace("-"," ",$entVille)."</p>
+                                <label>Stage de deuxième année</label>
+                                <p>Nom de l'entreprise : ".str_replace("-"," ",$entNom2)."</p>
+                                <p>Ville d'implentation : ".str_replace("-"," ",$entVille2)."</p>
+                                </fieldset>";
+                        }   
                     }
+                     echo "<p id="."information_non_renseigne".">Pour modifier, cliquez sur le boutton si dessous :</p>"
+                        . "<input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
                 ?>
-
             </form>
         </div>
     </body>
