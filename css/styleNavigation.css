@@ -173,6 +173,7 @@ and open the template in the editor.
     display: none;/******enlève le soulignage du sous menu******/
 }
 #cssmenu li.active ul li:hover a {
+    color: #1F1F1F;
     width: 75px;
     border-bottom: 3px solid #1F1F1F;
     -webkit-transition: width .25s;
@@ -180,4 +181,9 @@ and open the template in the editor.
     -ms-transition: width .25s;
     -o-transition: width .25s;
     transition: width .25s;
+    -webkit-transition: color .25s;
+    -moz-transition: color .25s;
+    -ms-transition: color .25s;
+    -o-transition: color .25s;
+    transition: color .25s;
 }
