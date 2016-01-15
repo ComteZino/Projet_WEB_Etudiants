@@ -18,7 +18,10 @@
     <body>
         <?php include 'header.php'; ?>
         <?php include 'menu.php'; ?>   
-        
+        <!--- Zone fil ariane --->
+        <div class="filAriane">
+            <a href="../frontoffice/accueil.php">Accueil</a> » Contact
+        </div>
         
         <div id="form-main">           
             <div id="form-div">
