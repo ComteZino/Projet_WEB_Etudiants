@@ -78,7 +78,11 @@
     </head>
     <body id="ajout">
         <?php include 'header.php'; ?>
-        <?php include 'menu.php'; ?>  
+        <?php include 'menu.php'; ?> 
+        <!--- Zone fil ariane --->
+        <div class="filAriane">
+            <a href="../frontoffice/accueil.php">Accueil</a> » Profil
+        </div>
             <div id="divPrincipal" class="form-style-5">
             <form id="modifForm">
                 <?php 

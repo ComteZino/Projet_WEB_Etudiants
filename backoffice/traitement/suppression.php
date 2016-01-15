@@ -26,21 +26,23 @@
     </head>
     <body>
         <?php include 'header.php'; ?>
-        <?php include 'menu.php'; ?>      
-        <div class="form-style-5">
+        <?php include 'menu.php'; ?>
+        <!--- Zone fil ariane --->
+        <div class="filAriane">
+            <a href="../frontoffice/accueil.php">Accueil</a> » <a href="../choix_gestion_compte.php">Gestion des comptes</a> » Suppression du compte
+        </div>
+        <div class="box-gestion">
             <form method="post" action="supp.php">
-                <fieldset>
-                    <legend>Le compte suivant sera supprimé :</legend>
-                    <input type="hidden" name="id" value="<?php echo $id ?>"/>
-                    <label for="statut"><?php echo "Statut : ".$statut; ?></label>
-                    <label for="nom"><?php echo "Nom : ".$ligne["nom"]; ?></label>
-                    <label for="prenom"><?php echo "Prénom : ".$ligne["prenom"]; ?></label>
-                    <label for="dateN"><?php echo "Date de naissance : ".$ligne["dateNaissance"]; ?></label>
-                    <label for="login"><?php echo "Identifiant : ".$ligne["login"]; ?></label>
-                    <input id="voir" type="submit" value="Supprimer ce compte"/>
-                    <br>
-                    <a href="../choix_gestion_compte.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
-                </fieldset>
+                <h1>Le compte suivant sera supprimé</h1>
+                <input type="hidden" name="id" value="<?php echo $id ?>"/>
+                <label><span class="recap">Statut : </span><?php echo $statut; ?></label>
+                <label><span class="recap">Nom : </span><?php echo $ligne["nom"]; ?></label>
+                <label><span class="recap">Prénom : </span><?php echo $ligne["prenom"]; ?></label>
+                <label><span class="recap">Date de naissance : </span><?php echo $ligne["dateNaissance"]; ?></label>
+                <label><span class="recap">Identifiant : </span><?php echo $ligne["login"]; ?></label>
+                <input class='bouton' type="submit" value="Supprimer ce compte"/>
+                <br>
+                <a href="../choix_gestion_compte.php"><input class='bouton' type="button" value="Retourner à la gestion"></a>
             </form>
 	</div>
     </body>

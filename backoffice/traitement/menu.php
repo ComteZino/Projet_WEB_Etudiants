@@ -16,20 +16,34 @@
     </head>
     <body>
         <div id='cssmenu'>
-            <ul>
-                <li class='active'><a href='../../frontoffice/accueil.php'><span>Accueil</span></a></li>                            
-                <li><a href='#'><span>Forum</span></a></li>
-                              
+            <ul>                              
                 <?php
+                if($_SESSION["page"] == "accueil")
+                {
+                    echo '<li class="active"><a href="../../frontoffice/accueil.php "><span>Accueil</span></a></li>';
+                }
+                else
+                {
+                    echo '<li><a href="../../frontoffice/accueil.php "><span>Accueil</span></a></li>';
+                }
+                if($_SESSION["page"] == "forum")
+                {
+                    echo '<li class="active"><a href="#"><span>Forum</span></a></li>';
+                }
+                else
+                {
+                    echo '<li><a href="#"><span>Forum</span></a></li>';
+                }
                     if($_SESSION["statut"] == "Admin")
                     {
-                        if($_SESSION["page"] == "choix_gestion_actualite")
+                        //Test le lien actif du menu
+                        if($_SESSION["page"] == "gestion")
                         {
-                            echo "<li class='active'><a href='../choix_gestion_actualite.php'><span>Gestion des actualités</span></a></li>";
+                            echo "<li class='active'><a href='#'><span>Gestion</span></a></li>";
                         }
                         else
                         {
-                            echo "<li><a href='../choix_gestion_actualite.php'><span>Gestion des actualités</span></a></li>";
+                            echo "<li><a href='#'><span>Gestion</span></a></li>";
                         }
                         
                         if($_SESSION["page"] == "stats")
@@ -57,15 +71,6 @@
                         else
                         {
                             echo "<li><a href='../contact_etudiant.php'><span>Contacter un étudiant</span></a></li>";
-                        }
-                        
-                        if($_SESSION["page"] == "choix_gestion_compte")
-                        {
-                            echo "<li class='active'><a href='../choix_gestion_compte.php'><span>Gestion des comptes</span></a></li>";
-                        }
-                        else
-                        {
-                            echo "<li><a href='../choix_gestion_compte.php'><span>Gestion des comptes</span></a></li>";
                         }
                     }
                 ?>
