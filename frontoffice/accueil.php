@@ -37,9 +37,9 @@
         
         <div class="box-principal">
             <div id="box-principal-one">
-                <div id="box_lycee" class="form-style-5">
+                <div id="box_lycee">
                     <div id="barre_box_lycee">
-                        <span class="titre_categorie_actualite">Dernière actualité du lycée :</span>
+                        <span class="titre_categorie_actualite">Lycée</span>
                     </div>
                     <div id="actualite_box_lycee">
                         <?php 
@@ -53,9 +53,9 @@
                     </div>
                 </div>
             
-                <div id="box_mariage" class="form-style-5">
+                <div id="box_mariage">
                     <div id="barre_box_mariage">
-                        <span class="titre_categorie_actualite">Dernière actualité de mariage :</span>
+                        <span class="titre_categorie_actualite">Mariage</span>
                     </div>
                     <div id="actualite_box_mariage"> 
                     <?php 
@@ -72,9 +72,9 @@
                 
             <div id="box-principal-two">
                 
-                <div id="box_deces" class="form-style-5">
+                <div id="box_deces">
                     <div id="barre_box_deces">
-                        <span class="titre_categorie_actualite">Dernière actualité de décés :</span>
+                        <span class="titre_categorie_actualite">Décés</span>
                     </div>
                     <div id="actualite_box_deces">
                     <?php 
@@ -89,9 +89,9 @@
                     </div>        
                 </div>
 
-                <div id="box_naissance" class="form-style-5">
+                <div id="box_naissance">
                     <div id="barre_box_naissance">
-                        <span class="titre_categorie_actualite">Dernière actualité de naissance :</span>
+                        <span class="titre_categorie_actualite">Naissance</span>
                     </div>
                     <div id="actualite_box_naissance">
                         <?php 

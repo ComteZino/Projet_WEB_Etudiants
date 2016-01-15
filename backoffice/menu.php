@@ -43,11 +43,11 @@
                         
                         if($_SESSION["page"] == "stages")
                         {
-                            echo "<li class='active'><a href='#'><span>Propositions de stages</span></a></li>";
+                            echo "<li class='active'><a href='#'><span>Recherche</span></a></li>";
                         }
                         else
                         {
-                            echo "<li><a href='#'><span>Propositions de stages</span></a></li>";
+                            echo "<li><a href='#'><span>Recherche</span></a></li>";
                         }
                         
                         if($_SESSION["page"] == "contact_etudiant")
