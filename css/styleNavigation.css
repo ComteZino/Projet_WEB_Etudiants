@@ -163,7 +163,7 @@ and open the template in the editor.
     background: #028fcc;
 }
 #cssmenu li.active ul li a{
-    color: #FFFFFF
+    color: #FFFFFF;
 }
 
 #cssmenu ul li:hover ul li a:after{
@@ -171,4 +171,13 @@ and open the template in the editor.
 }
 #cssmenu ul li.active ul li a:before{
     display: none;/******enlève le soulignage du sous menu******/
+}
+#cssmenu li.active ul li:hover a {
+    width: 75px;
+    border-bottom: 3px solid #1F1F1F;
+    -webkit-transition: width .25s;
+    -moz-transition: width .25s;
+    -ms-transition: width .25s;
+    -o-transition: width .25s;
+    transition: width .25s;
 }
