@@ -53,7 +53,7 @@ body{
 
 .filAriane a {
     color: #cf4d35;
-    
+    text-decoration: none;
 }
 
 .filAriane a:hover {
