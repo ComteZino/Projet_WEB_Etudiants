@@ -26,11 +26,11 @@
         </div>
         
                
-            <div id="divPrincipal" class="box-actu">
-                <h1 id="test">Formulaire de contact</h1>
+            <div id="divPrincipal" class="box-contact">
+                <h1>Formulaire de contact</h1>
                 <form action="../backoffice/traitement_contact_etudiant.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
                                     
-                    <select id="id" name="id">
+                    <select class="select" name="id">
                         <?php
                             while($lgn = $query_select->fetch())
                             {
@@ -54,7 +54,7 @@
                         <textarea name="message" class="validate[required,length[6,300]] feedback-input" placeholder="Commentaire" id="message" onblur="verifMessage(this);" ></textarea>                  
                     </p>                  
                     <section>
-                        <input name='soumettre' type="submit" value="Envoyer"/>
+                        <input class="bouton" type="submit" value="Envoyer"/>
                     </section>                  
                 </form>
             </div>

@@ -11,7 +11,7 @@
     
     <div class="bottom-header">    
         <!-- Entête de la zone considérée -->
-        <a href="accueil.php">
+        <a href="../frontoffice/accueil.php">
             <img src="../images/logostpaul.png" alt="logo" title="logo" id="logo" /> 
         </a>
     </div>

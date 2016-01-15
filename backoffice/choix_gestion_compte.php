@@ -31,26 +31,16 @@
                     <option value="Utilisateur">Utilisateur</option>
                     <option value="Administrateur">Administrateur</option>
                 </select>
-                <p class="titre">
-                    <p id="erreurtitre"></p>
-                    <input placeholder="Identifiant *" name="login" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
-                </p>
-                <p class="titre">
-                    <p id="erreurtitre"></p>
-                    <input placeholder="Mot de passe *" name="mdp" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
-                </p>
-                <p class="titre">
-                    <p id="erreurtitre"></p>
-                    <input placeholder="Nom *" name="nom" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
-                </p>
-                <p class="titre">
-                    <p id="erreurtitre"></p>
-                    <input placeholder="Prénom *" name="prenom" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
-                </p>
-                <p class="titre">
-                    <p id="erreurtitre"></p>
-                    <input placeholder="Date de naissance(A/M/J) *" name="dateN" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
-                </p>
+                <p id="erreurtitre"></p>
+                <input placeholder="Identifiant *" name="login" type="text" class="titre" onblur="verifTitre(this);" />
+                <p id="erreurtitre"></p>
+                <input placeholder="Mot de passe *" name="mdp" type="text" class="titre" onblur="verifTitre(this);" />
+                <p id="erreurtitre"></p>
+                <input placeholder="Nom *" name="nom" type="text" class="titre" onblur="verifTitre(this);" />
+                <p id="erreurtitre"></p>
+                <input placeholder="Prénom *" name="prenom" type="text" class="titre" onblur="verifTitre(this);" />
+                <p id="erreurtitre"></p>
+                <input placeholder="Date de naissance(A/M/J) *" name="dateN" type="text" class="titre" onblur="verifTitre(this);" />
                 <input class='bouton' type="submit" value="Créer le compte"/> 
             </form>
             <form method="post" action="traitement/modification.php">
