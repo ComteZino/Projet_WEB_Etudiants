@@ -117,7 +117,11 @@
     </head>
     <body>
         <?php include 'header.php'; ?>
-        <?php include 'menu.php'; ?>      
+        <?php include 'menu.php'; ?>
+        <!--- Zone fil ariane --->
+        <div class="filAriane">
+            <a href="../frontoffice/accueil.php">Accueil</a> » <a href="../choix_gestion_compte.php">Gestion des comptes</a> » Modification du compte
+        </div>
         <div class="form-style-5">
             <fieldset>
                 <legend>Les modifications du compte : </legend>

@@ -22,7 +22,7 @@
         
         <!--- Zone fil ariane --->
         <div class="filAriane">
-            <a href="../frontoffice/accueil.php">Accueil</a> » <a href="gestion.php">Gestion</a> » Gestion des actualités
+            <a href="../frontoffice/accueil.php">Accueil</a> » Gestion des actualités
         </div>
         
         <!--- Zone d'ajout d'article --->

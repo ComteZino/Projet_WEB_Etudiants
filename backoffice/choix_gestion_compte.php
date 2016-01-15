@@ -18,7 +18,11 @@
     </head>
     <body>
         <?php include 'header.php'; ?>
-        <?php include 'menu.php'; ?>      
+        <?php include 'menu.php'; ?> 
+        <!--- Zone fil ariane --->
+        <div class="filAriane">
+            <a href="../frontoffice/accueil.php">Accueil</a> » Gestion des comptes
+        </div>
         <div class="form-style-5">
             <form method="post" action="traitement/ajout.php">
                 <fieldset>
