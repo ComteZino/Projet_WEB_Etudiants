@@ -16,6 +16,16 @@ html{
     height:100%;
 }
 
+.box-contact{
+    max-width: 55%;
+    padding: 10px 20px;
+    background: #FFFFFF;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
 h1{
     font-family: '../font/Silica-Light.ttf', Arial, Helvetica, sans-serif;
     color: #028fcc;
@@ -23,6 +33,34 @@ h1{
 
 p, h3{
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+/*************************/
+/****Listes déroulante****/
+/*************************/
+.select{
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: #D4D4D4;
+    border: none;
+    border-radius: 0px;
+    font-size: 16px;
+    margin-left: 20%;
+    outline: 0;
+    padding: 7px;
+    width: 65%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: white;
+    color:#8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+    -webkit-appearance: menulist-button;
+    height:45px;
+    border-color: #CF4D35;
+    border-style: solid;
+    border-width: 2px;
 }
 
 #feedback-page{
@@ -55,7 +93,7 @@ p, h3{
     background-color: #fbfbfb;
     padding: 13px 13px 13px 54px;
     margin-bottom: 10px;
-    width:100%;
+    width: 65%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;

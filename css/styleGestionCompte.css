@@ -85,7 +85,7 @@ label{
 /*************************/
 /*********Inputs*********/
 /***Champs à remplir****/
-.feedback-input {
+.titre {
     color:#3c3c3c;
     font-family: Helvetica, Arial, sans-serif;
     font-weight:500;
@@ -106,7 +106,7 @@ label{
     border-width: 2px;
 }
 
-.feedback-input:focus{
+.titre:focus{
     background: #fff;
     box-shadow: 0;
     border: 2px solid #E77A66;
