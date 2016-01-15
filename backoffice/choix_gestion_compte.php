@@ -23,56 +23,65 @@
         <div class="filAriane">
             <a href="../frontoffice/accueil.php">Accueil</a> » Gestion des comptes
         </div>
-        <div class="form-style-5">
+        <div id="divPrincipal" class="box-ajout">
+            <h1>Création d'un compte</h1>
             <form method="post" action="traitement/ajout.php">
-                <fieldset>
-                    <legend>Création d'un compte</legend>
-                    <label for="statut">Quel type de compte va être créé ?</label>
-                    <select id="statut" name="statut">
-                        <option value="Utilisateur">Utilisateur</option>
-                        <option value="Administrateur">Administrateur</option>
-                    </select>   
-                    <input name="login" type="login" placeholder="Identifiant *">
-                    <input name="mdp" type="mdp" placeholder="Mot de passe *">
-                    <input name="nom" type="nom" placeholder="Nom *">
-                    <input name="prenom" type="prenom" placeholder="Prénom *">
-                    <input name="dateN" type="prenom" placeholder="Date de naissance(A/M/J) *">
-                    <input id="voir" type="submit" value="Créer le compte"/> 
-                </fieldset>
+                <p>Quel type de compte va être créé ?</p>
+                <select class="select" name="statut">
+                    <option value="Utilisateur">Utilisateur</option>
+                    <option value="Administrateur">Administrateur</option>
+                </select>
+                <p class="titre">
+                    <p id="erreurtitre"></p>
+                    <input placeholder="Identifiant *" name="login" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
+                </p>
+                <p class="titre">
+                    <p id="erreurtitre"></p>
+                    <input placeholder="Mot de passe *" name="mdp" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
+                </p>
+                <p class="titre">
+                    <p id="erreurtitre"></p>
+                    <input placeholder="Nom *" name="nom" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
+                </p>
+                <p class="titre">
+                    <p id="erreurtitre"></p>
+                    <input placeholder="Prénom *" name="prenom" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
+                </p>
+                <p class="titre">
+                    <p id="erreurtitre"></p>
+                    <input placeholder="Date de naissance(A/M/J) *" name="dateN" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
+                </p>
+                <input class='bouton' type="submit" value="Créer le compte"/> 
             </form>
             <form method="post" action="traitement/modification.php">
-                <fieldset>
-                    <legend>Modification d'un compte</legend>
-                    <label for="statut">Quel compte va être modifié ? </label>
-                    <select id="id" name="id">
-                        <?php
-                            while($ligne = $query_select->fetch())
-                            {
-                                echo '<option value="'.$ligne["id"].'">'.str_replace("-"," ",$ligne["nom"]).' '.str_replace("-"," ",$ligne["prenom"]).'</option>';
-                            }
-                        ?>
-                    </select>
-                    <input id="voir" type="submit" value="Modifier ce compte"/>
-                </fieldset>
+                <h1>Modification d'un compte</h1>
+                <p>Quel compte va être modifié ? </p>
+                <select class="select" name="id">
+                    <?php
+                        while($ligne = $query_select->fetch())
+                        {
+                            echo '<option value="'.$ligne["id"].'">'.str_replace("-"," ",$ligne["nom"]).' '.str_replace("-"," ",$ligne["prenom"]).'</option>';
+                        }
+                    ?>
+                </select>
+                <input class='bouton' type="submit" value="Modifier ce compte"/>
             </form>
             <form method="post" action="traitement/suppression.php">
-                <fieldset>
-                    <legend>Suppression d'un compte</legend>
-                    <label for="statut">Quel compte va être supprimé ?</label>
-                    <select id="id" name="id">
-                        <?php
-                            while($lgn = $query_select2->fetch())
+                <h1>Suppression d'un compte</h1>
+                <p>Quel compte va être supprimé ?</p>
+                <select class="select" name="id">
+                    <?php
+                        while($lgn = $query_select2->fetch())
+                        {
+                            // N'affiche pas le compte courant
+                            if($_SESSION["idEtud"] != $lgn["id"])
                             {
-                                // N'affiche pas le compte courant
-                                if($_SESSION["idEtud"] != $lgn["id"])
-                                {
-                                    echo '<option value="'.$lgn["id"].'">'.str_replace("-"," ",$lgn["nom"]).' '.str_replace("-"," ",$lgn["prenom"]).'</option>';
-                                }
+                                echo '<option value="'.$lgn["id"].'">'.str_replace("-"," ",$lgn["nom"]).' '.str_replace("-"," ",$lgn["prenom"]).'</option>';
                             }
-                        ?>
-                    </select>
-                    <input id="voir" type="submit" value="Supprimer ce compte"/>
-                </fieldset>
+                        }
+                    ?>
+                </select>
+                <input class='bouton' type="submit" value="Supprimer ce compte"/>
             </form>
 	</div>
     </body>

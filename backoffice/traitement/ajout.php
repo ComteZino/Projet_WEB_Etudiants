@@ -71,28 +71,26 @@
         <div class="filAriane">
             <a href="../frontoffice/accueil.php">Accueil</a> » <a href="../choix_gestion_compte.php">Gestion des comptes</a> » Ajout du compte
         </div>
-        <div class="form-style-5">
-            <fieldset>
-                <legend>
-                    <?php 
-                    if($ok == 0)
-                    {
-                        echo "Le compte n'a pas été créé :";
-                    }
-                    else
-                    {
-                        echo "Compte créé :";
-                    }
-                    ?>              
-                </legend>
-                <label for="statut"><?php echo "Statut du compte : ".$statut; ?></label>
-                <label for="nom"><?php echo "Nom : ".$nom; ?></label>
-                <label for="prenom"><?php echo "Prénom : ".$prenom; ?></label>
-                <label for="dateN"><?php echo "Date de naissance : ".$dateN; ?></label>
-                <label for="login"><?php echo "Identifiant : ".$login; ?></label>
-                <label for="mdp"><?php echo "Mot de passe : ".$mdp; ?></label>
-            </fieldset>
-            <a href="../choix_gestion_compte.php"><input type="button" name="nom" value="Ajouter un compte"></a>
+        <div id="divPrincipal" class="box-ajout">
+            <h1>
+                <?php 
+                if($ok == 0)
+                {
+                    echo "Le compte n'a pas été créé :";
+                }
+                else
+                {
+                    echo "Compte créé :";
+                }
+                ?>              
+            </h1>
+            <label><span class="recap">Statut du compte : </span><?php echo $statut; ?></label>
+            <label><span class="recap">Nom : </span><?php echo $nom; ?></label>
+            <label><span class="recap">Prénom : </span><?php echo $prenom; ?></label>
+            <label><span class="recap">Date de naissance : </span><?php echo $dateN; ?></label>
+            <label><span class="recap">Identifiant : </span><?php echo $login; ?></label>
+            <label><span class="recap">Mot de passe : </span><?php echo $mdp; ?></label>
+            <a href="../choix_gestion_compte.php"><input class='bouton' type="button" name="nom" value="Ajouter un compte"></a>
 	</div>
     </body>
 </html>
