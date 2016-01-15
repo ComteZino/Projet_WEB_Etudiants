@@ -28,8 +28,7 @@
                
             <div id="divPrincipal" class="box-contact">
                 <h1>Formulaire de contact</h1>
-                <form action="../backoffice/traitement_contact_etudiant.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
-                                    
+                <form action="../backoffice/traitement_contact_etudiant.php" method="POST" name="formulaire"  onsubmit="return verifForm(this)">             
                     <select class="select" name="id">
                         <?php
                             while($lgn = $query_select->fetch())
@@ -38,24 +37,14 @@
                             }
                         ?>
                     </select>
-
-                    <!--<p class="email">
-                        <p id="erreuremail"></p>
-                        <input name="email" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Email" id="email" onblur="verifEmail(this);" />                  
-                    </p>-->
                     
-                    <p class="sujet">
-                        <p id="erreursujet"></p>
-                        <input name="sujet" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Sujet" id="sujet" onblur="verifSujet(this);" />                  
-                    </p>
+                    <p id="erreursujet"></p>
+                    <input class="input" name="sujet" type="text" placeholder="Sujet" id="sujet" onblur="verifSujet(this);" />                  
 
-                    <p class="message">
-                        <p id="erreurmessage"></p>
-                        <textarea name="message" class="validate[required,length[6,300]] feedback-input" placeholder="Commentaire" id="message" onblur="verifMessage(this);" ></textarea>                  
-                    </p>                  
-                    <section>
-                        <input class="bouton" type="submit" value="Envoyer"/>
-                    </section>                  
+                    <p id="erreurmessage"></p>
+                    <textarea class="input" name="message" placeholder="Commentaire" id="message" onblur="verifMessage(this);" ></textarea>                                   
+                    
+                    <input class="bouton" type="submit" value="Envoyer"/>                 
                 </form>
             </div>
     </body>

@@ -23,35 +23,24 @@
             <a href="../frontoffice/accueil.php">Accueil</a> » Contact
         </div>
         
-        <div id="form-main">           
-            <div id="form-div">
-                <h1 id="test">Formulaire de contact</h1>
-                <form action="../backoffice/traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
-                                    
-                    <p class="nom">
-                        <p id="erreurnom"></p>
-                        <input name="nom" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nom" id="nom" onblur="verifNom(this);" />
-                    </p>
+        <div class="box-contact">           
+            <h1 id="test">Formulaire de contact</h1>
+            <form action="../backoffice/traitement_contact.php" id="contact" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
 
-                    <p class="email">
-                        <p id="erreuremail"></p>
-                        <input name="email" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Email" id="email" onblur="verifEmail(this);" />                  
-                    </p>
-                    
-                    <p class="sujet">
-                        <p id="erreursujet"></p>
-                        <input name="sujet" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Sujet" id="sujet" onblur="verifSujet(this);" />                  
-                    </p>
+                <p id="erreurnom"></p>
+                <input class="input" name="nom" type="text" placeholder="Nom" id="nom" onblur="verifNom(this);" />
 
-                    <p class="message">
-                        <p id="erreurmessage"></p>
-                        <textarea name="message" class="validate[required,length[6,300]] feedback-input" placeholder="Commentaire" id="message" onblur="verifMessage(this);" ></textarea>                  
-                    </p>                  
-                    <section>
-                        <input name='soumettre' type="submit" value="Envoyer"/>
-                    </section>                  
-                </form>
-            </div>
+                <p id="erreuremail"></p>
+                <input class="input" name="email" type="text" placeholder="Email" id="email" onblur="verifEmail(this);" />                  
+
+                <p id="erreursujet"></p>
+                <input class="input" name="sujet" type="text" placeholder="Sujet" id="sujet" onblur="verifSujet(this);" />                  
+
+                <p id="erreurmessage"></p>
+                <textarea class="input" name="message" placeholder="Commentaire" id="message" onblur="verifMessage(this);" ></textarea>                                  
+               
+                <input class="bouton" name='soumettre' type="submit" value="Envoyer"/>                 
+            </form>
         </div>
     </body>
 </html>

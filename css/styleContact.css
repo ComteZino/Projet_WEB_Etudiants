@@ -33,6 +33,7 @@ h1{
 
 p, h3{
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    text-align: center;
 }
 
 /*************************/
@@ -63,7 +64,34 @@ p, h3{
     border-width: 2px;
 }
 
-#feedback-page{
+/*************************/
+/*********Boutons*********/
+/*************************/
+.bouton {
+  margin: 0 auto;
+  font-size: 2.0rem;
+  padding: 1.25rem 2.5rem;
+  display: block;
+  background-color: #CF4D35;
+  border: 3px solid transparent;
+  color: #ffffff;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font: 400 1.4rem 'Lato', Verdana, Helvetica, sans-serif;
+  margin-top: 30px;
+}
+
+.bouton:hover {
+  background-color: #ffffff;
+  color: #CF4D35;
+  border-color: #CF4D35;
+}
+
+/*#feedback-page{
     text-align:center;
 }
 
@@ -82,9 +110,9 @@ p, h3{
     font-family: Georgia, "Times New Roman", Times, serif;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     
-}
+}*/
 
-.feedback-input {
+.input {
     color:#3c3c3c;
     font-family: Helvetica, Arial, sans-serif;
     font-weight:500;
@@ -93,6 +121,7 @@ p, h3{
     background-color: #fbfbfb;
     padding: 13px 13px 13px 54px;
     margin-bottom: 10px;
+    margin-left: 20%;
     width: 65%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -100,10 +129,10 @@ p, h3{
     box-sizing: border-box;
     border-color: #CF4D35;
     border-style: solid;
-    border-width: 2px; 
+    border-width: 2px;
 }
 
-.feedback-input:focus{
+.input:focus{
     background: #fff;
     box-shadow: 0;
     border: 2px solid #E77A66;
@@ -169,14 +198,13 @@ p, h3{
 }
 
 textarea {
-    width: 100%;
     height: 150px;
     line-height: 150%;
     resize:vertical;
 }
 
-input {
-  margin: 0 auto;
+/*input {
+  margin: 0;
   font-size: 2.0rem;
   padding: 1.25rem 2.5rem;
   display: block;
@@ -197,7 +225,7 @@ input:hover {
   background-color: #ffffff;
   color: #CF4D35;
   border-color: #CF4D35;
-}
+}*/
 
 
 @media only screen and (max-width: 580px) {
@@ -209,32 +237,4 @@ input:hover {
         padding-left: 3%;
         padding-right: 3%;
     }
-}
-#form-div select {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    background: #D4D4D4;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    margin: 0;
-    outline: 0;
-    padding: 7px;
-    width: 100%;
-    box-sizing: border-box; 
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box; 
-    background-color: white;
-    color:#8a97a0;
-    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    margin-bottom: 30px;
-}
-
-#form-div select:focus{
-    background: white;
-}
-
-#form-div select{
-    -webkit-appearance: menulist-button;
-    height:35px;
 }
