@@ -25,11 +25,19 @@
                     {
                         if($_SESSION["page"] == "gestion")
                         {
-                            echo "<li class='active'><a href='gestion.php'><span>Gestion</span></a></li>";
+                            echo "<li class='active'><a href='#'<span>Gestion</span></a>";
+                            echo "<ul>";
+                            echo "<li><a href='choix_gestion_compte.php' <span>Comptes</span></a></li>";
+                            echo "<li><a href='choix_gestion_actualite.php' <span>Actualités</span></a></li>";
+                            echo "</ul></li>";
                         }
                         else
                         {
-                            echo "<li><a href='gestion.php'><span>Gestion</span></a></li>";
+                            echo "<li><a href='#'<span>Gestion</span></a>";
+                            echo "<ul>";
+                            echo "<li><a href='choix_gestion_compte.php' <span>Comptes</span></a></li>";
+                            echo "<li><a href='choix_gestion_actualite.php' <span>Actualités</span></a></li>";
+                            echo "</ul></li>";
                         }
                         
                         if($_SESSION["page"] == "stats")

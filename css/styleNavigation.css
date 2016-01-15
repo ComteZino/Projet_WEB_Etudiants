@@ -32,7 +32,6 @@ and open the template in the editor.
 }
 #cssmenu ul li {
     float: left;
-    //display: inline-block;
     padding: 0;
     margin: 0;
 }
@@ -150,6 +149,10 @@ and open the template in the editor.
 }
 #cssmenu ul li:hover ul {
     display:block;/******affiche le sous menu au survol de la souris******/
+    width: 111px;
+}
+#cssmenu ul li:hover ul a{
+    padding-left:10px;
 }
 #cssmenu li:hover ul li {
     float: none;/******affiche le sous menu à la verticale******/
@@ -159,7 +162,13 @@ and open the template in the editor.
     margin: 0;/******affiche le sous menu en dessous de l'onglet survolé******/
     background: #028fcc;
 }
+#cssmenu li.active ul li a{
+    color: #FFFFFF
+}
 
-#cssmenu ul li:hover a:after {
+#cssmenu ul li:hover ul li a:after{
     display: none;/******enlève le petit carré après le nom de l'onglet******/
+}
+#cssmenu ul li.active ul li a:before{
+    display: none;/******enlève le soulignage du sous menu******/
 }
