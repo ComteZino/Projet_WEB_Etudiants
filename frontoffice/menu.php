@@ -57,7 +57,11 @@
                     }
                     if($_SESSION["statut"] == "Admin")
                     {
-                        echo "<li><a href='#'<span>Gestion</span></a></li>";
+                        echo "<li><a href='#'<span>Gestion</span></a>";
+                        echo "<ul>";
+                        echo "<li><a href='../backoffice/choix_gestion_compte.php' <span>Comptes</span></a></li>";
+                        echo "<li><a href='../backoffice/choix_gestion_actualite.php' <span>Actualités</span></a></li>";
+                        echo "</ul></li>";
                         echo "<li><a href='#'><span>Stats</span></a></li>";
                         echo "<li><a href='#'><span>Recherche</span></a></li>";
                         echo "<li><a href='../backoffice/contact_etudiant.php'><span>Contacter un étudiant</span></a></li>";

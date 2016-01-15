@@ -4,7 +4,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 19 d�c. 2015, 14:52:19
+    Created on : 19 d�c. 2015, 14:52:19
     Author     : Yohan
 */
 
@@ -15,13 +15,12 @@ and open the template in the editor.
     width: auto;
     
 }
-#cssmenu ul {   
+#cssmenu ul {
     list-style: none;
     margin: 0 0 0 20%;
     padding: 0;
     line-height: 1;
-    display: block;
-    zoom: 1;
+    display: block;zoom:1;
 }
 #cssmenu ul:after {
     content: " ";
@@ -32,7 +31,8 @@ and open the template in the editor.
     visibility: hidden;
 }
 #cssmenu ul li {
-    display: inline-block;
+    float: left;
+    //display: inline-block;
     padding: 0;
     margin: 0;
 }
@@ -43,7 +43,6 @@ and open the template in the editor.
     text-align: center;
 }
 #cssmenu ul li a {
-    
     color: #ffffff;
     text-decoration: none;
     display: block;
@@ -73,7 +72,7 @@ and open the template in the editor.
     top: 19px;
     height: 6px;
     width: 6px;
-    background: #ffffff;
+    background: #Ffffff;
     opacity: .5;
 }
 #cssmenu ul li a:before {
@@ -142,4 +141,25 @@ and open the template in the editor.
     #cssmenu ul li a {  
     font-size: 11px;
     }
+}
+/********************/
+/***Menu déroulant***/
+/********************/
+#cssmenu ul li ul {
+    display:none;/******cache le sous menu******/
+}
+#cssmenu ul li:hover ul {
+    display:block;/******affiche le sous menu au survol de la souris******/
+}
+#cssmenu li:hover ul li {
+    float: none;/******affiche le sous menu à la verticale******/
+}
+#cssmenu li ul {
+    position: absolute;/******affiche uniquement le sous menu******/
+    margin: 0;/******affiche le sous menu en dessous de l'onglet survolé******/
+    background: #028fcc;
+}
+
+#cssmenu ul li:hover a:after {
+    display: none;/******enlève le petit carré après le nom de l'onglet******/
 }
