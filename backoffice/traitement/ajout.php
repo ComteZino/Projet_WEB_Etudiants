@@ -71,16 +71,16 @@
         <div class="filAriane">
             <a href="../frontoffice/accueil.php">Accueil</a> » <a href="../choix_gestion_compte.php">Gestion des comptes</a> » Ajout du compte
         </div>
-        <div id="divPrincipal" class="box-ajout">
+        <div id="divPrincipal" class="box-gestion">
             <h1>
                 <?php 
                 if($ok == 0)
                 {
-                    echo "Le compte n'a pas été créé :";
+                    echo "Le compte n'a pas été créé";
                 }
                 else
                 {
-                    echo "Compte créé :";
+                    echo "Compte créé";
                 }
                 ?>              
             </h1>

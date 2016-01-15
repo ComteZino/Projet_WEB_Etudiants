@@ -4,7 +4,7 @@
     {
         header('Location: ../frontoffice/authentification.php');
     }
-    $_SESSION["page"] = "choix_gestion_compte";
+    $_SESSION["page"] = "gestion";
     $select_comptes = ('Select id,nom,prenom from etudiant');
     $query_select = $connexion->query($select_comptes);
     $query_select2 = $connexion->query($select_comptes);
@@ -23,7 +23,7 @@
         <div class="filAriane">
             <a href="../frontoffice/accueil.php">Accueil</a> » Gestion des comptes
         </div>
-        <div id="divPrincipal" class="box-ajout">
+        <div id="divPrincipal" class="box-gestion">
             <h1>Création d'un compte</h1>
             <form method="post" action="traitement/ajout.php">
                 <p>Quel type de compte va être créé ?</p>

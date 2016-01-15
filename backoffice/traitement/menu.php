@@ -16,15 +16,28 @@
     </head>
     <body>
         <div id='cssmenu'>
-            <ul>
-                <li class='active'><a href='../../frontoffice/accueil.php'><span>Accueil</span></a></li>                            
-                <li><a href='#'><span>Forum</span></a></li>
-                              
+            <ul>                              
                 <?php
+                if($_SESSION["page"] == "accueil")
+                {
+                    echo '<li class="active"><a href="../../frontoffice/accueil.php "><span>Accueil</span></a></li>';
+                }
+                else
+                {
+                    echo '<li><a href="../../frontoffice/accueil.php "><span>Accueil</span></a></li>';
+                }
+                if($_SESSION["page"] == "forum")
+                {
+                    echo '<li class="active"><a href="#"><span>Forum</span></a></li>';
+                }
+                else
+                {
+                    echo '<li><a href="#"><span>Forum</span></a></li>';
+                }
                     if($_SESSION["statut"] == "Admin")
                     {
                         //Test le lien actif du menu
-                        if($_SESSION["page"] == "choix_gestion_actualite")
+                        if($_SESSION["page"] == "gestion")
                         {
                             echo "<li class='active'><a href='#'><span>Gestion</span></a></li>";
                         }

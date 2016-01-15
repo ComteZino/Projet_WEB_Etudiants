@@ -122,17 +122,15 @@
         <div class="filAriane">
             <a href="../frontoffice/accueil.php">Accueil</a> » <a href="../choix_gestion_compte.php">Gestion des comptes</a> » Modification du compte
         </div>
-        <div class="form-style-5">
-            <fieldset>
-                <legend>Les modifications du compte : </legend>
-                <label for="statut"><?php echo "Statut : ".$statut; ?></label>
-                <label for="nom"><?php echo "Nom : ".$nom; ?></label>
-                <label for="prenom"><?php echo "Prénom : ".$prenom; ?></label>
-                <label for="dateN"><?php echo "Date de naissance : ".$dateN; ?></label>
-                <label for="login"><?php echo "Identifiant : ".$login; ?></label>
-                <label for="mdp"><?php echo "Mot de passe : ".$mdp; ?></label>
-                <a href="../choix_gestion_compte.php"><input type="button" name="nom" value="Retourner à la gestion"></a>
-            </fieldset>
+        <div class="box-gestion">
+            <h1>Les modifications du compte</h1>
+            <label><span class="recap">Statut : </span><?php echo $statut; ?></label>
+            <label><span class="recap">Nom : </span><?php echo $nom; ?></label>
+            <label><span class="recap">Prénom : </span><?php echo $prenom; ?></label>
+            <label><span class="recap">Date de naissance : </span><?php echo $dateN; ?></label>
+            <label><span class="recap">Identifiant : </span><?php echo $login; ?></label>
+            <label><span class="recap">Mot de passe : </span><?php echo $mdp; ?></label>
+            <a href="../choix_gestion_compte.php"><input class='bouton' type="button" name="nom" value="Retourner à la gestion"></a>
 	</div>
     </body>
 </html>
