@@ -43,6 +43,7 @@
                             echo "<ul>";
                             echo "<li><a href='../choix_gestion_compte.php' <span>Comptes</span></a></li>";
                             echo "<li><a href='../choix_gestion_actualite.php' <span>Actualités</span></a></li>";
+                            echo "<li><a href='../choix_gestion_categorie.php' <span>Catégories</span></a></li>";
                             echo "</ul></li>";
                         }
                         else
@@ -51,6 +52,7 @@
                             echo "<ul>";
                             echo "<li><a href='../choix_gestion_compte.php' <span>Comptes</span></a></li>";
                             echo "<li><a href='../choix_gestion_actualite.php' <span>Actualités</span></a></li>";
+                            echo "<li><a href='../choix_gestion_categorie.php' <span>Catégories</span></a></li>";
                             echo "</ul></li>";
                         }
                         

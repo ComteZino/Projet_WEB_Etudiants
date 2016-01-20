@@ -61,6 +61,7 @@
                         echo "<ul>";
                         echo "<li><a href='../backoffice/choix_gestion_compte.php' <span>Comptes</span></a></li>";
                         echo "<li><a href='../backoffice/choix_gestion_actualite.php' <span>Actualités</span></a></li>";
+                        echo "<li><a href='../backoffice/choix_gestion_categotrie.php' <span>Catégories</span></a></li>";
                         echo "</ul></li>";
                         echo "<li><a href='#'><span>Stats</span></a></li>";
                         echo "<li><a href='#'><span>Recherche</span></a></li>";
