@@ -64,7 +64,14 @@
                         echo "<li><a href='../backoffice/choix_gestion_categotrie.php' <span>Catégories</span></a></li>";
                         echo "</ul></li>";
                         echo "<li><a href='#'><span>Stats</span></a></li>";
-                        echo "<li><a href='#'><span>Recherche</span></a></li>";
+                        if($_SESSION["page"] == "recherche")
+                        {
+                            echo "<li class='active'><a href='../backoffice/recherche.php'><span>Recherche</span></a></li>";
+                        }
+                        else
+                        {
+                            echo "<li><a href='../backoffice/recherche.php'><span>Recherche</span></a></li>";
+                        }
                         echo "<li><a href='../backoffice/contact_etudiant.php'><span>Contacter un étudiant</span></a></li>";
                     }
                 ?>

@@ -51,13 +51,13 @@
                             echo "<li><a href='#'><span>Stats</span></a></li>";
                         }
                         
-                        if($_SESSION["page"] == "stages")
+                        if($_SESSION["page"] == "recherche")
                         {
-                            echo "<li class='active'><a href='#'><span>Recherche</span></a></li>";
+                            echo "<li class='active'><a href='recherche.php'><span>Recherche</span></a></li>";
                         }
                         else
                         {
-                            echo "<li><a href='#'><span>Recherche</span></a></li>";
+                            echo "<li><a href='recherche.php'><span>Recherche</span></a></li>";
                         }
                         
                         if($_SESSION["page"] == "contact_etudiant")
