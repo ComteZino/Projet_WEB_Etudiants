@@ -1,5 +1,7 @@
-function afficheFormulaire(text){
+l=0;//déclaration de l en variable gloable utilisé dans deux fonctions différentes mais même utilité d'incrémentation des valeurs d'attributs name
+function afficheFormulaire(text,text2){
     var totalInfo=text.split('/');
+    var formation=text2.split('/');
     var element = document.getElementById("modifForm");
     if(element!=null){
             element.parentNode.removeChild(element);
@@ -346,62 +348,105 @@ function afficheFormulaire(text){
     legend4.appendChild(span4);
     remplaceTexte(span4,"4");
     remplaceTexte(legend4,"Poursuite d'études");
-    inputFormation=document.createElement("input");
-    inputFormation.setAttribute("name","formation");
-    inputFormation.setAttribute("id","formation");
-    inputFormation.setAttribute("type","formation");
-    inputFormation.setAttribute("placeholder","Formation : ");
-    inputFormation.setAttribute("onblur","verifFormation(this);"); 
-    if(totalInfo[12]!==null){
-        inputFormation.setAttribute("value",totalInfo[12].replace(/-/gi," "));
-    }
-    partieFormulaire4.appendChild(inputFormation);
-    erreurformation=document.createElement("p");
-    erreurformation.setAttribute("id","erreurformation");
-    partieFormulaire4.appendChild(erreurformation);
-    labelAnneeFormation = document.createElement("label");
-    labelAnneeFormation.setAttribute("for","anneeformation");
-    partieFormulaire4.appendChild(labelAnneeFormation);
-    remplaceTexte(labelAnneeFormation,"Année de la formation :");
-    selectAnnee = document.createElement("select");
-    selectAnnee.setAttribute("name","annee");
-    selectAnnee.setAttribute("id","annee");
-    selectAnnee.setAttribute("onclick","verifAnnee(this);");
-    partieFormulaire4.appendChild(selectAnnee);
-    optionAnnee0 = document.createElement("option");
-    optionAnnee0.setAttribute("value","");
-    selectAnnee.appendChild(optionAnnee0);
-    $('#annee>option[value="'+""+'"]').attr('selected', true);
-    var k=1980;
-    while(k<=ladate.getFullYear()){
-        optionAnnee = document.createElement("option");
-        optionAnnee.setAttribute("value",k);
-        selectAnnee.appendChild(optionAnnee);
-        remplaceTexte(optionAnnee,k);
-        if(totalInfo[13]==k){
-            $('#annee>option[value="'+k+'"]').attr('selected', true);
+    
+    tabFormation=document.createElement("table");
+    tabFormation.setAttribute("id","tableauFormation");
+    tr1NomCol=document.createElement("tr");
+    thFormation=document.createElement("th");
+    remplaceTexte(thFormation,"Formation");
+    tr1NomCol.appendChild(thFormation);
+    thAn=document.createElement("th");
+    remplaceTexte(thAn,"Année");
+    tr1NomCol.appendChild(thAn);
+    thDiscipline=document.createElement("th");
+    remplaceTexte(thDiscipline,"Discipline");
+    tr1NomCol.appendChild(thDiscipline);
+    tabFormation.appendChild(tr1NomCol);
+    
+    //ici faut que tu mettes en dur une ligne du tableau parceque rien s'affiche s'il a pas encore d'infos dans la part4
+    
+    var nbLigne=(formation.length-1)/3;
+    var m=1;
+    while(l<nbLigne)
+    {
+        tr2Col=document.createElement("tr");
+        tdInputFormation=document.createElement("td");
+        inputFormation=document.createElement("input");
+        inputFormation.setAttribute("name","formation"+l);
+        inputFormation.setAttribute("id","formation");
+        inputFormation.setAttribute("type","formation");
+        inputFormation.setAttribute("placeholder","Formation : ");
+        inputFormation.setAttribute("onblur","verifFormation(this);"); 
+        if(formation[m]!==null){
+            inputFormation.setAttribute("value",formation[m].replace(/-/gi," "));
         }
-        k++;
-    }
-    //document.getElementById("anSortie").selectedIndex="-1";
-    erreurannee=document.createElement("p");
-    erreurannee.setAttribute("id","erreurannee");
-    partieFormulaire4.appendChild(erreurannee);
-    inputDiscipline=document.createElement("input");
-    inputDiscipline.setAttribute("name","discipline");
-    inputDiscipline.setAttribute("id","discipline");
-    inputDiscipline.setAttribute("type","discipline");
-    inputDiscipline.setAttribute("placeholder","Discipline : ");
-    inputDiscipline.setAttribute("onblur","verifDiscipline(this);"); 
-    if(totalInfo[14]!==null){
-        inputDiscipline.setAttribute("value",totalInfo[14].replace(/-/gi," "));
-    }
-    partieFormulaire4.appendChild(inputDiscipline);
-    erreurdiscipline=document.createElement("p");
-    erreurdiscipline.setAttribute("id","erreurdiscipline");
-    partieFormulaire4.appendChild(erreurdiscipline);
+        m++;
+        partieFormulaire4.appendChild(inputFormation);
+        erreurformation=document.createElement("p");
+        erreurformation.setAttribute("id","erreurformation");
+        partieFormulaire4.appendChild(erreurformation);
+        tdInputFormation.appendChild(inputFormation);
+        tr2Col.appendChild(tdInputFormation);
 
+        tdSelectAn=document.createElement("td");
+        selectAnnee = document.createElement("select");
+        selectAnnee.setAttribute("name","annee"+l);
+        selectAnnee.setAttribute("id","annee"+l);
+        selectAnnee.setAttribute("onclick","verifAnnee(this);");
+        partieFormulaire4.appendChild(selectAnnee);
+        optionAnnee0 = document.createElement("option");
+        optionAnnee0.setAttribute("value","");
+        selectAnnee.appendChild(optionAnnee0);
+        $('#annee'+l+'>option[value="'+""+'"]').attr('selected', true);
+        var k=1980;
+        while(k<=ladate.getFullYear()){
+            optionAnnee = document.createElement("option");
+            optionAnnee.setAttribute("value",k);
+            selectAnnee.appendChild(optionAnnee);
+            remplaceTexte(optionAnnee,k);
+            if(parseInt(formation[m])===k){
+                $('#annee'+l+'>option[value="'+k+'"]').attr('selected', true);
+            }
+            k++;
+        }
+        m++;
+        //document.getElementById("anSortie").selectedIndex="-1";
+        erreurannee=document.createElement("p");
+        erreurannee.setAttribute("id","erreurannee");
+        partieFormulaire4.appendChild(erreurannee);
+        tdSelectAn.appendChild(selectAnnee);
+        tr2Col.appendChild(tdSelectAn);
 
+        tdInputDiscipline=document.createElement("td");
+        inputDiscipline=document.createElement("input");
+        inputDiscipline.setAttribute("name","discipline"+l);
+        inputDiscipline.setAttribute("id","discipline");
+        inputDiscipline.setAttribute("type","discipline");
+        inputDiscipline.setAttribute("placeholder","Discipline : ");
+        inputDiscipline.setAttribute("onblur","verifDiscipline(this);"); 
+        if(formation[m]!==null){
+            inputDiscipline.setAttribute("value",formation[m].replace(/-/gi," "));
+        }
+        m++;
+        partieFormulaire4.appendChild(inputDiscipline);
+        erreurdiscipline=document.createElement("p");
+        erreurdiscipline.setAttribute("id","erreurdiscipline");
+        partieFormulaire4.appendChild(erreurdiscipline);
+        tdInputDiscipline.appendChild(inputDiscipline);
+        tr2Col.appendChild(tdInputDiscipline);
+
+        tabFormation.appendChild(tr2Col);
+        partieFormulaire4.appendChild(tabFormation);
+        l++;
+    }
+    if(nbLigne==1)
+    {
+        l=0;
+    }
+    ajoutLigneF=document.createElement("a");
+    ajoutLigneF.setAttribute("onclick","ajoutLigneFormation();");
+    partieFormulaire4.appendChild(ajoutLigneF);
+    remplaceTexte(ajoutLigneF,"cliquez sur moi pour ajouter une ligne");
 
     //creation de la partie 5 du formulaire
     fieldsetEnfant5 = document.createElement("fieldset");
@@ -425,8 +470,8 @@ function afficheFormulaire(text){
     inputPosteOccupe.setAttribute("type","posteoccupe");
     inputPosteOccupe.setAttribute("placeholder","Poste occupé : ");
     inputPosteOccupe.setAttribute("onblur","verifPosteOccupe(this);"); 
-    if(totalInfo[15]!==null){
-        inputPosteOccupe.setAttribute("value",totalInfo[15].replace(/-/gi," "));
+    if(totalInfo[12]!==null){
+        inputPosteOccupe.setAttribute("value",totalInfo[12].replace(/-/gi," "));
     }
     partieFormulaire5.appendChild(inputPosteOccupe);
     erreurposteoccupe=document.createElement("p");
@@ -456,12 +501,12 @@ function afficheFormulaire(text){
     erreurtypecontrat=document.createElement("p");
     erreurtypecontrat.setAttribute("id","erreurtypecontrat");
     partieFormulaire5.appendChild(erreurtypecontrat);
-    if(totalInfo[16]=="CDI"){
+    if(totalInfo[13]=="CDI"){
         $('#typeContrat>option[value="'+"CDI"+'"]').attr('selected', true);
     }
     else
     { 
-        if(totalInfo[16]=="CDD"){
+        if(totalInfo[13]=="CDD"){
              $('#typeContrat>option[value="'+"CDD"+'"]').attr('selected', true);
         }
     }
@@ -472,8 +517,8 @@ function afficheFormulaire(text){
     inputEntreprise.setAttribute("type","entreprise");
     inputEntreprise.setAttribute("placeholder","Entreprise : ");
     inputEntreprise.setAttribute("onblur","verifEntreprise(this);"); 
-    if(totalInfo[17]!==null){
-        inputEntreprise.setAttribute("value",totalInfo[17].replace(/-/gi," "));
+    if(totalInfo[14]!==null){
+        inputEntreprise.setAttribute("value",totalInfo[14].replace(/-/gi," "));
     }
     partieFormulaire5.appendChild(inputEntreprise);
     erreurentreprise=document.createElement("p");
@@ -485,8 +530,8 @@ function afficheFormulaire(text){
     inputAdresseEntreprise.setAttribute("type","adresseEnt");
     inputAdresseEntreprise.setAttribute("placeholder","Adresse : ");
     inputAdresseEntreprise.setAttribute("onblur","verifAdresseEntreprise(this);"); 
-    if(totalInfo[18]!==null){
-        inputAdresseEntreprise.setAttribute("value",totalInfo[18].replace(/-/gi," "));
+    if(totalInfo[15]!==null){
+        inputAdresseEntreprise.setAttribute("value",totalInfo[15].replace(/-/gi," "));
     }
     partieFormulaire5.appendChild(inputAdresseEntreprise);
     erreuradresseentreprise=document.createElement("p");
@@ -498,8 +543,8 @@ function afficheFormulaire(text){
     inputSecteurAct.setAttribute("type","secteurEnt");
     inputSecteurAct.setAttribute("placeholder","Secteur d'activité : ");
     inputSecteurAct.setAttribute("onblur","verifSecteurActivite(this);"); 
-    if(totalInfo[19]!==null){
-        inputSecteurAct.setAttribute("value",totalInfo[19].replace(/-/gi," "));
+    if(totalInfo[16]!==null){
+        inputSecteurAct.setAttribute("value",totalInfo[16].replace(/-/gi," "));
     }
     partieFormulaire5.appendChild(inputSecteurAct);
     erreursecteuractivite=document.createElement("p");
@@ -533,8 +578,8 @@ function afficheFormulaire(text){
     inputEntStage1.setAttribute("type","entstage1");
     inputEntStage1.setAttribute("placeholder","Nom de l'entreprise : ");
     //inputEntStage1.setAttribute("onblur","verifFormation(this);"); 
-    if(totalInfo[20]!==null){
-        inputEntStage1.setAttribute("value",totalInfo[20].replace(/-/gi," "));
+    if(totalInfo[17]!==null){
+        inputEntStage1.setAttribute("value",totalInfo[17].replace(/-/gi," "));
     }
     partieFormulaire6.appendChild(inputEntStage1);
     /*erreurformation=document.createElement("p");
@@ -546,8 +591,8 @@ function afficheFormulaire(text){
     inputVilleStage1.setAttribute("type","villestage1");
     inputVilleStage1.setAttribute("placeholder","Ville où est situé l'entreprise : ");
     //inputEntStage1.setAttribute("onblur","verifFormation(this);"); 
-    if(totalInfo[21]!==null){
-        inputVilleStage1.setAttribute("value",totalInfo[21].replace(/-/gi," "));
+    if(totalInfo[18]!==null){
+        inputVilleStage1.setAttribute("value",totalInfo[18].replace(/-/gi," "));
     }
     partieFormulaire6.appendChild(inputVilleStage1);
     /*erreurformation=document.createElement("p");
@@ -563,8 +608,8 @@ function afficheFormulaire(text){
     inputEntStage2.setAttribute("type","entstage2");
     inputEntStage2.setAttribute("placeholder","Nom de l'entreprise : ");
     //inputEntStage1.setAttribute("onblur","verifFormation(this);"); 
-    if(totalInfo[22]!==null){
-        inputEntStage2.setAttribute("value",totalInfo[22].replace(/-/gi," "));
+    if(totalInfo[19]!==null){
+        inputEntStage2.setAttribute("value",totalInfo[19].replace(/-/gi," "));
     }
     partieFormulaire6.appendChild(inputEntStage2);
     /*erreurformation=document.createElement("p");
@@ -576,15 +621,20 @@ function afficheFormulaire(text){
     inputVilleStage2.setAttribute("type","villestage2");
     inputVilleStage2.setAttribute("placeholder","Ville où est situé l'entreprise : ");
     //inputEntStage1.setAttribute("onblur","verifFormation(this);"); 
-    if(totalInfo[23]!==null){
-        inputVilleStage2.setAttribute("value",totalInfo[23].replace(/-/gi," "));
+    if(totalInfo[20]!==null){
+        inputVilleStage2.setAttribute("value",totalInfo[20].replace(/-/gi," "));
     }
     partieFormulaire6.appendChild(inputVilleStage2);
     /*erreurformation=document.createElement("p");
     erreurformation.setAttribute("id","erreurformation");
     partieFormulaire6.appendChild(erreurformation);*/
     
-    
+    nbInfoFormation = document.createElement("input");
+    nbInfoFormation.setAttribute("name","nbInfoFormation")
+    nbInfoFormation.setAttribute("id","nbInfoFormation")
+    nbInfoFormation.setAttribute("type","hidden");
+    nbInfoFormation.setAttribute("value",l);
+    formForumlaire.appendChild(nbInfoFormation);
     //créaction du boutton d'envoi du formulaire
     btnForm = document.createElement("input");
     btnForm.setAttribute("name","soumettre")
@@ -1118,4 +1168,78 @@ function verifForm(profil)
         alert("Veuillez remplir au minimun les trois premières parties du formulaire correctement");
         return false;
    }
+}
+
+function ajoutLigneFormation()
+{
+    l=1+l;
+    tabFormation=document.getElementById("tableauFormation");
+    tr2Col=document.createElement("tr");
+    tdInputFormation=document.createElement("td");
+    inputFormation=document.createElement("input");
+    inputFormation.setAttribute("name","formation"+l);
+    inputFormation.setAttribute("id","formation");
+    inputFormation.setAttribute("type","formation");
+    inputFormation.setAttribute("placeholder","Formation : ");
+    inputFormation.setAttribute("onblur","verifFormation(this);"); 
+    /*if(totalInfo[12]!==null){
+        inputFormation.setAttribute("value",totalInfo[12].replace(/-/gi," "));
+    }
+    partieFormulaire4.appendChild(inputFormation);
+    erreurformation=document.createElement("p");
+    erreurformation.setAttribute("id","erreurformation");
+    partieFormulaire4.appendChild(erreurformation);*/
+    tdInputFormation.appendChild(inputFormation);
+    tr2Col.appendChild(tdInputFormation);
+    
+    tdSelectAn=document.createElement("td");
+    selectAnnee = document.createElement("select");
+    selectAnnee.setAttribute("name","annee"+l);
+    selectAnnee.setAttribute("id","annee");
+    selectAnnee.setAttribute("onclick","verifAnnee(this);");
+    partieFormulaire4.appendChild(selectAnnee);
+    optionAnnee0 = document.createElement("option");
+    optionAnnee0.setAttribute("value","");
+    selectAnnee.appendChild(optionAnnee0);
+    $('#annee>option[value="'+""+'"]').attr('selected', true);
+    var k=1980;
+    var ladate=new Date();
+    while(k<=ladate.getFullYear()){
+        optionAnnee = document.createElement("option");
+        optionAnnee.setAttribute("value",k);
+        selectAnnee.appendChild(optionAnnee);
+        remplaceTexte(optionAnnee,k);
+        /*if(totalInfo[13]==k){
+            $('#annee>option[value="'+k+'"]').attr('selected', true);
+        }*/
+        k++;
+    }
+    //document.getElementById("anSortie").selectedIndex="-1";
+    /*erreurannee=document.createElement("p");
+    erreurannee.setAttribute("id","erreurannee");
+    partieFormulaire4.appendChild(erreurannee);*/
+    tdSelectAn.appendChild(selectAnnee);
+    tr2Col.appendChild(tdSelectAn);
+    
+    tdInputDiscipline=document.createElement("td");
+    inputDiscipline=document.createElement("input");
+    inputDiscipline.setAttribute("name","discipline"+l);
+    inputDiscipline.setAttribute("id","discipline");
+    inputDiscipline.setAttribute("type","discipline");
+    inputDiscipline.setAttribute("placeholder","Discipline : ");
+    inputDiscipline.setAttribute("onblur","verifDiscipline(this);"); 
+    /*if(totalInfo[14]!==null){
+        inputDiscipline.setAttribute("value",totalInfo[14].replace(/-/gi," "));
+    }
+    partieFormulaire4.appendChild(inputDiscipline);
+    erreurdiscipline=document.createElement("p");
+    erreurdiscipline.setAttribute("id","erreurdiscipline");
+    partieFormulaire4.appendChild(erreurdiscipline);*/
+    tdInputDiscipline.appendChild(inputDiscipline);
+    tr2Col.appendChild(tdInputDiscipline);
+   
+    tabFormation.appendChild(tr2Col);
+    
+    //update du nombre d'information dans input hidden
+     nbInfoFormation.setAttribute("value",l);
 }

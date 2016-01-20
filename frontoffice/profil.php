@@ -43,10 +43,15 @@
 
     $tablePoursuiteEtude="SELECT * FROM poursuiteetudes WHERE idEtud='".$idEtud."'";     
     $table5 = $connexion->query($tablePoursuiteEtude);
-    $ligne5 = $table5->fetch();
+    /*$ligne5 = $table5->fetch();
     $formation=$ligne5['formation'];
     $anneeFormation=$ligne5['anneeFormation'];
-    $discipline=$ligne5['discipline'];
+    $discipline=$ligne5['discipline'];*/
+    $formation="";
+    while($ligne5 = $table5->fetch())
+    {
+        $formation=$formation."/".$ligne5['formation']."/".$ligne5['anneeFormation']."/".$ligne5['discipline'];
+    }
     
     $tableStage="SELECT * FROM stage WHERE idEtud='".$idEtud."'"; 
     $table6 = $connexion->query($tableStage);
@@ -63,7 +68,7 @@
     $_SESSION['idStage2']=$idStage2;
 
     $totalInfos=$nom."/".$prenom."/".$dateNaissance."/".$anEntre."/".$anSortie."/".$cursus."/".$adresse."/".$cp."/".$ville."/".$fixe."/"
-            .$mobile."/".$mail."/".$formation."/".$anneeFormation."/".$discipline."/".$emploi."/".$typeContrat."/".$entreprise."/".$adresseEnt."/"
+            .$mobile."/".$mail."/".$emploi."/".$typeContrat."/".$entreprise."/".$adresseEnt."/"
             .$secteurActivite."/".$entNom."/".$entVille."/".$entNom2."/".$entVille2;
 ?>
 <html>
@@ -119,7 +124,8 @@
                                 <p>Votre numéro de portable : ".$mobile."</p>
                                 <p>Votre eMail : ".$mail."</p>
                             </fieldset>";
-                        if( empty($formation) and empty($anneeFormation) and empty($discipline))
+                        $chaineFormation=explode("/",$formation);
+                        if( empty($chaineFormation[1]) and empty($chaineFormation[2]) and empty($chaineFormation[3]))
                         {
                             echo "<p id="."information_non_renseigne".">Partie 4 qui est votre poursuite d'études
                                     non renseigné</p>";
@@ -127,10 +133,29 @@
                         else
                         {
                             echo "<fieldset>
-                                    <legend><span class="."number"." id="."number4".">4</span>Poursuite d'études</legend>
-                                    <p>Vous avez fait : ".str_replace("-"," ",$formation)."</p>
-                                    <p>En : ".$anneeFormation."</p>
-                                    <p>Votre discipline : ".str_replace("-"," ",$discipline)."</p>
+                                <legend><span class="."number"." id="."number4".">4</span>Poursuite d'études</legend>
+                                    <table id="."tableauFormation".">
+                                        <tr>
+                                            <th>Formation</th>
+                                            <th>Année</th>
+                                            <th>Discipline</th>
+                                        </tr>";
+                            $i=0;
+                            $j=1;
+                            $nbLigne=(count($chaineFormation)-1)/3;
+                            while($i<$nbLigne)
+                            {
+                                echo "<tr>
+                                        <td>".str_replace("-"," ",$chaineFormation[$j])."</td>";
+                                $j=$j+1;
+                                echo    "<td>".str_replace("-"," ",$chaineFormation[$j])."</td>";
+                                $j=$j+1;
+                                echo    "<td>".str_replace("-"," ",$chaineFormation[$j])."</td>
+                                    </tr>";
+                                $j=$j+1;
+                                $i=$i+1;
+                            }
+                            echo "  </table>
                                 </fieldset>";
                         }
                         if(empty($emploi) and empty($typeContrat) and empty($entreprise) and empty($adresseEnt) and empty($secteurActivite))
@@ -168,7 +193,7 @@
                         }   
                     }
                      echo "<p id="."information_non_renseigne".">Pour modifier, cliquez sur le boutton si dessous :</p>"
-                        . "<input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".");"." />";
+                        . "<input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".","."'".$formation."'".");"." />";
                 ?>
             </form>
         </div>
