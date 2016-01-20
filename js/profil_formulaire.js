@@ -1,4 +1,4 @@
-l=0;//déclaration de l en variable gloable utilisé dans deux fonctions différentes mais même utilité d'incrémentation des valeurs d'attributs name
+l=1;//déclaration de l en variable gloable utilisé dans deux fonctions différentes mais même utilité d'incrémentation des valeurs d'attributs name
 function afficheFormulaire(text,text2){
     var totalInfo=text.split('/');
     var formation=text2.split('/');
@@ -364,9 +364,74 @@ function afficheFormulaire(text,text2){
     tabFormation.appendChild(tr1NomCol);
     
     //ici faut que tu mettes en dur une ligne du tableau parceque rien s'affiche s'il a pas encore d'infos dans la part4
-    
+    tr2Col=document.createElement("tr");
+        tdInputFormation=document.createElement("td");
+        inputFormation=document.createElement("input");
+        inputFormation.setAttribute("name","formation0");
+        inputFormation.setAttribute("id","formation");
+        inputFormation.setAttribute("type","formation");
+        inputFormation.setAttribute("placeholder","Formation : ");
+        inputFormation.setAttribute("onblur","verifFormation(this);"); 
+        if(formation[1]!=undefined){
+            inputFormation.setAttribute("value",formation[1].replace(/-/gi," "));
+        }
+        partieFormulaire4.appendChild(inputFormation);
+        erreurformation=document.createElement("p");
+        erreurformation.setAttribute("id","erreurformation");
+        partieFormulaire4.appendChild(erreurformation);
+        tdInputFormation.appendChild(inputFormation);
+        tr2Col.appendChild(tdInputFormation);
+
+        tdSelectAn=document.createElement("td");
+        selectAnnee = document.createElement("select");
+        selectAnnee.setAttribute("name","annee0");
+        selectAnnee.setAttribute("id","annee0");
+        selectAnnee.setAttribute("onclick","verifAnnee(this);");
+        partieFormulaire4.appendChild(selectAnnee);
+        optionAnnee0 = document.createElement("option");
+        optionAnnee0.setAttribute("value","");
+        selectAnnee.appendChild(optionAnnee0);
+        $('#annee0>option[value="'+""+'"]').attr('selected', true);
+        var k=1980;
+        while(k<=ladate.getFullYear()){
+            optionAnnee = document.createElement("option");
+            optionAnnee.setAttribute("value",k);
+            selectAnnee.appendChild(optionAnnee);
+            remplaceTexte(optionAnnee,k);
+            if(parseInt(formation[2])===k){
+                $('#annee0>option[value="'+k+'"]').attr('selected', true);
+            }
+            k++;
+        }
+        //document.getElementById("anSortie").selectedIndex="-1";
+        erreurannee=document.createElement("p");
+        erreurannee.setAttribute("id","erreurannee");
+        partieFormulaire4.appendChild(erreurannee);
+        tdSelectAn.appendChild(selectAnnee);
+        tr2Col.appendChild(tdSelectAn);
+
+        tdInputDiscipline=document.createElement("td");
+        inputDiscipline=document.createElement("input");
+        inputDiscipline.setAttribute("name","discipline0");
+        inputDiscipline.setAttribute("id","discipline");
+        inputDiscipline.setAttribute("type","discipline");
+        inputDiscipline.setAttribute("placeholder","Discipline : ");
+        inputDiscipline.setAttribute("onblur","verifDiscipline(this);"); 
+        if(formation[3]!==undefined){
+            inputDiscipline.setAttribute("value",formation[3].replace(/-/gi," "));
+        }
+        partieFormulaire4.appendChild(inputDiscipline);
+        erreurdiscipline=document.createElement("p");
+        erreurdiscipline.setAttribute("id","erreurdiscipline");
+        partieFormulaire4.appendChild(erreurdiscipline);
+        tdInputDiscipline.appendChild(inputDiscipline);
+        tr2Col.appendChild(tdInputDiscipline);
+
+        tabFormation.appendChild(tr2Col);
+        partieFormulaire4.appendChild(tabFormation);
+        
     var nbLigne=(formation.length-1)/3;
-    var m=1;
+    var m=4;
     while(l<nbLigne)
     {
         tr2Col=document.createElement("tr");
@@ -377,7 +442,7 @@ function afficheFormulaire(text,text2){
         inputFormation.setAttribute("type","formation");
         inputFormation.setAttribute("placeholder","Formation : ");
         inputFormation.setAttribute("onblur","verifFormation(this);"); 
-        if(formation[m]!==null){
+        if(formation[m]!==undefined){
             inputFormation.setAttribute("value",formation[m].replace(/-/gi," "));
         }
         m++;
@@ -424,7 +489,7 @@ function afficheFormulaire(text,text2){
         inputDiscipline.setAttribute("type","discipline");
         inputDiscipline.setAttribute("placeholder","Discipline : ");
         inputDiscipline.setAttribute("onblur","verifDiscipline(this);"); 
-        if(formation[m]!==null){
+        if(formation[m]!==undefined){
             inputDiscipline.setAttribute("value",formation[m].replace(/-/gi," "));
         }
         m++;
@@ -439,10 +504,7 @@ function afficheFormulaire(text,text2){
         partieFormulaire4.appendChild(tabFormation);
         l++;
     }
-    if(nbLigne==1)
-    {
-        l=0;
-    }
+    l=l-1;
     ajoutLigneF=document.createElement("a");
     ajoutLigneF.setAttribute("onclick","ajoutLigneFormation();");
     partieFormulaire4.appendChild(ajoutLigneF);
@@ -1195,7 +1257,7 @@ function ajoutLigneFormation()
     tdSelectAn=document.createElement("td");
     selectAnnee = document.createElement("select");
     selectAnnee.setAttribute("name","annee"+l);
-    selectAnnee.setAttribute("id","annee");
+    selectAnnee.setAttribute("id","annee"+l);
     selectAnnee.setAttribute("onclick","verifAnnee(this);");
     partieFormulaire4.appendChild(selectAnnee);
     optionAnnee0 = document.createElement("option");

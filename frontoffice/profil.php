@@ -6,6 +6,8 @@
     }
     $_SESSION["page"] = "profil";
     require_once('connexionBD.php');
+    
+    //Récupération des différentes informations de l'étudiant pour ensuite lui afficher son profil 
     $idEtud=$_SESSION['idEtud'];
     $tableEtudiant="SELECT * FROM etudiant WHERE id='".$idEtud."'";     
     $table1=$connexion->query($tableEtudiant);
@@ -34,7 +36,6 @@
     $tableParcoursPro="SELECT * FROM parcourspro WHERE idEtud='".$idEtud."'";     
     $table4 = $connexion->query($tableParcoursPro);
     $ligne4 = $table4->fetch();
-    //$occupEmploi=$ligne4['occupEmploi'];
     $emploi=$ligne4['emploi'];
     $typeContrat=$ligne4['typeContrat'];
     $entreprise=$ligne4['entreprise'];
@@ -43,10 +44,10 @@
 
     $tablePoursuiteEtude="SELECT * FROM poursuiteetudes WHERE idEtud='".$idEtud."'";     
     $table5 = $connexion->query($tablePoursuiteEtude);
-    /*$ligne5 = $table5->fetch();
-    $formation=$ligne5['formation'];
-    $anneeFormation=$ligne5['anneeFormation'];
-    $discipline=$ligne5['discipline'];*/
+    //concaténation des informations de la poursuite d'étude pour passer le tout
+    //en paramètre de la fonction javascript qui va ajouter dynamiquement
+    //le formulaire de modification du profil dans la page avec les informations
+    //éxistante dans les champs adapté
     $formation="";
     while($ligne5 = $table5->fetch())
     {
@@ -67,6 +68,10 @@
     $_SESSION['idStage']=$idStage;
     $_SESSION['idStage2']=$idStage2;
 
+    //concaténation des différentes informations sauf la poursuite d'étude pour passer le tout
+    //en paramètre de la fonction javascript qui va ajouter dynamiquement
+    //le formulaire de modification du profil dans la page avec les informations
+    //éxistante dans les champs adapté
     $totalInfos=$nom."/".$prenom."/".$dateNaissance."/".$anEntre."/".$anSortie."/".$cursus."/".$adresse."/".$cp."/".$ville."/".$fixe."/"
             .$mobile."/".$mail."/".$emploi."/".$typeContrat."/".$entreprise."/".$adresseEnt."/"
             .$secteurActivite."/".$entNom."/".$entVille."/".$entNom2."/".$entVille2;
@@ -91,6 +96,19 @@
             <div id="divPrincipal" class="form-style-5">
             <form id="modifForm">
                 <?php 
+                    /*
+                     * les différentes conditions des IF suivant dans le code avec l'utilisation de la fonction empty
+                     * vérifie si oui ou non les informations de l'étudiant existe déjà, si existe on lui affiche
+                     * sinon un message l'informe qu'elles sont les informations qu'il n'a pas rentré.
+                     * 
+                     * Pour l'affichage de différentes variables la fonction str_replace est utilisé pour remplacer les
+                     * - par des espaces. Les informations dans la BDD n'ont pas d'espace mais des - car lors du passages 
+                     * de toutes les informations concaténé dans la fonction javascript pour afficher le formulaire de
+                     * modification avec les informations déjà existantes, laisser une espace provoquerait une erreur javascript.
+                     * 
+                     * il y a au minimum le nom/prenom/date de naissance qui ont été rentré par l'administrateur à la création
+                     * du compte de l'utilisateur qui sont affiché.
+                     */
                     if(empty($anEntre) and empty($anSortie) and empty($cursus) and empty($adresse) and empty($cp) and empty($ville) and empty($fixe) and empty($mobile) and empty($mail))
                     {
                          echo "<fieldset>

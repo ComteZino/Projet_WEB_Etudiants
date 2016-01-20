@@ -65,25 +65,26 @@
             $part123NombreErreur++; // On incrémente la variable qui compte les erreurs
         }
     }
+    /*
+     * récupération du nombre de ligne dans le tableau des poursuites d'études
+     * pour voir dynamiquement s'il y a des erreurs peu importe la ligne
+     */
     $nbLigne = (int)htmlentities($_GET['nbInfoFormation']);
     $i=0;
-    while($i<$nbLigne)
+    while($i<$nbLigne+1)
     {
         if (empty($_GET['formation'.$i]))
         { // Si la variable est vide
             $part4NombreErreur++; // On incrémente la variable qui compte les erreurs
-        } 
-        //echo htmlentities($_GET['formation'.$i])." ";
+        }
         if (empty($_GET['annee'.$i]))
         { // Si la variable est vide
             $part4NombreErreur++; // On incrémente la variable qui compte les erreurs
         } 
-        //echo htmlentities($_GET['annee'.$i])." ";
         if (empty($_GET['discipline'.$i]))
         { // Si la variable est vide
             $part4NombreErreur++; // On incrémente la variable qui compte les erreurs
         }
-        //echo htmlentities($_GET['discipline'.$i])."\n";
         $i++;
     }
     
@@ -163,10 +164,6 @@
 
     $tablePoursuiteEtude="SELECT * FROM poursuiteetudes WHERE idEtud='".$idEtud."'";     
     $table5 = $connexion->query($tablePoursuiteEtude);
-    //$ligne5 = $table5->fetch();
-    /*$formationBD=$ligne5['formation'];
-    $anneeFormationBD=$ligne5['anneeFormation'];
-    $disciplineBD=$ligne5['discipline'];*/
     
     $tableStage="SELECT * FROM stage WHERE idEtud='".$idEtud."'";     
     $table6 = $connexion->query($tableStage);
@@ -229,6 +226,11 @@
         $telfixe = htmlentities($_GET['telfixe']);
         $mobile = htmlentities($_GET['mobile']);
         $email = htmlentities($_GET['email']);
+        /*
+         * suite à la récupération des données de la base on vérifie s'il y en a déjà ou pas ou faire un INSERT ou UPDATE
+         * 
+         * la fonction str_replace est utilisé pour remplacer les espaces par des - dans la BDD(plus d'explication en commentaire dans profil.php)
+         */
         if(empty($anEntreBD) and empty($anSortieBD) and empty($cursusBD) and empty($adresseBD) and empty($cpBD) and empty($villeBD) and empty($fixeBD) and empty($mobileBD) and empty($mailBD))
         {
             //insert
@@ -249,22 +251,19 @@
             $sql="UPDATE infoetudiant SET adresse='".str_replace(" ","-",$adresse)."', cp='".$cp."', ville='".str_replace(" ","-",$ville)."' , fixe='".$telfixe."' , mobile='".$mobile."' , mail='".$email."'   WHERE id ='".$idEtud."' ";
             $updatecas = $connexion->exec($sql);
         }
-        echo $part4NombreErreur;
         if($part4NombreErreur==0)
         {
             $j=0;
-            while($j<$nbLigne || $ligne5 = $table5->fetch())
+            while( $ligne5 = $table5->fetch())
             {
-                if(empty($ligne5['formation']) and empty($ligne5['anneeFormation']) and empty($ligne5['discipline']))
-                {
-                    $sql="INSERT INTO poursuiteetudes(id,formation,anneeFormation,discipline,idEtud ) VALUES('$idPoursuiteEtude', '".str_replace(" ","-",htmlentities($_GET['formation'.$j]))."', '".(int)htmlentities($_GET['annee'.$j])."','".str_replace(" ","-",htmlentities($_GET['discipline'.$j]))."','$idEtud')";
-                    $insertCas = $connexion->exec($sql);
-                }
-                else 
-                {
-                    $sql="UPDATE poursuiteetudes SET formation='".str_replace(" ","-",htmlentities($_GET['formation'.$j]))."', anneeFormation='".(int)htmlentities($_GET['annee'.$j])."', discipline='".str_replace(" ","-",htmlentities($_GET['discipline'.$j]))."' WHERE id ='".$ligne5['id']."' ";
-                    $updatecas2 = $connexion->exec($sql);
-                }
+                $sql="UPDATE poursuiteetudes SET formation='".str_replace(" ","-",htmlentities($_GET['formation'.$j]))."', anneeFormation='".(int)htmlentities($_GET['annee'.$j])."', discipline='".str_replace(" ","-",htmlentities($_GET['discipline'.$j]))."' WHERE id ='".$ligne5['id']."' ";
+                $updatecas2 = $connexion->exec($sql);
+                $j++;
+            }
+            while($j<$nbLigne+1)
+            {
+                $sql="INSERT INTO poursuiteetudes(id,formation,anneeFormation,discipline,idEtud ) VALUES('$idPoursuiteEtude', '".str_replace(" ","-",htmlentities($_GET['formation'.$j]))."', '".(int)htmlentities($_GET['annee'.$j])."','".str_replace(" ","-",htmlentities($_GET['discipline'.$j]))."','$idEtud')";
+                $insertCas = $connexion->exec($sql);
                 $idPoursuiteEtude++;
                 $j++;
             }
@@ -314,6 +313,7 @@
             }
 
         }
+        //redirection 
         header('Location: ../frontoffice/profil_formulaire_envoye.php');
     }
 ?>
