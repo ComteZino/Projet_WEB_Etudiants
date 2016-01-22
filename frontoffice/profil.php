@@ -68,13 +68,13 @@
 ?>
 <html>
     <head>
-      <meta charset="utf-8">
-      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title></title>
-      <link rel="stylesheet" href="../css/style.css">
-      <link rel="stylesheet" href="../css/styleProfil.css">
-	  <script type="text/javascript" src="../js/profil_formulaire.js"> </script>
+        <meta charset="utf-8">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/styleProfil.css">
+        <script type="text/javascript" src="../js/profil_formulaire.js"></script>
     </head>
     <body id="ajout">
         <?php include 'header.php'; ?>
@@ -88,7 +88,7 @@
                 <?php 
                     if(empty($anEntre) and empty($anSortie) and empty($cursus) and empty($adresse) and empty($cp) and empty($ville) and empty($fixe) and empty($mobile) and empty($mail))
                     {
-                         echo "<fieldset>
+                        echo "<fieldset>
                                 <legend><span class="."number"." id="."number1".">1</span>Vous êtes :</legend>
                                 <p>".str_replace("-"," ",$nom)."</p>
                                 <p>".str_replace("-"," ",$prenom)."</p>

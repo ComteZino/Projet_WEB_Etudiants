@@ -62,7 +62,7 @@
                         while($ligne1 = $table1->fetch())
                         {      
                             echo "<p><span>Auteur : </span> ".$ligne1['auteur']." <span>Date de publication : </span> ".$ligne1['date']."</p>";
-                            echo '<p><a href="accueil.php">' .  $ligne1['titre'] .'</a></p>';    
+                            echo '<p><a href="article.php?id='.$ligne1['idNews'].'">'.  $ligne1['titre'] .'</a></p>';    
                             echo '<div class="trait"></div>';
                         }
                     ?>

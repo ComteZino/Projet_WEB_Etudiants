@@ -10,10 +10,11 @@
 ?>
 <html>
     <head>
-     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-     <link rel="stylesheet" href="../css/style.css">
-     <link rel="stylesheet" href="../css/styleGestionActualite.css">
-     <script type="text/javascript" src="../ckeditor/ckeditor.js"></script><!-- Script pour l'outil d'édition de texte --> 
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/styleGestionActualite.css">
+    <script type="text/javascript" src="../ckeditor/ckeditor.js"></script><!-- Script pour l'outil d'édition de texte --> 
+    <script type="text/javascript" src="../js/image.js"></script>
      <title>Ajouter une actualité</title>
     </head>
     <body>
@@ -60,8 +61,14 @@
                     CKEDITOR.replace( 'contenu' );// Mise en place de l'outil d'édition de texte précédement appelé 
                 </script>
                 
-                <!-- Boutons --> 
+                <!-- Champ ajout d'image -->  
+                <div class="input-file-container">
+                    <input class="input-file" id="my-file" type="file">
+                    <label for="my-file" class="input-file-trigger" tabindex="0">Select a file...</label>
+                </div>
+                <p class="file-return"></p>
                 
+                <!-- Boutons --> 
                    <input name="Valider" class='bouton' value="Valider" type="submit"/>           
             </form>
         </div>
