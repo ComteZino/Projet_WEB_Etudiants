@@ -43,14 +43,13 @@ and open the template in the editor.
 .form-style-5 input[type="formation"],
 .form-style-5 input[type="annee"],
 .form-style-5 input[type="discipline"],
+.form-style-5 input[type="etablissement"],
 .form-style-5 input[type="posteoccupe"],
 .form-style-5 input[type="entreprise"],
 .form-style-5 input[type="adresseEnt"],
 .form-style-5 input[type="secteurEnt"],
-.form-style-5 input[type="entstage1"],
-.form-style-5 input[type="villestage1"],
-.form-style-5 input[type="entstage2"],
-.form-style-5 input[type="villestage2"],
+.form-style-5 input[type="nomStage"],
+.form-style-5 input[type="villeEntreprise"],
 .form-style-5 textarea,
 .form-style-5 select {
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -151,7 +150,8 @@ and open the template in the editor.
     font-family: 'Montserrat', Arial, Helvetica, sans-serif; 
     text-align: center;
 }
-#tableauFormation
+#tableauFormation,
+#tableauStage
 {
     text-align: center;
 }

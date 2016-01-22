@@ -51,12 +51,17 @@
     $formation="";
     while($ligne5 = $table5->fetch())
     {
-        $formation=$formation."/".$ligne5['formation']."/".$ligne5['anneeFormation']."/".$ligne5['discipline'];
+        $formation=$formation."/".$ligne5['formation']."/".$ligne5['anneeFormation']."/".$ligne5['discipline']."/".$ligne5['etablissement'];
     }
     
     $tableStage="SELECT * FROM stage WHERE idEtud='".$idEtud."'"; 
     $table6 = $connexion->query($tableStage);
-    $ligne6 = $table6->fetch();
+    $stage="";
+    while($ligne6 = $table6->fetch())
+    {
+        $stage=$stage."/".$ligne6['EntNom']."/".$ligne6['EntVille'];
+    }
+    /*$ligne6 = $table6->fetch();
     $idStage=$ligne6['id'];
     $entNom=$ligne6['EntNom'];
     $entVille=$ligne6['EntVille'];
@@ -66,7 +71,7 @@
     $entVille2=$ligne6['EntVille'];
     
     $_SESSION['idStage']=$idStage;
-    $_SESSION['idStage2']=$idStage2;
+    $_SESSION['idStage2']=$idStage2;*/
 
     //concaténation des différentes informations sauf la poursuite d'étude pour passer le tout
     //en paramètre de la fonction javascript qui va ajouter dynamiquement
@@ -74,7 +79,7 @@
     //éxistante dans les champs adapté
     $totalInfos=$nom."/".$prenom."/".$dateNaissance."/".$anEntre."/".$anSortie."/".$cursus."/".$adresse."/".$cp."/".$ville."/".$fixe."/"
             .$mobile."/".$mail."/".$emploi."/".$typeContrat."/".$entreprise."/".$adresseEnt."/"
-            .$secteurActivite."/".$entNom."/".$entVille."/".$entNom2."/".$entVille2;
+            .$secteurActivite;
 ?>
 <html>
     <head>
@@ -157,14 +162,17 @@
                                             <th>Formation</th>
                                             <th>Année</th>
                                             <th>Discipline</th>
+                                            <th>Établissement</th>
                                         </tr>";
                             $i=0;
                             $j=1;
-                            $nbLigne=(count($chaineFormation)-1)/3;
+                            $nbLigne=(count($chaineFormation)-1)/4;
                             while($i<$nbLigne)
                             {
                                 echo "<tr>
                                         <td>".str_replace("-"," ",$chaineFormation[$j])."</td>";
+                                $j=$j+1;
+                                echo    "<td>".str_replace("-"," ",$chaineFormation[$j])."</td>";
                                 $j=$j+1;
                                 echo    "<td>".str_replace("-"," ",$chaineFormation[$j])."</td>";
                                 $j=$j+1;
@@ -192,7 +200,8 @@
                                 <p>Dans le secteur d'activité : ".str_replace("-"," ",$secteurActivite)."</p>
                                 </fieldset>";
                         }
-                        if(empty($entNom) and empty($entVille))
+                         $chaineStage=explode("/",$stage);
+                        if(empty($chaineStage[1]) and empty($chaineStage[2]))
                         {
                             echo "<p id="."information_non_renseigne".">Partie 6 qui concerne vos stages
                                     non renseigné</p>";
@@ -201,17 +210,30 @@
                         {
                             echo "<fieldset>
                                 <legend><span class="."number"." id="."number6".">6</span>Vos stages</legend>
-                                <label>Stage de première année</label>
-                                <p>Nom de l'entreprise : ".str_replace("-"," ",$entNom)."</p>
-                                <p>Ville d'implentation : ".str_replace("-"," ",$entVille)."</p>
-                                <label>Stage de deuxième année</label>
-                                <p>Nom de l'entreprise : ".str_replace("-"," ",$entNom2)."</p>
-                                <p>Ville d'implentation : ".str_replace("-"," ",$entVille2)."</p>
+                                    <table id="."tableauStage".">
+                                        <tr>
+                                            <th>Nom de l'entreprise</th>
+                                            <th>Ville où elle est situé</th>
+                                        </tr>";
+                            $k=0;
+                            $l=1;
+                            $nbLigne2=(count($chaineStage)-1)/2;
+                            while($k<$nbLigne2)
+                            {
+                                echo "<tr>
+                                        <td>".str_replace("-"," ",$chaineStage[$l])."</td>";
+                                $l=$l+1;
+                                echo    "<td>".str_replace("-"," ",$chaineStage[$l])."</td>
+                                    </tr>";
+                                $l=$l+1;
+                                $k=$k+1;
+                            }
+                            echo "  </table>
                                 </fieldset>";
                         }   
                     }
                      echo "<p id="."information_non_renseigne".">Pour modifier, cliquez sur le boutton si dessous :</p>"
-                        . "<input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".","."'".$formation."'".");"." />";
+                        . "<input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".","."'".$formation."'".","."'".$stage."'".");"." />";
                 ?>
             </form>
         </div>

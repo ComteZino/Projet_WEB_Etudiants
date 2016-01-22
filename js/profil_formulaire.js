@@ -1,7 +1,9 @@
 l=1;//déclaration de l en variable gloable utilisé dans deux fonctions différentes mais même utilité d'incrémentation des valeurs d'attributs name
-function afficheFormulaire(text,text2){
+n=1;
+function afficheFormulaire(text,text2,text3){
     var totalInfo=text.split('/');
     var formation=text2.split('/');
+    var stage=text3.split('/');
     var element = document.getElementById("modifForm");
     if(element!=null){
             element.parentNode.removeChild(element);
@@ -361,77 +363,97 @@ function afficheFormulaire(text,text2){
     thDiscipline=document.createElement("th");
     remplaceTexte(thDiscipline,"Discipline");
     tr1NomCol.appendChild(thDiscipline);
+    thEtablissement=document.createElement("th");
+    remplaceTexte(thEtablissement,"Etablissement");
+    tr1NomCol.appendChild(thEtablissement);
     tabFormation.appendChild(tr1NomCol);
     
     //ici faut que tu mettes en dur une ligne du tableau parceque rien s'affiche s'il a pas encore d'infos dans la part4
     tr2Col=document.createElement("tr");
-        tdInputFormation=document.createElement("td");
-        inputFormation=document.createElement("input");
-        inputFormation.setAttribute("name","formation0");
-        inputFormation.setAttribute("id","formation");
-        inputFormation.setAttribute("type","formation");
-        inputFormation.setAttribute("placeholder","Formation : ");
-        inputFormation.setAttribute("onblur","verifFormation(this);"); 
-        if(formation[1]!=undefined){
-            inputFormation.setAttribute("value",formation[1].replace(/-/gi," "));
-        }
-        partieFormulaire4.appendChild(inputFormation);
-        erreurformation=document.createElement("p");
-        erreurformation.setAttribute("id","erreurformation");
-        partieFormulaire4.appendChild(erreurformation);
-        tdInputFormation.appendChild(inputFormation);
-        tr2Col.appendChild(tdInputFormation);
+    tdInputFormation=document.createElement("td");
+    inputFormation=document.createElement("input");
+    inputFormation.setAttribute("name","formation0");
+    inputFormation.setAttribute("id","formation");
+    inputFormation.setAttribute("type","formation");
+    inputFormation.setAttribute("placeholder","Formation : ");
+    inputFormation.setAttribute("onblur","verifFormation(this);"); 
+    if(formation[1]!=undefined){
+        inputFormation.setAttribute("value",formation[1].replace(/-/gi," "));
+    }
+    partieFormulaire4.appendChild(inputFormation);
+    erreurformation=document.createElement("p");
+    erreurformation.setAttribute("id","erreurformation");
+    partieFormulaire4.appendChild(erreurformation);
+    tdInputFormation.appendChild(inputFormation);
+    tr2Col.appendChild(tdInputFormation);
 
-        tdSelectAn=document.createElement("td");
-        selectAnnee = document.createElement("select");
-        selectAnnee.setAttribute("name","annee0");
-        selectAnnee.setAttribute("id","annee0");
-        selectAnnee.setAttribute("onclick","verifAnnee(this);");
-        partieFormulaire4.appendChild(selectAnnee);
-        optionAnnee0 = document.createElement("option");
-        optionAnnee0.setAttribute("value","");
-        selectAnnee.appendChild(optionAnnee0);
-        $('#annee0>option[value="'+""+'"]').attr('selected', true);
-        var k=1980;
-        while(k<=ladate.getFullYear()){
-            optionAnnee = document.createElement("option");
-            optionAnnee.setAttribute("value",k);
-            selectAnnee.appendChild(optionAnnee);
-            remplaceTexte(optionAnnee,k);
-            if(parseInt(formation[2])===k){
-                $('#annee0>option[value="'+k+'"]').attr('selected', true);
-            }
-            k++;
+    tdSelectAn=document.createElement("td");
+    selectAnnee = document.createElement("select");
+    selectAnnee.setAttribute("name","annee0");
+    selectAnnee.setAttribute("id","annee0");
+    selectAnnee.setAttribute("onclick","verifAnnee(this);");
+    partieFormulaire4.appendChild(selectAnnee);
+    optionAnnee0 = document.createElement("option");
+    optionAnnee0.setAttribute("value","");
+    selectAnnee.appendChild(optionAnnee0);
+    $('#annee0>option[value="'+""+'"]').attr('selected', true);
+    var k=1980;
+    while(k<=ladate.getFullYear()){
+        optionAnnee = document.createElement("option");
+        optionAnnee.setAttribute("value",k);
+        selectAnnee.appendChild(optionAnnee);
+        remplaceTexte(optionAnnee,k);
+        if(parseInt(formation[2])===k){
+            $('#annee0>option[value="'+k+'"]').attr('selected', true);
         }
-        //document.getElementById("anSortie").selectedIndex="-1";
-        erreurannee=document.createElement("p");
-        erreurannee.setAttribute("id","erreurannee");
-        partieFormulaire4.appendChild(erreurannee);
-        tdSelectAn.appendChild(selectAnnee);
-        tr2Col.appendChild(tdSelectAn);
+        k++;
+    }
+    //document.getElementById("anSortie").selectedIndex="-1";
+    erreurannee=document.createElement("p");
+    erreurannee.setAttribute("id","erreurannee");
+    partieFormulaire4.appendChild(erreurannee);
+    tdSelectAn.appendChild(selectAnnee);
+    tr2Col.appendChild(tdSelectAn);
 
-        tdInputDiscipline=document.createElement("td");
-        inputDiscipline=document.createElement("input");
-        inputDiscipline.setAttribute("name","discipline0");
-        inputDiscipline.setAttribute("id","discipline");
-        inputDiscipline.setAttribute("type","discipline");
-        inputDiscipline.setAttribute("placeholder","Discipline : ");
-        inputDiscipline.setAttribute("onblur","verifDiscipline(this);"); 
-        if(formation[3]!==undefined){
-            inputDiscipline.setAttribute("value",formation[3].replace(/-/gi," "));
-        }
-        partieFormulaire4.appendChild(inputDiscipline);
-        erreurdiscipline=document.createElement("p");
-        erreurdiscipline.setAttribute("id","erreurdiscipline");
-        partieFormulaire4.appendChild(erreurdiscipline);
-        tdInputDiscipline.appendChild(inputDiscipline);
-        tr2Col.appendChild(tdInputDiscipline);
+    tdInputDiscipline=document.createElement("td");
+    inputDiscipline=document.createElement("input");
+    inputDiscipline.setAttribute("name","discipline0");
+    inputDiscipline.setAttribute("id","discipline");
+    inputDiscipline.setAttribute("type","discipline");
+    inputDiscipline.setAttribute("placeholder","Discipline : ");
+    inputDiscipline.setAttribute("onblur","verifDiscipline(this);"); 
+    if(formation[3]!==undefined){
+        inputDiscipline.setAttribute("value",formation[3].replace(/-/gi," "));
+    }
+    partieFormulaire4.appendChild(inputDiscipline);
+    erreurdiscipline=document.createElement("p");
+    erreurdiscipline.setAttribute("id","erreurdiscipline");
+    partieFormulaire4.appendChild(erreurdiscipline);
+    tdInputDiscipline.appendChild(inputDiscipline);
+    tr2Col.appendChild(tdInputDiscipline);
 
-        tabFormation.appendChild(tr2Col);
-        partieFormulaire4.appendChild(tabFormation);
+    tdInputEtablissement=document.createElement("td");
+    inputEtablissement=document.createElement("input");
+    inputEtablissement.setAttribute("name","etablissement0");
+    inputEtablissement.setAttribute("id","etablissement");
+    inputEtablissement.setAttribute("type","etablissement");
+    inputEtablissement.setAttribute("placeholder","Etablissement : ");
+    //inputEtablissement.setAttribute("onblur","verifDiscipline(this);"); 
+    if(formation[4]!==undefined){
+        inputEtablissement.setAttribute("value",formation[4].replace(/-/gi," "));
+    }
+    partieFormulaire4.appendChild(inputEtablissement);
+    /*erreurdiscipline=document.createElement("p");
+    erreurdiscipline.setAttribute("id","erreurdiscipline");
+    partieFormulaire4.appendChild(erreurdiscipline);*/
+    tdInputEtablissement.appendChild(inputEtablissement);
+    tr2Col.appendChild(tdInputEtablissement);
+
+    tabFormation.appendChild(tr2Col);
+    partieFormulaire4.appendChild(tabFormation);
         
-    var nbLigne=(formation.length-1)/3;
-    var m=4;
+    var nbLigne=(formation.length-1)/4;
+    var m=5;
     while(l<nbLigne)
     {
         tr2Col=document.createElement("tr");
@@ -500,6 +522,24 @@ function afficheFormulaire(text,text2){
         tdInputDiscipline.appendChild(inputDiscipline);
         tr2Col.appendChild(tdInputDiscipline);
 
+        tdInputEtablissement=document.createElement("td");
+        inputEtablissement=document.createElement("input");
+        inputEtablissement.setAttribute("name","etablissement"+l);
+        inputEtablissement.setAttribute("id","etablissement");
+        inputEtablissement.setAttribute("type","etablissement");
+        inputEtablissement.setAttribute("placeholder","Etablissement : ");
+        //inputEtablissement.setAttribute("onblur","verifDiscipline(this);"); 
+        if(formation[m]!==undefined){
+            inputEtablissement.setAttribute("value",formation[m].replace(/-/gi," "));
+        }
+        m++;
+        partieFormulaire4.appendChild(inputEtablissement);
+        /*erreurdiscipline=document.createElement("p");
+        erreurdiscipline.setAttribute("id","erreurdiscipline");
+        partieFormulaire4.appendChild(erreurdiscipline);*/
+        tdInputEtablissement.appendChild(inputEtablissement);
+        tr2Col.appendChild(tdInputEtablissement);
+        
         tabFormation.appendChild(tr2Col);
         partieFormulaire4.appendChild(tabFormation);
         l++;
@@ -630,66 +670,102 @@ function afficheFormulaire(text,text2){
     legend6.appendChild(span6);
     remplaceTexte(span6,"6");
     remplaceTexte(legend6,"Stage");
-    label1Stage = document.createElement("label");
-    label1Stage.setAttribute("for","stage1");
-    partieFormulaire6.appendChild(label1Stage);
-    remplaceTexte(label1Stage,"Stage de première année");
-    inputEntStage1=document.createElement("input");
-    inputEntStage1.setAttribute("name","entstage1");
-    inputEntStage1.setAttribute("id","entstage1");
-    inputEntStage1.setAttribute("type","entstage1");
-    inputEntStage1.setAttribute("placeholder","Nom de l'entreprise : ");
-    //inputEntStage1.setAttribute("onblur","verifFormation(this);"); 
-    if(totalInfo[17]!==null){
-        inputEntStage1.setAttribute("value",totalInfo[17].replace(/-/gi," "));
+    
+    tabStage=document.createElement("table");
+    tabStage.setAttribute("id","tableauStage");
+    tr1NomColStage=document.createElement("tr");
+    thNom=document.createElement("th");
+    remplaceTexte(thNom,"Nom de l'entreprise");
+    tr1NomColStage.appendChild(thNom);
+    thVille=document.createElement("th");
+    remplaceTexte(thVille,"Ville où elle est situé");
+    tr1NomColStage.appendChild(thVille);
+    tabStage.appendChild(tr1NomColStage);
+    
+    tr2ColStage=document.createElement("tr");
+    tdInputStage=document.createElement("td");
+    inputNomStage=document.createElement("input");
+    inputNomStage.setAttribute("name","nomStage0");
+    inputNomStage.setAttribute("id","nomStage");
+    inputNomStage.setAttribute("type","nomStage");
+    inputNomStage.setAttribute("placeholder","Nom de l'entreprise : ");
+    //inputNomStage.setAttribute("onblur","verifFormation(this);"); 
+    if(stage[1]!=undefined){
+        inputNomStage.setAttribute("value",stage[1].replace(/-/gi," "));
     }
-    partieFormulaire6.appendChild(inputEntStage1);
     /*erreurformation=document.createElement("p");
     erreurformation.setAttribute("id","erreurformation");
-    partieFormulaire6.appendChild(erreurformation);*/
-    inputVilleStage1=document.createElement("input");
-    inputVilleStage1.setAttribute("name","villestage1");
-    inputVilleStage1.setAttribute("id","villestage1");
-    inputVilleStage1.setAttribute("type","villestage1");
-    inputVilleStage1.setAttribute("placeholder","Ville où est situé l'entreprise : ");
-    //inputEntStage1.setAttribute("onblur","verifFormation(this);"); 
-    if(totalInfo[18]!==null){
-        inputVilleStage1.setAttribute("value",totalInfo[18].replace(/-/gi," "));
+    partieFormulaire4.appendChild(erreurformation);*/
+    tdInputStage.appendChild(inputNomStage);
+    tr2ColStage.appendChild(tdInputStage);
+
+    tdInputVilleEntreprise=document.createElement("td");
+    inputVilleEntreprise=document.createElement("input");
+    inputVilleEntreprise.setAttribute("name","villeEntreprise0");
+    inputVilleEntreprise.setAttribute("id","villeEntreprise");
+    inputVilleEntreprise.setAttribute("type","villeEntreprise");
+    inputVilleEntreprise.setAttribute("placeholder","Ville où elle est situé : ");
+    //inputVilleEntreprise.setAttribute("onblur","verifDiscipline(this);"); 
+    if(stage[2]!==undefined){
+        inputVilleEntreprise.setAttribute("value",stage[2].replace(/-/gi," "));
     }
-    partieFormulaire6.appendChild(inputVilleStage1);
-    /*erreurformation=document.createElement("p");
-    erreurformation.setAttribute("id","erreurformation");
-    partieFormulaire6.appendChild(erreurformation);*/
-    label2Stage = document.createElement("label");
-    label2Stage.setAttribute("for","stage2");
-    partieFormulaire6.appendChild(label2Stage);
-    remplaceTexte(label2Stage,"Stage de deuxième année");
-    inputEntStage2=document.createElement("input");
-    inputEntStage2.setAttribute("name","entstage2");
-    inputEntStage2.setAttribute("id","entstage2");
-    inputEntStage2.setAttribute("type","entstage2");
-    inputEntStage2.setAttribute("placeholder","Nom de l'entreprise : ");
-    //inputEntStage1.setAttribute("onblur","verifFormation(this);"); 
-    if(totalInfo[19]!==null){
-        inputEntStage2.setAttribute("value",totalInfo[19].replace(/-/gi," "));
+    /*erreurdiscipline=document.createElement("p");
+    erreurdiscipline.setAttribute("id","erreurdiscipline");
+    partieFormulaire4.appendChild(erreurdiscipline);*/
+    tdInputVilleEntreprise.appendChild(inputVilleEntreprise);
+    tr2ColStage.appendChild(tdInputVilleEntreprise);
+
+    tabStage.appendChild(tr2ColStage);
+    partieFormulaire6.appendChild(tabStage);
+        
+    var nbLigne2=(stage.length-1)/2;
+    var o=3;
+    while(n<nbLigne2)
+    {
+        tr2ColStage=document.createElement("tr");
+        tdInputStage=document.createElement("td");
+        inputNomStage=document.createElement("input");
+        inputNomStage.setAttribute("name","nomStage"+n);
+        inputNomStage.setAttribute("id","nomStage");
+        inputNomStage.setAttribute("type","nomStage");
+        inputNomStage.setAttribute("placeholder","Nom de l'entreprise : ");
+        //inputNomStage.setAttribute("onblur","verifFormation(this);"); 
+        if(stage[o]!=undefined){
+            inputNomStage.setAttribute("value",stage[o].replace(/-/gi," "));
+        }
+        o++;
+        /*erreurformation=document.createElement("p");
+        erreurformation.setAttribute("id","erreurformation");
+        partieFormulaire4.appendChild(erreurformation);*/
+        tdInputStage.appendChild(inputNomStage);
+        tr2ColStage.appendChild(tdInputStage);
+
+        tdInputVilleEntreprise=document.createElement("td");
+        inputVilleEntreprise=document.createElement("input");
+        inputVilleEntreprise.setAttribute("name","villeEntreprise"+n);
+        inputVilleEntreprise.setAttribute("id","villeEntreprise");
+        inputVilleEntreprise.setAttribute("type","villeEntreprise");
+        inputVilleEntreprise.setAttribute("placeholder","Ville où elle est situé : ");
+        //inputVilleEntreprise.setAttribute("onblur","verifDiscipline(this);"); 
+        if(stage[o]!==undefined){
+            inputVilleEntreprise.setAttribute("value",stage[o].replace(/-/gi," "));
+        }
+        o++;
+        /*erreurdiscipline=document.createElement("p");
+        erreurdiscipline.setAttribute("id","erreurdiscipline");
+        partieFormulaire4.appendChild(erreurdiscipline);*/
+        tdInputVilleEntreprise.appendChild(inputVilleEntreprise);
+        tr2ColStage.appendChild(tdInputVilleEntreprise);
+
+        tabStage.appendChild(tr2ColStage);
+        partieFormulaire6.appendChild(tabStage);
+        n++;
     }
-    partieFormulaire6.appendChild(inputEntStage2);
-    /*erreurformation=document.createElement("p");
-    erreurformation.setAttribute("id","erreurformation");
-    partieFormulaire6.appendChild(erreurformation);*/
-    inputVilleStage2=document.createElement("input");
-    inputVilleStage2.setAttribute("name","villestage2");
-    inputVilleStage2.setAttribute("id","villestage2");
-    inputVilleStage2.setAttribute("type","villestage2");
-    inputVilleStage2.setAttribute("placeholder","Ville où est situé l'entreprise : ");
-    //inputEntStage1.setAttribute("onblur","verifFormation(this);"); 
-    if(totalInfo[20]!==null){
-        inputVilleStage2.setAttribute("value",totalInfo[20].replace(/-/gi," "));
-    }
-    partieFormulaire6.appendChild(inputVilleStage2);
-    /*erreurformation=document.createElement("p");
-    erreurformation.setAttribute("id","erreurformation");
-    partieFormulaire6.appendChild(erreurformation);*/
+    n=n-1;
+    ajoutLigneS=document.createElement("a");
+    ajoutLigneS.setAttribute("onclick","ajoutLigneStage();");
+    partieFormulaire6.appendChild(ajoutLigneS);
+    remplaceTexte(ajoutLigneS,"cliquez sur moi pour ajouter une ligne");
     
     nbInfoFormation = document.createElement("input");
     nbInfoFormation.setAttribute("name","nbInfoFormation")
@@ -697,6 +773,14 @@ function afficheFormulaire(text,text2){
     nbInfoFormation.setAttribute("type","hidden");
     nbInfoFormation.setAttribute("value",l);
     formForumlaire.appendChild(nbInfoFormation);
+    
+    nbInfoStage = document.createElement("input");
+    nbInfoStage.setAttribute("name","nbInfoStage")
+    nbInfoStage.setAttribute("id","nbInfoStage")
+    nbInfoStage.setAttribute("type","hidden");
+    nbInfoStage.setAttribute("value",n);
+    formForumlaire.appendChild(nbInfoStage);
+    
     //créaction du boutton d'envoi du formulaire
     btnForm = document.createElement("input");
     btnForm.setAttribute("name","soumettre")
@@ -1299,9 +1383,70 @@ function ajoutLigneFormation()
     partieFormulaire4.appendChild(erreurdiscipline);*/
     tdInputDiscipline.appendChild(inputDiscipline);
     tr2Col.appendChild(tdInputDiscipline);
+    
+    tdInputEtablissement=document.createElement("td");
+    inputEtablissement=document.createElement("input");
+    inputEtablissement.setAttribute("name","etablissement"+l);
+    inputEtablissement.setAttribute("id","etablissement");
+    inputEtablissement.setAttribute("type","etablissement");
+    inputEtablissement.setAttribute("placeholder","Etablissement : ");
+    //inputEtablissement.setAttribute("onblur","verifDiscipline(this);"); 
+    /*if(totalInfo[14]!==null){
+        inputDiscipline.setAttribute("value",totalInfo[14].replace(/-/gi," "));
+    }
+    partieFormulaire4.appendChild(inputDiscipline);
+    erreurdiscipline=document.createElement("p");
+    erreurdiscipline.setAttribute("id","erreurdiscipline");
+    partieFormulaire4.appendChild(erreurdiscipline);*/
+    tdInputEtablissement.appendChild(inputEtablissement);
+    tr2Col.appendChild(tdInputEtablissement);
    
     tabFormation.appendChild(tr2Col);
     
     //update du nombre d'information dans input hidden
      nbInfoFormation.setAttribute("value",l);
+}
+function ajoutLigneStage()
+{
+    n=n+1;
+    tabStage=document.getElementById("tableauStage");
+    tr2ColStage=document.createElement("tr");
+    tdInputStage=document.createElement("td");
+    inputNomStage=document.createElement("input");
+    inputNomStage.setAttribute("name","nomStage"+n);
+    inputNomStage.setAttribute("id","nomStage");
+    inputNomStage.setAttribute("type","nomStage");
+    inputNomStage.setAttribute("placeholder","Nom de l'entreprise : ");
+    //inputNomStage.setAttribute("onblur","verifFormation(this);"); 
+    /*if(stage[o]!=undefined){
+        inputNomStage.setAttribute("value",stage[o].replace(/-/gi," "));
+    }
+    partieFormulaire6.appendChild(inputFormation);*/
+    /*erreurformation=document.createElement("p");
+    erreurformation.setAttribute("id","erreurformation");
+    partieFormulaire4.appendChild(erreurformation);*/
+    tdInputStage.appendChild(inputNomStage);
+    tr2ColStage.appendChild(tdInputStage);
+
+    tdInputVilleEntreprise=document.createElement("td");
+    inputVilleEntreprise=document.createElement("input");
+    inputVilleEntreprise.setAttribute("name","villeEntreprise"+n);
+    inputVilleEntreprise.setAttribute("id","villeEntreprise");
+    inputVilleEntreprise.setAttribute("type","villeEntreprise");
+    inputVilleEntreprise.setAttribute("placeholder","Ville où elle est situé : ");
+    //inputVilleEntreprise.setAttribute("onblur","verifDiscipline(this);"); 
+    /*if(stage[o]!==undefined){
+        inputVilleEntreprise.setAttribute("value",stage[o].replace(/-/gi," "));
+    }
+    partieFormulaire6.appendChild(inputVilleEntreprise);*/
+    /*erreurdiscipline=document.createElement("p");
+    erreurdiscipline.setAttribute("id","erreurdiscipline");
+    partieFormulaire4.appendChild(erreurdiscipline);*/
+    tdInputVilleEntreprise.appendChild(inputVilleEntreprise);
+    tr2ColStage.appendChild(tdInputVilleEntreprise);
+
+    tabStage.appendChild(tr2ColStage);
+    
+    //update du nombre d'information dans input hidden
+     nbInfoStage.setAttribute("value",n);
 }
