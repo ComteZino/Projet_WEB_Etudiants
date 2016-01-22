@@ -78,3 +78,18 @@ footer{
     text-align: center;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
+
+
+/**********************/
+/**Apparence du texte**/
+/**********************/
+h1{
+    font-family: '../font/Silica-Light.ttf', Arial, Helvetica, sans-serif;
+    color: #028fcc;
+}
+
+p, h2{
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    text-align: center;
+}

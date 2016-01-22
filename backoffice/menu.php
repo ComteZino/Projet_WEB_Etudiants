@@ -23,6 +23,15 @@
                 <?php
                     if($_SESSION["statut"] == "Admin")
                     {
+                        if($_SESSION["page"] == "recherche")
+                        {
+                            echo "<li class='active'><a href='../frontoffice/recherche.php'><span>Recherche</span></a></li>";
+                        }
+                        else
+                        {
+                            echo "<li><a href='../frontoffice/recherche.php'><span>Recherche</span></a></li>";
+                        }
+                        
                         if($_SESSION["page"] == "gestion")
                         {
                             echo "<li class='active'><a href='#'<span>Gestion</span></a>";
@@ -49,15 +58,6 @@
                         else
                         {
                             echo "<li><a href='#'><span>Stats</span></a></li>";
-                        }
-                        
-                        if($_SESSION["page"] == "recherche")
-                        {
-                            echo "<li class='active'><a href='recherche.php'><span>Recherche</span></a></li>";
-                        }
-                        else
-                        {
-                            echo "<li><a href='recherche.php'><span>Recherche</span></a></li>";
                         }
                         
                         if($_SESSION["page"] == "contact_etudiant")
