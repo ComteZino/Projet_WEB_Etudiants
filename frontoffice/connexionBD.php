@@ -3,7 +3,7 @@
     {
         if(empty($_SESSION['statut'])) 
         {
-            header('Location: authentification.php');
+           header('Location: authentification.php');
         }
     }
     else
@@ -14,6 +14,7 @@
             header('Location: authentification.php');
         }
     }
+
     try
     {
         $dns ='mysql:host=localhost;dbname=anciens_etudiants';
