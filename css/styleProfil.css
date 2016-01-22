@@ -21,10 +21,11 @@ and open the template in the editor.
 }
 .form-style-5 fieldset{
     border: none;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);  
 }
 .form-style-5 legend {
     font-size: 1.4em;
-    margin-bottom: 10px;
+    margin-top: 5%;
 }
 .form-style-5 label {
     display: block;

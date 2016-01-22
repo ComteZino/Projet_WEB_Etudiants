@@ -1,14 +1,17 @@
-l=1;//déclaration de l en variable gloable utilisé dans deux fonctions différentes mais même utilité d'incrémentation des valeurs d'attributs name
-n=1;
+l=1;//déclaration de l en variable gloable utilisé dans deux fonctions différentes mais même utilité d'incrémentation des valeurs d'attributs name et boucle while
+n=1;//déclaration de n en variable gloable utilisé dans deux fonctions différentes mais même utilité d'incrémentation des valeurs d'attributs name et boucle while
 function afficheFormulaire(text,text2,text3){
-    var totalInfo=text.split('/');
-    var formation=text2.split('/');
-    var stage=text3.split('/');
+    var totalInfo=text.split('/');//sinde la chaine text en un tableau de chaine 
+    var formation=text2.split('/');//sinde la chaine text2 en un tableau de chaine 
+    var stage=text3.split('/');//sinde la chaine text3 en un tableau de chaine 
+    
+    //récupération de l'élement Form dans profil.php pour supprimer toutes les balises enfants
     var element = document.getElementById("modifForm");
     if(element!=null){
             element.parentNode.removeChild(element);
     }
-    //creation de la balise form dans le div principal
+    
+    //creation de la balise form dans le div principal avec les attributs nécéssaire
     divPrincipal = document.getElementById("divPrincipal");
     formEnfant = document.createElement("form");
     formEnfant.setAttribute("id","profil");
@@ -19,110 +22,120 @@ function afficheFormulaire(text,text2,text3){
     divPrincipal.appendChild(formEnfant);
 
     //creation de la partie 1 du formulaire
-    formForumlaire= document.getElementById("profil");
-    fieldsetEnfant = document.createElement("fieldset");
-    fieldsetEnfant.setAttribute("id","part1");
-    formForumlaire.appendChild(fieldsetEnfant);
+    formForumlaire= document.getElementById("profil");//récupération de la balise Form par l'id
+    fieldsetEnfant = document.createElement("fieldset");//création du premier bloc pour ensuite y mettre les infos requise
+    fieldsetEnfant.setAttribute("id","part1");//ajout de l'attribut id sur le fieldset
+    formForumlaire.appendChild(fieldsetEnfant);//ajout du fieldset dans la balise form
 
-
-    //creation la partie 1 du formulaire
-    partieFormulaire1= document.getElementById("part1");
-    numTitrePartie1 = document.createElement("legend");
-    numTitrePartie1.setAttribute("id","titre1");
-    partieFormulaire1.appendChild(numTitrePartie1);
-    legend1= document.getElementById("titre1");
-    span1=document.createElement("span");
-    span1.setAttribute("id","number1");
-    span1.setAttribute("class","number");
-    legend1.appendChild(span1);
-    remplaceTexte(span1,"1");
-    remplaceTexte(legend1,"Qui êtes-vous?");
-    inputNom=document.createElement("input");
-    inputNom.setAttribute("id","nom");
-    inputNom.setAttribute("type","nom");
-    inputNom.setAttribute("name","nom");
+    partieFormulaire1= document.getElementById("part1");//récupération du fieldset créé au dessus
+    numTitrePartie1 = document.createElement("legend");//création d'une balise legend pour y mettre l'intitulé de la première partie du formulaire
+    numTitrePartie1.setAttribute("id","titre1");//ajout d'un attribut id à la balise legend
+    partieFormulaire1.appendChild(numTitrePartie1);//ajout de la balise legend dans le fieldset
+    legend1= document.getElementById("titre1");//récupération du fieldset
+    span1=document.createElement("span");//création d'une balise span pour y mettre le numéro de la partie
+    span1.setAttribute("id","number1");//ajout d'un attribut id à la balise span
+    span1.setAttribute("class","number");//ajout d'un attribut class à la balise span
+    legend1.appendChild(span1);//ajout de la balise span dans la balise legend
+    remplaceTexte(span1,"1");//ajout de texte dans la balise span
+    remplaceTexte(legend1,"Qui êtes-vous?");//ajout de texte dans la balise legend
+    inputNom=document.createElement("input");//création de la balise input pour le Nom de la personne
+    inputNom.setAttribute("id","nom");//ajout de l'attirbut id à l'input
+    inputNom.setAttribute("type","nom");//ajout de l'attribut type à l'input
+    inputNom.setAttribute("name","nom");//ajout de l'attribut name à l'input
     inputNom.setAttribute("placeholder","nom : ");
-    inputNom.setAttribute("onblur","verifNom(this);");
+    inputNom.setAttribute("onblur","verifNom(this);");//ajout de l'attribut onblur à l'input pour la vérification de champ
+    //si l'élement à l'index 0 de la variable totalInfo éxiste alors l'input est remplit avec l'info contenu à l'index 0
     if(totalInfo[0]!==null){
-        inputNom.setAttribute("value",totalInfo[0].replace(/-/gi," "));
+        inputNom.setAttribute("value",totalInfo[0].replace(/-/gi," "));//utilisation de la fonction replace pour remplacer les - par des espaces
     }
-    partieFormulaire1.appendChild(inputNom);
+    partieFormulaire1.appendChild(inputNom);//ajout de l'input dans le fieldset
+    //création d'une balise p pour informer l'utilisateur s'il y a un problème sur l'input
     erreurnom=document.createElement("p");
     erreurnom.setAttribute("id","erreurnom");
-    partieFormulaire1.appendChild(erreurnom);
-    inputPrenom=document.createElement("input");
-    inputPrenom.setAttribute("name","prenom");
-    inputPrenom.setAttribute("id","prenom");
-    inputPrenom.setAttribute("type","prenom");
+    partieFormulaire1.appendChild(erreurnom);//ajout de la balise p dans le fieldset
+    inputPrenom=document.createElement("input");//création de la balise input pour le prénom
+    inputPrenom.setAttribute("name","prenom");//ajout de l'attribut name à l'input
+    inputPrenom.setAttribute("id","prenom");//ajout de l'attirbut id à l'input
+    inputPrenom.setAttribute("type","prenom");//ajout de l'attribut type à l'input
     inputPrenom.setAttribute("placeholder","Prénom : ");
-    inputPrenom.setAttribute("onblur","verifPrenom(this);");
+    inputPrenom.setAttribute("onblur","verifPrenom(this);");//ajout de l'attribut onblur à l'input pour la vérification de champ
+    //si l'élement à l'index 1 de la variable totalInfo éxiste alors l'input  est remplit avec l'info contenu à l'index 1
     if(totalInfo[1]!==null){
-        inputPrenom.setAttribute("value",totalInfo[1].replace(/-/gi," "));
+        inputPrenom.setAttribute("value",totalInfo[1].replace(/-/gi," "));//utilisation de la fonction replace pour remplacer les - par des espaces
     }
-    partieFormulaire1.appendChild(inputPrenom);
+    partieFormulaire1.appendChild(inputPrenom);//ajout de l'input dans le fieldset
+    //création d'une balise p pour informer l'utilisateur s'il y a un problème sur l'input
     erreurprenom=document.createElement("p");
     erreurprenom.setAttribute("id","erreurprenom");
-    partieFormulaire1.appendChild(erreurprenom);
-    inputDtn=document.createElement("input");
-    inputDtn.setAttribute("name","dtn");
-    inputDtn.setAttribute("id","dtn");
-    inputDtn.setAttribute("type","dtn");
+    partieFormulaire1.appendChild(erreurprenom);//ajout de la balise p dans le fieldset
+    inputDtn=document.createElement("input");//création de la balise input pour le date de naissance
+    inputDtn.setAttribute("name","dtn");//ajout de l'attribut name à l'input
+    inputDtn.setAttribute("id","dtn");//ajout de l'attirbut id à l'input
+    inputDtn.setAttribute("type","dtn");//ajout de l'attribut type à l'input
     inputDtn.setAttribute("placeholder","Date de naissance : ");
-    inputDtn.setAttribute("onblur","verifDtn(this);");
+    inputDtn.setAttribute("onblur","verifDtn(this);");//ajout de l'attribut onblur à l'input pour la vérification de champ
+    //si l'élement à l'index 2 de la variable totalInfo éxiste alors l'input  est remplit avec l'info contenu à l'index 2
     if(totalInfo[2]!==null){
-        inputDtn.setAttribute("value",totalInfo[2]);
+        inputDtn.setAttribute("value",totalInfo[2]);//utilisation de la fonction replace pour remplacer les - par des espaces
     }
-    partieFormulaire1.appendChild(inputDtn);
+    partieFormulaire1.appendChild(inputDtn);//ajout de l'input dans le fieldset
+    //création d'une balise p pour informer l'utilisateur s'il y a un problème sur l'input
     erreurdtn=document.createElement("p");
     erreurdtn.setAttribute("id","erreurdtn");
-    partieFormulaire1.appendChild(erreurdtn);
+    partieFormulaire1.appendChild(erreurdtn);//ajout de la balise p dans le fieldset
 
 
     //creation de la  partie 2 du formulaire
-    fieldsetEnfant2 = document.createElement("fieldset");
-    fieldsetEnfant2.setAttribute("id","part2");
-    formForumlaire.appendChild(fieldsetEnfant2);
-
-    //creation la partie 2 du formulaire
-    partieFormulaire2= document.getElementById("part2");
-    numTitrePartie2 = document.createElement("legend");
-    numTitrePartie2.setAttribute("id","titre2");
-    partieFormulaire2.appendChild(numTitrePartie2);
-    legend2= document.getElementById("titre2");
-    span2=document.createElement("span");
-    span2.setAttribute("id","number2");
-    span2.setAttribute("class","number");
-    legend2.appendChild(span2);
-    remplaceTexte(span2,"2");
-    remplaceTexte(legend2,"Votre passage dans l'établissement");
-    labelAnEntre = document.createElement("label");
-    labelAnEntre.setAttribute("for","anEntre");
-    partieFormulaire2.appendChild(labelAnEntre);
-    remplaceTexte(labelAnEntre,"En quelle année êtes-vous entré(e)?");
-    selectAnEntre = document.createElement("select");
-    selectAnEntre.setAttribute("name","anEntre");
-    selectAnEntre.setAttribute("id","anEntre");
-    selectAnEntre.setAttribute("onclick","verifAnEntre(this);");
-    partieFormulaire2.appendChild(selectAnEntre);
-    optionAnEntre0 = document.createElement("option");
+    fieldsetEnfant2 = document.createElement("fieldset");//création du deuxième bloc pour ensuite y mettre les infos requise
+    fieldsetEnfant2.setAttribute("id","part2");//ajout de l'attribut id au fieldset
+    formForumlaire.appendChild(fieldsetEnfant2);//ajout du fieldset dans la balise form
+    partieFormulaire2= document.getElementById("part2");//récupération du fieldset
+    numTitrePartie2 = document.createElement("legend");//création d'une balise legend pour y mettre l'intitulé de la première partie du formulaire
+    numTitrePartie2.setAttribute("id","titre2");//ajout de l'attribut id sur la balise legend
+    partieFormulaire2.appendChild(numTitrePartie2);//ajout du de la balise legend dans le fieldset
+    legend2= document.getElementById("titre2");//récupération du legend
+    span2=document.createElement("span");//création de la balise span
+    span2.setAttribute("id","number2");//ajout de l'attribut id à la balise span
+    span2.setAttribute("class","number");//ajout de l'attribut class à la balise span
+    legend2.appendChild(span2);//ajout de la balise span dans la balise legend
+    remplaceTexte(span2,"2");//ajout de texte dans la balise span
+    remplaceTexte(legend2,"Votre passage dans l'établissement");//ajout de texte dans la balise legend
+    labelAnEntre = document.createElement("label");//création d'une balise label
+    labelAnEntre.setAttribute("for","anEntre");//ajout de l'attribut for dans la balise label
+    partieFormulaire2.appendChild(labelAnEntre);//ajout du label dans le fieldset
+    remplaceTexte(labelAnEntre,"En quelle année êtes-vous entré(e)?");//ajout de texte dans la balise label
+    selectAnEntre = document.createElement("select");//création de la balise select pour une liste déroulante
+    selectAnEntre.setAttribute("name","anEntre");//ajout de l'attribut name à la balise select
+    selectAnEntre.setAttribute("id","anEntre");//ajout de l'attribut id à la balise select
+    selectAnEntre.setAttribute("onclick","verifAnEntre(this);");//ajout de l'attribut onclick pour la vérification
+    partieFormulaire2.appendChild(selectAnEntre);//ajout du select dans le fieldset
+    optionAnEntre0 = document.createElement("option");//création de la première option du select pour commencer à blanc
     optionAnEntre0.setAttribute("value"," ");
-    selectAnEntre.appendChild(optionAnEntre0);
+    selectAnEntre.appendChild(optionAnEntre0);//ajout de la première option dans le select
+     /*
+     * ajout dynamique des options, les options sont des années donc on commence à 1980
+     * et on va jusqu'à l'année actuelle grace la fonction Date() la récupère.
+     */
     var i=1980;
     var ladate=new Date();
+    //tant que i est inférieur à l'année actuelle la boucle continue
     while(i<=ladate.getFullYear()){
-        optionAnEntre = document.createElement("option");
-        optionAnEntre.setAttribute("value",i);
-        selectAnEntre.appendChild(optionAnEntre);
-        remplaceTexte(optionAnEntre,i);
+        optionAnEntre = document.createElement("option");//création de la balise option
+        optionAnEntre.setAttribute("value",i);//ajout d'une valeur à la balise en fonction i
+        selectAnEntre.appendChild(optionAnEntre);//ajout de l'option dans le select
+        remplaceTexte(optionAnEntre,i);//ajout de l'année en tant que texte dans la balise option
+        //si l'élement à l'index 3 de la variable totalInfo éxiste alors l'option est selectionné en fonction de la valeur de l'élément à l'index 3
          if(totalInfo[3]==i){
             $('#anEntre>option[value="'+i+'"]').attr('selected', true);
         }
-        i++;
+        i++;//incrémentation de i pour continuer la boucle 
     }
     //document.getElementById("anEntre").selectedIndex="-1";
-    erreuranentre=document.createElement("p");
+    erreuranentre=document.createElement("p");//création d'une balise p pour informer l'utilisateur s'il y a un problème sur le select 
     erreuranentre.setAttribute("id","erreuranentre");
-    partieFormulaire2.appendChild(erreuranentre);
+    partieFormulaire2.appendChild(erreuranentre);//ajout de la balise p dans le fieldset
+    
+    //le principe du select au dessus est le même que le suivant
     labelAnSortie = document.createElement("label");
     labelAnSortie.setAttribute("for","anSortie");
     partieFormulaire2.appendChild(labelAnSortie);
@@ -150,6 +163,9 @@ function afficheFormulaire(text,text2,text3){
     erreuransortie=document.createElement("p");
     erreuransortie.setAttribute("id","erreuransortie");
     partieFormulaire2.appendChild(erreuransortie);
+    
+    //le principe du select au dessus est le même que le suivant mais ici en ne 
+    //gère pas des années mais des types de BTS et l'ajout n'est pas dynamique
     labelCursur = document.createElement("label");
     labelCursur.setAttribute("for","cursus");
     partieFormulaire2.appendChild(labelCursur);
