@@ -43,11 +43,13 @@
                     </div>
                     <div id="actualite_box_lycee">
                         <?php 
-                            while($ligne = $table->fetch())
+                            $i=0;
+                            while($i<3 && $ligne = $table->fetch())
                             {
                                 echo "<p><span>Auteur : </span> ".$ligne['auteur']." <span>Date de publication : </span> ".$ligne['date']."</p>";
                                 echo '<p><a href="accueil.php">' .  $ligne['titre'] .'</a></p>';   
                                 echo '<div class="trait"></div>';
+                                $i++;
                             }
                         ?>
                     </div>
@@ -59,11 +61,13 @@
                     </div>
                     <div id="actualite_box_mariage"> 
                     <?php 
-                        while($ligne1 = $table1->fetch())
+                        $i=0;
+                        while($i<3 && $ligne1 = $table1->fetch())
                         {      
                             echo "<p><span>Auteur : </span> ".$ligne1['auteur']." <span>Date de publication : </span> ".$ligne1['date']."</p>";
                             echo '<p><a href="accueil.php">' .  $ligne1['titre'] .'</a></p>';    
                             echo '<div class="trait"></div>';
+                            $i++;
                         }
                     ?>
                     </div>         
@@ -78,12 +82,13 @@
                     </div>
                     <div id="actualite_box_deces">
                     <?php 
-                        while($ligne2 = $table2->fetch())
+                        $i=0;
+                        while($i<3 && $ligne2 = $table2->fetch())
                         {
                             echo "<p><span>Auteur : </span> ".$ligne2['auteur']." <span>Date de publication : </span> ".$ligne2['date']."</p>";
                             echo '<p><a href="accueil.php">' .  $ligne2['titre'] .'</a></p>';
                             echo '<div class="trait"></div>';
-                            
+                            $i++;
                         }
                     ?>
                     </div>        
@@ -95,13 +100,15 @@
                     </div>
                     <div id="actualite_box_naissance">
                         <?php 
-                        while($ligne2 = $table2->fetch())
-                        {  
-                            echo "<p>Auteur : ".$ligne2['auteur']." Date de Publication : ".$ligne2['date']."</p>";
-                            echo $ligne2['titre'];
-                            echo '<div class="trait"></div>';
-                        }
-                    ?>
+                            $i=0;
+                            while($i<3 && $ligne2 = $table2->fetch())
+                            {  
+                                echo "<p>Auteur : ".$ligne2['auteur']." Date de Publication : ".$ligne2['date']."</p>";
+                                echo $ligne2['titre'];
+                                echo '<div class="trait"></div>';
+                                $i++;
+                            }
+                        ?>
                     </div>
                 </div>
             </div>     
