@@ -47,7 +47,7 @@
                             while($i<3 && $ligne = $table->fetch())
                             {
                                 echo "<p><span>Auteur : </span> ".$ligne['auteur']." <span>Date de publication : </span> ".$ligne['date']."</p>";
-                                echo '<p><a href="accueil.php">' .  $ligne['titre'] .'</a></p>';   
+                                echo '<p><a href="actualite.php?id='.$ligne['idNews'].'">'.  $ligne['titre'] .'</a></p>'; 
                                 echo '<div class="trait"></div>';
                                 $i++;
                             }
@@ -65,7 +65,7 @@
                         while($i<3 && $ligne1 = $table1->fetch())
                         {      
                             echo "<p><span>Auteur : </span> ".$ligne1['auteur']." <span>Date de publication : </span> ".$ligne1['date']."</p>";
-                            echo '<p><a href="article.php?id='.$ligne1['idNews'].'">'.  $ligne1['titre'] .'</a></p>';    
+                            echo '<p><a href="actualite.php?id='.$ligne1['idNews'].'">'.  $ligne1['titre'] .'</a></p>';    
                             echo '<div class="trait"></div>';
                             $i++;
                         }
@@ -86,7 +86,7 @@
                         while($i<3 && $ligne2 = $table2->fetch())
                         {
                             echo "<p><span>Auteur : </span> ".$ligne2['auteur']." <span>Date de publication : </span> ".$ligne2['date']."</p>";
-                            echo '<p><a href="accueil.php">' .  $ligne2['titre'] .'</a></p>';
+                            echo '<p><a href="actualite.php?id='.$ligne2['idNews'].'">'.  $ligne2['titre'] .'</a></p>'; 
                             echo '<div class="trait"></div>';
                             $i++;
                         }
@@ -104,7 +104,7 @@
                             while($i<3 && $ligne2 = $table2->fetch())
                             {  
                                 echo "<p>Auteur : ".$ligne2['auteur']." Date de Publication : ".$ligne2['date']."</p>";
-                                echo $ligne2['titre'];
+                                echo '<p><a href="actualite.php?id='.$ligne1['idNews'].'">'.  $ligne1['titre'] .'</a></p>'; 
                                 echo '<div class="trait"></div>';
                                 $i++;
                             }
@@ -113,5 +113,6 @@
                 </div>
             </div>     
         </div>       
+        <?php include 'footer.php'; ?> 
     </body>
 </html>

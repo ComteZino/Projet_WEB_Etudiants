@@ -62,12 +62,14 @@
                 </script>
                 
                 <!-- Champ ajout d'image -->  
-                <div class="input-file-container">
+                <!--<div class="input-file-container">
                     <input class="input-file" id="my-file" type="file">
                     <label for="my-file" class="input-file-trigger" tabindex="0">Select a file...</label>
                 </div>
-                <p class="file-return"></p>
-                
+                <p class="file-return"></p>-->
+                    <input type="file" name="fichier"/>
+                    
+                    
                 <!-- Boutons --> 
                    <input name="Valider" class='bouton' value="Valider" type="submit"/>           
             </form>
@@ -117,5 +119,6 @@
             </form>
         </div>              
         <?php include '../frontoffice/footer.php'; ?> 
+        <?php include 'footer.php'; ?> 
     </body>
 </html>

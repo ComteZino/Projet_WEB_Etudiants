@@ -47,7 +47,7 @@
         
         <!--- Zone fil ariane --->
         <div class="filAriane">
-            Accueil
+            <a href="accueil.php">Accueil</a> » <?php echo $ligne["titre"]; ?>
         </div>
         
         <div class="box-principal">
