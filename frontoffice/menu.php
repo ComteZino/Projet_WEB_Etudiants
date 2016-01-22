@@ -53,7 +53,15 @@
                         else
                         {
                             echo "<li><a href='contact.php'><span>Contact</span></a></li>";
-                        } 
+                        }
+                    }
+                    if($_SESSION["page"] == "recherche")
+                    {
+                        echo "<li class='active'><a href='recherche.php'><span>Recherche</span></a></li>";
+                    }
+                    else
+                    {
+                        echo "<li><a href='recherche.php'><span>Recherche</span></a></li>";
                     }
                     if($_SESSION["statut"] == "Admin")
                     {
@@ -61,9 +69,9 @@
                         echo "<ul>";
                         echo "<li><a href='../backoffice/choix_gestion_compte.php' <span>Comptes</span></a></li>";
                         echo "<li><a href='../backoffice/choix_gestion_actualite.php' <span>Actualités</span></a></li>";
+                        echo "<li><a href='../backoffice/choix_gestion_categotrie.php' <span>Catégories</span></a></li>";
                         echo "</ul></li>";
                         echo "<li><a href='#'><span>Stats</span></a></li>";
-                        echo "<li><a href='#'><span>Recherche</span></a></li>";
                         echo "<li><a href='../backoffice/contact_etudiant.php'><span>Contacter un étudiant</span></a></li>";
                     }
                 ?>

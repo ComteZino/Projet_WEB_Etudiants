@@ -65,19 +65,29 @@
             $part123NombreErreur++; // On incrémente la variable qui compte les erreurs
         }
     }
+    /*
+     * récupération du nombre de ligne dans le tableau des poursuites d'études
+     * pour voir dynamiquement s'il y a des erreurs peu importe la ligne
+     */
+    $nbLigne = (int)htmlentities($_GET['nbInfoFormation']);
+    $i=0;
+    while($i<$nbLigne+1)
+    {
+        if (empty($_GET['formation'.$i]))
+        { // Si la variable est vide
+            $part4NombreErreur++; // On incrémente la variable qui compte les erreurs
+        }
+        if (empty($_GET['annee'.$i]))
+        { // Si la variable est vide
+            $part4NombreErreur++; // On incrémente la variable qui compte les erreurs
+        } 
+        if (empty($_GET['discipline'.$i]))
+        { // Si la variable est vide
+            $part4NombreErreur++; // On incrémente la variable qui compte les erreurs
+        }
+        $i++;
+    }
     
-    if (empty($_GET['formation']))
-    { // Si la variable est vide
-        $part4NombreErreur++; // On incrémente la variable qui compte les erreurs
-    } 
-    if (empty($_GET['annee']))
-    { // Si la variable est vide
-        $part4NombreErreur++; // On incrémente la variable qui compte les erreurs
-    } 
-    if (empty($_GET['discipline']))
-    { // Si la variable est vide
-        $part4NombreErreur++; // On incrémente la variable qui compte les erreurs
-    } 
 
     if (empty($_GET['posteoccupe']))
     { // Si la variable est vide
@@ -116,43 +126,14 @@
     { // Si la variable est vide
         $part6NombreErreur++; // On incrémente la variable qui compte les erreurs
     } 
-    //récupération des données du formulaire
-    $nom = htmlentities($_GET['nom']);
-    $prenom = htmlentities($_GET['prenom']);
-    $dtn = htmlentities($_GET['dtn']);
-    $anEntre = htmlentities($_GET['anEntre']);
-    $anSortie = htmlentities($_GET['anSortie']);
-    $cursus = htmlentities($_GET['cursus']);
-    $adresse = htmlentities($_GET['adresse']);
-    $cp = htmlentities($_GET['cp']);
-    $ville = htmlentities($_GET['ville']);
-    $telfixe = htmlentities($_GET['telfixe']);
-    $mobile = htmlentities($_GET['mobile']);
-    $email = htmlentities($_GET['email']);
-    $formation = htmlentities($_GET['formation']);
-    $annee = htmlentities($_GET['annee']);
-    $discipline = htmlentities($_GET['discipline']);
-    $posteoccupe = htmlentities($_GET['posteoccupe']);
-    $typecontrat = htmlentities($_GET['typecontrat']);
-    $entreprise = htmlentities($_GET['entreprise']);
-    $adresseentreprise= htmlentities($_GET['adresseentreprise']);
-    $secteuractivite = htmlentities($_GET['secteuractivite']);
-    $entNom = htmlentities($_GET['entstage1']);
-    $entVille = htmlentities($_GET['villestage1']);
-    $entNom2 = htmlentities($_GET['entstage2']);
-    $entVille2 = htmlentities($_GET['villestage2']);
+    
+    
     
     //récupération des données de la base en fonction de l'idEtud pour gérer les cas UPDATE ou INSERT si des données sont déjà enregistrées ou non
     require_once('../frontoffice/connexionBD.php');
     $idEtud=$_SESSION['idEtud'];
     $idStageUP=$_SESSION['idStage'];
     $idStage2UP=$_SESSION['idStage2'];
-    /*$tableEtudiant="SELECT * FROM etudiant WHERE id='".$idEtud."'";     
-    $table1=$connexion->query($tableEtudiant);
-    $ligne1 = $table1->fetch();
-    $nomBD=$ligne1['nom'];
-    $prenomBD=$ligne1['prenom'];
-    $dateNaissanceBD=$ligne1['dateNaissance'];*/
 
     $tablePassage="SELECT * FROM passage WHERE idEtud='".$idEtud."'";     
     $table2 = $connexion->query($tablePassage);
@@ -183,10 +164,6 @@
 
     $tablePoursuiteEtude="SELECT * FROM poursuiteetudes WHERE idEtud='".$idEtud."'";     
     $table5 = $connexion->query($tablePoursuiteEtude);
-    $ligne5 = $table5->fetch();
-    $formationBD=$ligne5['formation'];
-    $anneeFormationBD=$ligne5['anneeFormation'];
-    $disciplineBD=$ligne5['discipline'];
     
     $tableStage="SELECT * FROM stage WHERE idEtud='".$idEtud."'";     
     $table6 = $connexion->query($tableStage);
@@ -236,6 +213,24 @@
     //Gestion des différents cas en fonction des parties du formulaire remplit
     if($part123NombreErreur==0)
     {
+        //récupération des données du formulaire
+        $nom = htmlentities($_GET['nom']);
+        $prenom = htmlentities($_GET['prenom']);
+        $dtn = htmlentities($_GET['dtn']);
+        $anEntre = htmlentities($_GET['anEntre']);
+        $anSortie = htmlentities($_GET['anSortie']);
+        $cursus = htmlentities($_GET['cursus']);
+        $adresse = htmlentities($_GET['adresse']);
+        $cp = htmlentities($_GET['cp']);
+        $ville = htmlentities($_GET['ville']);
+        $telfixe = htmlentities($_GET['telfixe']);
+        $mobile = htmlentities($_GET['mobile']);
+        $email = htmlentities($_GET['email']);
+        /*
+         * suite à la récupération des données de la base on vérifie s'il y en a déjà ou pas ou faire un INSERT ou UPDATE
+         * 
+         * la fonction str_replace est utilisé pour remplacer les espaces par des - dans la BDD(plus d'explication en commentaire dans profil.php)
+         */
         if(empty($anEntreBD) and empty($anSortieBD) and empty($cursusBD) and empty($adresseBD) and empty($cpBD) and empty($villeBD) and empty($fixeBD) and empty($mobileBD) and empty($mailBD))
         {
             //insert
@@ -258,19 +253,29 @@
         }
         if($part4NombreErreur==0)
         {
-            if(empty($formationBD) and empty($anneeFormationBD) and empty($disciplineBD))
+            $j=0;
+            while( $ligne5 = $table5->fetch())
             {
-                $sql="INSERT INTO poursuiteetudes(id,formation,anneeFormation,discipline,idEtud ) VALUES('$idPoursuiteEtude', '".str_replace(" ","-",$formation)."', '$annee','".str_replace(" ","-",$discipline)."','$idEtud')";
-                $insertCas = $connexion->exec($sql);
-            }
-            else 
-            {
-                $sql="UPDATE poursuiteetudes SET formation='".str_replace(" ","-",$formation)."', anneeFormation='".$annee."', discipline='".str_replace(" ","-",$discipline)."' WHERE idEtud ='".$idEtud."' ";
+                $sql="UPDATE poursuiteetudes SET formation='".str_replace(" ","-",htmlentities($_GET['formation'.$j]))."', anneeFormation='".(int)htmlentities($_GET['annee'.$j])."', discipline='".str_replace(" ","-",htmlentities($_GET['discipline'.$j]))."' WHERE id ='".$ligne5['id']."' ";
                 $updatecas2 = $connexion->exec($sql);
+                $j++;
+            }
+            while($j<$nbLigne+1)
+            {
+                $sql="INSERT INTO poursuiteetudes(id,formation,anneeFormation,discipline,idEtud ) VALUES('$idPoursuiteEtude', '".str_replace(" ","-",htmlentities($_GET['formation'.$j]))."', '".(int)htmlentities($_GET['annee'.$j])."','".str_replace(" ","-",htmlentities($_GET['discipline'.$j]))."','$idEtud')";
+                $insertCas = $connexion->exec($sql);
+                $idPoursuiteEtude++;
+                $j++;
             }
         }
         if($part5NombreErreur==0)
         {
+            $posteoccupe = htmlentities($_GET['posteoccupe']);
+            $typecontrat = htmlentities($_GET['typecontrat']);
+            $entreprise = htmlentities($_GET['entreprise']);
+            $adresseentreprise= htmlentities($_GET['adresseentreprise']);
+            $secteuractivite = htmlentities($_GET['secteuractivite']);
+            
             if(empty($emploiBD) and empty($typeContratBD) and empty($entrepriseBD) and empty($adresseEntBD) and empty($secteurActiviteBD))
             {
                 $sql="INSERT INTO parcourspro(id,emploi,typeContrat,entreprise,adresse,secteurActivite,idEtud ) VALUES('$idParcoursPro', '".str_replace(" ","-",$posteoccupe)."', '$typecontrat','".str_replace(" ","-",$entreprise)."','".str_replace(" ","-",$adresseentreprise)."','".str_replace(" ","-",$secteuractivite)."','$idEtud')";
@@ -285,6 +290,10 @@
         }
         if($part6NombreErreur==0)
         {
+            $entNom = htmlentities($_GET['entstage1']);
+            $entVille = htmlentities($_GET['villestage1']);
+            $entNom2 = htmlentities($_GET['entstage2']);
+            $entVille2 = htmlentities($_GET['villestage2']);
             if(empty($entNomBD) and empty($entVilleBD) and empty($entNom2BD) and empty($entVille2BD))
             {
                 $sql="INSERT INTO stage(id,EntNom,EntVille,idEtud ) VALUES('$idStage', '".str_replace(" ","-",$entNom)."','".str_replace(" ","-",$entVille)."','$idEtud')";
@@ -304,6 +313,7 @@
             }
 
         }
+        //redirection 
         header('Location: ../frontoffice/profil_formulaire_envoye.php');
     }
 ?>

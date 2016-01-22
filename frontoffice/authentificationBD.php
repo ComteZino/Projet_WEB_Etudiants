@@ -4,7 +4,7 @@
     //-----------------------------------
     // Verification des champs
     //-----------------------------------
-            
+    session_start();
     $nombreErreur = 0; // Variable qui compte le nombre d'erreur
     
     /* Définit toutes les erreurs possibles */
@@ -68,7 +68,7 @@
             {	
                  if($statut!="Admin" and empty($anEntreBD) and empty($anSortieBD) and empty($cursusBD) and empty($adresseBD) and empty($cpBD) and empty($villeBD) and empty($fixeBD) and empty($mobileBD) and empty($mailBD))
                  {
-                     header('Location: profil.php');  
+                    header('Location: profil.php');  
                  }
                  else
                  {
