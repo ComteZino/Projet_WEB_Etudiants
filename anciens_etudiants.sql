@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 19 Décembre 2015 à 22:03
+-- Généré le :  Ven 22 Janvier 2016 à 16:41
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -39,7 +39,8 @@ CREATE TABLE IF NOT EXISTS `compte` (
 --
 
 INSERT INTO `compte` (`idEtud`, `login`, `password`, `statut`) VALUES
-(1, 'maxime', 'ff37274ce33e4fca0e200c74f6d89b63', 'Admin');
+(1, 'maxime', 'ff37274ce33e4fca0e200c74f6d89b63', 'Admin'),
+(2, 'util', '05c7e24700502a079cdd88012b5a76d3', 'Util');
 
 -- --------------------------------------------------------
 
@@ -58,6 +59,13 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   KEY `FK_Etudiant_id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Contenu de la table `etudiant`
+--
+
+INSERT INTO `etudiant` (`id`, `nom`, `prenom`, `dateNaissance`, `listeDiffusion`, `demandeEmail`) VALUES
+(2, 'util', 'util', '1995-12-08', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +83,40 @@ CREATE TABLE IF NOT EXISTS `infoetudiant` (
   PRIMARY KEY (`id`),
   KEY `FK_InfoEtudiant_id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Contenu de la table `infoetudiant`
+--
+
+INSERT INTO `infoetudiant` (`id`, `adresse`, `cp`, `ville`, `fixe`, `mobile`, `mail`) VALUES
+(2, '4-rue-du-clos-du-gouffre', '45400', 'fleury-les-aubrais', '0238818272', '0642589803', 'dallois.maxime@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `news`
+--
+
+CREATE TABLE IF NOT EXISTS `news` (
+  `idNews` int(11) NOT NULL,
+  `categorie` varchar(25) COLLATE utf8_bin NOT NULL,
+  `auteur` varchar(25) COLLATE utf8_bin NOT NULL,
+  `titre` varchar(100) COLLATE utf8_bin NOT NULL,
+  `contenu` varchar(10000) COLLATE utf8_bin NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`idNews`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Contenu de la table `news`
+--
+
+INSERT INTO `news` (`idNews`, `categorie`, `auteur`, `titre`, `contenu`, `date`) VALUES
+(1, 'lycee', 'maxime', 'test L', '&lt;p&gt;zfezefzef&lt;/p&gt;\r\n', '2016-01-13'),
+(2, 'lycee', 'maxime', 'test L2', '&lt;p&gt;jjtyjtyjtyjyj&lt;/p&gt;\r\n', '2016-01-13'),
+(3, 'lycee', 'maxime', 'test L3', '&lt;p&gt;ryjryjryj&lt;/p&gt;\r\n', '2016-01-13'),
+(4, 'lycee', 'maxime', 'sdfsf', '&lt;p&gt;sdfsdgsdgsdgh&lt;/p&gt;\r\n', '2016-01-22'),
+(5, 'lycee', 'maxime', 'srgsfg', '&lt;p&gt;dfgdfgdfgdfg&lt;/p&gt;\r\n', '2016-01-22');
 
 -- --------------------------------------------------------
 
@@ -95,6 +137,13 @@ CREATE TABLE IF NOT EXISTS `parcourspro` (
   KEY `FK_ParcoursPro_id` (`idEtud`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Contenu de la table `parcourspro`
+--
+
+INSERT INTO `parcourspro` (`id`, `occupEmploi`, `emploi`, `typeContrat`, `entreprise`, `adresse`, `secteurActivite`, `idEtud`) VALUES
+(1, NULL, 'grergerg', 'CDI', 'ergergerg', 'ergergerg', 'ergergerg', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -111,6 +160,13 @@ CREATE TABLE IF NOT EXISTS `passage` (
   KEY `FK_Passage_id` (`idEtud`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Contenu de la table `passage`
+--
+
+INSERT INTO `passage` (`id`, `anneeEntre`, `anneeSortie`, `cursus`, `idEtud`) VALUES
+(1, 1984, 1989, 'BTS-SIO', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -122,10 +178,47 @@ CREATE TABLE IF NOT EXISTS `poursuiteetudes` (
   `formation` varchar(25) COLLATE utf8_bin DEFAULT NULL,
   `anneeFormation` year(4) DEFAULT NULL,
   `discipline` varchar(35) COLLATE utf8_bin DEFAULT NULL,
+  `etablissement` varchar(50) COLLATE utf8_bin NOT NULL,
   `idEtud` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_PoursuiteEtudes_id` (`idEtud`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Contenu de la table `poursuiteetudes`
+--
+
+INSERT INTO `poursuiteetudes` (`id`, `formation`, `anneeFormation`, `discipline`, `etablissement`, `idEtud`) VALUES
+(1, 'ergrgzrg', 1985, 'ergergerg', 'cc', 2),
+(2, 'zrgzgzrg', 1994, 'grerherh', 'test', 2),
+(3, 'ergerg', 1982, 'ergerg', 'zgzsg', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `stage`
+--
+
+CREATE TABLE IF NOT EXISTS `stage` (
+  `id` int(11) NOT NULL,
+  `EntNom` varchar(25) COLLATE utf8_bin DEFAULT NULL,
+  `EntVille` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `idEtud` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_PoursuiteEtudes_id` (`idEtud`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Contenu de la table `stage`
+--
+
+INSERT INTO `stage` (`id`, `EntNom`, `EntVille`, `idEtud`) VALUES
+(1, 'ergerger', 'gergergerg', 2),
+(2, 'ergergerg', 'ergergerg', 2),
+(3, 'zerzryetyut', 'turyurturtu', 2),
+(4, 'zererare', 'aerretyety', 2),
+(5, 'zerzetrryery', 'gtjjryjth', 2),
+(6, 'zerzetehytr', 'thtrhjutrhu', 2);
 
 --
 -- Contraintes pour les tables exportées

@@ -85,6 +85,10 @@
         { // Si la variable est vide
             $part4NombreErreur++; // On incrémente la variable qui compte les erreurs
         }
+        if (empty($_GET['etablissement'.$i]))
+        { // Si la variable est vide
+            $part4NombreErreur++; // On incrémente la variable qui compte les erreurs
+        }
         $i++;
     }
     
@@ -110,30 +114,26 @@
     { // Si la variable est vide
         $part5NombreErreur++; // On incrémente la variable qui compte les erreurs
     } 
-    if (empty($_GET['entstage1']))
-    { // Si la variable est vide
-        $part6NombreErreur++; // On incrémente la variable qui compte les erreurs
-    } 
-    if (empty($_GET['villestage1']))
-    { // Si la variable est vide
-        $part6NombreErreur++; // On incrémente la variable qui compte les erreurs
-    } 
-    if (empty($_GET['entstage2']))
-    { // Si la variable est vide
-        $part6NombreErreur++; // On incrémente la variable qui compte les erreurs
-    } 
-    if (empty($_GET['villestage2']))
-    { // Si la variable est vide
-        $part6NombreErreur++; // On incrémente la variable qui compte les erreurs
-    } 
+    $nbLigne2 = (int)htmlentities($_GET['nbInfoStage']);
+    $k=0;
+    while($k<$nbLigne2+1)
+    {
+        if (empty($_GET['nomStage'.$k]))
+        { // Si la variable est vide
+            $part6NombreErreur++; // On incrémente la variable qui compte les erreurs
+        }
+        if (empty($_GET['villeEntreprise'.$k]))
+        { // Si la variable est vide
+            $part6NombreErreur++; // On incrémente la variable qui compte les erreurs
+        } 
+        $k++;
+    }
     
     
     
     //récupération des données de la base en fonction de l'idEtud pour gérer les cas UPDATE ou INSERT si des données sont déjà enregistrées ou non
     require_once('../frontoffice/connexionBD.php');
     $idEtud=$_SESSION['idEtud'];
-    $idStageUP=$_SESSION['idStage'];
-    $idStage2UP=$_SESSION['idStage2'];
 
     $tablePassage="SELECT * FROM passage WHERE idEtud='".$idEtud."'";     
     $table2 = $connexion->query($tablePassage);
@@ -167,12 +167,7 @@
     
     $tableStage="SELECT * FROM stage WHERE idEtud='".$idEtud."'";     
     $table6 = $connexion->query($tableStage);
-    $ligne6 = $table6->fetch();
-    $entNomBD=$ligne6['EntNom'];
-    $entVilleBD=$ligne6['EntVille'];
-    $ligne6 = $table6->fetch();
-    $entNom2BD=$ligne6['EntNom'];
-    $entVille2BD=$ligne6['EntVille'];
+
     
     //incrémentation +1 sur le dernière id de la table passage pour le prochain insert
     $selectIdPassage = $connexion->query('Select * from passage');
@@ -256,13 +251,13 @@
             $j=0;
             while( $ligne5 = $table5->fetch())
             {
-                $sql="UPDATE poursuiteetudes SET formation='".str_replace(" ","-",htmlentities($_GET['formation'.$j]))."', anneeFormation='".(int)htmlentities($_GET['annee'.$j])."', discipline='".str_replace(" ","-",htmlentities($_GET['discipline'.$j]))."' WHERE id ='".$ligne5['id']."' ";
+                $sql="UPDATE poursuiteetudes SET formation='".str_replace(" ","-",htmlentities($_GET['formation'.$j]))."', anneeFormation='".(int)htmlentities($_GET['annee'.$j])."', discipline='".str_replace(" ","-",htmlentities($_GET['discipline'.$j]))."', etablissement='".str_replace(" ","-",htmlentities($_GET['etablissement'.$j]))."' WHERE id ='".$ligne5['id']."' ";
                 $updatecas2 = $connexion->exec($sql);
                 $j++;
             }
             while($j<$nbLigne+1)
             {
-                $sql="INSERT INTO poursuiteetudes(id,formation,anneeFormation,discipline,idEtud ) VALUES('$idPoursuiteEtude', '".str_replace(" ","-",htmlentities($_GET['formation'.$j]))."', '".(int)htmlentities($_GET['annee'.$j])."','".str_replace(" ","-",htmlentities($_GET['discipline'.$j]))."','$idEtud')";
+                $sql="INSERT INTO poursuiteetudes(id,formation,anneeFormation,discipline,etablissement,idEtud ) VALUES('$idPoursuiteEtude', '".str_replace(" ","-",htmlentities($_GET['formation'.$j]))."', '".(int)htmlentities($_GET['annee'.$j])."','".str_replace(" ","-",htmlentities($_GET['discipline'.$j]))."','".str_replace(" ","-",htmlentities($_GET['etablissement'.$j]))."','$idEtud')";
                 $insertCas = $connexion->exec($sql);
                 $idPoursuiteEtude++;
                 $j++;
@@ -290,26 +285,19 @@
         }
         if($part6NombreErreur==0)
         {
-            $entNom = htmlentities($_GET['entstage1']);
-            $entVille = htmlentities($_GET['villestage1']);
-            $entNom2 = htmlentities($_GET['entstage2']);
-            $entVille2 = htmlentities($_GET['villestage2']);
-            if(empty($entNomBD) and empty($entVilleBD) and empty($entNom2BD) and empty($entVille2BD))
+            $l=0;
+            while( $ligne6 = $table6->fetch())
             {
-                $sql="INSERT INTO stage(id,EntNom,EntVille,idEtud ) VALUES('$idStage', '".str_replace(" ","-",$entNom)."','".str_replace(" ","-",$entVille)."','$idEtud')";
-                $insertCas = $connexion->exec($sql);
-                $idStage=$idStage+1;
-                $sql="INSERT INTO stage(id,EntNom,EntVille,idEtud ) VALUES('$idStage', '".str_replace(" ","-",$entNom2)."','".str_replace(" ","-",$entVille2)."','$idEtud')";
-                $insertCas = $connexion->exec($sql);
+                $sql="UPDATE stage SET EntNom='".str_replace(" ","-",htmlentities($_GET['nomStage'.$l]))."', EntVille='".str_replace(" ","-",htmlentities($_GET['villeEntreprise'.$l]))."' WHERE id ='".$ligne6['id']."' ";
+                $updatecas = $connexion->exec($sql);
+                $l++;
             }
-            else
+            while($l<$nbLigne2+1)
             {
-                $sql="UPDATE stage SET EntNom='".str_replace(" ","-",$entNom)."', EntVille='".str_replace(" ","-",$entVille)."' WHERE id ='".$idStageUP."' ";
-                
-                $updatecas = $connexion->exec($sql);
-                $sql="UPDATE stage SET EntNom='".str_replace(" ","-",$entNom2)."', EntVille='".str_replace(" ","-",$entVille2)."' WHERE id ='".$idStage2UP."' ";
-                
-                $updatecas = $connexion->exec($sql);
+                $sql="INSERT INTO stage(id,EntNom,EntVille,idEtud ) VALUES('$idStage', '".str_replace(" ","-",htmlentities($_GET['nomStage'.$l]))."','".str_replace(" ","-",htmlentities($_GET['villeEntreprise'.$l]))."','$idEtud')";
+                $insertCas = $connexion->exec($sql);
+                $idStage++;
+                $l++;
             }
 
         }
