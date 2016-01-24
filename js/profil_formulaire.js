@@ -83,7 +83,9 @@ function afficheFormulaire(text,text2,text3){
     erreurdtn=document.createElement("p");
     erreurdtn.setAttribute("id","erreurdtn");
     partieFormulaire1.appendChild(erreurdtn);//ajout de la balise p dans le fieldset
-
+    /*
+     * le principe de création de la partie 1 du formulaire est le même pour la partie 2, la 3 et la 5
+     */
 
     //creation de la  partie 2 du formulaire
     fieldsetEnfant2 = document.createElement("fieldset");//création du deuxième bloc pour ensuite y mettre les infos requise
@@ -258,7 +260,6 @@ function afficheFormulaire(text,text2,text3){
     fieldsetEnfant3 = document.createElement("fieldset");
     fieldsetEnfant3.setAttribute("id","part3");
     formForumlaire.appendChild(fieldsetEnfant3);
-    //creation la partie 3 du formulaire
     partieFormulaire3= document.getElementById("part3");
     numTitrePartie3 = document.createElement("legend");
     numTitrePartie3.setAttribute("id","titre3");
@@ -275,7 +276,7 @@ function afficheFormulaire(text,text2,text3){
     inputAdresse.setAttribute("id","adresse");
     inputAdresse.setAttribute("type","adresse");
     inputAdresse.setAttribute("placeholder","Adresse : ");
-    inputAdresse.setAttribute("onblur","verifAdresse(this);"); 
+    inputAdresse.setAttribute("onblur","verifAdresse(this);");
     if(totalInfo[6]!==null){
         inputAdresse.setAttribute("value",totalInfo[6].replace(/-/gi," "));
     }
@@ -350,11 +351,14 @@ function afficheFormulaire(text,text2,text3){
     partieFormulaire3.appendChild(erreuremail);
 
 
-    //creation de la partie 4 du formulaire
+    /*
+     * creation de la partie 4 du formulaire
+     * toujours le même principe de création d'un bloc d'information
+     * avec le fieldset,legend et span
+     */
     fieldsetEnfant4 = document.createElement("fieldset");
     fieldsetEnfant4.setAttribute("id","part4");
     formForumlaire.appendChild(fieldsetEnfant4);
-    //creation la partie 4 du formulaire
     partieFormulaire4= document.getElementById("part4");
     numTitrePartie4 = document.createElement("legend");
     numTitrePartie4.setAttribute("id","titre4");
@@ -367,6 +371,9 @@ function afficheFormulaire(text,text2,text3){
     remplaceTexte(span4,"4");
     remplaceTexte(legend4,"Poursuite d'études");
     
+    /*
+     * création d'un tableau à 4 colonnes
+     */
     tabFormation=document.createElement("table");
     tabFormation.setAttribute("id","tableauFormation");
     tr1NomCol=document.createElement("tr");
@@ -384,7 +391,12 @@ function afficheFormulaire(text,text2,text3){
     tr1NomCol.appendChild(thEtablissement);
     tabFormation.appendChild(tr1NomCol);
     
-    //ici faut que tu mettes en dur une ligne du tableau parceque rien s'affiche s'il a pas encore d'infos dans la part4
+    /*
+     * ici une première ligne avec des inputs pour rentrer les informations
+     * est ajouté en dur dans le tableau car si l'utilisateur n'a rien rentré
+     * il lui faut au minimum une ligne. le principe des inputs est le même
+     * que pour les autres parties du formulaire
+     */
     tr2Col=document.createElement("tr");
     tdInputFormation=document.createElement("td");
     inputFormation=document.createElement("input");
@@ -467,10 +479,17 @@ function afficheFormulaire(text,text2,text3){
 
     tabFormation.appendChild(tr2Col);
     partieFormulaire4.appendChild(tabFormation);
-        
+    
+    /*
+     * ici l'ajout d'une ligne dans le tableau est dynamique en fonction des informations
+     * que l'utilisateur a déjà rentré. le nombre de ligne du tableau est déterminé par
+     * par le nombre d'information, 4 informations sur une ligne donc s'il y a 8 informations
+     * il y a 2 lignes.
+     */
     var nbLigne=(formation.length-1)/4;
-    var m=5;
-    while(l<nbLigne)
+    var m=5;//la ligne 0 du tableau a été ajouté au tableau avec ses informations donc les 4 premières alors on prend m à 5
+            // de plus m est incrémenté après chaque ajout d'info dans un input
+    while(l<nbLigne)//l a été instancié à 1 au préalable car la ligne 0 du tableau a été ajouté en dur
     {
         tr2Col=document.createElement("tr");
         tdInputFormation=document.createElement("td");
@@ -558,9 +577,11 @@ function afficheFormulaire(text,text2,text3){
         
         tabFormation.appendChild(tr2Col);
         partieFormulaire4.appendChild(tabFormation);
-        l++;
+        l++;//incrémentation de l pour passer à la ligne suivante
     }
-    l=l-1;
+    l=l-1;//l prend l - 1 pour remettre la variable au nombre exacte de ligne qui ont été ajouté pour une bonne incrémentation dans la fonction ajoutLigneF ensuite
+    //création d'une balise a avec du texte et une fonction qui à chaque clique dessus ajoute une
+    //ligne au tableau 
     ajoutLigneF=document.createElement("a");
     ajoutLigneF.setAttribute("onclick","ajoutLigneFormation();");
     partieFormulaire4.appendChild(ajoutLigneF);
@@ -670,11 +691,13 @@ function afficheFormulaire(text,text2,text3){
     partieFormulaire5.appendChild(erreursecteuractivite);
 	
     
-    //création de la partie 6 du formulaire
+    /*
+     * création de la partie 6 du formulaire
+     * le principe est le même que la partie 4 du formulaire
+     */
     fieldsetEnfant6 = document.createElement("fieldset");
     fieldsetEnfant6.setAttribute("id","part6");
     formForumlaire.appendChild(fieldsetEnfant6);
-    //creation la partie 4 du formulaire
     partieFormulaire6= document.getElementById("part6");
     numTitrePartie6 = document.createElement("legend");
     numTitrePartie6.setAttribute("id","titre6");
@@ -783,13 +806,20 @@ function afficheFormulaire(text,text2,text3){
     partieFormulaire6.appendChild(ajoutLigneS);
     remplaceTexte(ajoutLigneS,"cliquez sur moi pour ajouter une ligne");
     
+   /*
+    * création d'un input caché avec le nombre de ligne du tableau de la partie 4
+    * ceci est ensuite utilisé pour récupérer le nombre de ligne au niveau du traitement
+    * (voir traitement_profil_formulaire.php ligne 69)
+    */
     nbInfoFormation = document.createElement("input");
     nbInfoFormation.setAttribute("name","nbInfoFormation")
     nbInfoFormation.setAttribute("id","nbInfoFormation")
     nbInfoFormation.setAttribute("type","hidden");
     nbInfoFormation.setAttribute("value",l);
     formForumlaire.appendChild(nbInfoFormation);
-    
+    /*
+    * création d'un input caché avec le nombre de ligne du tableau de la partie 6
+    */
     nbInfoStage = document.createElement("input");
     nbInfoStage.setAttribute("name","nbInfoStage")
     nbInfoStage.setAttribute("id","nbInfoStage")
@@ -804,14 +834,14 @@ function afficheFormulaire(text,text2,text3){
     btnForm.setAttribute("value","Modifier");
     formForumlaire.appendChild(btnForm);
 }
-
+//fonction pour ajouter du texte dans une balise HTML
 function remplaceTexte(el, texte) {
     if (el != null) {
         var nouveauNoeud = document.createTextNode(texte);
         el.appendChild(nouveauNoeud);
     }
 }
-//vérification des champs du formulaire
+//fonction de changement de couleur d'un input
 function surligne(champ, test)
 {
    if(test)
@@ -827,7 +857,7 @@ function surligne(champ, test)
 //Fonction pour la vérification du nom 
 function verifNom(champ)
 {   
-   if(champ.value.length > 2 && champ.value.length < 25)//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
+   if(champ.value.length > 2 && champ.value.length < 25)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
    {
       surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
       document.getElementById("erreurnom").innerHTML = " ";
@@ -843,7 +873,7 @@ function verifNom(champ)
 //Fonction pour la vérification du prenom
 function verifPrenom(champ)
 {   
-   if(champ.value.length > 2 && champ.value.length < 25)//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
+   if(champ.value.length > 2 && champ.value.length < 25)//Si le nombre de caractére est inférieur à 2 ou supérieur à 25 alors
    {
       surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
       document.getElementById("erreurprenom").innerHTML = " ";
@@ -859,30 +889,32 @@ function verifPrenom(champ)
 //Fonction pour la vérification de la date de naissance
 function verifDtn(champ)
 {  
-   if(champ.value.length!=10)//Si le nombre de caractére est égal à 10
+   if(champ.value.length!=10)//Si le nombre de caractére n'est pas égal à 10
    {
        surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
        document.getElementById("erreurdtn").innerHTML = "Vous devez saisir votre date de naissance(AAAA-MM-JJ)";
       return false;
    }
-   else//Si la condition n'est pas respecté alors
+   else//sinon s'il y a bien 10 caractères on vérifie que l'utilisateur a rentré sa date de naissance sous le bon format AAAA-MM-JJ
    {
        var dtn=champ.value.split('-');
        var ladate=new Date();
-       
+       //on regarde si l'année de naissance n'est pas inférieur à 1940 et suppérieur à l'année acutelle
        if((parseInt(dtn[0])<1940 || parseInt(dtn[0])>ladate.getFullYear())){
             surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à true
             document.getElementById("erreurdtn").innerHTML = "Votre année de naissance est incorrect ";
             return false;
         }
-       else//Si la condition n'est pas respecté alors
+       else
        {
+           //on regarde que le mois rentré n'est pas inférieur à 0 ou suppérieur à 12 
            if(( parseInt(dtn[1])<0 || parseInt(dtn[1])>12)){
                surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à true
                 document.getElementById("erreurdtn").innerHTML = "Votre mois de naissance est incorrect ";
                 return false;
            }
            else{
+               //on regarde que le jour de naissance n'est pas inférieur à 0 ou suppérieur à 31
                if(( parseInt(dtn[2])<0 || parseInt(dtn[2])>31)){
                    surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à true
                     document.getElementById("erreurdtn").innerHTML = "Votre jour de naissance est incorrect ";
@@ -900,7 +932,7 @@ function verifDtn(champ)
 }
 //Fonction pour la vérification de l'année d'entré dans l'établissement
 function verifAnEntre(champ){
-    if(champ.value!=" ")//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
+    if(champ.value!=" ")//Si le champ est différent de vide
    {
       surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
       document.getElementById("erreuranentre").innerHTML = " ";
@@ -915,7 +947,7 @@ function verifAnEntre(champ){
 }
 //Fonction pour la vérification de l'année de sortie dans l'établissement
 function verifAnSortie(champ){
-    if(champ.value!=" ")//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
+    if(champ.value!=" ")//Si le champ est différent de vide
    {
       surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
       document.getElementById("erreuransortie").innerHTML = " ";
@@ -930,7 +962,7 @@ function verifAnSortie(champ){
 }
 //Fonction pour la vérification du cursus
 function verifCursus(champ){
-    if(champ.value!=" ")//Si le nombre de caractére est inférieur à 2 ou supérieur à 15 alors
+    if(champ.value!=" ")//Si le champ est différent de vide
    {
       surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
       document.getElementById("erreurcursus").innerHTML = " ";
@@ -965,19 +997,19 @@ function verifCp(champ){
     var i=0;
     var nbN=champ.value.length;
     var totalOK=0;
-    while(i<nbN){
-        if(champ.value.charAt(i)>=0 && champ.value.charAt(i)<10)
+    while(i<nbN){//pour chaque caractère 
+        if(champ.value.charAt(i)>=0 && champ.value.charAt(i)<10)//si le caractère est bien être 0 et 10(exclu)
         {
             totalOK++;
         }
         i++;
     }
-    if(nbN==5 && totalOK==5){
+    if(nbN==5 && totalOK==5){//un CP est composé de 5 chiffres, s'il y a bien 5chiffres et qu'ils sont tous entre 0 et 10(exclu)
         surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
         document.getElementById("erreurcp").innerHTML = " ";
         return true;
     }
-    else
+    else//si la condition est pas respecté
     {
         surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à true
         document.getElementById("erreurcp").innerHTML = "Vous devez saisir votre code postal ";
@@ -1003,6 +1035,10 @@ function verifVille(champ){
 
 //Fonction pour la vérification du numéro de téléphone fix
 function verifTelFixe(champ){
+    /*
+     * le principe de vérification du code postal s'applique aussi
+     * pour la vérification du numéro de téléphone fixe
+     */
     var i=0;
     var nbN=champ.value.length;
     var totalOK=0;
@@ -1028,6 +1064,10 @@ function verifTelFixe(champ){
 
 //Fonction pour la vérification du numéro de portable
 function verifMobile(champ){
+    /*
+     * le principe de vérification du code postal s'applique aussi
+     * pour la vérification du numéro de portable
+     */
     var i=0;
     var nbN=champ.value.length;
     var totalOK=0;
@@ -1054,21 +1094,27 @@ function verifMobile(champ){
 //Fonction pour la vérification de l'email
 function verifEmail(champ)
 {
+    //mise en place du format d'un email
     var reg = new RegExp('^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$', 'i');
 
-	if(reg.test(champ.value))
-	{
-            surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
-            document.getElementById("erreuremail").innerHTML = " ";
-            return true;
-	}
-	else
-	{
-             surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
-            document.getElementById("erreuremail").innerHTML = "Vous devez saisir votre email";
-            return false;
-	}
+    if(reg.test(champ.value))//on teste si le champ correspond bien à un email
+    {
+        surligne(champ, true);//On appel la fonction surligne et on lui passe en paramétre erreur à true
+        document.getElementById("erreuremail").innerHTML = " ";
+        return true;
+    }
+    else
+    {
+         surligne(champ, false);//On appel la fonction surligne et on lui passe en paramétre erreur à false
+        document.getElementById("erreuremail").innerHTML = "Vous devez saisir votre email";
+        return false;
+    }
 }
+/*
+ * les vérifications à suive sont lié aux parties du formulaire non obligatoire
+ * à remplir donc le champ peut être vide mais s'il est remplit on vérifie qu'il
+ * bon
+ */
 //Fonction pour la vérification de la formation
 function verifFormation(champ){
     if(champ.value=="")
@@ -1271,6 +1317,7 @@ function verifSecteurActivite(champ){
 //Fonction permettant la validation ou non du formulaire si tout les tests sont ok
 function verifForm(profil)
 {
+   //on récupère les valeurs de vérification des champs qui sont true, false 
    var nomOk = verifNom(profil.nom);
    var prenomOk = verifPrenom(profil.prenom);
    var dtnOk = verifDtn(profil.dtn);
@@ -1283,9 +1330,10 @@ function verifForm(profil)
    var telFixeOK = verifTelFixe(profil.telfixe);
    var mobileOK = verifMobile(profil.mobile);
    var emailOk = verifEmail(profil.email);
-   
+   //les 3 premières parties du formulaire étant obligatoire on regarde si tout est OK
    if(nomOk && prenomOk && dtnOk && anEntreOk && anSortieOk && cursusOK && adresseOK && cpOK && villeOK && telFixeOK && mobileOK && emailOk)
    {
+       //on récupère les valeurs de vérification des champs qui sont true, false ou empty
         var formationOk = verifFormation(profil.formation);
         var anneeOk = verifAnnee(profil.annee);
         var disciplineOk = verifDiscipline(profil.discipline);
@@ -1294,6 +1342,13 @@ function verifForm(profil)
         var entrepriseOk = verifEntreprise(profil.entreprise);
         var adresseEntrepriseOk = verifAdresseEntreprise(profil.adresseentreprise);
         var secteurActiviteOk = verifSecteurActivite(profil.secteuractivite);
+        /*
+         * ici commence la gestion des différents cas où le formulaire est bon
+         * qui sont : partie 1, 2, 3
+         *            partie 1, 2, 3, 4
+         *            partie 1, 2, 3, 5
+         *            partie 1, 2, 3, 4, 5
+         */
         if(formationOk=="empty" && anneeOk=="empty" && disciplineOk=="empty" && posteOccupeOk=="empty" && typeContratOk=="empty" && entrepriseOk=="empty" && adresseEntrepriseOk=="empty" && secteurActiviteOk=="empty")
         {
             document.getElementById("profil").submit();
@@ -1331,7 +1386,7 @@ function verifForm(profil)
         return false;
    }
 }
-
+//fonction pour ajouter une ligne au tableau de partie 4 du formulaire
 function ajoutLigneFormation()
 {
     l=1+l;
@@ -1422,6 +1477,7 @@ function ajoutLigneFormation()
     //update du nombre d'information dans input hidden
      nbInfoFormation.setAttribute("value",l);
 }
+//fonction pour ajouter une ligne au tableau de partie 6 du formulaire
 function ajoutLigneStage()
 {
     n=n+1;
