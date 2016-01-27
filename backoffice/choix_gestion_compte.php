@@ -25,7 +25,7 @@
         </div>
         <div id="divPrincipal" class="box-gestion">
             <h1>Création d'un compte</h1>
-            <form method="post" action="traitement/ajout.php">
+            <form method="post" action="traitement/ajout_compte.php">
                 <p>Quel type de compte va être créé ?</p>
                 <select class="select" name="statut">
                     <option value="Utilisateur">Utilisateur</option>
@@ -45,7 +45,7 @@
             </form>
         </div>
         <div id="divPrincipal" class="box-gestion">
-            <form method="post" action="traitement/modification.php">
+            <form method="post" action="traitement/modification_compte.php">
                 <h1>Modification d'un compte</h1>
                 <p>Quel compte va être modifié ? </p>
                 <select class="select" name="id">
@@ -60,7 +60,7 @@
             </form>
         </div>
         <div id="divPrincipal" class="box-gestion">
-            <form method="post" action="traitement/suppression.php">
+            <form method="post" action="traitement/suppression_compte.php">
                 <h1>Suppression d'un compte</h1>
                 <p>Quel compte va être supprimé ?</p>
                 <select class="select" name="id">
