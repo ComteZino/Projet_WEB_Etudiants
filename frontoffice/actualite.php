@@ -10,27 +10,9 @@
     
     $idnews = htmlentities($_GET["id"]);
     
-    $titre="SELECT * FROM news WHERE IdNews='$idnews'";    
-    $table = $connexion->query($titre);
+    $actu="SELECT * FROM news WHERE IdNews='$idnews'";    
+    $table = $connexion->query($actu);
     $ligne = $table->fetch();
-
-    
-    $auteur="SELECT * FROM news WHERE IdNews='$idnews'";    
-    $table = $connexion->query($auteur);
-    $ligne1 = $table->fetch();
-    
-    $date="SELECT * FROM news WHERE IdNews='$idnews'";    
-    $table = $connexion->query($date);
-    $ligne2 = $table->fetch();
-    
-    $categorie="SELECT * FROM news WHERE IdNews='$idnews'";    
-    $table = $connexion->query($categorie);
-    $ligne3 = $table->fetch();
-    
-    $contenu="SELECT * FROM news WHERE IdNews='$idnews'";    
-    $table = $connexion->query($contenu);
-    $ligne4 = $table->fetch();
-
 
 ?>
 <html>
@@ -59,17 +41,17 @@
                 </h1>
             </div>
             <div class="categorie">
-                <p><span id="categorie">Actualité : <?php echo $ligne3["categorie"]; ?></span></p>
+                <p><span id="categorie">Actualité : <?php echo $ligne["categorie"]; ?></span></p>
                 
             </div>
             <div class="contenu">
                 <?php
-                    echo htmlspecialchars_decode(strip_tags($ligne4["contenu"]));
+                    echo htmlspecialchars_decode(strip_tags($ligne["contenu"]));
                 ?>
             </div>
             
             <div class="auteur_date">
-                <p>Actualité posté par <span id="auteur"><?php echo $ligne1["auteur"]; ?></span> le <span id="date"><?php echo $ligne2["date"];?></span></p>
+                <p>Actualité posté par <span id="auteur"><?php echo $ligne["auteur"]; ?></span> le <span id="date"><?php echo $ligne["date"];?></span></p>
             </div>
         </div>       
     </body>
