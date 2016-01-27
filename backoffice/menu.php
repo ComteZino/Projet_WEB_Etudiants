@@ -17,8 +17,7 @@
     <body>
         <div id='cssmenu'>
             <ul>
-                <li><a href='../frontoffice/accueil.php'><span>Accueil</span></a></li>                            
-                <li><a href='#'><span>Forum</span></a></li>
+                <li><a href='../frontoffice/accueil.php'><span>Accueil</span></a></li>
                 
                 <?php
                     if($_SESSION["statut"] == "Admin")

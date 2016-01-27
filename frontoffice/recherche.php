@@ -10,7 +10,6 @@
     $query_select = $connexion->query($select_entreprises);
     /*$select_entreprises = ('Select  from etudiant');
     $query_select = $connexion->query($select_entreprises);*/
-    echo " coucou";
 ?>
 <html>
     <head>

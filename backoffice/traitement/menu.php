@@ -27,15 +27,6 @@
                 {
                     echo '<li><a href="../../frontoffice/accueil.php "><span>Accueil</span></a></li>';
                 }
-                if($_SESSION["page"] == "forum")
-                {
-                    echo '<li class="active"><a href="#"><span>Forum</span></a></li>';
-                }
-                else
-                {
-                    echo '<li><a href="#"><span>Forum</span></a></li>';
-                }
-                
                 if($_SESSION["page"] == "recherche")
                 {
                     echo "<li class='active'><a href='../../frontoffice/recherche.php'><span>Recherche</span></a></li>";
