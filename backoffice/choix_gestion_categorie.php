@@ -23,7 +23,7 @@
         <div class="filAriane">
             <a href="../frontoffice/accueil.php">Accueil</a> » Gestion des catégories
         </div>
-        <div id="divPrincipal" class="box-gestion">
+        <div id="divPrincipal" class="box-principal">
             <h1>Création d'une catégorie</h1>
             <form method="post" action="traitement/ajout_categorie.php">
                 <p>Quel type de catégorie va être créé ?</p>
@@ -36,7 +36,7 @@
                 <input class='bouton' type="submit" value="Créer la catégorie"/> 
             </form>
         </div>
-        <div id="divPrincipal" class="box-gestion">
+        <div id="divPrincipal" class="box-principal">
             <form method="post" action="traitement/modification.php">
                 <h1>Modification d'une catégorie</h1>
                 <p>Quelle catégorie va être modifiée ? </p>
@@ -51,7 +51,7 @@
                 <input class='bouton' type="submit" value="Modifier ce compte"/>
             </form>
         </div>
-        <div id="divPrincipal" class="box-gestion">
+        <div id="divPrincipal" class="box-principal">
             <form method="post" action="traitement/suppression.php">
                 <h1>Suppression d'une catégorie</h1>
                 <p>Quelle catégorie va être supprimée ?</p>

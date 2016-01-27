@@ -25,7 +25,7 @@
         <div class="filAriane">
             <a href="../frontoffice/accueil.php">Accueil</a> » Recherche
         </div>
-        <div id="divPrincipal" class="box-gestion">
+        <div id="divPrincipal" class="box-principal">
             <form method="post" action="traitement/">
                 <h1>Rechercher par entreprise</h1>
                 <select class="select" name="id">
@@ -39,7 +39,7 @@
                 <input class='bouton' type="submit" value="Lancer la recherche"/>
             </form>
 	</div>
-        <div id="divPrincipal" class="box-gestion">
+        <div id="divPrincipal" class="box-principal">
             <form method="post" action="traitement/">
                 <h1>Rechercher par section de BTS, année de promotion</h1>
                 <select class="select" name="id">

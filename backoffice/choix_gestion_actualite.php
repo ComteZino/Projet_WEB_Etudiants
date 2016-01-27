@@ -27,15 +27,13 @@
         </div>
         
         <!--- Zone d'ajout d'article --->
-        <div id="divPrincipal" class="box-actu">
+        <div id="divPrincipal" class="box-principal">
             <h1>Ajout d'une actualité</h1>
             <form action="traitement/ajout_actualite.php" id="ajout" method="POST" name="formulaire"  onsubmit="return verifForm(this)">
                 <!-- Champ titre -->    
                 <p>Titre de l'actualité</p>   
-                <p class="titre">
-                    <p id="erreurtitre"></p>
-                    <input name="titre" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
-                </p>
+                <p id="erreurtitre"></p>
+                <input name="titre" type="text" class="titre" onblur="verifTitre(this);" />
                 
                  <!-- Liste catégorie --> 
                 <p>
@@ -76,7 +74,7 @@
         </div>
         
         <!--- Zone de modification d'article --->
-        <div id="divPrincipal" class="box-actu">
+        <div id="divPrincipal" class="box-principal">
             <h1>Modification d'une actualité</h1>     
             <form method="post" action="traitement/modification_actualite.php">     
                 
@@ -98,7 +96,7 @@
         </div>   
             
         <!--- Zone de suppression d'article --->
-        <div id="divPrincipal" class="box-actu">
+        <div id="divPrincipal" class="box-principal">
             <h1>Suppression d'une actualité</h1>     
             <form method="post" action="traitement/suppression_actualite.php">     
                 
