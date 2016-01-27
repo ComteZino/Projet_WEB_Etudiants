@@ -24,7 +24,7 @@
             <a href="../frontoffice/accueil.php">Accueil</a> » <a href="../choix_gestion_compte.php">Gestion des comptes</a> » Modification du compte
         </div>
         <div class="box-gestion">
-            <form method="post" action="modifier_compte.php">
+            <form method="post" action="modif_compte.php">
                     <h1>Informations du compte à modifier</h1>
                     <?php
                         if($ligne["statut"] != "Admin")
