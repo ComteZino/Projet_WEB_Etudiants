@@ -8,71 +8,51 @@
     require_once('connexionBD.php');
     
     //Récupération des différentes informations de l'étudiant pour ensuite lui afficher son profil 
-    $idEtud=$_SESSION['idEtud'];
-    $tableEtudiant="SELECT * FROM etudiant WHERE id='".$idEtud."'";     
+    $idCompte=$_SESSION['idCompte'];
+    $tableEtudiant="SELECT * FROM etudiant WHERE idCompte='".$idCompte."'";     
     $table1=$connexion->query($tableEtudiant);
     $ligne1 = $table1->fetch();
     $nom=$ligne1['nom'];
     $prenom=$ligne1['prenom'];
     $dateNaissance=$ligne1['dateNaissance'];
+    //info passage dans l'établissement
+    $anEntre=$ligne1['anneeEntre'];
+    $anSortie=$ligne1['anneeSortie'];
+    $cursus=$ligne1['cursus'];
+    //info etudiant
+    $adresse=$ligne1['adresse'];
+    $cp=$ligne1['cp'];
+    $ville=$ligne1['ville'];
+    $fixe=$ligne1['fixe'];
+    $mobile=$ligne1['mobile'];
+    $mail=$ligne1['mail'];
+    //info emploi
+    $emploi=$ligne1['emploi'];
+    $typeContrat=$ligne1['typeContrat'];
+    $entreprise=$ligne1['entreprise'];
+    $adresseEnt=$ligne1['adresseEntreprise'];
+    $secteurActivite=$ligne1['secteurActivite'];
 
-    $tablePassage="SELECT * FROM passage WHERE idEtud='".$idEtud."'";     
-    $table2 = $connexion->query($tablePassage);
-    $ligne2 = $table2->fetch();
-    $anEntre=$ligne2['anneeEntre'];
-    $anSortie=$ligne2['anneeSortie'];
-    $cursus=$ligne2['cursus'];
-
-    $tableInfoEtud="SELECT * FROM infoetudiant WHERE id='".$idEtud."'";     
-    $table3 = $connexion->query($tableInfoEtud);
-    $ligne3 = $table3->fetch();
-    $adresse=$ligne3['adresse'];
-    $cp=$ligne3['cp'];
-    $ville=$ligne3['ville'];
-    $fixe=$ligne3['fixe'];
-    $mobile=$ligne3['mobile'];
-    $mail=$ligne3['mail'];
-
-    $tableParcoursPro="SELECT * FROM parcourspro WHERE idEtud='".$idEtud."'";     
-    $table4 = $connexion->query($tableParcoursPro);
-    $ligne4 = $table4->fetch();
-    $emploi=$ligne4['emploi'];
-    $typeContrat=$ligne4['typeContrat'];
-    $entreprise=$ligne4['entreprise'];
-    $adresseEnt=$ligne4['adresse'];
-    $secteurActivite=$ligne4['secteurActivite'];
-
-    $tablePoursuiteEtude="SELECT * FROM poursuiteetudes WHERE idEtud='".$idEtud."'";     
-    $table5 = $connexion->query($tablePoursuiteEtude);
+    $tablePoursuiteEtude="SELECT * FROM poursuiteetudes WHERE idEtud='".$ligne1['idEtud']."'";     
+    $table2 = $connexion->query($tablePoursuiteEtude);
     //concaténation des informations de la poursuite d'étude pour passer le tout
     //en paramètre de la fonction javascript qui va ajouter dynamiquement
     //le formulaire de modification du profil dans la page avec les informations
     //éxistante dans les champs adapté
     $formation="";
-    while($ligne5 = $table5->fetch())
+    while($ligne2 = $table2->fetch())
     {
-        $formation=$formation."/".$ligne5['formation']."/".$ligne5['anneeFormation']."/".$ligne5['discipline']."/".$ligne5['etablissement'];
+        $formation=$formation."/".$ligne2['formation']."/".$ligne2['anneeFormation']."/".$ligne2['discipline']."/".$ligne2['etablissement'];
     }
     
-    $tableStage="SELECT * FROM stage WHERE idEtud='".$idEtud."'"; 
-    $table6 = $connexion->query($tableStage);
+    $tableStage="SELECT * FROM stage WHERE idEtud='".$ligne1['idEtud']."'"; 
+    $table3 = $connexion->query($tableStage);
     $stage="";
-    while($ligne6 = $table6->fetch())
+    while($ligne3 = $table3->fetch())
     {
-        $stage=$stage."/".$ligne6['EntNom']."/".$ligne6['EntVille'];
+        $stage=$stage."/".$ligne3['EntNom']."/".$ligne3['EntVille'];
     }
-    /*$ligne6 = $table6->fetch();
-    $idStage=$ligne6['id'];
-    $entNom=$ligne6['EntNom'];
-    $entVille=$ligne6['EntVille'];
-    $ligne6 = $table6->fetch();
-    $idStage2=$ligne6['id'];
-    $entNom2=$ligne6['EntNom'];
-    $entVille2=$ligne6['EntVille'];
     
-    $_SESSION['idStage']=$idStage;
-    $_SESSION['idStage2']=$idStage2;*/
-
     //concaténation des différentes informations sauf la poursuite d'étude pour passer le tout
     //en paramètre de la fonction javascript qui va ajouter dynamiquement
     //le formulaire de modification du profil dans la page avec les informations

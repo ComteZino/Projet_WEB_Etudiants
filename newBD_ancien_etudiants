@@ -1,0 +1,91 @@
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: compte
+#------------------------------------------------------------
+
+CREATE TABLE compte(
+        idCompte Int NOT NULL ,
+        login    Varchar (25) ,
+        password Varchar (25) ,
+        statut   Varchar (25) ,
+        PRIMARY KEY (idCompte )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: etudiant
+#------------------------------------------------------------
+
+CREATE TABLE etudiant(
+        idEtud            Int NOT NULL ,
+        nom               Varchar (25) ,
+        prenom            Varchar (25) ,
+        dateNaissance     Date ,
+        adresse           Varchar (25) NOT NULL ,
+        cp                Varchar (25) NOT NULL ,
+        ville             Varchar (25) NOT NULL ,
+        fixe              Varchar (25) NOT NULL ,
+        mobile            Varchar (25) NOT NULL ,
+        mail              Varchar (25) NOT NULL ,
+        emploi            Varchar (25) NOT NULL ,
+        typeContrat       Varchar (25) NOT NULL ,
+        entreprise        Varchar (25) NOT NULL ,
+        adresseEntreprise Varchar (25) ,
+        secteurActivite   Varchar (25) NOT NULL ,
+        anneeEntre        Varchar (25) NOT NULL ,
+        anneeSortie       Varchar (25) NOT NULL ,
+        cursus            Varchar (25) NOT NULL ,
+        idCompte          Int ,
+        PRIMARY KEY (idEtud )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: news
+#------------------------------------------------------------
+
+CREATE TABLE news(
+        idNews    Int NOT NULL ,
+        categorie Varchar (25) ,
+        auteur    Varchar (25) ,
+        titre     Varchar (25) ,
+        contenu   Varchar (25) ,
+        dateNews  Date ,
+        PRIMARY KEY (idNews )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: poursuiteetudes
+#------------------------------------------------------------
+
+CREATE TABLE poursuiteetudes(
+        id             Int NOT NULL ,
+        formation      Varchar (25) ,
+        anneeFormation Date ,
+        discipline     Varchar (25) ,
+        etablissement  Varchar (25) ,
+        idEtud         Int NOT NULL ,
+        PRIMARY KEY (id ,idEtud )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: stage
+#------------------------------------------------------------
+
+CREATE TABLE stage(
+        id       Int NOT NULL ,
+        EntNom   Varchar (25) ,
+        EntVille Varchar (25) ,
+        idEtud   Int NOT NULL ,
+        PRIMARY KEY (id ,idEtud )
+)ENGINE=InnoDB;
+
+ALTER TABLE etudiant ADD CONSTRAINT FK_etudiant_idCompte FOREIGN KEY (idCompte) REFERENCES compte(idCompte);
+ALTER TABLE poursuiteetudes ADD CONSTRAINT FK_poursuiteetudes_idEtud FOREIGN KEY (idEtud) REFERENCES etudiant(idEtud);
+ALTER TABLE stage ADD CONSTRAINT FK_stage_idEtud FOREIGN KEY (idEtud) REFERENCES etudiant(idEtud);

@@ -39,31 +39,27 @@
             require_once('connexionBD.php');
             $mdp=md5($mdp);
             $tableuser="SELECT * FROM compte WHERE login='".addslashes($pseudo)."' AND password='".addslashes($mdp)."'";
-
             $table = $connexion->query($tableuser);
             $ligne = $table->fetch();
             $statut=$ligne['statut'];
             $_SESSION['statut'] = $statut;
-            $idEtud=$ligne['idEtud'];
-            $_SESSION['idEtud'] = $idEtud;
+            $idCompte=$ligne['idCompte'];
+            $_SESSION['idCompte'] = $idCompte;
             
             //récupération des données pour voir si c'est la première connexion de l'utilisateur
-            $tablePassage="SELECT * FROM passage WHERE idEtud='".$idEtud."'";     
-            $table2 = $connexion->query($tablePassage);
+            $tableEtud="SELECT * FROM etudiant WHERE idCompte='".$idCompte."'";
+            $table2 = $connexion->query($tableEtud);
             $ligne2 = $table2->fetch();
             $anEntreBD=$ligne2['anneeEntre'];
             $anSortieBD=$ligne2['anneeSortie'];
             $cursusBD=$ligne2['cursus'];
-
-            $tableInfoEtud="SELECT * FROM infoetudiant WHERE id='".$idEtud."'";     
-            $table3 = $connexion->query($tableInfoEtud);
-            $ligne3 = $table3->fetch();
-            $adresseBD=$ligne3['adresse'];
-            $cpBD=$ligne3['cp'];
-            $villeBD=$ligne3['ville'];
-            $fixeBD=$ligne3['fixe'];
-            $mobileBD=$ligne3['mobile'];
-            $mailBD=$ligne3['mail'];
+            $adresseBD=$ligne2['adresse'];
+            $cpBD=$ligne2['cp'];
+            $villeBD=$ligne2['ville'];
+            $fixeBD=$ligne2['fixe'];
+            $mobileBD=$ligne2['mobile'];
+            $mailBD=$ligne2['mail'];
+            
             if($pseudo==$ligne['login'] and $mdp==$ligne['password'])
             {	
                  if($statut!="Admin" and empty($anEntreBD) and empty($anSortieBD) and empty($cursusBD) and empty($adresseBD) and empty($cpBD) and empty($villeBD) and empty($fixeBD) and empty($mobileBD) and empty($mailBD))

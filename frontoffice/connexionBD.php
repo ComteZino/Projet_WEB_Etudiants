@@ -17,7 +17,7 @@
 
     try
     {
-        $dns ='mysql:host=localhost;dbname=anciens_etudiants';
+        $dns ='mysql:host=localhost;dbname=ancien_etudiants';
         $utilisateur='root';
         $motdepasse='';
         $connexion = new PDO($dns,$utilisateur,$motdepasse);

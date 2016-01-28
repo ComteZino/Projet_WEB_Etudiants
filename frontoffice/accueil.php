@@ -6,15 +6,14 @@
     }
     $_SESSION["page"] = "accueil";
     require_once('connexionBD.php');
-    $tableNewsLycee="SELECT * FROM news WHERE categorie='lycee' ORDER BY `date` desc";     
+    $tableNewsLycee="SELECT * FROM news WHERE categorie='lycee' ORDER BY `dateNews` desc";     
     $table = $connexion->query($tableNewsLycee);
-
     
-    $tableNewsMariage="SELECT * FROM news WHERE categorie='mariage' ORDER BY `date` desc";     
+    $tableNewsMariage="SELECT * FROM news WHERE categorie='mariage' ORDER BY `dateNews` desc";     
     $table1 = $connexion->query($tableNewsMariage);
 
     
-    $tableNewsDeces="SELECT * FROM news WHERE categorie='deces' ORDER BY `date` desc";     
+    $tableNewsDeces="SELECT * FROM news WHERE categorie='deces' ORDER BY `dateNews` desc";     
     $table2 = $connexion->query($tableNewsDeces);
 
 
@@ -46,7 +45,7 @@
                             $i=0;
                             while($i<3 && $ligne = $table->fetch())
                             {
-                                echo "<p><span>Auteur : </span> ".$ligne['auteur']." <span>Date de publication : </span> ".$ligne['date']."</p>";
+                                echo "<p><span>Auteur : </span> ".$ligne['auteur']." <span>Date de publication : </span> ".$ligne['dateNews']."</p>";
                                 echo '<p><a href="actualite.php?id='.$ligne['idNews'].'">'.  $ligne['titre'] .'</a></p>'; 
                                 echo '<div class="trait"></div>';
                                 $i++;
@@ -85,7 +84,7 @@
                         $i=0;
                         while($i<3 && $ligne2 = $table2->fetch())
                         {
-                            echo "<p><span>Auteur : </span> ".$ligne2['auteur']." <span>Date de publication : </span> ".$ligne2['date']."</p>";
+                            echo "<p><span>Auteur : </span> ".$ligne2['auteur']." <span>Date de publication : </span> ".$ligne2['dateNews']."</p>";
                             echo '<p><a href="actualite.php?id='.$ligne2['idNews'].'">'.  $ligne2['titre'] .'</a></p>'; 
                             echo '<div class="trait"></div>';
                             $i++;
@@ -103,7 +102,7 @@
                             $i=0;
                             while($i<3 && $ligne2 = $table2->fetch())
                             {  
-                                echo "<p>Auteur : ".$ligne2['auteur']." Date de Publication : ".$ligne2['date']."</p>";
+                                echo "<p>Auteur : ".$ligne2['auteur']." Date de Publication : ".$ligne2['dateNews']."</p>";
                                 echo '<p><a href="actualite.php?id='.$ligne1['idNews'].'">'.  $ligne1['titre'] .'</a></p>'; 
                                 echo '<div class="trait"></div>';
                                 $i++;

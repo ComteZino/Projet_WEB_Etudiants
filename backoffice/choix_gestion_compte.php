@@ -5,7 +5,7 @@
         header('Location: ../frontoffice/authentification.php');
     }
     $_SESSION["page"] = "gestion";
-    $select_comptes = ('Select id,nom,prenom from etudiant');
+    $select_comptes = ('Select idCompte,nom,prenom,idEtud from etudiant');
     $query_select = $connexion->query($select_comptes);
     $query_select2 = $connexion->query($select_comptes);
 ?>
@@ -52,7 +52,7 @@
                     <?php
                         while($ligne = $query_select->fetch())
                         {
-                            echo '<option value="'.$ligne["id"].'">'.str_replace("-"," ",$ligne["nom"]).' '.str_replace("-"," ",$ligne["prenom"]).'</option>';
+                            echo '<option value="'.$ligne["idCompte"].'">'.str_replace("-"," ",$ligne["nom"]).' '.str_replace("-"," ",$ligne["prenom"]).'</option>';
                         }
                     ?>
                 </select>
@@ -68,9 +68,9 @@
                         while($lgn = $query_select2->fetch())
                         {
                             // N'affiche pas le compte courant
-                            if($_SESSION["idEtud"] != $lgn["id"])
+                            if($_SESSION["idCompte"] != $lgn["idCompte"])
                             {
-                                echo '<option value="'.$lgn["id"].'">'.str_replace("-"," ",$lgn["nom"]).' '.str_replace("-"," ",$lgn["prenom"]).'</option>';
+                                echo '<option value="'.$lgn["idCompte"].'">'.str_replace("-"," ",$lgn["nom"]).' '.str_replace("-"," ",$lgn["prenom"]).'</option>';
                             }
                         }
                     ?>
