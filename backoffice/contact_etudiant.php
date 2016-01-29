@@ -5,7 +5,7 @@
         header('Location: authentification.php');
     }
     $_SESSION["page"] = "contact_etudiant";
-    $select_comptes = ('Select id,nom,prenom from etudiant');
+    $select_comptes = ('Select idEtud,nom,prenom from etudiant');
     $query_select = $connexion->query($select_comptes);
 ?>
 <html>
@@ -33,7 +33,7 @@
                         <?php
                             while($lgn = $query_select->fetch())
                             {
-                                echo '<option value="'.$lgn["id"].'">'.$lgn["nom"].' '.$lgn["prenom"].'</option>';
+                                echo '<option value="'.$lgn["idEtud"].'">'.$lgn["nom"].' '.$lgn["prenom"].'</option>';
                             }
                         ?>
                     </select>

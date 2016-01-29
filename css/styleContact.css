@@ -197,4 +197,10 @@ textarea {
         padding-left: 3%;
         padding-right: 3%;
     }
+    #logo{
+       max-width: 80%;
+   }
+   .box-contact{
+    max-width: 75%;
+   }
 }

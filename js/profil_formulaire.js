@@ -426,7 +426,7 @@ function afficheFormulaire(text,text2,text3){
     selectAnnee = document.createElement("select");
     selectAnnee.setAttribute("name","annee0");
     selectAnnee.setAttribute("id","annee0");
-    selectAnnee.setAttribute("class","select");
+    selectAnnee.setAttribute("class","selectForm");
     selectAnnee.setAttribute("onclick","verifAnnee(this);");
     partieFormulaire4.appendChild(selectAnnee);
     optionAnnee0 = document.createElement("option");
@@ -522,7 +522,7 @@ function afficheFormulaire(text,text2,text3){
         selectAnnee = document.createElement("select");
         selectAnnee.setAttribute("name","annee"+l);
         selectAnnee.setAttribute("id","annee"+l);
-        selectAnnee.setAttribute("class","select");
+        selectAnnee.setAttribute("class","selectForm");
         selectAnnee.setAttribute("onclick","verifAnnee(this);");
         partieFormulaire4.appendChild(selectAnnee);
         optionAnnee0 = document.createElement("option");
@@ -813,7 +813,7 @@ function afficheFormulaire(text,text2,text3){
         n++;
     }
     n=n-1;
-    ajoutLigneS=document.createElement("a");
+    ajoutLigneS=document.createElement("p");
     ajoutLigneS.setAttribute("onclick","ajoutLigneStage();");
     partieFormulaire6.appendChild(ajoutLigneS);
     remplaceTexte(ajoutLigneS,"cliquez sur moi pour ajouter une ligne");
@@ -1409,7 +1409,7 @@ function ajoutLigneFormation()
     inputFormation=document.createElement("input");
     inputFormation.setAttribute("name","formation"+l);
     inputFormation.setAttribute("id","formation");
-    inputFormation.setAttribute("type","formation");
+    inputFormation.setAttribute("class","titre");
     inputFormation.setAttribute("placeholder","Formation : ");
     inputFormation.setAttribute("onblur","verifFormation(this);"); 
     /*if(totalInfo[12]!==null){
@@ -1426,6 +1426,7 @@ function ajoutLigneFormation()
     selectAnnee = document.createElement("select");
     selectAnnee.setAttribute("name","annee"+l);
     selectAnnee.setAttribute("id","annee"+l);
+    selectAnnee.setAttribute("class","selectForm");
     selectAnnee.setAttribute("onclick","verifAnnee(this);");
     partieFormulaire4.appendChild(selectAnnee);
     optionAnnee0 = document.createElement("option");
@@ -1455,7 +1456,7 @@ function ajoutLigneFormation()
     inputDiscipline=document.createElement("input");
     inputDiscipline.setAttribute("name","discipline"+l);
     inputDiscipline.setAttribute("id","discipline");
-    inputDiscipline.setAttribute("type","discipline");
+    inputDiscipline.setAttribute("class","titre");
     inputDiscipline.setAttribute("placeholder","Discipline : ");
     inputDiscipline.setAttribute("onblur","verifDiscipline(this);"); 
     /*if(totalInfo[14]!==null){
@@ -1472,7 +1473,7 @@ function ajoutLigneFormation()
     inputEtablissement=document.createElement("input");
     inputEtablissement.setAttribute("name","etablissement"+l);
     inputEtablissement.setAttribute("id","etablissement");
-    inputEtablissement.setAttribute("type","etablissement");
+    inputEtablissement.setAttribute("class","titre");
     inputEtablissement.setAttribute("placeholder","Etablissement : ");
     //inputEtablissement.setAttribute("onblur","verifDiscipline(this);"); 
     /*if(totalInfo[14]!==null){
@@ -1500,7 +1501,7 @@ function ajoutLigneStage()
     inputNomStage=document.createElement("input");
     inputNomStage.setAttribute("name","nomStage"+n);
     inputNomStage.setAttribute("id","nomStage");
-    inputNomStage.setAttribute("type","nomStage");
+    inputNomStage.setAttribute("class","titre");
     inputNomStage.setAttribute("placeholder","Nom de l'entreprise : ");
     //inputNomStage.setAttribute("onblur","verifFormation(this);"); 
     /*if(stage[o]!=undefined){
@@ -1517,7 +1518,7 @@ function ajoutLigneStage()
     inputVilleEntreprise=document.createElement("input");
     inputVilleEntreprise.setAttribute("name","villeEntreprise"+n);
     inputVilleEntreprise.setAttribute("id","villeEntreprise");
-    inputVilleEntreprise.setAttribute("type","villeEntreprise");
+    inputVilleEntreprise.setAttribute("class","titre");
     inputVilleEntreprise.setAttribute("placeholder","Ville où elle est situé : ");
     //inputVilleEntreprise.setAttribute("onblur","verifDiscipline(this);"); 
     /*if(stage[o]!==undefined){

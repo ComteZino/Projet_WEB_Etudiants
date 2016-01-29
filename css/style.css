@@ -228,3 +228,17 @@ p, h2{
   color: #CF4D35;
   border-color: #CF4D35;
 }
+@media screen and (max-width: 768px) {
+   #logo{
+       max-width: 80%;
+   }
+   .box-principal{
+    max-width: 75%;
+   }
+   .box-secondaire{
+    max-width: 100%;
+   }
+   .filAriane{
+    max-width: 75%;
+   }
+}
