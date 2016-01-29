@@ -138,7 +138,7 @@
                         {
                             echo "<div id='divSecondaire' class='box-Secondaire'>
                                 <h1><span class="."number"." id="."number4".">4</span>Poursuite d'études</h1>
-                                    <table id="."tableauFormation".">
+                                    <table id="."tableauProfil".">
                                         <tr>
                                             <th>Formation</th>
                                             <th>Année</th>

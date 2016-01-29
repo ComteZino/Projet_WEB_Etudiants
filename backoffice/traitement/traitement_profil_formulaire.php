@@ -156,12 +156,12 @@
     $adresseEntBD=$ligne1['adresseEntreprise'];
     $secteurActiviteBD=$ligne1['secteurActivite'];
 
-    $tablePoursuiteEtude="SELECT * FROM poursuiteetudes WHERE idEtud='".$idCompte."'";     
+    $tablePoursuiteEtude="SELECT * FROM poursuiteetudes WHERE idEtud='".$ligne1['idEtud']."'";     
     $table2 = $connexion->query($tablePoursuiteEtude);
-    
-    $tableStage="SELECT * FROM stage WHERE idEtud='".$idCompte."'";     
+    echo $tablePoursuiteEtude;
+    $tableStage="SELECT * FROM stage WHERE idEtud='".$ligne1['idEtud']."'";     
     $table3 = $connexion->query($tableStage);
-
+echo $tableStage;
     
      //incrémentation +1 sur le dernière id de la table poursuiteetudes pour le prochain insert
     $selectIdPoursuiteEtude = $connexion->query('Select * from poursuiteetudes');
