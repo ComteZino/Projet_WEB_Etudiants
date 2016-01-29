@@ -32,7 +32,7 @@
             <a href="../frontoffice/accueil.php">Accueil</a> » <a href="../choix_gestion_compte.php">Gestion des comptes</a> » Suppression du compte
         </div>
         <div class="box-gestion">
-            <form method="post" action="supp.php">
+            <form method="post" action="supp_compte.php">
                 <h1>Le compte suivant sera supprimé</h1>
                 <input type="hidden" name="id" value="<?php echo $id ?>"/>
                 <label><span class="recap">Statut : </span><?php echo $statut; ?></label>

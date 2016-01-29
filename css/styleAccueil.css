@@ -23,14 +23,14 @@ a:hover {
 }
 
 /*Box contenant toute les box d'actualite*/
-.box-principal{
+/*.box-principal{
     max-width: 55%;
     background: #F9F9F9;
     margin: 40px auto;
     padding: 20px;
     font-family: Georgia, "Times New Roman", Times, serif;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-}
+}*/
 
 #box-principal-one{
     width:100%;

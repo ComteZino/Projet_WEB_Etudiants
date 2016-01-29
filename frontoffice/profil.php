@@ -78,144 +78,143 @@
         <div class="filAriane">
             <a href="../frontoffice/accueil.php">Accueil</a> » Profil
         </div>
-            <div id="divPrincipal" class="form-style-5">
-            <form id="modifForm">
-                <?php 
-                    /*
-                     * les différentes conditions des IF suivant dans le code avec l'utilisation de la fonction empty
-                     * vérifie si oui ou non les informations de l'étudiant existe déjà, si existe on lui affiche
-                     * sinon un message l'informe qu'elles sont les informations qu'il n'a pas rentré.
-                     * 
-                     * Pour l'affichage de différentes variables la fonction str_replace est utilisé pour remplacer les
-                     * - par des espaces. Les informations dans la BDD n'ont pas d'espace mais des - car lors du passages 
-                     * de toutes les informations concaténé dans la fonction javascript pour afficher le formulaire de
-                     * modification avec les informations déjà existantes, laisser une espace provoquerait une erreur javascript.
-                     * 
-                     * il y a au minimum le nom/prenom/date de naissance qui ont été rentré par l'administrateur à la création
-                     * du compte de l'utilisateur qui sont affiché.
-                     */
-                    if(empty($anEntre) and empty($anSortie) and empty($cursus) and empty($adresse) and empty($cp) and empty($ville) and empty($fixe) and empty($mobile) and empty($mail))
+        <form id="modifForm">
+            <?php 
+                /*
+                 * les différentes conditions des IF suivant dans le code avec l'utilisation de la fonction empty
+                 * vérifie si oui ou non les informations de l'étudiant existe déjà, si existe on lui affiche
+                 * sinon un message l'informe qu'elles sont les informations qu'il n'a pas rentré.
+                 * 
+                 * Pour l'affichage de différentes variables la fonction str_replace est utilisé pour remplacer les
+                 * - par des espaces. Les informations dans la BDD n'ont pas d'espace mais des - car lors du passages 
+                 * de toutes les informations concaténé dans la fonction javascript pour afficher le formulaire de
+                 * modification avec les informations déjà existantes, laisser une espace provoquerait une erreur javascript.
+                 * 
+                 * il y a au minimum le nom/prenom/date de naissance qui ont été rentré par l'administrateur à la création
+                 * du compte de l'utilisateur qui sont affiché.
+                 */
+                if(empty($anEntre) and empty($anSortie) and empty($cursus) and empty($adresse) and empty($cp) and empty($ville) and empty($fixe) and empty($mobile) and empty($mail))
+                {
+                    echo    "<h1><span class="."number"." id="."number1".">1</span>Vous êtes :</h1>
+                            <p>".str_replace("-"," ",$nom)."</p>
+                            <p>".str_replace("-"," ",$prenom)."</p>
+                            <p>Né le : ".$dateNaissance."</p>
+                        </div>";
+                    echo "<p id="."information_non_renseigne".">Vous n'avez pas encore renseigné toutes vos informations !</p>";
+                }
+                else
+                {
+                    echo "<div id='divPrincipal' class='box-principal'>
+                            <h1><span class="."number"." id="."number1".">1</span>Vous êtes :</h1>
+                            <p>".str_replace("-"," ",$nom)."</p>
+                            <p>".str_replace("-"," ",$prenom)."</p>
+                            <p>Né le : ".$dateNaissance."</p>
+                        </div>
+                        <div id='divPrincipal' class='box-principal'>
+                            <h1><span class="."number"." id="."number2".">2</span>Votre passage dans l'établissement</h1>
+                            <p>Vous êtes entré dans l'établissement en : ".$anEntre."</p>
+                            <p>Et vous y êtes sortie en : ".$anSortie."</p>
+                            <p>Pour un : ".str_replace("-", " ", $cursus)."</p>
+                        </div>
+                        <div id='divPrincipal' class='box-principal'>
+                            <h1><span class="."number"." id="."number3".">3</span>Comment vous contacter?</h1>
+                            <p>Votre adresse : ".str_replace("-"," ",$adresse)."</p>
+                            <p>Votre code postal: ".$cp."</p>
+                            <p>Votre ville : ".str_replace("-"," ",$ville)."</p>
+                            <p>Votre numéro de téléphone fixe : ".$fixe."</p>
+                            <p>Votre numéro de portable : ".$mobile."</p>
+                            <p>Votre eMail : ".$mail."</p>
+                        </div>";
+                    $chaineFormation=explode("/",$formation);
+                    if( empty($chaineFormation[1]) and empty($chaineFormation[2]) and empty($chaineFormation[3]))
                     {
-                        echo "<fieldset>
-                                <legend><span class="."number"." id="."number1".">1</span>Vous êtes :</legend>
-                                <p>".str_replace("-"," ",$nom)."</p>
-                                <p>".str_replace("-"," ",$prenom)."</p>
-                                <p>Né le : ".$dateNaissance."</p>
-                            </fieldset>";
-                        echo "<p id="."information_non_renseigne".">Vous n'avez pas encore renseigné toutes vos informations !</p>";
+                        echo "<p id="."information_non_renseigne".">Partie 4 qui est votre poursuite d'études
+                                non renseigné</p>";
                     }
                     else
                     {
-                        echo "<fieldset>
-                                <legend><span class="."number"." id="."number1".">1</span>Vous êtes :</legend>
-                                <p>".str_replace("-"," ",$nom)."</p>
-                                <p>".str_replace("-"," ",$prenom)."</p>
-                                <p>Né le : ".$dateNaissance."</p>
-                            </fieldset>
-                            <fieldset>
-                                <legend><span class="."number"." id="."number2".">2</span>Votre passage dans l'établissement</legend>
-                                <p>Vous êtes entré dans l'établissement en : ".$anEntre."</p>
-                                <p>Et vous y êtes sortie en : ".$anSortie."</p>
-                                <p>Pour un : ".str_replace("-", " ", $cursus)."</p>
-                            </fieldset>
-                            <fieldset>
-                                <legend><span class="."number"." id="."number3".">3</span>Comment vous contacter?</legend>
-                                <p>Votre adresse : ".str_replace("-"," ",$adresse)."</p>
-                                <p>Votre code postal: ".$cp."</p>
-                                <p>Votre ville : ".str_replace("-"," ",$ville)."</p>
-                                <p>Votre numéro de téléphone fixe : ".$fixe."</p>
-                                <p>Votre numéro de portable : ".$mobile."</p>
-                                <p>Votre eMail : ".$mail."</p>
-                            </fieldset>";
-                        $chaineFormation=explode("/",$formation);
-                        if( empty($chaineFormation[1]) and empty($chaineFormation[2]) and empty($chaineFormation[3]))
-                        {
-                            echo "<p id="."information_non_renseigne".">Partie 4 qui est votre poursuite d'études
-                                    non renseigné</p>";
-                        }
-                        else
-                        {
-                            echo "<fieldset>
-                                <legend><span class="."number"." id="."number4".">4</span>Poursuite d'études</legend>
-                                    <table id="."tableauFormation".">
-                                        <tr>
-                                            <th>Formation</th>
-                                            <th>Année</th>
-                                            <th>Discipline</th>
-                                            <th>Établissement</th>
-                                        </tr>";
-                            $i=0;
-                            $j=1;
-                            $nbLigne=(count($chaineFormation)-1)/4;
-                            while($i<$nbLigne)
-                            {
-                                echo "<tr>
-                                        <td>".str_replace("-"," ",$chaineFormation[$j])."</td>";
-                                $j=$j+1;
-                                echo    "<td>".str_replace("-"," ",$chaineFormation[$j])."</td>";
-                                $j=$j+1;
-                                echo    "<td>".str_replace("-"," ",$chaineFormation[$j])."</td>";
-                                $j=$j+1;
-                                echo    "<td>".str_replace("-"," ",$chaineFormation[$j])."</td>
+                        echo "<div id='divPrincipal' class='box-principal'>
+                            <h1><span class="."number"." id="."number4".">4</span>Poursuite d'études</h1>
+                                <table id="."tableauFormation".">
+                                    <tr>
+                                        <th>Formation</th>
+                                        <th>Année</th>
+                                        <th>Discipline</th>
+                                        <th>Établissement</th>
                                     </tr>";
-                                $j=$j+1;
-                                $i=$i+1;
-                            }
-                            echo "  </table>
-                                </fieldset>";
-                        }
-                        if(empty($emploi) and empty($typeContrat) and empty($entreprise) and empty($adresseEnt) and empty($secteurActivite))
+                        $i=0;
+                        $j=1;
+                        $nbLigne=(count($chaineFormation)-1)/4;
+                        while($i<$nbLigne)
                         {
-                            echo "<p id="."information_non_renseigne".">Partie 5 qui est votre emploi
-                            non renseigné</p>";
+                            echo "<tr>
+                                    <td>".str_replace("-"," ",$chaineFormation[$j])."</td>";
+                            $j=$j+1;
+                            echo    "<td>".str_replace("-"," ",$chaineFormation[$j])."</td>";
+                            $j=$j+1;
+                            echo    "<td>".str_replace("-"," ",$chaineFormation[$j])."</td>";
+                            $j=$j+1;
+                            echo    "<td>".str_replace("-"," ",$chaineFormation[$j])."</td>
+                                </tr>";
+                            $j=$j+1;
+                            $i=$i+1;
                         }
-                        else
-                        {
-                            echo "<fieldset>
-                                <legend><span class="."number"." id="."number5".">5</span>Votre parcours professionnel</legend>
-                                <p>Vous emploi : ".str_replace("-"," ",$emploi)."</p>
-                                <p>Le type de contract : ".$typeContrat."</p>
-                                <p>Dans l'entreprise : ".str_replace("-"," ",$entreprise)."</p>
-                                <p>Adresse de l'entreprise : ".str_replace("-"," ",$adresseEnt)."</p>
-                                <p>Dans le secteur d'activité : ".str_replace("-"," ",$secteurActivite)."</p>
-                                </fieldset>";
-                        }
-                         $chaineStage=explode("/",$stage);
-                        if(empty($chaineStage[1]) and empty($chaineStage[2]))
-                        {
-                            echo "<p id="."information_non_renseigne".">Partie 6 qui concerne vos stages
-                                    non renseigné</p>";
-                        }
-                        else
-                        {
-                            echo "<fieldset>
-                                <legend><span class="."number"." id="."number6".">6</span>Vos stages</legend>
-                                    <table id="."tableauStage".">
-                                        <tr>
-                                            <th>Nom de l'entreprise</th>
-                                            <th>Ville où elle est situé</th>
-                                        </tr>";
-                            $k=0;
-                            $l=1;
-                            $nbLigne2=(count($chaineStage)-1)/2;
-                            while($k<$nbLigne2)
-                            {
-                                echo "<tr>
-                                        <td>".str_replace("-"," ",$chaineStage[$l])."</td>";
-                                $l=$l+1;
-                                echo    "<td>".str_replace("-"," ",$chaineStage[$l])."</td>
-                                    </tr>";
-                                $l=$l+1;
-                                $k=$k+1;
-                            }
-                            echo "  </table>
-                                </fieldset>";
-                        }   
+                        echo "  </table>
+                            </div>";
                     }
-                     echo "<p id="."information_non_renseigne".">Pour modifier, cliquez sur le boutton si dessous :</p>"
-                        . "<input type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".","."'".$formation."'".","."'".$stage."'".");"." />";
-                ?>
-            </form>
-        </div>
+                    if(empty($emploi) and empty($typeContrat) and empty($entreprise) and empty($adresseEnt) and empty($secteurActivite))
+                    {
+                        echo "<p id="."information_non_renseigne".">Partie 5 qui est votre emploi
+                        non renseigné</p>";
+                    }
+                    else
+                    {
+                        echo "<div id='divPrincipal' class='box-principal'>
+                            <legend><span class="."number"." id="."number5".">5</span>Votre parcours professionnel</legend>
+                            <p>Vous emploi : ".str_replace("-"," ",$emploi)."</p>
+                            <p>Le type de contract : ".$typeContrat."</p>
+                            <p>Dans l'entreprise : ".str_replace("-"," ",$entreprise)."</p>
+                            <p>Adresse de l'entreprise : ".str_replace("-"," ",$adresseEnt)."</p>
+                            <p>Dans le secteur d'activité : ".str_replace("-"," ",$secteurActivite)."</p>
+                            </div>";
+                    }
+                     $chaineStage=explode("/",$stage);
+                    if(empty($chaineStage[1]) and empty($chaineStage[2]))
+                    {
+                        echo "<p id="."information_non_renseigne".">Partie 6 qui concerne vos stages
+                                non renseigné</p>";
+                    }
+                    else
+                    {
+                        echo "<div id='divPrincipal' class='box-principal'>
+                            <h1><span class="."number"." id="."number6".">6</span>Vos stages</h1>
+                                <table id="."tableauStage".">
+                                    <tr>
+                                        <th>Nom de l'entreprise</th>
+                                        <th>Ville où elle est situé</th>
+                                    </tr>";
+                        $k=0;
+                        $l=1;
+                        $nbLigne2=(count($chaineStage)-1)/2;
+                        while($k<$nbLigne2)
+                        {
+                            echo "<tr>
+                                    <td>".str_replace("-"," ",$chaineStage[$l])."</td>";
+                            $l=$l+1;
+                            echo    "<td>".str_replace("-"," ",$chaineStage[$l])."</td>
+                                </tr>";
+                            $l=$l+1;
+                            $k=$k+1;
+                        }
+                        echo "  </table>
+                            </div>";
+                    }   
+                }
+                 echo "<div id='divPrincipal' class='box-principal'>".
+                         "<p id="."information_non_renseigne".">Pour modifier, cliquez sur le boutton si dessous :</p>"
+                     ."</div>"    
+                    . "<input class='bouton' type="."button"." value="."Modifier"." onClick="."afficheFormulaire("."'".$totalInfos."'".","."'".$formation."'".","."'".$stage."'".");"." />";
+            ?>
+        </form>
     </body>
 </html>

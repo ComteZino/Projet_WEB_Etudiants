@@ -24,7 +24,7 @@
             <a href="../frontoffice/accueil.php">Accueil</a> » <a href="../choix_gestion_compte.php">Gestion des comptes</a> » Modification du compte
         </div>
         <div class="box-gestion">
-            <form method="post" action="modifier.php">
+            <form method="post" action="modif_compte.php">
                     <h1>Informations du compte à modifier</h1>
                     <?php
                         if($ligne["statut"] != "Admin")
@@ -36,43 +36,35 @@
                             echo '</select>';
                         }
                     ?>
-                    <p class="titre">
-                        <p id="erreurtitre"></p>
-                        <input placeholder="Login : <?php echo $ligne["login"] ?>" name="login" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
-                    </p>
+                    <p id="erreurtitre"></p>
+                    <input placeholder="Login : <?php echo $ligne["login"] ?>" name="login" type="text" class="titre" onblur="verifTitre(this);" />
                     <?php
                         if($_SESSION["idEtud"] == $id)
                         {
                     ?>
-                    <p class="titre">
-                        <p id="erreurtitre"></p>
-                        <input placeholder="Mot de passe" name="mdp" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
-                    </p>
+                    <p id="erreurtitre"></p>
+                    <input placeholder="Mot de passe" name="mdp" type="text" class="titre" onblur="verifTitre(this);" />
                     <?php
                         }
                         if($ligne["statut"] == "Util")
                         {
                     ?>
-                    <p class="titre">
-                        <p id="erreurtitre"></p>
-                        <input placeholder="Mot de passe" name="mdp" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
-                    </p>
+                    <p id="erreurtitre"></p>
+                    <input placeholder="Mot de passe" name="mdp" type="text" class="titre" onblur="verifTitre(this);" />
                     <?php
                         }
                     ?>
-                    <p class="titre">
-                        <p id="erreurtitre"></p>
-                        <input placeholder="Nom : <?php echo str_replace("-"," ",$ligne["nom"]) ?>" name="nom" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
-                    </p>
-                    <p class="titre">
-                        <p id="erreurtitre"></p>
-                        <input placeholder="Prénom : <?php echo str_replace("-"," ",$ligne["prenom"]) ?>" name="prenom" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
-                    </p>
-                    <p class="titre">
-                        <p id="erreurtitre"></p>
-                        <input placeholder="Date de naissance : <?php echo $ligne["dateNaissance"] ?>" name="dateN" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" class="titre" onblur="verifTitre(this);" />
-                    </p>
+                    <p id="erreurtitre"></p>
+                    <input placeholder="Nom : <?php echo str_replace("-"," ",$ligne["nom"]) ?>" name="nom" type="text" class="titre" onblur="verifTitre(this);" />
+                    
+                    <p id="erreurtitre"></p>
+                    <input placeholder="Prénom : <?php echo str_replace("-"," ",$ligne["prenom"]) ?>" name="prenom" type="text" class="titre" onblur="verifTitre(this);" />
+                    
+                    <p id="erreurtitre"></p>
+                    <input placeholder="Date de naissance : <?php echo $ligne["dateNaissance"] ?>" name="dateN" type="text" class="titre" onblur="verifTitre(this);" />
+                    
                     <input name="id" type="hidden" value="'.$id.'">
+                    
                     <input class='bouton' type="submit" value="Appliquer les modifications"/>
                     <br>
                     <a href="../choix_gestion_compte.php"><input class='bouton' type="button" name="nom" value="Retourner à la gestion"></a>

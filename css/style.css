@@ -61,6 +61,22 @@ body{
     text-decoration: underline;
 }
 
+/****************/
+/*Style du texte*/
+/****************/
+h1{
+    font-family: '../font/Silica-Light.ttf', Arial, Helvetica, sans-serif;
+    color: #028fcc;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+/***********/
+/***********/
+/***********/
 footer{
     margin: 0;
 	width: 100%;
@@ -92,4 +108,110 @@ p, h2{
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     font-weight: 400;
     text-align: center;
+}
+
+/***************************/
+/**Box de toutes les pages**/
+/***************************/
+.box-principal{
+    max-width: 55%;
+    padding: 10px 20px;
+    background: #F9F9F9;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/*************************/
+/*********Inputs*********/
+/***Champs à remplir****/
+.titre {
+    color:#3c3c3c;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight:500;
+    font-size: 18px;
+    border-radius: 0;
+    background-color: #fbfbfb;
+    padding: 13px 13px 13px 5px;
+    margin-bottom: 10px;
+    margin-left: 20%;
+    width:65%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 3px solid rgba(0,0,0,0);
+    border-color: #CF4D35;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.titre:focus{
+    background: #fff;
+    box-shadow: 0;
+    border: 2px solid #E77A66;
+    color: #3c3c3c;
+    outline: none;
+    padding: 13px 13px 13px 5px;
+}
+
+.focused{
+    color:#30aed6;
+    border:#30aed6 solid 3px;
+}
+
+/*************************/
+/****Listes déroulante****/
+/*************************/
+.select{
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: #D4D4D4;
+    border: none;
+    border-radius: 0px;
+    font-size: 16px;
+    margin-left: 20%;
+    outline: 0;
+    padding: 7px;
+    width: 65%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: white;
+    color:#8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+    -webkit-appearance: menulist-button;
+    height:45px;
+    border-color: #CF4D35;
+    border-style: solid;
+    border-width: 2px;
+}
+
+/*************************/
+/*********Boutons*********/
+/*************************/
+.bouton {
+  margin: 0 auto;
+  font-size: 2.0rem;
+  padding: 1.25rem 2.5rem;
+  display: block;
+  background-color: #CF4D35;
+  border: 3px solid transparent;
+  color: #ffffff;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font: 400 1.4rem 'Lato', Verdana, Helvetica, sans-serif;
+  margin-top: 30px;
+}
+
+.bouton:hover {
+  background-color: #ffffff;
+  color: #CF4D35;
+  border-color: #CF4D35;
 }
