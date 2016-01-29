@@ -12,8 +12,8 @@ and open the template in the editor.
 
 .number {
     color: #fff;
-    height: 30px;
-    width: 30px;
+    height: 32px;
+    width: 35px;
     display: inline-block;
     font-size: 0.8em;
     margin-right: 4px;
@@ -54,4 +54,11 @@ and open the template in the editor.
 #tableauStage
 {
     text-align: center;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    padding: 10px 20px;
+    margin: 40px auto;
+}
+th,td
+{
+    
 }

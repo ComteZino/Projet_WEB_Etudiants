@@ -16,31 +16,32 @@ function afficheFormulaire(text,text2,text3){
     formEnfant = document.createElement("form");
     formEnfant.setAttribute("id","profil");
     formEnfant.setAttribute("method","GET");
-    formEnfant.setAttribute("action","../backoffice/traitement_profil_formulaire.php");
+    formEnfant.setAttribute("action","../backoffice/traitement/traitement_profil_formulaire.php");
     formEnfant.setAttribute("name","formulaire");
     formEnfant.setAttribute("onsubmit","return verifForm(this)");
     divPrincipal.appendChild(formEnfant);
 
     //creation de la partie 1 du formulaire
     formForumlaire= document.getElementById("profil");//récupération de la balise Form par l'id
-    fieldsetEnfant = document.createElement("fieldset");//création du premier bloc pour ensuite y mettre les infos requise
-    fieldsetEnfant.setAttribute("id","part1");//ajout de l'attribut id sur le fieldset
-    formForumlaire.appendChild(fieldsetEnfant);//ajout du fieldset dans la balise form
+    divEnfant = document.createElement("div");//création du premier bloc pour ensuite y mettre les infos requise
+    divEnfant.setAttribute("id","part1");//ajout de l'attribut id
+    divEnfant.setAttribute("class","box-Secondaire");//ajout de l'attribut class
+    formForumlaire.appendChild(divEnfant);//ajout du fieldset dans la balise form
 
-    partieFormulaire1= document.getElementById("part1");//récupération du fieldset créé au dessus
-    numTitrePartie1 = document.createElement("legend");//création d'une balise legend pour y mettre l'intitulé de la première partie du formulaire
-    numTitrePartie1.setAttribute("id","titre1");//ajout d'un attribut id à la balise legend
+    partieFormulaire1= document.getElementById("part1");//récupération du div créé au dessus
+    numTitrePartie1 = document.createElement("h1");//création d'une balise h1 pour y mettre l'intitulé de la première partie du formulaire
+    numTitrePartie1.setAttribute("id","titre1");//ajout d'un attribut id à la balise h1
     partieFormulaire1.appendChild(numTitrePartie1);//ajout de la balise legend dans le fieldset
-    legend1= document.getElementById("titre1");//récupération du fieldset
+    h11= document.getElementById("titre1");//récupération du fieldset
     span1=document.createElement("span");//création d'une balise span pour y mettre le numéro de la partie
     span1.setAttribute("id","number1");//ajout d'un attribut id à la balise span
     span1.setAttribute("class","number");//ajout d'un attribut class à la balise span
-    legend1.appendChild(span1);//ajout de la balise span dans la balise legend
+    h11.appendChild(span1);//ajout de la balise span dans la balise legend
     remplaceTexte(span1,"1");//ajout de texte dans la balise span
-    remplaceTexte(legend1,"Qui êtes-vous?");//ajout de texte dans la balise legend
+    remplaceTexte(h11,"Qui êtes-vous?");//ajout de texte dans la balise legend
     inputNom=document.createElement("input");//création de la balise input pour le Nom de la personne
     inputNom.setAttribute("id","nom");//ajout de l'attirbut id à l'input
-    inputNom.setAttribute("type","nom");//ajout de l'attribut type à l'input
+    inputNom.setAttribute("class","titre");//ajout de l'attribut class à l'input
     inputNom.setAttribute("name","nom");//ajout de l'attribut name à l'input
     inputNom.setAttribute("placeholder","nom : ");
     inputNom.setAttribute("onblur","verifNom(this);");//ajout de l'attribut onblur à l'input pour la vérification de champ
@@ -56,7 +57,7 @@ function afficheFormulaire(text,text2,text3){
     inputPrenom=document.createElement("input");//création de la balise input pour le prénom
     inputPrenom.setAttribute("name","prenom");//ajout de l'attribut name à l'input
     inputPrenom.setAttribute("id","prenom");//ajout de l'attirbut id à l'input
-    inputPrenom.setAttribute("type","prenom");//ajout de l'attribut type à l'input
+    inputPrenom.setAttribute("class","titre");//ajout de l'attribut type à l'input
     inputPrenom.setAttribute("placeholder","Prénom : ");
     inputPrenom.setAttribute("onblur","verifPrenom(this);");//ajout de l'attribut onblur à l'input pour la vérification de champ
     //si l'élement à l'index 1 de la variable totalInfo éxiste alors l'input  est remplit avec l'info contenu à l'index 1
@@ -71,7 +72,7 @@ function afficheFormulaire(text,text2,text3){
     inputDtn=document.createElement("input");//création de la balise input pour le date de naissance
     inputDtn.setAttribute("name","dtn");//ajout de l'attribut name à l'input
     inputDtn.setAttribute("id","dtn");//ajout de l'attirbut id à l'input
-    inputDtn.setAttribute("type","dtn");//ajout de l'attribut type à l'input
+    inputDtn.setAttribute("class","titre");//ajout de l'attribut type à l'input
     inputDtn.setAttribute("placeholder","Date de naissance : ");
     inputDtn.setAttribute("onblur","verifDtn(this);");//ajout de l'attribut onblur à l'input pour la vérification de champ
     //si l'élement à l'index 2 de la variable totalInfo éxiste alors l'input  est remplit avec l'info contenu à l'index 2
@@ -88,27 +89,29 @@ function afficheFormulaire(text,text2,text3){
      */
 
     //creation de la  partie 2 du formulaire
-    fieldsetEnfant2 = document.createElement("fieldset");//création du deuxième bloc pour ensuite y mettre les infos requise
-    fieldsetEnfant2.setAttribute("id","part2");//ajout de l'attribut id au fieldset
-    formForumlaire.appendChild(fieldsetEnfant2);//ajout du fieldset dans la balise form
+    divEnfant2 = document.createElement("div");//création du deuxième bloc pour ensuite y mettre les infos requise
+    divEnfant2.setAttribute("id","part2");//ajout de l'attribut id au div
+    divEnfant2.setAttribute("class","box-Secondaire");//ajout de l'attribut class
+    formForumlaire.appendChild(divEnfant2);//ajout du fieldset dans la balise form
     partieFormulaire2= document.getElementById("part2");//récupération du fieldset
-    numTitrePartie2 = document.createElement("legend");//création d'une balise legend pour y mettre l'intitulé de la première partie du formulaire
+    numTitrePartie2 = document.createElement("h1");//création d'une balise h1 pour y mettre l'intitulé de la première partie du formulaire
     numTitrePartie2.setAttribute("id","titre2");//ajout de l'attribut id sur la balise legend
     partieFormulaire2.appendChild(numTitrePartie2);//ajout du de la balise legend dans le fieldset
-    legend2= document.getElementById("titre2");//récupération du legend
+    h12= document.getElementById("titre2");//récupération du legend
     span2=document.createElement("span");//création de la balise span
     span2.setAttribute("id","number2");//ajout de l'attribut id à la balise span
     span2.setAttribute("class","number");//ajout de l'attribut class à la balise span
-    legend2.appendChild(span2);//ajout de la balise span dans la balise legend
+    h12.appendChild(span2);//ajout de la balise span dans la balise legend
     remplaceTexte(span2,"2");//ajout de texte dans la balise span
-    remplaceTexte(legend2,"Votre passage dans l'établissement");//ajout de texte dans la balise legend
-    labelAnEntre = document.createElement("label");//création d'une balise label
-    labelAnEntre.setAttribute("for","anEntre");//ajout de l'attribut for dans la balise label
-    partieFormulaire2.appendChild(labelAnEntre);//ajout du label dans le fieldset
-    remplaceTexte(labelAnEntre,"En quelle année êtes-vous entré(e)?");//ajout de texte dans la balise label
+    remplaceTexte(h12,"Votre passage dans l'établissement");//ajout de texte dans la balise legend
+    pAnEntre = document.createElement("p");//création d'une balise p
+    pAnEntre.setAttribute("for","anEntre");//ajout de l'attribut for dans la balise p
+    partieFormulaire2.appendChild(pAnEntre);//ajout du p dans le fieldset
+    remplaceTexte(pAnEntre,"En quelle année êtes-vous entré(e)?");//ajout de texte dans la balise p
     selectAnEntre = document.createElement("select");//création de la balise select pour une liste déroulante
     selectAnEntre.setAttribute("name","anEntre");//ajout de l'attribut name à la balise select
     selectAnEntre.setAttribute("id","anEntre");//ajout de l'attribut id à la balise select
+    selectAnEntre.setAttribute("class","select");//ajout de l'attribut id à la balise select
     selectAnEntre.setAttribute("onclick","verifAnEntre(this);");//ajout de l'attribut onclick pour la vérification
     partieFormulaire2.appendChild(selectAnEntre);//ajout du select dans le fieldset
     optionAnEntre0 = document.createElement("option");//création de la première option du select pour commencer à blanc
@@ -138,13 +141,14 @@ function afficheFormulaire(text,text2,text3){
     partieFormulaire2.appendChild(erreuranentre);//ajout de la balise p dans le fieldset
     
     //le principe du select au dessus est le même que le suivant
-    labelAnSortie = document.createElement("label");
-    labelAnSortie.setAttribute("for","anSortie");
-    partieFormulaire2.appendChild(labelAnSortie);
-    remplaceTexte(labelAnSortie,"En quelle année êtes-vous sorti(e)?");
+    pAnSortie = document.createElement("p");
+    pAnSortie.setAttribute("for","anSortie");
+    partieFormulaire2.appendChild(pAnSortie);
+    remplaceTexte(pAnSortie,"En quelle année êtes-vous sorti(e)?");
     selectAnSortie = document.createElement("select");
     selectAnSortie.setAttribute("name","anSortie");
     selectAnSortie.setAttribute("id","anSortie");
+    selectAnSortie.setAttribute("class","select");//ajout de l'attribut id à la balise select
     selectAnSortie.setAttribute("onclick","verifAnSortie(this);");
     partieFormulaire2.appendChild(selectAnSortie);
     optionAnSortie0 = document.createElement("option");
@@ -168,13 +172,14 @@ function afficheFormulaire(text,text2,text3){
     
     //le principe du select au dessus est le même que le suivant mais ici en ne 
     //gère pas des années mais des types de BTS et l'ajout n'est pas dynamique
-    labelCursur = document.createElement("label");
-    labelCursur.setAttribute("for","cursus");
-    partieFormulaire2.appendChild(labelCursur);
-    remplaceTexte(labelCursur,"Cursus poursuivi dans l'établissement");
+    pCursur = document.createElement("p");
+    pCursur.setAttribute("for","cursus");
+    partieFormulaire2.appendChild(pCursur);
+    remplaceTexte(pCursur,"Cursus poursuivi dans l'établissement");
     selectCursus = document.createElement("select");
     selectCursus.setAttribute("name","cursus");
     selectCursus.setAttribute("id","cursus");
+    selectCursus.setAttribute("class","select");//ajout de l'attribut id à la balise select
     selectCursus.setAttribute("onclick","verifCursus(this);");
     partieFormulaire2.appendChild(selectCursus);
     optionCursus0 = document.createElement("option");
@@ -257,24 +262,25 @@ function afficheFormulaire(text,text2,text3){
     partieFormulaire2.appendChild(erreurcursus);
 
     //creation de la partie 3 du formulaire
-    fieldsetEnfant3 = document.createElement("fieldset");
-    fieldsetEnfant3.setAttribute("id","part3");
-    formForumlaire.appendChild(fieldsetEnfant3);
+    divEnfant3 = document.createElement("div");
+    divEnfant3.setAttribute("id","part3");
+    divEnfant3.setAttribute("class","box-Secondaire");//ajout de l'attribut class
+    formForumlaire.appendChild(divEnfant3);
     partieFormulaire3= document.getElementById("part3");
-    numTitrePartie3 = document.createElement("legend");
+    numTitrePartie3 = document.createElement("h1");
     numTitrePartie3.setAttribute("id","titre3");
     partieFormulaire3.appendChild(numTitrePartie3);
-    legend3= document.getElementById("titre3");
+    h13= document.getElementById("titre3");
     span3=document.createElement("span");
     span3.setAttribute("id","number3");
     span3.setAttribute("class","number");
-    legend3.appendChild(span3);
+    h13.appendChild(span3);
     remplaceTexte(span3,"3");
-    remplaceTexte(legend3,"Comment vous contacter?");
+    remplaceTexte(h13,"Comment vous contacter?");
     inputAdresse=document.createElement("input");
     inputAdresse.setAttribute("name","adresse");
     inputAdresse.setAttribute("id","adresse");
-    inputAdresse.setAttribute("type","adresse");
+    inputAdresse.setAttribute("class","titre");
     inputAdresse.setAttribute("placeholder","Adresse : ");
     inputAdresse.setAttribute("onblur","verifAdresse(this);");
     if(totalInfo[6]!==null){
@@ -287,7 +293,7 @@ function afficheFormulaire(text,text2,text3){
     inputCp=document.createElement("input");
     inputCp.setAttribute("name","cp");
     inputCp.setAttribute("id","cp");
-    inputCp.setAttribute("type","cp");
+    inputCp.setAttribute("class","titre");
     inputCp.setAttribute("placeholder","Code postal : ");
     inputCp.setAttribute("onblur","verifCp(this);"); 
     if(totalInfo[7]!==null){
@@ -300,7 +306,7 @@ function afficheFormulaire(text,text2,text3){
     inputVille=document.createElement("input");
     inputVille.setAttribute("name","ville");
     inputVille.setAttribute("id","ville");
-    inputVille.setAttribute("type","ville");
+    inputVille.setAttribute("class","titre");
     inputVille.setAttribute("placeholder","Ville : ");
     inputVille.setAttribute("onblur","verifVille(this);"); 
     if(totalInfo[8]!==null){
@@ -313,7 +319,7 @@ function afficheFormulaire(text,text2,text3){
     inputTelfixe=document.createElement("input");
     inputTelfixe.setAttribute("name","telfixe");
     inputTelfixe.setAttribute("id","telfixe");
-    inputTelfixe.setAttribute("type","telfixe");
+    inputTelfixe.setAttribute("class","titre");
     inputTelfixe.setAttribute("placeholder","Téléphone fixe : ");
     inputTelfixe.setAttribute("onblur","verifTelFixe(this);"); 
     if(totalInfo[9]!==null){
@@ -326,7 +332,7 @@ function afficheFormulaire(text,text2,text3){
     inputMobile=document.createElement("input");
     inputMobile.setAttribute("name","mobile");
     inputMobile.setAttribute("id","mobile");
-    inputMobile.setAttribute("type","mobile");
+    inputMobile.setAttribute("class","titre");
     inputMobile.setAttribute("placeholder","Mobile : ");
     inputMobile.setAttribute("onblur","verifMobile(this);"); 
     if(totalInfo[10]!==null){
@@ -339,7 +345,7 @@ function afficheFormulaire(text,text2,text3){
     inputEmail=document.createElement("input");
     inputEmail.setAttribute("name","email");
     inputEmail.setAttribute("id","email");
-    inputEmail.setAttribute("type","email");
+    inputEmail.setAttribute("class","titre");
     inputEmail.setAttribute("placeholder","Email : ");
     inputEmail.setAttribute("onblur","verifEmail(this);"); 
     if(totalInfo[11]!==null){
@@ -356,20 +362,21 @@ function afficheFormulaire(text,text2,text3){
      * toujours le même principe de création d'un bloc d'information
      * avec le fieldset,legend et span
      */
-    fieldsetEnfant4 = document.createElement("fieldset");
-    fieldsetEnfant4.setAttribute("id","part4");
-    formForumlaire.appendChild(fieldsetEnfant4);
+    divEnfant4 = document.createElement("div");
+    divEnfant4.setAttribute("id","part4");
+    divEnfant4.setAttribute("class","box-Secondaire");//ajout de l'attribut class
+    formForumlaire.appendChild(divEnfant4);
     partieFormulaire4= document.getElementById("part4");
-    numTitrePartie4 = document.createElement("legend");
+    numTitrePartie4 = document.createElement("h1");
     numTitrePartie4.setAttribute("id","titre4");
     partieFormulaire4.appendChild(numTitrePartie4);
-    legend4= document.getElementById("titre4");
+    h14= document.getElementById("titre4");
     span4=document.createElement("span");
     span4.setAttribute("id","number4");
     span4.setAttribute("class","number");
-    legend4.appendChild(span4);
+    h14.appendChild(span4);
     remplaceTexte(span4,"4");
-    remplaceTexte(legend4,"Poursuite d'études");
+    remplaceTexte(h14,"Poursuite d'études");
     
     /*
      * création d'un tableau à 4 colonnes
@@ -402,7 +409,7 @@ function afficheFormulaire(text,text2,text3){
     inputFormation=document.createElement("input");
     inputFormation.setAttribute("name","formation0");
     inputFormation.setAttribute("id","formation");
-    inputFormation.setAttribute("type","formation");
+    inputFormation.setAttribute("class","titre");
     inputFormation.setAttribute("placeholder","Formation : ");
     inputFormation.setAttribute("onblur","verifFormation(this);"); 
     if(formation[1]!=undefined){
@@ -419,6 +426,7 @@ function afficheFormulaire(text,text2,text3){
     selectAnnee = document.createElement("select");
     selectAnnee.setAttribute("name","annee0");
     selectAnnee.setAttribute("id","annee0");
+    selectAnnee.setAttribute("class","select");
     selectAnnee.setAttribute("onclick","verifAnnee(this);");
     partieFormulaire4.appendChild(selectAnnee);
     optionAnnee0 = document.createElement("option");
@@ -447,7 +455,7 @@ function afficheFormulaire(text,text2,text3){
     inputDiscipline=document.createElement("input");
     inputDiscipline.setAttribute("name","discipline0");
     inputDiscipline.setAttribute("id","discipline");
-    inputDiscipline.setAttribute("type","discipline");
+    inputDiscipline.setAttribute("class","titre");
     inputDiscipline.setAttribute("placeholder","Discipline : ");
     inputDiscipline.setAttribute("onblur","verifDiscipline(this);"); 
     if(formation[3]!==undefined){
@@ -464,7 +472,7 @@ function afficheFormulaire(text,text2,text3){
     inputEtablissement=document.createElement("input");
     inputEtablissement.setAttribute("name","etablissement0");
     inputEtablissement.setAttribute("id","etablissement");
-    inputEtablissement.setAttribute("type","etablissement");
+    inputEtablissement.setAttribute("class","titre");
     inputEtablissement.setAttribute("placeholder","Etablissement : ");
     //inputEtablissement.setAttribute("onblur","verifDiscipline(this);"); 
     if(formation[4]!==undefined){
@@ -496,7 +504,7 @@ function afficheFormulaire(text,text2,text3){
         inputFormation=document.createElement("input");
         inputFormation.setAttribute("name","formation"+l);
         inputFormation.setAttribute("id","formation");
-        inputFormation.setAttribute("type","formation");
+        inputFormation.setAttribute("class","titre");
         inputFormation.setAttribute("placeholder","Formation : ");
         inputFormation.setAttribute("onblur","verifFormation(this);"); 
         if(formation[m]!==undefined){
@@ -514,6 +522,7 @@ function afficheFormulaire(text,text2,text3){
         selectAnnee = document.createElement("select");
         selectAnnee.setAttribute("name","annee"+l);
         selectAnnee.setAttribute("id","annee"+l);
+        selectAnnee.setAttribute("class","select");
         selectAnnee.setAttribute("onclick","verifAnnee(this);");
         partieFormulaire4.appendChild(selectAnnee);
         optionAnnee0 = document.createElement("option");
@@ -543,7 +552,7 @@ function afficheFormulaire(text,text2,text3){
         inputDiscipline=document.createElement("input");
         inputDiscipline.setAttribute("name","discipline"+l);
         inputDiscipline.setAttribute("id","discipline");
-        inputDiscipline.setAttribute("type","discipline");
+        inputDiscipline.setAttribute("class","titre");
         inputDiscipline.setAttribute("placeholder","Discipline : ");
         inputDiscipline.setAttribute("onblur","verifDiscipline(this);"); 
         if(formation[m]!==undefined){
@@ -561,7 +570,7 @@ function afficheFormulaire(text,text2,text3){
         inputEtablissement=document.createElement("input");
         inputEtablissement.setAttribute("name","etablissement"+l);
         inputEtablissement.setAttribute("id","etablissement");
-        inputEtablissement.setAttribute("type","etablissement");
+        inputEtablissement.setAttribute("class","titre");
         inputEtablissement.setAttribute("placeholder","Etablissement : ");
         //inputEtablissement.setAttribute("onblur","verifDiscipline(this);"); 
         if(formation[m]!==undefined){
@@ -582,31 +591,32 @@ function afficheFormulaire(text,text2,text3){
     l=l-1;//l prend l - 1 pour remettre la variable au nombre exacte de ligne qui ont été ajouté pour une bonne incrémentation dans la fonction ajoutLigneF ensuite
     //création d'une balise a avec du texte et une fonction qui à chaque clique dessus ajoute une
     //ligne au tableau 
-    ajoutLigneF=document.createElement("a");
+    ajoutLigneF=document.createElement("p");
     ajoutLigneF.setAttribute("onclick","ajoutLigneFormation();");
     partieFormulaire4.appendChild(ajoutLigneF);
     remplaceTexte(ajoutLigneF,"cliquez sur moi pour ajouter une ligne");
 
     //creation de la partie 5 du formulaire
-    fieldsetEnfant5 = document.createElement("fieldset");
-    fieldsetEnfant5.setAttribute("id","part5");
-    formForumlaire.appendChild(fieldsetEnfant5);
+    divEnfant5 = document.createElement("div");
+    divEnfant5.setAttribute("id","part5");
+    divEnfant5.setAttribute("class","box-Secondaire");//ajout de l'attribut class
+    formForumlaire.appendChild(divEnfant5);
     //creation la partie 5 du formulaire
     partieFormulaire5= document.getElementById("part5");
-    numTitrePartie5 = document.createElement("legend");
+    numTitrePartie5 = document.createElement("h1");
     numTitrePartie5.setAttribute("id","titre5");
     partieFormulaire5.appendChild(numTitrePartie5);
-    legend5= document.getElementById("titre5");
+    h15= document.getElementById("titre5");
     span5=document.createElement("span");
     span5.setAttribute("id","number5");
     span5.setAttribute("class","number");
-    legend5.appendChild(span5);
+    h15.appendChild(span5);
     remplaceTexte(span5,"5");
-    remplaceTexte(legend5,"Votre parcours professionnel");
+    remplaceTexte(h15,"Votre parcours professionnel");
     inputPosteOccupe=document.createElement("input");
     inputPosteOccupe.setAttribute("name","posteoccupe");
     inputPosteOccupe.setAttribute("id","posteoccupe");
-    inputPosteOccupe.setAttribute("type","posteoccupe");
+    inputPosteOccupe.setAttribute("class","titre");
     inputPosteOccupe.setAttribute("placeholder","Poste occupé : ");
     inputPosteOccupe.setAttribute("onblur","verifPosteOccupe(this);"); 
     if(totalInfo[12]!==null){
@@ -616,13 +626,14 @@ function afficheFormulaire(text,text2,text3){
     erreurposteoccupe=document.createElement("p");
     erreurposteoccupe.setAttribute("id","erreurposteoccupe");
     partieFormulaire5.appendChild(erreurposteoccupe);
-    labelTypeContrat = document.createElement("label");
-    labelTypeContrat.setAttribute("for","typeContrat");
-    partieFormulaire5.appendChild(labelTypeContrat);
-    remplaceTexte(labelTypeContrat,"Type de contrat de travail");
+    pTypeContrat = document.createElement("p");
+    pTypeContrat.setAttribute("for","typeContrat");
+    partieFormulaire5.appendChild(pTypeContrat);
+    remplaceTexte(pTypeContrat,"Type de contrat de travail");
     selectTypeContrat = document.createElement("select");
     selectTypeContrat.setAttribute("name","typecontrat");
     selectTypeContrat.setAttribute("id","typecontrat");
+    selectTypeContrat.setAttribute("class","select");
     selectTypeContrat.setAttribute("onclick","verifTypeContrat(this);");
     partieFormulaire5.appendChild(selectTypeContrat);
     optionTypeContrat0 = document.createElement("option");
@@ -653,7 +664,7 @@ function afficheFormulaire(text,text2,text3){
     inputEntreprise=document.createElement("input");
     inputEntreprise.setAttribute("name","entreprise");
     inputEntreprise.setAttribute("id","entreprise");
-    inputEntreprise.setAttribute("type","entreprise");
+    inputEntreprise.setAttribute("class","titre");
     inputEntreprise.setAttribute("placeholder","Entreprise : ");
     inputEntreprise.setAttribute("onblur","verifEntreprise(this);"); 
     if(totalInfo[14]!==null){
@@ -666,7 +677,7 @@ function afficheFormulaire(text,text2,text3){
     inputAdresseEntreprise=document.createElement("input");
     inputAdresseEntreprise.setAttribute("name","adresseentreprise");
     inputAdresseEntreprise.setAttribute("id","adresseEnt");
-    inputAdresseEntreprise.setAttribute("type","adresseEnt");
+    inputAdresseEntreprise.setAttribute("class","titre");
     inputAdresseEntreprise.setAttribute("placeholder","Adresse : ");
     inputAdresseEntreprise.setAttribute("onblur","verifAdresseEntreprise(this);"); 
     if(totalInfo[15]!==null){
@@ -679,7 +690,7 @@ function afficheFormulaire(text,text2,text3){
     inputSecteurAct=document.createElement("input");
     inputSecteurAct.setAttribute("name","secteuractivite");
     inputSecteurAct.setAttribute("id","secteurEnt");
-    inputSecteurAct.setAttribute("type","secteurEnt");
+    inputSecteurAct.setAttribute("class","titre");
     inputSecteurAct.setAttribute("placeholder","Secteur d'activité : ");
     inputSecteurAct.setAttribute("onblur","verifSecteurActivite(this);"); 
     if(totalInfo[16]!==null){
@@ -695,20 +706,21 @@ function afficheFormulaire(text,text2,text3){
      * création de la partie 6 du formulaire
      * le principe est le même que la partie 4 du formulaire
      */
-    fieldsetEnfant6 = document.createElement("fieldset");
-    fieldsetEnfant6.setAttribute("id","part6");
-    formForumlaire.appendChild(fieldsetEnfant6);
+    divEnfant6 = document.createElement("div");
+    divEnfant6.setAttribute("id","part6");
+    divEnfant6.setAttribute("class","box-Secondaire");//ajout de l'attribut class
+    formForumlaire.appendChild(divEnfant6);
     partieFormulaire6= document.getElementById("part6");
-    numTitrePartie6 = document.createElement("legend");
+    numTitrePartie6 = document.createElement("h1");
     numTitrePartie6.setAttribute("id","titre6");
     partieFormulaire6.appendChild(numTitrePartie6);
-    legend6= document.getElementById("titre6");
+    h16= document.getElementById("titre6");
     span6=document.createElement("span");
     span6.setAttribute("id","number6");
     span6.setAttribute("class","number");
-    legend6.appendChild(span6);
+    h16.appendChild(span6);
     remplaceTexte(span6,"6");
-    remplaceTexte(legend6,"Stage");
+    remplaceTexte(h16,"Stage");
     
     tabStage=document.createElement("table");
     tabStage.setAttribute("id","tableauStage");
@@ -726,7 +738,7 @@ function afficheFormulaire(text,text2,text3){
     inputNomStage=document.createElement("input");
     inputNomStage.setAttribute("name","nomStage0");
     inputNomStage.setAttribute("id","nomStage");
-    inputNomStage.setAttribute("type","nomStage");
+    inputNomStage.setAttribute("class","titre");
     inputNomStage.setAttribute("placeholder","Nom de l'entreprise : ");
     //inputNomStage.setAttribute("onblur","verifFormation(this);"); 
     if(stage[1]!=undefined){
@@ -742,7 +754,7 @@ function afficheFormulaire(text,text2,text3){
     inputVilleEntreprise=document.createElement("input");
     inputVilleEntreprise.setAttribute("name","villeEntreprise0");
     inputVilleEntreprise.setAttribute("id","villeEntreprise");
-    inputVilleEntreprise.setAttribute("type","villeEntreprise");
+    inputVilleEntreprise.setAttribute("class","titre");
     inputVilleEntreprise.setAttribute("placeholder","Ville où elle est situé : ");
     //inputVilleEntreprise.setAttribute("onblur","verifDiscipline(this);"); 
     if(stage[2]!==undefined){
@@ -766,7 +778,7 @@ function afficheFormulaire(text,text2,text3){
         inputNomStage=document.createElement("input");
         inputNomStage.setAttribute("name","nomStage"+n);
         inputNomStage.setAttribute("id","nomStage");
-        inputNomStage.setAttribute("type","nomStage");
+        inputNomStage.setAttribute("class","titre");
         inputNomStage.setAttribute("placeholder","Nom de l'entreprise : ");
         //inputNomStage.setAttribute("onblur","verifFormation(this);"); 
         if(stage[o]!=undefined){
@@ -783,7 +795,7 @@ function afficheFormulaire(text,text2,text3){
         inputVilleEntreprise=document.createElement("input");
         inputVilleEntreprise.setAttribute("name","villeEntreprise"+n);
         inputVilleEntreprise.setAttribute("id","villeEntreprise");
-        inputVilleEntreprise.setAttribute("type","villeEntreprise");
+        inputVilleEntreprise.setAttribute("class","titre");
         inputVilleEntreprise.setAttribute("placeholder","Ville où elle est situé : ");
         //inputVilleEntreprise.setAttribute("onblur","verifDiscipline(this);"); 
         if(stage[o]!==undefined){
@@ -831,6 +843,7 @@ function afficheFormulaire(text,text2,text3){
     btnForm = document.createElement("input");
     btnForm.setAttribute("name","soumettre")
     btnForm.setAttribute("type","submit");
+    btnForm.setAttribute("class","bouton");
     btnForm.setAttribute("value","Modifier");
     formForumlaire.appendChild(btnForm);
 }

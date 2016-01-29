@@ -132,7 +132,7 @@
     
     
     //récupération des données de la base en fonction de l'idEtud pour gérer les cas UPDATE ou INSERT si des données sont déjà enregistrées ou non
-    require_once('../frontoffice/connexionBD.php');
+    require_once('../../frontoffice/connexionBD.php');
     $idCompte=$_SESSION['idCompte'];
 
     $tableEtudiant="SELECT * FROM etudiant WHERE idCompte='".$idCompte."'";     
@@ -260,7 +260,7 @@
 
         }
         //redirection 
-        header('Location: ../frontoffice/profil_formulaire_envoye.php');
+        header('Location: ../../frontoffice/profil_formulaire_envoye.php');
     }
 ?>
 
