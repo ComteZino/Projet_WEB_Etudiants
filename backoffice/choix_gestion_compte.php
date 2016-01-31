@@ -5,9 +5,12 @@
         header('Location: ../frontoffice/authentification.php');
     }
     $_SESSION["page"] = "gestion";
-    $select_comptes = ('Select idCompte,nom,prenom,idEtud from etudiant');
-    $query_select = $connexion->query($select_comptes);
-    $query_select2 = $connexion->query($select_comptes);
+    $select_comptes = ('Select * from compte where statut = "Admin";');
+    $query_select_compte = $connexion->query($select_comptes);
+    $query_select_compte2 = $connexion->query($select_comptes);
+    $select_etudiant = ('Select * from etudiant');
+    $query_select_etudiant = $connexion->query($select_etudiant);
+    $query_select_etudiant2 = $connexion->query($select_etudiant);
 ?>
 <html>
     <head>
@@ -50,9 +53,13 @@
                 <p>Quel compte va être modifié ? </p>
                 <select class="select" name="id">
                     <?php
-                        while($ligne = $query_select->fetch())
+                        while($ligneCompte = $query_select_compte->fetch())
                         {
-                            echo '<option value="'.$ligne["idCompte"].'">'.str_replace("-"," ",$ligne["nom"]).' '.str_replace("-"," ",$ligne["prenom"]).'</option>';
+                            echo '<option value="'.$ligneCompte["idCompte"].'">'.$ligneCompte["login"].' '.$ligneCompte["statut"].'</option>';
+                        }
+                        while($ligneEtud = $query_select_etudiant->fetch())
+                        {
+                            echo '<option value="'.$ligneEtud["idCompte"].'">'.str_replace("-"," ",$ligneEtud["nom"]).' '.str_replace("-"," ",$ligneEtud["prenom"]).'</option>';
                         }
                     ?>
                 </select>
@@ -65,13 +72,18 @@
                 <p>Quel compte va être supprimé ?</p>
                 <select class="select" name="id">
                     <?php
-                        while($lgn = $query_select2->fetch())
+                        while($ligneCompte2 = $query_select_compte2->fetch())
                         {
                             // N'affiche pas le compte courant
                             if($_SESSION["idCompte"] != $lgn["idCompte"])
                             {
-                                echo '<option value="'.$lgn["idCompte"].'">'.str_replace("-"," ",$lgn["nom"]).' '.str_replace("-"," ",$lgn["prenom"]).'</option>';
+                                echo '<option value="'.$ligneCompte2["idCompte"].'">'.$ligneCompte2["login"].' '.$ligneCompte2["statut"].'</option>';
+                        
                             }
+                        }
+                        while($ligneEtud2 = $query_select_etudiant2->fetch())
+                        {
+                            echo '<option value="'.$ligneEtud2["idCompte"].'">'.str_replace("-"," ",$ligneEtud2["nom"]).' '.str_replace("-"," ",$ligneEtud2["prenom"]).'</option>';
                         }
                     ?>
                 </select>

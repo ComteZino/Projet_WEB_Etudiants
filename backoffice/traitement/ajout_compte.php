@@ -71,7 +71,7 @@
         <div class="filAriane">
             <a href="../frontoffice/accueil.php">Accueil</a> » <a href="../choix_gestion_compte.php">Gestion des comptes</a> » Ajout du compte
         </div>
-        <div id="divPrincipal" class="box-gestion">
+        <div class="box-principal">
             <h1>
                 <?php 
                 if($ok == 0)
@@ -98,12 +98,21 @@
 <?php 
     if($ok == 1)
     {
-        $selectid = $connexion->query('Select * from compte');
-        while($lgnid = $selectid->fetch()) // créé un nouvel id pour l'utilisateur
+        $selectIdCompte = $connexion->query('Select * from compte');
+        $idCompte = 0;
+        while($lgnid = $selectIdCompte->fetch()) // créé un nouvel id pour le compte de l'utilisateur/administrateur
         {
-            $id = $lgnid["idEtud"];
+            $idCompte = $lgnid["idCompte"];
         }
-        $id = $id + 1;
+        $idCompte = $idCompte + 1;
+        
+        $selectIdEtud = $connexion->query('Select * from etudiant');
+        $idEtud = 0;
+        while($lgnIdEtud = $selectIdEtud->fetch()) // créé un nouvel id pour l'utilisateur
+        {
+            $idEtud = $lgnIdEtud["idEtud"];
+        }
+        $idEtud = $idEtud + 1;
         // Affectation du statut correspondant à la base de données
         if($statut == "Utilisateur")
         {
@@ -113,10 +122,13 @@
         {
            $statut = "Admin";
         }
-        $ajout_compte = ('INSERT INTO compte VALUES ("'.$id.'","'.$login.'", "'.MD5($mdp).'", "'.$statut.'")');
+        $ajout_compte = ('INSERT INTO compte VALUES ("'.$idCompte.'","'.$login.'", "'.MD5($mdp).'", "'.$statut.'")');
         $exec_compte = $connexion->exec($ajout_compte);
         
-        $ajout_etud = ('INSERT INTO etudiant VALUES ("'.$id.'","'.$nom.'", "'.$prenom.'", "'.$dateN.'", null, null)');
-        $exec_etud = $connexion->exec($ajout_etud);
+        if($statut == "Util")
+        {
+            $ajout_etud = ('INSERT INTO etudiant VALUES ("'.$idEtud.'","'.$nom.'", "'.$prenom.'", "'.$dateN.'", null, null, null, null, null, null, null, null, null, null, null, null, null, null, "'.$idCompte.'")');
+            $exec_etud = $connexion->exec($ajout_etud);
+        }
     }
 ?>
